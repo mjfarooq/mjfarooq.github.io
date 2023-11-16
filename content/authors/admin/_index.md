@@ -37,8 +37,7 @@ interests:
 education:
   courses:
     - course: PhD in Electrical Engineering
-      institution: New York University (NYU)https://www.nyu.edu
-      url: "https://www.nyu.edu"
+      institution: [New York University (NYU)](URL "https://www.nyu.edu")
       year: 2020
     - course: MS in Electrical Engineering
       institution: King Abdullah University of Science & Technology (KAUST)
