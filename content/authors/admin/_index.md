@@ -37,13 +37,13 @@ interests:
 education:
   courses:
     - course: PhD in Electrical Engineering
-      institution: New York University
+      institution: New York University (NYU)
       year: 2020
     - course: MS in Electrical Engineering
-      institution: King Abdullah University of Science & Technology
+      institution: King Abdullah University of Science & Technology (KAUST)
       year: 2015
     - course: BS in Electrical Engineering
-      institution: National University of Sciences & Technology
+      institution: National University of Sciences & Technology (NUST)
       year: 2013
 
 # Skills
@@ -93,7 +93,7 @@ skills:
 social:
   - icon: envelope
     icon_pack: fas
-    link: 
+    link:
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/_mjfarooq
