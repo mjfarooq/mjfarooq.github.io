@@ -40,10 +40,10 @@ education:
       institution: New York University
       year: 2020
     - course: MS in Electrical Engineering
-      institution: King Abdullah University of Science & Technology (KAUST)
+      institution: 'King Abdullah University of Science & Technology (KAUST)'
       year: 2015
     - course: BS in Electrical Engineering
-      institution: National University of Sciences & Technology (NUST)
+      institution: National University of Sciences & Technology
       year: 2013
 
 # Skills
