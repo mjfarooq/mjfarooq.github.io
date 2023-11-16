@@ -37,13 +37,13 @@ interests:
 education:
   courses:
     - course: PhD in Electrical Engineering
-      institution: [New York University](https://www.nyu.edu/)
+      institution: New York University
       year: 2020
     - course: MS in Electrical Engineering
-      institution: [King Abdullah University of Science & Technology (KAUST)](https://www.kaust.edu.sa/en)
+      institution: King Abdullah University of Science & Technology (KAUST)
       year: 2015
     - course: BS in Electrical Engineering
-      institution: [National University of Sciences & Technology (NUST)](http://www.nust.edu.pk/)
+      institution: National University of Sciences & Technology (NUST)
       year: 2013
 
 # Skills
