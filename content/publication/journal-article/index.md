@@ -10,7 +10,6 @@ author_notes:
 date: ""
 doi: ""
 
- IEEE Internet of Things Journal, vol. 10, no. 11, pp. 10080-10094, Jun. 2023.
 
 # Schedule page publish date (NOT publication's date).
 publishDate: "2023-06-01T00:00:00Z"
