@@ -7,8 +7,8 @@ authors:
 author_notes:
 - ""
 - ""
-date: ""
-doi: ""
+date: "Jun. 2023"
+doi: "10.1109/JIOT.2023.3236795"
 
 
 # Schedule page publish date (NOT publication's date).
