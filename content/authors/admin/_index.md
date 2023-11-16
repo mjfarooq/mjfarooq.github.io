@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Junaid Farooq, Ph.D.
+title: Junaid Farooq
 
 # Name pronunciation (optional)
 name_pronunciation:
@@ -37,14 +37,15 @@ interests:
 education:
   courses:
     - course: PhD in Electrical Engineering
-      institution: New York University (NYU)
+      institution: [New York University](https://www.nyu.edu/)
       year: 2020
     - course: MS in Electrical Engineering
-      institution: King Abdullah University of Science & Technology (KAUST)
+      institution: [King Abdullah University of Science & Technology (KAUST)](https://www.kaust.edu.sa/en)
       year: 2015
     - course: BS in Electrical Engineering
-      institution: National University of Sciences & Technology (NUST)
+      institution: [National University of Sciences & Technology (NUST)](http://www.nust.edu.pk/)
       year: 2013
+
 
 # Skills
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
