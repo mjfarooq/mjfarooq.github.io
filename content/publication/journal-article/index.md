@@ -2,7 +2,7 @@
 title: "QoS Based Contract Design for Profit Maximization in IoT-Enabled Data Markets"
 authors:
 - Juntao Chen
-- Junaid Farooq
+- admin
 - Quanyan Zhu
 author_notes:
 - ""
