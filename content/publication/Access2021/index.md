@@ -7,12 +7,12 @@ authors:
 author_notes:
 - ""
 - ""
-date: ""
-doi: ""
+date: "Feb. 2021"
+doi: "10.1109/ACCESS.2021.3058338"
 
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2023-06-01T00:00:00Z"
+publishDate: "2021-02-09T00:00:00Z"
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -20,27 +20,27 @@ publishDate: "2023-06-01T00:00:00Z"
 publication_types: ["article-journal"]
 
 # Publication name and optional abbreviated publication name.
-publication: "IEEE Access"
-publication_short: "IEEE Access"
+publication: "IEEE Access 2021"
+publication_short: "IEEE Access 2021"
 
-abstract: The massive deployment of Internet of Things (IoT) devices, including sensors and actuators, is ushering in smart and connected communities of the future. The massive deployment of IoT devices, including sensors and actuators, is ushering in smart and connected communities of the future. The availability of real-time and high-quality sensor data is crucial for various IoT applications, particularly in healthcare, energy, transportation, etc. However, data collection may have to be outsourced to external service providers (SPs) due to cost considerations or lack of specialized equipment. Hence, the data market plays a critical role in such scenarios where SPs have different quality levels of available data, and IoT users have different application-specific data needs. The pairing between data available to the SP and users in the data market requires an effective mechanism design that considers the SPs’ profitability and the Quality-of-Service (QoS) needs of the users. We develop a generic framework to analyze and enable such interactions efficiently, leveraging tools from contract theory and mechanism design theory. It can enable and empower emerging data-sharing paradigms, such as Sensing-as-a-Service (SaaS). The contract design creates a pricing structure for on-demand sensing data for IoT users. By considering a continuum of user types, we capture a diverse range of application requirements and propose optimal pricing and allocation rules that ensure QoS provisioning and maximum profitability for the SP. Furthermore, we provide analytical solutions for fixed distributions of user types to analyze the developed approach. For comparison, we consider the benchmark case assuming complete information of the user types and obtain optimal contract solutions. Finally, a case study based on the example of a virtual reality application delivered using unmanned aerial vehicles (UAVs) is presented to demonstrate the efficacy of the proposed contract design framework.
+abstract: Supply chain security is becoming an important factor in security risk analysis for modern information and communication technology (ICT) systems. As Internet of Things (IoT) devices proliferate and get adopted into critical infrastructure, the role of suppliers in risk assessment becomes all the more significant. IoT security risks are affected by supplier trust since suppliers possess the capacity to modify black box systems without detection. The risks posed by potentially malicious or compromised suppliers are compounded by interdependence among suppliers. In this paper, we propose I-SCRAM, a framework to analyze supply chain risks in IoT systems and to support risk mitigating decisions. After defining an expanded system model that consists of interconnected components and a hierarchy of component vendors, we develop and propose metrics to quantify systemic risks. Finally, we present a decision framework that helps in selection of vendors to mitigate supply chain risk. Through a case study and simulation, we show that I-SCRAM successfully minimizes system risk as higher budget and more reliable component sources become available, while allowing flexibility in prioritizing sources of risk.
 
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Contract design
-- data pricing
-- Internet of Things (IoT)
-- maximum principle
-- Quality-of-Service (QoS)
-- Sensing-as-a-Service (SaaS)
+- Attack tree
+- supply chain risk management
+- Internet of things
+- Birnbaum structural importance
+- component importance
+- risk mitigation
 featured: false
 
 # links:
 # - name: ""
 #   url: ""
-url_pdf: https://ieeexplore.ieee.org/document/10016667/keywords#keywords
+url_pdf: https://ieeexplore.ieee.org/document/9350583
 url_code: ''
 url_dataset: ''
 url_poster: ''
