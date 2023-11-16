@@ -93,7 +93,7 @@ skills:
 social:
   - icon: envelope
     icon_pack: fas
-    link: mjfarooq@umich.edu
+    link: 
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/_mjfarooq
@@ -108,7 +108,7 @@ social:
     link: https://github.com/mjfarooq
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/mjfarooq
+    link:
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
