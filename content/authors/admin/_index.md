@@ -37,7 +37,7 @@ interests:
 education:
   courses:
     - course: PhD in Electrical Engineering
-      institution: [New York University (NYU)](URL "https://www.nyu.edu")
+      institution: [New York University (NYU)]( https://www.nyu.edu)
       year: 2020
     - course: MS in Electrical Engineering
       institution: King Abdullah University of Science & Technology (KAUST)
@@ -123,5 +123,5 @@ social:
 highlight_name: true
 ---
 
-Junaid Farooq is an assistant professor of electrical and computer engineering at the University of Michigan-Dearborn. His research interests include distributed robotics, mobile computing and programmable matter. He leads the CYber REsilient Networks research group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Junaid Farooq is an assistant professor of electrical and computer engineering at the University of Michigan-Dearborn. His research interests include distributed robotics, mobile computing and programmable matter. He leads the CYber REsilient Networks research group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.  [Link text]( https://example.com)
 {style="text-align: justify;"}
