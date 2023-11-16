@@ -37,7 +37,7 @@ interests:
 education:
   courses:
     - course: PhD in Electrical Engineering
-      institution: New York University (NYU)
+      institution: New York University (NYU) [Link text]( https://example.com)
       url: https://www.nyu.edu
       year: 2020
     - course: MS in Electrical Engineering
