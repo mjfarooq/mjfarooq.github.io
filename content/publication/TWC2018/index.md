@@ -34,7 +34,7 @@ tags:
 - Multiplex networks
 - Poisson point process
 - Random geometric graph
-featured: true
+featured: false
 
 # links:
 # - name: ""
