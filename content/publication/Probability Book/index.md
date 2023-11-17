@@ -1,23 +1,22 @@
 ---
-title: 'IoT Supply Chain Security Risk Analysis and Mitigation: Modeling, Computations, and Software Tools'
+title: 'Problems and Solutions in Undergraduate Probability'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - Timothy Kieras
   - admin
-  - Quanyan Zhu
+  - Unnikrishna Pillai
 # Author notes (optional)
 author_notes:
   - ''
   - ''
 
-date: '2022-09-06T00:00:00Z'
+date: '2018-12-28T00:00:00Z'
 doi: '10.1007/978-3-031-08480-5'
 
 # Schedule page publish date (NOT publication's date).
-publishDate: '2022-09-06T00:00:00Z'
+publishDate: '2018-12-28T00:00:00Z'
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -25,31 +24,17 @@ publishDate: '2022-09-06T00:00:00Z'
 publication_types: ['book']
 
 # Publication name and optional abbreviated publication name.
-publication: Springer Cham
-publication_short: Springer Cham
+publication: Amazon Web Publishing
+publication_short: Amazon Web Publishing
 
-abstract: This SpringerBrief introduces methodologies and tools for quantitative understanding and assessment of supply chain risk to critical infrastructure systems. It unites system reliability analysis, optimization theory, detection theory and mechanism design theory to study vendor involvement in overall system security. It also provides decision support for risk mitigation. This SpringerBrief introduces I-SCRAM, a software tool to assess the risk. It enables critical infrastructure operators to make risk-informed decisions relating to the supply chain, while deploying their IT/OT and IoT systems. The authors present examples and case studies on supply chain risk assessment/mitigation of modern connected infrastructure systems such as autonomous vehicles, industrial control systems, autonomous truck platooning and more. It also discusses how vendors of different system components are involved in the overall security posture of the system and how the risk can be mitigated through vendor selection and diversification.
+abstract: This book provides a set of problems and their solutions in undergraduate probability arranged according to topics to help both instructors and students. This has evolved out of classroom material at NYU Tandon School of Engineering over the course of three years. It is designed as a companion volume to “Lecture Slides on Undergraduate Engineering Probability” by U. Pillai and S. Dutta. The material covers basic probability, probability density/distribution functions, their properties, finding the probability density function of one function of one and two random variables, mean, variance, covariance, correlation coefficient, conditional density functions and characteristic functions. The practice problems and their solutions here should help the students at the undergraduate level to achieve mastery on the fundamental topics in probability. Moreover, this will hopefully facilitate the instructors in preparing homework material for their courses.
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Supply chain risk management
-- Cybersecurity
-- Internet of Things
-- Supply chain attack
-- Risk assessment, cyber resilience
-- Risk scoring
-- Reliability
-- Attack tree
-- Cyber insurance
-- Risk mitigation
-- Supply chain diversification
-- Supplier trust
-- Supplier network
-- Vendors
-- Accountability
+- Probability
 # Display this page in the Featured widget?
-featured: true
+featured: false
 
 # Custom links (uncomment lines below)
 # links:
