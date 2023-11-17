@@ -6,7 +6,8 @@ title: 'A stochastic geometry-based demand response management framework for cel
 # and it will be replaced with their full name and linked to their profile.
 authors:
   - admin
-  - Quanyan Zhu
+  -  Hakim Ghazzai
+  - Abdullah Kadri
 # Author notes (optional)
 author_notes:
   - ''
