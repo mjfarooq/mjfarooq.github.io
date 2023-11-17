@@ -1,5 +1,5 @@
 ---
-title: 'Proactive and Resilient UAV Orchestration for QoS Driven Connectivity and Coverage of Ground Users'
+title: 'Resilient UAV Formation for Coverage and Connectivity of Spatially Dispersed Users'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
@@ -25,20 +25,19 @@ publishDate: '2022-10-05T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: in IEEE Conference on Communications and Network Security (CNS), Austin, TX, USA
-publication_short: in IEEE CNS-CRW 2022
+publication: in IEEE International Conference on Communications, Seoul, Republic of Korea
+publication_short: in IEEE ICC 2022
 
-abstract: Unmanned aerial vehicles (UAVs) are being successfully used to deliver communication services in applications such as extending the coverage of 5G cellular networks in remote areas, emergency situations, and enhancing the service quality in regions of dense user populations. While optimized placement solutions have been proposed in literature for ensuring quality of service (QoS) of users, they may not be ideal in highly mobile, autonomous, and diverse network scenarios. This paper proposes a proactive and resilient framework for distributed and dynamic orchestration of UAV small cells to provide QoS differentiation in the network. The UAV locations are tailored to end-user locations and service needs while ensuring that UAVs maintain localized backhaul connectivity. Simulation experiments show that under scenarios where physical placement can achieve service differentiation’ the developed framework leads to a stable configurations of UAVs satisfying above 90% of user QoS requirements.
+abstract: Unmanned aerial vehicles (UAVs) are a convenient choice for carrying mobile base stations to rapidly setup communication services for ground users. Unlike terrestrial networks, UAVs do not have fiber optic back-haul connectivity except when they are tethered to the ground, which restricts their mobility. In the absence of back-haul, e.g., in remote areas, emergency situations, or in battlefields, there is a need to ensure connectivity among UAVs in addition to coverage of ground users for creating local area networks. This paper provides a distributed and dynamic approach for UAV formation-based control for coverage and connectivity of spatially dispersed users. We use flocking dynamics as a guide to constructing tailored formations of UAVs on the fly. Simulation results demonstrate that if sufficient aerial base stations are available, the proposed approach results in a strongly connected network of UAVs that is able to provide both a backhaul and fronthaul network. The approach can be further extended to create multi-tier extra-terrestrial networks to cater for large-scale applications.
 
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Unmanned Aerial Vehicles
+- Unmanned aerial vehicles
 - Connectivity
 - Resilience
-- Quality-of-Service
-- Swarming
+- Distributed algorithm
 # Display this page in the Featured widget?
 featured: false
 
@@ -47,7 +46,7 @@ featured: false
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://arxiv.org/pdf/2209.04496.pdf'
+url_pdf: 'https://arxiv.org/pdf/2203.06287.pdf'
 url_code: ''
 url_dataset: ''
 url_poster: ''
