@@ -27,11 +27,7 @@ publication_types: ['book']
 publication: Wiley-IEEE Press
 publication_short: Wiley-IEEE Press
 
-abstract: In Resource Management for On-Demand Mission-Critical Internet of Things ­Applications, an expert team of engineers delivers an insightful analytical perspective on modeling and decision support for mission-critical Internet of Things applications. The authors dissect the complex IoT ecosystem and provide a cross-layer perspective on the design and operation of IoT, especially in the context of smart and connected communities.
-
-The book offers an economic perspective on resource management in IoT systems with a particular emphasis on three main areas - spectrum management via reservation, allocation of cloud/fog resources to IoT applications, and resource provisioning to smart city service requests. It leverages theories from dynamic mechanism design, optimal control theory, and spatial point processes, providing an overview of integrated decision-making frameworks.
-
-Finally, the authors discuss future directions and relevant problems on the economics of resource management from new perspectives, like security and resilience.
+abstract: In Resource Management for On-Demand Mission-Critical Internet of Things ­Applications, an expert team of engineers delivers an insightful analytical perspective on modeling and decision support for mission-critical Internet of Things applications. The authors dissect the complex IoT ecosystem and provide a cross-layer perspective on the design and operation of IoT, especially in the context of smart and connected communities. The book offers an economic perspective on resource management in IoT systems with a particular emphasis on three main areas, i.e., spectrum management via reservation, allocation of cloud/fog resources to IoT applications, and resource provisioning to smart city service requests. It leverages theories from dynamic mechanism design, optimal control theory, and spatial point processes, providing an overview of integrated decision-making frameworks. Finally, the authors discuss future directions and relevant problems on the economics of resource management from new perspectives, like security and resilience.
 # Summary. An optional shortened abstract.
 summary:
 
