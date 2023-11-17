@@ -1,24 +1,22 @@
 ---
-title: 'Resilient UAV Formation for Coverage and Connectivity of Spatially Dispersed Users'
+title: 'PhD Forum: Enabling Autonomic IoT for Smart Urban Services'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - Yuhui Wang
   - admin
-
-
+  - Quanyan Zhu
 # Author notes (optional)
 author_notes:
   - ''
   - ''
 
-date: '2022-10-05T00:00:00Z'
-doi: '10.1109/CNS56114.2022.9947272'
+date: '2020-06-16T00:00:00Z'
+doi: '10.1109/WF-IoT48130.2020.9221230'
 
 # Schedule page publish date (NOT publication's date).
-publishDate: '2022-10-05T00:00:00Z'
+publishDate: '2020-06-16T00:00:00Z'
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -26,19 +24,19 @@ publishDate: '2022-10-05T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: in IEEE International Conference on Communications, Seoul, Republic of Korea
-publication_short: in IEEE ICC 2022
+publication: in IEEE 6th World Forum on Internet of Things (WF-IoT) 2020, New Orleans, LA, USA
+publication_short: in IEEE WF-IoT 2020
 
-abstract: Unmanned aerial vehicles (UAVs) are a convenient choice for carrying mobile base stations to rapidly setup communication services for ground users. Unlike terrestrial networks, UAVs do not have fiber optic back-haul connectivity except when they are tethered to the ground, which restricts their mobility. In the absence of back-haul, e.g., in remote areas, emergency situations, or in battlefields, there is a need to ensure connectivity among UAVs in addition to coverage of ground users for creating local area networks. This paper provides a distributed and dynamic approach for UAV formation-based control for coverage and connectivity of spatially dispersed users. We use flocking dynamics as a guide to constructing tailored formations of UAVs on the fly. Simulation results demonstrate that if sufficient aerial base stations are available, the proposed approach results in a strongly connected network of UAVs that is able to provide both a backhaul and fronthaul network. The approach can be further extended to create multi-tier extra-terrestrial networks to cater for large-scale applications.
+abstract: The development of autonomous cyber-physical systems (CPS) and advances towards the fifth generation (5G) of wireless technology is promising to revolutionize many industry verticals such as healthcare, transportation, energy, retail services, building automation, education, etc., leading to the realization of the smart city paradigm. The Internet of things (IoT), enables powerful and unprecedented capabilities for intelligent and autonomous operation. We leverage ideas from network science, optimization & decision theory, incentive mechanism design, and data science/machine learning to achieve key design goals such as efficiency, security & resilience, and economics in IoT-enabled urban systems.
 
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Unmanned aerial vehicles
-- Connectivity
-- Resilience
-- Distributed algorithm
+- Internet of Things
+- Cyber-physical systems
+- Mission-critical
+- Network science
 # Display this page in the Featured widget?
 featured: false
 
@@ -47,7 +45,7 @@ featured: false
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://arxiv.org/pdf/2203.06287.pdf'
+url_pdf: 'https://arxiv.org/pdf/2001.01561.pdf'
 url_code: ''
 url_dataset: ''
 url_poster: ''
