@@ -21,7 +21,7 @@ marketing:
     description: ''
     twitter: ''
   analytics:
-    google_analytics: ''
+    google_analytics: 'Junaid Farooq'
     baidu_tongji: ''
     google_tag_manager: ''
     microsoft_clarity: ''
@@ -47,7 +47,7 @@ footer:
   copyright:
     notice: '© {year} All rights reserved.'
     license:
-      enable: true
+      enable: false
       allow_derivatives: false
       share_alike: false
       allow_commercial: false
