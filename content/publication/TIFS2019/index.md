@@ -33,7 +33,7 @@ tags:
 - Device-to-device communication
 - Population processes
 - Distributed denial of service
-featured: false
+featured: true
 
 # links:
 # - name: ""

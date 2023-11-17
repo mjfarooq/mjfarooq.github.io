@@ -1,21 +1,18 @@
 ---
-title: "Green Networking in Cellular HetNets: A Unified Radio Resource Management Framework with Base Station ON/OFF Switching"
+title: "A Stochastic Geometry Model for Multi-Hop Highway Vehicular Communication"
 authors:
-- Hakim Ghazzai
 - admin
-- Ahmad Alsharoa
-- Elias Yaacoub
-- Abdullah Kadri
+- Hesham ElSawy
 - Mohamed-Slim Alouini
 author_notes:
 - ""
 - ""
-date: "Dec. 2016"
-doi: "10.1109/TVT.2016.2636455"
+date: "Nov. 2015"
+doi: "10.1109/TWC.2015.2501817"
 
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2016-12-07T00:00:00Z"
+publishDate: "2015-11-19T00:00:00Z"
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -23,25 +20,25 @@ publishDate: "2016-12-07T00:00:00Z"
 publication_types: ["article-journal"]
 
 # Publication name and optional abbreviated publication name.
-publication: "IEEE Transactions on Vehicular Technology ( Volume: 66, Issue: 7, July 2017)"
-publication_short: "IEEE TVT 2017"
+publication: "IEEE Transactions on Wireless Communications ( Volume: 15, Issue: 3, March 2016)"
+publication_short: "IEEE TWC 2016"
 
-abstract: In this paper, the problem of energy efficiency in cellular heterogeneous networks (HetNets) is investigated using radio resource and power management combined with the base station (BS) ON/OFF switching. The objective is to minimize the total power consumption of the network while satisfying the quality of service requirements of each connected user. We consider the case of coexisting macrocell BS, small cell BSs, and private femtocell access points (FAPs). Three different network scenarios are investigated, depending on the status of the FAPs, i.e., HetNets without FAPs, HetNets with closed FAPs, and HetNets with semiclosed FAPs. A unified framework is proposed to simultaneously allocate spectrum resources to users in an energy efficient manner and switch OFF redundant small cell BSs. The high complexity dual decomposition technique is employed to achieve optimal solutions for the problem. A low complexity iterative algorithm is also proposed and its performances are compared to those of the optimal technique. The particularly interesting case of semiclosed FAPs, in which the FAPs accept to serve external users, achieves the highest energy efficiency due to increased degrees of freedom. In this paper, a cooperation scheme between FAPs and mobile operator is also investigated. The incentives for FAPs, e.g., renewable energy sharing and roaming prices, enabling cooperation are discussed to be considered as a useful guideline for interoperator agreements.
+abstract: Carrier sense multiple access (CSMA) protocol is standardized for vehicular communication to ensure a distributed and efficient communication between vehicles. However, several vehicular applications require efficient multi-hop information dissemination. This paper exploits stochastic geometry to develop a tractable and accurate modeling framework to characterize the multi-hop transmissions for vehicular networks in a multilane highway setup. In particular, we study the tradeoffs between per-hop packet forward progress, per-hop transmission success probability, and spatial frequency reuse (SFR) efficiency imposed by different packet forwarding schemes, namely, most forward with fixed radius (MFR), the nearest with forward progress (NFP), and the random with forward progress (RFP). We also define a new performance metric, denoted as the aggregate packet progress (APP), which is a dimensionless quantity that captures the aforementioned tradeoffs. To this end, the developed model reveals the interplay between the spectrum sensing threshold ( ρth ) of the CSMA protocol and the packet forwarding scheme. Our results show that, contrary to ALOHA networks, which always favor NFP, MFR may achieve the highest APP in CSMA networks if ρth is properly chosen.
 
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Base station (BS) ON/OFF switching
-- Femtocell access points (FAPs)
-- Green networking
-- Heterogeneous networks (HetNets)
+- Interference characterization
+- Multi-hop CSMA
+- Stochastic geometry
+- Vehicular communication
 featured: false
 
 # links:
 # - name: ""
 #   url: ""
-url_pdf: https://arxiv.org/pdf/1612.01416.pdf
+url_pdf: https://ieeexplore.ieee.org/document/7331645/
 url_code: ''
 url_dataset: ''
 url_poster: ''
