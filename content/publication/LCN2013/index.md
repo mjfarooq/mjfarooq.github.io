@@ -1,23 +1,24 @@
 ---
-title: 'Modeling Inter-Vehicle Communication in Multi-Lane Highways: A Stochastic Geometry Approach'
+title: 'A game-theoretic spectrum allocation framework for mixed unicast and broadcast traffic profile in cognitive radio networks'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
   - admin
-  - Hesham ElSawy
-  - Mohamed-Slim Alouini
+  - Muddassar Hussain
+  - Junaid Qadir
+  - Adeel Baig
 # Author notes (optional)
 author_notes:
   - ''
   - ''
 
-date: '2015-09-09T00:00:00Z'
-doi: '10.1109/VTCFall.2015.7391025'
+date: '2013-10-24T00:00:00Z'
+doi: '10.1109/LCN.2013.6761275'
 
 # Schedule page publish date (NOT publication's date).
-publishDate: '2015-09-09T00:00:00Z'
+publishDate: '2013-10-24T00:00:00Z'
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -25,10 +26,10 @@ publishDate: '2015-09-09T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: in IEEE 82nd Vehicular Technology Conference (VTC2015-Fall) Boston, MA USA
-publication_short: in IEEE VTC-Fall 2015
+publication: in 38th Annual IEEE Conference on Local Computer Networks (LCN) 2013, Sydney, NSW, Australia
+publication_short: in IEEE LCN 2013
 
-abstract: This paper develops a modeling framework, based on stochastic geometry and queueing theory, for carrier sense multiple access (CSMA) coordinated inter-vehicle communication, with unsaturated buffers, in a multi-lane highway scenario. We show that the spectrum sensing threshold (ρth) of the CSMA protocol is a critical design parameter that imposes a tradeoff between the transmission success probability and the spatial frequency reuse. To this end, we show that there exists an optimal value for ρth, which maximizes the transmission capacity that depends on the highway setup and the traffic intensity.
+abstract: In this paper, we present a game theoretic framework for spectrum allocation in distributed cognitive radio networks containing both unicast and broadcast traffic. Our proposed scheme aims to minimize broadcast latency for broadcast traffic and minimize interference and access contention for both types of traffic. We develop a utility function that ensures that both objectives are met yielding a higher network throughput. Our proposed spectrum allocation game is also formulated as a potential game and is guaranteed to converge to a Nash equilibrium if the sequential best response dynamics is followed. A proof of concept of the proposed algorithm has been implemented on the Orbit radio testbed and the results verify the convergence of the potential game. Our simulation and experimental results also reveal that the choice of utility function improves the average network throughput for a mixed traffic profile.
 
 # Summary. An optional shortened abstract.
 summary:
