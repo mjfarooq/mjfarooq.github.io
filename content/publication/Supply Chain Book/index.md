@@ -28,7 +28,7 @@ publication_types: ['book']
 publication: Springer Cham
 publication_short: Springer Cham
 
-abstract: This SpringerBrief introduces methodologies and tools for quantitative understanding and assessment of supply chain risk to critical infrastructure systems. It unites system reliability analysis, optimization theory, detection theory and mechanism design theory to study vendor involvement in overall system security. It also provides decision support for risk mitigation. This SpringerBrief introduces I-SCRAM, a software tool to assess the risk. It enables critical infrastructure operators to make risk-informed decisions relating to the supply chain, while deploying their IT/OT and IoT systems. The authors present examples and case studies on supply chain risk assessment/mitigation of modern connected infrastructure systems such as autonomous vehicles, industrial control systems, autonomous truck platooning and more. It also discusses how vendors of different system components are involved in the overall security posture of the system and how the risk can be mitigated through vendor selection and diversification. 
+abstract: This SpringerBrief introduces methodologies and tools for quantitative understanding and assessment of supply chain risk to critical infrastructure systems. It unites system reliability analysis, optimization theory, detection theory and mechanism design theory to study vendor involvement in overall system security. It also provides decision support for risk mitigation. This SpringerBrief introduces I-SCRAM, a software tool to assess the risk. It enables critical infrastructure operators to make risk-informed decisions relating to the supply chain, while deploying their IT/OT and IoT systems. The authors present examples and case studies on supply chain risk assessment/mitigation of modern connected infrastructure systems such as autonomous vehicles, industrial control systems, autonomous truck platooning and more. It also discusses how vendors of different system components are involved in the overall security posture of the system and how the risk can be mitigated through vendor selection and diversification.
 # Summary. An optional shortened abstract.
 summary:
 
@@ -49,7 +49,7 @@ tags:
 - Vendors
 - Accountability
 # Display this page in the Featured widget?
-featured: false
+featured: true
 
 # Custom links (uncomment lines below)
 # links:
