@@ -121,5 +121,5 @@ social:
 highlight_name: true
 ---
 
-Junaid Farooq is an assistant professor of electrical and computer engineering at the University of Michigan-Dearborn. His research interests include distributed robotics, mobile computing and programmable matter. He leads the [CYber REsilient Networks (CYREN)]( https://mjfarooq.github.io-cyren) research group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.  
+Junaid Farooq is an assistant professor of electrical and computer engineering at the University of Michigan-Dearborn. His research interests include distributed robotics, mobile computing and programmable matter. He leads the [CYber REsilient Networks (CYREN)]( https://mjfarooq.github.io/mjfarooq.github.io-cyren/) research group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.  
 {style="text-align: justify;"}
