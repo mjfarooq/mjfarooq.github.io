@@ -5,8 +5,9 @@ title: 'Resilient UAV Formation for Coverage and Connectivity of Spatially Dispe
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - Yuhui Wang
+  - Timothy Kieras
   - admin
+  - Quanyan Zhu
 
 # Author notes (optional)
 author_notes:

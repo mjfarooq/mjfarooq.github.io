@@ -1,5 +1,5 @@
 ---
-title: 'Modeling and Assessment of IoT Supply Chain Security Risks: The Role of Structural and Parametric Uncertainties'
+title: 'RIoTS: Risk Analysis of IoT Supply Chain Threats'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
@@ -8,17 +8,16 @@ authors:
   - Timothy Kieras
   - admin
   - Quanyan Zhu
-
 # Author notes (optional)
 author_notes:
   - ''
   - ''
 
-date: '2020-05-21T00:00:00Z'
-doi: '10.1109/SPW50608.2020.00043'
+date: '2020-06-16T00:00:00Z'
+doi: '10.1109/WF-IoT48130.2020.9221323'
 
 # Schedule page publish date (NOT publication's date).
-publishDate: '2020-05-21T00:00:00Z'
+publishDate: '2020-06-16T00:00:00Z'
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -26,21 +25,20 @@ publishDate: '2020-05-21T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: in  IEEE Security and Privacy Workshops (SPW), San Francisco, CA, USA
-publication_short: in IEEE SPW 2020
+publication: in IEEE 6th World Forum on Internet of Things (WF-IoT) 2020, New Orleans, LA, USA
+publication_short: in IEEE WF-IoT 2020
 
-abstract: Supply chain security threats pose new challenges to security risk modeling techniques for complex ICT systems such as the IoT. With established techniques drawn from attack trees and reliability analysis providing needed points of reference, graph-based analysis can provide a framework for considering the role of suppliers in such systems. We present such a framework here while highlighting the need for a component-centered model. Given resource limitations when applying this model to existing systems, we study various classes of uncertainties in model development, including structural uncertainties and uncertainties in the magnitude of estimated event probabilities. Using case studies, we find that structural uncertainties constitute a greater challenge to model utility and as such should receive particular attention. Best practices in the face of these uncertainties are proposed.
+abstract: Securing the supply chain of information and communications technology (ICT) has recently emerged as a critical concern for national security and integrity. With the proliferation of Internet of Things (IoT) devices and their increasing role in controlling real world infrastructure, there is a need to analyze risks in networked systems beyond established security analyses. Existing methods in literature typically leverage attack and fault trees to analyze malicious activity and its impact. In this paper, we develop RIoTS, a security risk assessment framework borrowing from system reliability theory to incorporate the supply chain. We also analyze the impact of grouping within suppliers that may pose hidden risks to the systems from malicious supply chain actors. The results show that the proposed analysis is able to reveal hidden threats posed to the IoT ecosystem from potential supplier collusion.
 
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Supply chain
-- Internet of things
-- Information technology
-- Operational technology
-- Risk assessment
-- Security
+- Internet of Things
+- Supply Chain
+- Attack Tree
+- Birnbaum importance
+- Improvement potential
 # Display this page in the Featured widget?
 featured: false
 
@@ -49,7 +47,7 @@ featured: false
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://arxiv.org/pdf/2003.12363.pdf'
+url_pdf: 'https://arxiv.org/pdf/1911.12862.pdf'
 url_code: ''
 url_dataset: ''
 url_poster: ''
