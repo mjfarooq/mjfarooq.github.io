@@ -199,7 +199,7 @@ sections:
         featured_only: true
     design:
       columns: '2'
-      view: card
+      view: compact
   - block: collection
     content:
       title: Recent Publications
@@ -235,19 +235,19 @@ sections:
       title: Contact
       subtitle:
       text: |-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi diam, venenatis ut magna et, vehicula efficitur enim.
+        Feel free to send me a message:
       # Contact (add or remove contact options as necessary)
-      email: test@example.org
+      email: mjfarooq@umich.edu
       phone: 888 888 88 88
       appointment_url: 'https://calendly.com'
       address:
-        street: 450 Serra Mall
-        city: Stanford
-        region: CA
-        postcode: '94305'
+        street: 4901 Evergreen Rd
+        city: Dearborn
+        region: MI
+        postcode: '48128'
         country: United States
         country_code: US
-      directions: Enter Building 1 and take the stairs to Office 200 on Floor 2
+      directions: Institute for Advanced Vehicular Systems
       office_hours:
         - 'Monday 10:00 to 13:00'
         - 'Wednesday 09:00 to 10:00'
