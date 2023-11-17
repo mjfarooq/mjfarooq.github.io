@@ -1,20 +1,18 @@
 ---
-title: "A Hybrid Energy Sharing Framework for Green Cellular Networks"
+title: "A Stochastic Geometry Model for Multi-Hop Highway Vehicular Communication"
 authors:
 - admin
-- Hakim Ghazzai
-- Abdullah Kadri
 - Hesham ElSawy
 - Mohamed-Slim Alouini
 author_notes:
 - ""
 - ""
-date: "Dec. 2016"
-doi: "10.1109/TCOMM.2016.2637917"
+date: "Nov. 2015"
+doi: "10.1109/TWC.2015.2501817"
 
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2016-12-09T00:00:00Z"
+publishDate: "2015-11-19T00:00:00Z"
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -22,26 +20,25 @@ publishDate: "2016-12-09T00:00:00Z"
 publication_types: ["article-journal"]
 
 # Publication name and optional abbreviated publication name.
-publication: "IEEE Transactions on Communications ( Volume: 65, Issue: 2, February 2017)"
-publication_short: "IEEE TCOM 2017"
+publication: "IEEE Transactions on Wireless Communications ( Volume: 15, Issue: 3, March 2016)"
+publication_short: "IEEE TWC 2016"
 
-abstract: Cellular operators are increasingly turning toward renewable energy (RE) as an alternative to using traditional electricity in order to reduce operational expenditure and carbon footprint. Due to the randomness in both RE generation and mobile traffic at each base station (BS), a surplus or shortfall of energy may occur at any given time. To increase energy self-reliance and minimize the network’s energy cost, the operator needs to efficiently exploit the RE generated across all BSs. In this paper, a hybrid energy sharing framework for cellular network is proposed, where a combination of physical power lines and energy trading with other BSs using smart grid is used. Algorithms for physical power lines deployment between BSs, based on average and complete statistics of the net RE available, are developed. Afterward, an energy management framework is formulated to optimally determine the quantities of electricity and RE to be procured and exchanged among BSs, respectively, while considering battery capacities and real-time energy pricing. Three cases are investigated, where RE generation is unknown, perfectly known, and partially known ahead of time. Results investigate the time varying energy management of BSs and demonstrate considerable reduction in average energy cost thanks to the hybrid energy sharing scheme.
+abstract: Carrier sense multiple access (CSMA) protocol is standardized for vehicular communication to ensure a distributed and efficient communication between vehicles. However, several vehicular applications require efficient multi-hop information dissemination. This paper exploits stochastic geometry to develop a tractable and accurate modeling framework to characterize the multi-hop transmissions for vehicular networks in a multilane highway setup. In particular, we study the tradeoffs between per-hop packet forward progress, per-hop transmission success probability, and spatial frequency reuse (SFR) efficiency imposed by different packet forwarding schemes, namely, most forward with fixed radius (MFR), the nearest with forward progress (NFP), and the random with forward progress (RFP). We also define a new performance metric, denoted as the aggregate packet progress (APP), which is a dimensionless quantity that captures the aforementioned tradeoffs. To this end, the developed model reveals the interplay between the spectrum sensing threshold ( ρth ) of the CSMA protocol and the packet forwarding scheme. Our results show that, contrary to ALOHA networks, which always favor NFP, MFR may achieve the highest APP in CSMA networks if ρth is properly chosen.
 
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Cellular networks
-- Clustering
-- Energy sharing
-- Physical power lines
-- Smart grid
+- Interference characterization
+- Multi-hop CSMA
+- Stochastic geometry
+- Vehicular communication
 featured: false
 
 # links:
 # - name: ""
 #   url: ""
-url_pdf: https://arxiv.org/pdf/1701.01322.pdf
+url_pdf: https://ieeexplore.ieee.org/document/7331645/
 url_code: ''
 url_dataset: ''
 url_poster: ''
