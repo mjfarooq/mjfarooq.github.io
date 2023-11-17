@@ -10,7 +10,7 @@ main:
   - name: News
     url:
     weight: 60
-  - name: Posts
+  - name: News
     url: '#posts'
     weight: 20
   - name: Projects
