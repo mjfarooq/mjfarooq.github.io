@@ -28,28 +28,17 @@ abstract: Fog computing is becoming a vital component for Internet of things (Io
 summary:
 
 tags:
-- QoE based revenue maximizing dynamic resource allocation
-- fog-enabled mission-critical IoT applications
-- fog computing
-- computational engine
-- Internet of Things applications
-- cloud server
-- fog nodes
-- cloud service provider
-- virtual machine instances
-- pricing policy
-- optimal dynamic allocation rule
-- computational requests
-- physical location
-- statistical information
-- static matching schemes
+- Cloud computing
+- Fog computing
+- Internet of Things
+- Mission-critical
+- Virtual machine instance
 featured: false
 
 # links:
 # - name: ""
 #   url: ""
-url_pdf: https://ieeexplore.ieee.org/document/9108583
-url_arxiv: https://arxiv.org/pdf/2006.16894.pdf
+url_pdf: https://arxiv.org/pdf/2006.16894.pdf
 url_code: ''
 url_dataset: ''
 url_poster: ''

@@ -30,11 +30,11 @@ summary:
 
 tags:
 - Attack tree
-- supply chain risk management
+- Supply chain risk management
 - Internet of things
 - Birnbaum structural importance
-- component importance
-- risk mitigation
+- Component importance
+- Risk mitigation
 featured: false
 
 # links:

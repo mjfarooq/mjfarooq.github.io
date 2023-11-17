@@ -30,9 +30,9 @@ summary:
 
 tags:
 - Contract design
-- data pricing
+- Data pricing
 - Internet of Things (IoT)
-- maximum principle
+- Maximum principle
 - Quality-of-Service (QoS)
 - Sensing-as-a-Service (SaaS)
 featured: false
@@ -40,7 +40,7 @@ featured: false
 # links:
 # - name: ""
 #   url: ""
-url_pdf: https://ieeexplore.ieee.org/document/10016667/keywords#keywords
+url_pdf: https://arxiv.org/pdf/2301.04691.pdf
 url_code: ''
 url_dataset: ''
 url_poster: ''

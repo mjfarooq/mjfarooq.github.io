@@ -30,16 +30,15 @@ summary:
 tags:
 - Botnet
 - Internet of Things
-- device-to-device communication
-- population processes
-- distributed denial of service
+- Device-to-device communication
+- Population processes
+- Distributed denial of service
 featured: false
 
 # links:
 # - name: ""
 #   url: ""
-url_pdf: https://ieeexplore.ieee.org/document/8638982/
-url_arxiv: https://arxiv.org/pdf/1901.00741.pdf
+url_pdf: https://arxiv.org/pdf/1901.00741.pdf
 url_code: ''
 url_dataset: ''
 url_poster: ''
