@@ -20,7 +20,7 @@ publication_types: ["article-journal"]
 
 # Publication name and optional abbreviated publication name.
 publication: "IEEE Transactions on Wireless Communications ( Volume: 17, Issue: 4, April 2018)"
-publication_short: "IEEE TCCN 2018"
+publication_short: "IEEE TWC 2018"
 
 abstract: The Internet of things (IoT) is revolutionizing the management and control of automated systems leading to a paradigm shift in areas, such as smart homes, smart cities, health care, and transportation. The IoT technology is also envisioned to play an important role in improving the effectiveness of military operations in battlefields. The interconnection of combat equipment and other battlefield resources for coordinated automated decisions is referred to as the Internet of battlefield things (IoBT). IoBT networks are significantly different from traditional IoT networks due to battlefield specific challenges, such as the absence of communication infrastructure, heterogeneity of devices, and susceptibility to cyber-physical attacks. The combat efficiency and coordinated decision-making in war scenarios depends highly on real-time data collection, which in turn relies on the connectivity of the network and information dissemination in the presence of adversaries. This paper aims to build the theoretical foundations of designing secure and reconfigurable IoBT networks. Leveraging the theories of stochastic geometry and mathematical epidemiology, we develop an integrated framework to quantify the information dissemination among heterogeneous network devices. Consequently, a tractable optimization problem is formulated that can assist commanders in cost effectively planning the network and reconfiguring it according to the changing mission requirements.
 
@@ -34,7 +34,7 @@ tags:
 - Multiplex networks
 - Poisson point process
 - Random geometric graph
-featured: false
+featured: true
 
 # links:
 # - name: ""
