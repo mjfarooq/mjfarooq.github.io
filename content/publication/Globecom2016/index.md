@@ -31,17 +31,11 @@ publication: in IEEE Global Communications Conference (Globecom) 2016, Washingto
 publication_short: in IEEE GLOBECOM 2016
 
 abstract: Cellular base stations (BSs) are increasingly becoming equipped with renewable energy generators to reduce operational expenditures and carbon footprint of wireless communications. Moreover, advancements in the traditional electricity grid allow two-way power flow and metering that enable the integration of distributed renewable energy generators at BS sites into a microgrid. In this paper, we develop an optimized energy management framework for microgrid-connected cellular BSs that are equipped with renewable energy generators and finite battery storage to minimize energy cost. The BSs share excess renewable energy with others to reduce the dependency on the conventional electricity grid. Three cases are investigated where the renewable energy generation is unknown, perfectly known, and partially known ahead of time. For the partially known case where only the statistics of renewable energy generation are available, stochastic programming is used to achieve a conservative solution. Results show the time varying energy management behaviour of the BSs and the effect of energy sharing between them.
+
 # Summary. An optional shortened abstract.
 summary:
 
 tags:
-- Mobile communication
-- Overlay networks
-- Mobile computing
-- Resilience
-- Internet of Things
-- Reliability
-- Wireless communication
 # Display this page in the Featured widget?
 featured: false
 
@@ -50,7 +44,7 @@ featured: false
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://arxiv.org/pdf/1709.00621.pdf'
+url_pdf: ''
 url_code: ''
 url_dataset: ''
 url_poster: ''
