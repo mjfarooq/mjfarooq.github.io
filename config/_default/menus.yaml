@@ -23,7 +23,7 @@ main:
     url: '#featured'
     weight: 50
   - name: Teaching
-    url:
+    url: '#teaching'
     weight: 60
   - name: Service
     url:
