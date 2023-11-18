@@ -3,7 +3,7 @@ title: "Deep Reinforcement Learning Based Placement for Integrated Access Backha
 authors:
 - Yuhui Wang
 - admin
-date: ""
+date: "2023"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
