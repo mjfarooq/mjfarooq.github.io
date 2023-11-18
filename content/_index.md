@@ -42,6 +42,12 @@ sections:
       title: Biography
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
+  - block: teaching
+    content:
+      title: Teaching
+      text: ''
+    design:
+      columns: '1'
   - block: skills
     content:
       title: Skills
