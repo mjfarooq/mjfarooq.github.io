@@ -33,7 +33,6 @@ abstract: This SpringerBrief introduces methodologies and tools for quantitative
 summary:
 
 tags:
-- Books
 - Supply chain risk management
 - Cybersecurity
 - Internet of Things

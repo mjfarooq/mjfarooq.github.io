@@ -32,7 +32,6 @@ abstract: In Resource Management for On-Demand Mission-Critical Internet of Thin
 summary:
 
 tags:
-- Books
 
 # Display this page in the Featured widget?
 featured: true
