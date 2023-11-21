@@ -4,10 +4,6 @@ date: 2023-11-16
 draft: false
 ---
 
-# My Teaching Portfolio
-
-Welcome to my teaching portfolio! Here, you will find information about the courses I teach, along with resources and materials.
-
 ## Current Courses
 
 ### Advanced Quantum Mechanics
