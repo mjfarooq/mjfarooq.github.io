@@ -217,15 +217,15 @@ sections:
           - name: All
             tag: '*'
           - name: Books
-            tag: Demo
+            tag: book
           - name: Journals
-            tag: Deep Learning
+            tag: article-journal
           - name: Conferences
-            tag: Demo
+            tag: paper-conference
           - name: Thesis
-            tag: Demo
+            tag: book
           - name: Preprints / Submitted
-            tag: Demo
+            tag: article
         exclude_featured: false
     design:
       columns: '2'
