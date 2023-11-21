@@ -220,9 +220,15 @@ sections:
         buttons:
           - name: All
             tag: '*'
-          - name: Deep Learning
+          - name: Books
+            tag: Demo
+          - name: Journals
             tag: Deep Learning
-          - name: Other
+          - name: Conferences
+            tag: Demo
+          - name: Thesis
+            tag: Demo
+          - name: Preprints / Submitted
             tag: Demo
         exclude_featured: false
     design:
