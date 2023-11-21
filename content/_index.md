@@ -256,7 +256,7 @@ sections:
       # Contact (add or remove contact options as necessary)
       email: mjfarooq@umich.edu
       phone:
-      appointment_url: 'https://calendly.com'
+      appointment_url: #'https://calendly.com'
       address:
         street: 4901 Evergreen Rd
         city: Dearborn
@@ -266,17 +266,17 @@ sections:
         country_code: US
       directions: Institute for Advanced Vehicular Systems
       office_hours:
-        - 'Monday 10:00 to 13:00'
-        - 'Wednesday 09:00 to 10:00'
+        - 'By Appointment'
+        #- 'Wednesday 09:00 to 10:00'
       # Choose a map provider in `params.yaml` to show a map from these coordinates
       coordinates:
         latitude: '42.3185'
         longitude: '-83.226533'  
-      contact_links:
-        - icon: twitter
-          icon_pack: fab
-          name: DM Me
-          link: 'https://twitter.com/Twitter'
+      #contact_links:
+      #  - icon: twitter
+      #    icon_pack: fab
+      #    name: DM Me
+      #    link: 'https://twitter.com/Twitter'
         #- icon: skype
         #  icon_pack: fab
         #  name: Skype Me
