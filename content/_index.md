@@ -201,7 +201,7 @@ sections:
       title: Recent Publications
       text: |-
         {{% callout note %}}
-        [Filter Publications](./publication/) by type.
+        [Filter Publications](./publication/).
         {{% /callout %}}
       filters:
         folders:
@@ -215,17 +215,17 @@ sections:
         # To remove the toolbar, delete the entire `filter_button` block.
         buttons:
           - name: All
-            tag: '*'
+            publication_type: '*'
           - name: Books
-            tag: book
+            publication_type: book
           - name: Journals
-            tag: article-journal
+            publication_type: article-journal
           - name: Conferences
-            tag: paper-conference
+            publication_type: paper-conference
           - name: Thesis
-            tag: book
+            publication_type: book
           - name: Preprints / Submitted
-            tag: article
+            publication_type: article
         exclude_featured: false
     design:
       columns: '2'
