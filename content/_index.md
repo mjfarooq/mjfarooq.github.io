@@ -170,10 +170,10 @@ sections:
           tag: '*'
         - name: Zero Trust
           tag: Zero Trust
-        - name: "5G"
-          tag: "5G"  
-        - name: Deep Learning
-          tag: Deep Learning
+        - name: Supply Chain
+          tag: Supply Chain
+        - name: UAV
+          tag: UAV
         - name: Other
           tag: Demo
     design:
