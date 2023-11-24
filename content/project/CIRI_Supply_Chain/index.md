@@ -1,9 +1,9 @@
 ---
-title: Example Project
-summary: An example of using the in-built project page.
+title: Cyber Risk Analysis and Mitigation for IT/OT & IoT Supply Chains
+summary: The research focuses on developing capabilities that enable critical infrastructure owners to make risk informed decisions relating to the supply chain while deploying their ICT/IoT systems.
 tags:
-  - Deep Learning
-date: '2016-04-27T00:00:00Z'
+  - Supply Chain
+date: '2021-06-01T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
 external_link: ''
@@ -13,10 +13,10 @@ image:
   focal_point: Smart
 
 links:
-  - icon: twitter
-    icon_pack: fab
-    name: Follow
-    url: https://twitter.com/georgecushen
+#  - icon: twitter
+#    icon_pack: fab
+#    name: Follow
+#    url: https://twitter.com/georgecushen
 url_code: ''
 url_pdf: ''
 url_slides: ''
@@ -27,15 +27,9 @@ url_video: ''
 #   Simply enter your slide deck's filename without extension.
 #   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
 #   Otherwise, set `slides = ""`.
-slides: example
+slides:
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+The security of the Internet of things (IoTs) depends on not only the security of the software and hardware components but also their supply chains. Recent cyber-attacks, such as the one related to Solar Winds and Kaseya, have clearly demonstrated the involvement of supply chain actors. The complex IoT supply chain network involves many disconnected actors and organizations that design and integrate different subcomponents of an IoT device. The insecurity of one subcomponent in the supply chain can have downstream effects on the security and resiliency of IoT-enabled systems. Considering a typical Information and Communication Technology IoT (ICT/IoT) system, there is a complex integration of multiple components enabling various functions (as shown in Fig. 2). Each component is supplied by a vendor or a network of vendors, which have different levels of trustworthiness from the perspective of the stakeholders. Certain suppliers may have a long-standing history of successful operation and comply with essential cybersecurity practices. On the other hand, there may be many newer and potentially less secure vendors, which may introduce unknown vulnerabilities to the overall system security. The supply chain front adds another dimension to the system reliability on top of component reliabilities. Furthermore, a particular component in the system may itself be very reliable but may have been procured from a less trustworthy vendor. Similarly, a component may not be very reliable but may have a highly trustworthy supplier. Therefore, it is critically important to understand the delicate interplay between component reliabilities and the trustworthiness of their suppliers.
 
-Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.
-
-Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.
-
-Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.
-
-Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.
+This research aims to provide the necessary tools leveraging principled and quantitative understanding and assessment of the IoT supply chain risks to critical infrastructure owners and operators. We are developing software-based solutions to (i) measure the risks posed by vendors to the system security; (ii) analyze the compliance of cybersecurity best practices; (iii) assist in deployment and upgrade decisions relating to the supply chain; and (iv) prioritize security resources on vendor screening.
