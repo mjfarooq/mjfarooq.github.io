@@ -6,17 +6,17 @@ tags:
 date: '2022-06-01T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
-external_link: 'https://www.nsf.gov/awardsearch/showAward?AWD_ID=2226232&HistoricalAwards=false'
+external_link: ''
 
 image:
   caption: Establishing trusted communications over untrusted links using Zero Trust principles.
   focal_point: Smart
 
 links:
-  - icon:
-    icon_pack:
-    name:
-    url: https://www.nsf.gov/awardsearch/showAward?AWD_ID=2226232&HistoricalAwards=false
+#  - icon:
+#    icon_pack:
+#    name:
+#    url: 
 url_code: ''
 url_pdf: ''
 url_slides: ''
