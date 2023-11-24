@@ -1,10 +1,8 @@
 ---
 title: Zero Trust Security Intelligence for 5G networks
-summary: Our research focuses on realizing the capability of achieving trusted communications over untrusted and potentially
-compromised 5G networks by using Zero Trust principles.
+summary: Our research focuses on realizing the capability of achieving trusted communications over untrusted and potentially compromised 5G networks by using Zero Trust principles.
 tags:
   - Zero Trust
-  - "5G"
 date: '2022-06-01T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

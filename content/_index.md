@@ -170,6 +170,8 @@ sections:
           tag: '*'
         - name: Zero Trust
           tag: Zero Trust
+        - name: "5G"
+          tag: "5G"  
         - name: Deep Learning
           tag: Deep Learning
         - name: Other
