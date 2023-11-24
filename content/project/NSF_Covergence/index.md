@@ -4,7 +4,7 @@ summary: Our research focuses on realizing the capability of achieving trusted c
 compromised 5G networks by using Zero Trust principles.
 tags:
   - Zero Trust
-  - 5G
+  - "5G"
 date: '2022-06-01T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).

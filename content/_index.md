@@ -168,6 +168,8 @@ sections:
       buttons:
         - name: All
           tag: '*'
+        - name: Zero Trust
+          tag: Zero Trust
         - name: Deep Learning
           tag: Deep Learning
         - name: Other
