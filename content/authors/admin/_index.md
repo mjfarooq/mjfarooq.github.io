@@ -49,7 +49,7 @@ education:
     - course: BS in Electrical Engineering
       institution: National University of Sciences & Technology (NUST)
       year: 2013
-      image: "nust.png"
+      image: images/logos/nust.png
 
 
 # Skills
