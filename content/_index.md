@@ -159,36 +159,17 @@ sections:
   #     # Choose a layout view
   #     view: compact
   #     columns: '2'
-  - block: collection
-    id: recent-news
+  - block: markdown
     content:
       title: Recent News
-      # filters:
-      #   folders:
-      #     - post
-      items:
-        - date: '2025-03-01'
-          content: 'IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks. Congrats to Yuhui and Xingqi!'
-
-        - date: '2025-02-01'
-          content: 'Paper accepted in IEEE NDSS 2025 workshop on Security and Privacy in Next-Generation Networks (FutureG). Congrats Xingqi and Yuhui!'
-        
-        - date: '2025-02-01'
-          content: 'Paper accepted in NDSS 2025 workshop on security and privacy in next-generation networks (FutureG). Congrats Xingqi and Yuhui!'
-
-        - date: '2025-02-01'
-          content: 'Papers accepted in IEEE NGResNet (Cyber Resilient Networks). Congrats Xingqi and Yuhui!'
-
-        - date: '2025-02-01'
-          content: 'I have been elevated to the rank of Senior Member of Institute of Electrical and Electronics Engineers (IEEE).'
-
-        - date: '2025-01-01'
-          content: 'Paper accepted in IEEE ICC 2025, Montreal, Canada. Congrats Xingqi!'
-
-        - date: '2025-12-01'
-          content: 'Two papers accepted in IEEE WCNC 2025, Milan, Italy. Congrats Yuhui!'
+      text: |-
+        - **Mar 2025** – IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks. Congrats Yuhui and Xingqi!
+        - **Feb 2025** – Paper accepted in IEEE NDSS 2025 workshop on Security and Privacy in Next-Generation Networks (FutureG). Congrats Xingqi and Yuhui!
+        - **Feb 2025** – Papers accepted in IEEE NGResNet (Cyber Resilient Networks). Congrats Xingqi and Yuhui!
+        - **Feb 2025** – Elevated to Senior Member of IEEE.
+        - **Jan 2025** – Paper accepted in IEEE ICC 2025, Montreal, Canada. Congrats Xingqi!
+        - **Dec 2024** – Two papers accepted in IEEE WCNC 2025, Milan, Italy. Congrats Yuhui!
     design:
-      view: compact
       columns: '2'
   - block: portfolio
     id: projects
