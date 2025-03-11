@@ -163,9 +163,9 @@ sections:
     id: recent-news
     content:
       title: Recent News
-      filters:
-        folders:
-          - post
+      # filters:
+      #   folders:
+      #     - post
       items:
         - date: '2025-03-01'
           content: 'IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks. Congrats to Yuhui and Xingqi!'
