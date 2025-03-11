@@ -88,15 +88,16 @@
       {{ end }}
 
       {{ with $person.education }}
-      <div class="col-md-7">
+      <div class="education-div col-md-7">
         <h3>{{ i18n "education" | markdownify }}</h3>
         <ul class="ul-edu fa-ul">
           {{ range .courses }}
           <li>
-            {{ if .logo }}
-              <img src="{{ .logo | relURL }}" alt="{{ .institution }}" style="height:24px;width:auto;margin-right:8px;vertical-align:middle;">
+            {{ $edu_logo := $person_page.Resources.GetMatch .logo }}
+            {{ if $edu_logo }}
+              <img src="{{ $edu_logo.RelPermalink }}" alt="{{ .institution }}" style="height:24px;width:auto;margin-right:8px;vertical-align:middle;">
             {{ else }}
-              <i class="fa-li fas fa-ul"></i>
+              <i class="fa-li fas fa-graduation-cap"></i>
             {{ end }}
             <div class="description">
               <p class="course">{{ .course }}{{ with .year }}, {{ . }}{{ end }}</p>
@@ -107,6 +108,7 @@
         </ul>
       </div>
       {{ end }}
+
 
     </div>
   </div>
