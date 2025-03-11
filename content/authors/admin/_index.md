@@ -25,13 +25,15 @@ organizations:
     url: https://www.umdearborn.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include cyber-physical systems, Internet of things (IoT) and resilient networks.
+bio: My research interests include wireless communications, NextG networks, cybersecurity, cyber-physical systems, Internet of Things (IoT), and resilient networked systems.
 
 # Interests to show in About widget
 interests:
+  - Wireless Communications
+  - Cybersecurity
+  - Internet of Things (IoT)
+  - Resilient Networks
   - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
 
 # Education to show in About widget
 education:
@@ -94,7 +96,7 @@ skills:
 social:
   - icon: envelope
     icon_pack: fas
-    link:
+    link: mailto:mjfarooq@umich.edu
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/_mjfarooq
@@ -109,7 +111,7 @@ social:
     link: https://github.com/mjfarooq
   - icon: linkedin
     icon_pack: fab
-    link:
+    link: https://linkedin.com/in/mjfarooq
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
@@ -121,5 +123,5 @@ social:
 highlight_name: true
 ---
 
-Junaid Farooq is an assistant professor of electrical and computer engineering at the University of Michigan-Dearborn. His research interests include distributed robotics, mobile computing and programmable matter. He leads the [CYber REsilient Networks (CYREN)]( https://mjfarooq.github.io/mjfarooq.github.io-cyren/) research group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.  
+Junaid Farooq is an Assistant Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn. His research focuses on wireless communications, NextG networks, cybersecurity, cyber-physical systems, and resilient networked systems. He leads the [CYber REsilient Networks (CYREN)](https://mjfarooq.github.io/mjfarooq.github.io-cyren/) research group, which develops innovative solutions for secure and resilient wireless networks, automated cybersecurity compliance, cyber risk management, and next-generation network architectures.  
 {style="text-align: justify;"}
