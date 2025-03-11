@@ -164,7 +164,7 @@ sections:
       title: Recent News
       text: |-
         - **Mar 2025** – IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks. Congrats Yuhui and Xingqi!
-        - **Feb 2025** – Paper accepted in IEEE NDSS 2025 workshop on Security and Privacy in Next-Generation Networks (FutureG). Congrats Xingqi and Yuhui!
+        - **Feb 2025** – Paper accepted in NDSS 2025 workshop on Security and Privacy in Next-Generation Networks (FutureG). Congrats Xingqi and Yuhui!
         - **Feb 2025** – Papers accepted in IEEE NGResNet (Cyber Resilient Networks). Congrats Xingqi and Yuhui!
         - **Feb 2025** – Elevated to Senior Member of IEEE.
         - **Jan 2025** – Paper accepted in IEEE ICC 2025, Montreal, Canada. Congrats Xingqi!
