@@ -45,11 +45,11 @@ education:
     - course: MS in Electrical Engineering
       institution: King Abdullah University of Science & Technology (KAUST)
       year: 2015
-      images/logos/kaust.png
+      logo: images/logos/kaust.png
     - course: BS in Electrical Engineering
       institution: National University of Sciences & Technology (NUST)
       year: 2013
-      images/logos/nust.png
+      logo: images/logos/nust.png
 
 
 # Skills
