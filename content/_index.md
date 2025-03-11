@@ -89,7 +89,7 @@ sections:
           date_end: '2016-05-31'
           description: 
     design:
-      columns: '2'
+      columns: '3'
   - block: accomplishments
     content:
       # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
