@@ -132,31 +132,62 @@ sections:
   #         url: ''
   #   design:
   #     columns: '2'
+  # - block: collection
+  #   id: posts
+  #   content:
+  #     title: Recent Posts
+  #     subtitle: ''
+  #     text: ''
+  #     # Choose how many pages you would like to display (0 = all pages)
+  #     count: 5
+  #     # Filter on criteria
+  #     filters:
+  #       folders:
+  #         - post
+  #       author: ""
+  #       category: ""
+  #       tag: ""
+  #       exclude_featured: false
+  #       exclude_future: false
+  #       exclude_past: false
+  #       publication_type: ""
+  #     # Choose how many pages you would like to offset by
+  #     offset: 0
+  #     # Page order: descending (desc) or ascending (asc) date.
+  #     order: desc
+  #   design:
+  #     # Choose a layout view
+  #     view: compact
+  #     columns: '2'
   - block: collection
-    id: posts
+    id: recent-news
     content:
-      title: Recent Posts
-      subtitle: ''
-      text: ''
-      # Choose how many pages you would like to display (0 = all pages)
-      count: 5
-      # Filter on criteria
+      title: Recent News
       filters:
         folders:
           - post
-        author: ""
-        category: ""
-        tag: ""
-        exclude_featured: false
-        exclude_future: false
-        exclude_past: false
-        publication_type: ""
-      # Choose how many pages you would like to offset by
-      offset: 0
-      # Page order: descending (desc) or ascending (asc) date.
-      order: desc
+      items:
+        - date: '2025-03-01'
+          content: 'IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks. Congrats to Yuhui and Xingqi!'
+
+        - date: '2025-02-01'
+          content: 'Paper accepted in IEEE NDSS 2025 workshop on Security and Privacy in Next-Generation Networks (FutureG). Congrats Xingqi and Yuhui!'
+        
+        - date: '2025-02-01'
+          content: 'Paper accepted in NDSS 2025 workshop on security and privacy in next-generation networks (FutureG). Congrats Xingqi and Yuhui!'
+
+        - date: '2025-02-01'
+          content: 'Papers accepted in IEEE NGResNet (Cyber Resilient Networks). Congrats Xingqi and Yuhui!'
+
+        - date: '2025-02-01'
+          content: 'I have been elevated to the rank of Senior Member of Institute of Electrical and Electronics Engineers (IEEE).'
+
+        - date: '2025-01-01'
+          content: 'Paper accepted in IEEE ICC 2025, Montreal, Canada. Congrats Xingqi!'
+
+        - date: '2025-12-01'
+          content: 'Two papers accepted in IEEE WCNC 2025, Milan, Italy. Congrats Yuhui!'
     design:
-      # Choose a layout view
       view: compact
       columns: '2'
   - block: portfolio
