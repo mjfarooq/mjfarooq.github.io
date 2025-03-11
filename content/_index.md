@@ -72,7 +72,7 @@ sections:
           date_start: '2020-09-01'
           date_end: ''
           description:
-          - title: Research Scientist
+        - title: Research Scientist
           company: New York University
           company_url: 'https://engineering.nyu.edu'
           company_logo: nyu
