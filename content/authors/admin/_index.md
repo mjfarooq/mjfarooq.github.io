@@ -41,12 +41,15 @@ education:
     - course: PhD in Electrical Engineering
       institution: New York University (NYU)
       year: 2020
+      logo: images/logos/nyu.png
     - course: MS in Electrical Engineering
       institution: King Abdullah University of Science & Technology (KAUST)
       year: 2015
+      images/logos/kaust.png
     - course: BS in Electrical Engineering
       institution: National University of Sciences & Technology (NUST)
       year: 2013
+      images/logos/nust.png
 
 
 # Skills
