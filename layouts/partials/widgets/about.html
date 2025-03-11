@@ -97,9 +97,9 @@
           <li>
             <!-- <i class="fa-li fas fa-graduation-cap"></i> -->
             {{ if .logo }}
-              <img src="{{ .logo | relURL }}" alt="{{ .institution }}" style="height:24px;width:auto;margin-right:8px;">
+              <img src="{{ .logo | relURL }}" alt="{{ .institution }}" style="height:24px;width:auto;margin-right:8px;vertical-align:middle;">
             {{ else }}
-              <i class="fas fa-graduation-cap"></i>
+              <i class="fa-li fas fa-graduation-cap"></i>
             {{ end }}
             <div class="description">
               <p class="course">{{ .course }}{{ with .year }}, {{ . }}{{ end }}</p>
