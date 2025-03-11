@@ -67,7 +67,7 @@ sections:
         - title: Assistant Professor
           company: University of Michigan-Dearborn
           company_url: 'https://umdearborn.edu'
-          company_logo: org-gc
+          company_logo: umdearborn
           location: Dearborn, MI
           date_start: '2020-09-01'
           date_end: ''
