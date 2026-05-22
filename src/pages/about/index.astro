@@ -1,0 +1,89 @@
+---
+import Base from "../../layouts/Base.astro";
+import site from "../../data/site.json";
+---
+<Base title="About" description="Biography, education, appointments, awards, grants, and service.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">About</span>
+      <h1 class="h-page">About</h1>
+      <p class="lead">{site.bioLong}</p>
+      <a class="btn btn-maize" href={site.cvUrl} target="_blank" rel="noopener">Download CV</a>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="h-sec">Education</h2>
+      <div class="edu">
+        {site.education.map((e) => (
+          <div class="edu-item">
+            <img src={e.logo} alt={e.institution} class="edu-logo" />
+            <div>
+              <div class="edu-deg">{e.degree}</div>
+              <div class="edu-inst">{e.institution}</div>
+              <div class="edu-meta">{e.location} · {e.year}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="h-sec">Appointments</h2>
+      <ul class="rows">
+        {site.appointments.map((a) => (
+          <li><span class="r-when">{a.years}</span><div><div class="r-main">{a.role}</div><div class="r-sub">{a.org}</div></div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section reveal grid-2 aw-grid">
+      <div>
+        <h2 class="h-sec">Honors & awards</h2>
+        <ul class="rows">
+          {site.awards.map((a) => (
+            <li><span class="r-when">{a.year}</span><div class="r-main">{a.title}</div></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="h-sec">Selected grants</h2>
+        <ul class="rows">
+          {site.grants.map((g) => (
+            <li><span class="r-when">{g.year}</span><div>
+              {g.url ? <a class="r-main" href={g.url} target="_blank" rel="noopener">{g.title}</a> : <span class="r-main">{g.title}</span>}
+              <div class="r-sub">{g.sponsor}</div>
+            </div></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="h-sec">Professional service</h2>
+      <p class="svc-lead">{site.service.editorial.join(". ")}.</p>
+      <div class="eyebrow" style="margin-top:1rem;">Reviewer for</div>
+      <div class="area-tags">{site.service.reviewer.map((r) => <span class="tag">{r}</span>)}</div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .edu { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
+  .edu-item { display: flex; gap: 1rem; align-items: center; padding: 1rem 0; border-top: 1px solid var(--border); }
+  .edu-item:first-child { border-top: 0; }
+  .edu-logo { width: 46px; height: 46px; object-fit: contain; background: #fff; border-radius: 8px; padding: 4px; flex: 0 0 46px; border: 1px solid var(--border); }
+  .edu-deg { font-weight: 600; font-family: var(--ff-serif); color: var(--blue); font-size: 1.05rem; }
+  :root[data-theme="dark"] .edu-deg { color: var(--text); }
+  .edu-inst { font-size: .92rem; color: var(--text-soft); }
+  .edu-meta { font-size: .82rem; color: var(--text-mute); font-family: var(--ff-mono); }
+  .rows { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .rows li { display: grid; grid-template-columns: 92px 1fr; gap: 1rem; padding: .8rem 0; border-top: 1px solid var(--border); }
+  .r-when { font-family: var(--ff-mono); font-size: 12.5px; color: var(--blue-link); }
+  .r-main { font-weight: 500; color: var(--text); font-size: .98rem; }
+  a.r-main:hover { color: var(--blue-link); }
+  .r-sub { font-size: .85rem; color: var(--text-mute); margin-top: .1rem; }
+  .aw-grid { align-items: start; }
+  .svc-lead { font-size: .95rem; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+  @media (max-width: 560px){ .rows li { grid-template-columns: 1fr; gap:.2rem; } }
+</style>

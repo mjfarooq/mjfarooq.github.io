@@ -5,53 +5,63 @@
   "institution": "University of Michigan-Dearborn",
   "institutionUrl": "https://www.umdearborn.edu/",
   "email": "mjfarooq@umich.edu",
+  "cvUrl": "https://drive.google.com/file/d/1bJsbqSaDfEHtSKYDulmpZqrFqtcNfQcf/view",
   "lab": {
-    "name": "CYREN",
-    "fullName": "CYber REsilient Networks Lab",
+    "name": "CyReN",
+    "fullName": "Cyber Resilient Networks Lab",
     "url": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/"
   },
-  "tagline": "Building secure, resilient, and intelligent networks for the next generation.",
-  "bio": "Junaid Farooq is an Assistant Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn. His research focuses on wireless communications, NextG networks, cybersecurity, cyber-physical systems, and resilient networked systems. He leads the CYber REsilient Networks (CYREN) Lab, which develops innovative solutions for secure and resilient wireless networks, automated cybersecurity compliance, cyber risk management, and next-generation network architectures.",
-  "interests": [
-    "Wireless Communications",
-    "NextG Networks",
-    "Cybersecurity",
-    "Internet of Things",
-    "Resilient Networks",
-    "Artificial Intelligence"
-  ],
+  "bioShort": "I am an Assistant Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn working at the intersection of wireless communications, cybersecurity, and AI-driven network management. My research develops secure and resilient NextG networks, cyber-physical systems, and ultra-reliable low-latency communications for mission-critical applications.",
+  "bioLong": "I am an Assistant Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn. My work spans network slicing, resource orchestration, and cyber risk management, addressing challenges in 5G and 6G security, industrial automation, and smart infrastructure to improve the reliability and security of mission-critical applications. I lead the Cyber Resilient Networks (CyReN) Lab. Previously, I received my Ph.D. in Electrical Engineering from New York University and held research positions at KAUST and the Qatar Mobility Innovations Center. I am a Senior Member of the IEEE.",
+  "interests": ["NextG Networks", "Cyber Resilience", "Zero Trust", "Internet of Things", "UAV Systems", "AI for Networks"],
   "education": [
-    { "degree": "Ph.D. in Electrical Engineering", "institution": "New York University (NYU)", "year": "2020", "logo": "/images/nyu.png" },
-    { "degree": "M.S. in Electrical Engineering", "institution": "King Abdullah University of Science & Technology (KAUST)", "year": "2015", "logo": "/images/kaust.png" },
-    { "degree": "B.S. in Electrical Engineering", "institution": "National University of Sciences & Technology (NUST)", "year": "2013", "logo": "/images/nust.png" }
+    { "degree": "Ph.D. in Electrical Engineering", "institution": "New York University, Tandon School of Engineering", "location": "Brooklyn, NY, USA", "year": "2020", "logo": "/images/nyu.png" },
+    { "degree": "M.S. in Electrical Engineering", "institution": "King Abdullah University of Science & Technology (KAUST)", "location": "Thuwal, Saudi Arabia", "year": "2015", "logo": "/images/kaust.png" },
+    { "degree": "B.E. in Electrical Engineering", "institution": "National University of Sciences & Technology (NUST)", "location": "Islamabad, Pakistan", "year": "2013", "logo": "/images/nust.png" }
   ],
+  "appointments": [
+    { "role": "Assistant Professor, Electrical & Computer Engineering", "org": "University of Michigan-Dearborn", "years": "2020 - present" },
+    { "role": "Research Assistant, Department of Applied Research", "org": "Qatar Mobility Innovations Center (QMIC)", "years": "2015 - 2016" },
+    { "role": "Research Assistant, Communication Theory Lab", "org": "KAUST", "years": "2013 - 2015" }
+  ],
+  "awards": [
+    { "year": "2025", "title": "Elevated to Senior Member of the IEEE" },
+    { "year": "2021", "title": "University-wide Outstanding Dissertation Award, New York University" },
+    { "year": "2020", "title": "Dante Youla Award for Research Excellence, NYU ECE" },
+    { "year": "2018", "title": "Athanasios Papoulis Award for Excellence in Undergraduate Teaching, NYU ECE" }
+  ],
+  "grants": [
+    { "year": "2022", "title": "Zero Trust Cybersecurity for 5G Networks", "sponsor": "National Science Foundation (NSF)", "url": "https://nsf.gov/awardsearch/showAward?AWD_ID=2226232" },
+    { "year": "2022", "title": "Cyber Supply Chain Risk Analysis and Mitigation for Automotive IoT", "sponsor": "Michigan Economic Development Corporation, MTRAC", "url": "" },
+    { "year": "2022", "title": "Cyber Supply Chain Risk Analysis and Mitigation", "sponsor": "Department of Homeland Security", "url": "https://umdearborn.edu/news/looming-security-threat-posed-cyber-supply-chain" },
+    { "year": "2019", "title": "Multi-layer Cyber-Physical Supply Chain Risk Analysis for Critical Infrastructure Resilience", "sponsor": "Critical Infrastructure Resilience Institute (CIRI)", "url": "" }
+  ],
+  "service": {
+    "editorial": ["Editorial Board, Springer Neural Processing Letters"],
+    "reviewer": ["IEEE Transactions on Wireless Communications", "IEEE Transactions on Mobile Computing", "IEEE Transactions on Information Forensics and Security", "IEEE Communications Letters", "IEEE Transactions on Green Communications & Networking", "IEEE Conference on Communications and Network Security", "IEEE Vehicular Technology Conference", "IEEE Transactions on Big Data"]
+  },
   "social": [
     { "label": "Email", "key": "email", "url": "mailto:mjfarooq@umich.edu" },
     { "label": "Google Scholar", "key": "scholar", "url": "https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" },
     { "label": "GitHub", "key": "github", "url": "https://github.com/mjfarooq" },
-    { "label": "LinkedIn", "key": "linkedin", "url": "https://linkedin.com/in/mjfarooq" },
-    { "label": "Twitter", "key": "twitter", "url": "https://twitter.com/_mjfarooq" }
+    { "label": "LinkedIn", "key": "linkedin", "url": "https://www.linkedin.com/in/mjfarooq/" },
+    { "label": "Twitter", "key": "twitter", "url": "https://twitter.com/M_J_FAROOQ" },
+    { "label": "ResearchGate", "key": "researchgate", "url": "https://www.researchgate.net/profile/Muhammad_Junaid_Farooq" },
+    { "label": "DBLP", "key": "dblp", "url": "https://dblp.org/pid/hd/f/Farooq:Muhammad_Junaid" }
   ],
   "researchAreas": [
-    {
-      "title": "NextG & Wireless Networks",
-      "blurb": "Architectures and algorithms for 5G/6G connectivity, spectrum efficiency, and self-organizing wireless infrastructure that adapts to demand in real time.",
-      "tags": ["5G/6G", "Spectrum", "Connectivity", "Green Networking"]
-    },
-    {
-      "title": "Cyber Resilience & Zero Trust",
-      "blurb": "Proactive, automated security for untrusted infrastructure. Zero Trust principles, cyber risk quantification, and compliance for mission-critical systems.",
-      "tags": ["Zero Trust", "Cyber Risk", "Resilience", "Compliance"]
-    },
-    {
-      "title": "IoT & Cyber-Physical Systems",
-      "blurb": "Resource management and security for large-scale IoT deployments, supply chain risk, and the physical systems that depend on them.",
-      "tags": ["IoT", "Supply Chain", "CPS", "Risk Management"]
-    },
-    {
-      "title": "Autonomous & Aerial Systems",
-      "blurb": "Distributed orchestration of UAV networks for coverage, connectivity, and resilient service delivery in dynamic and contested environments.",
-      "tags": ["UAV", "Orchestration", "Distributed Algorithms", "QoS"]
-    }
-  ]
+    { "title": "NextG Networks & O-RAN", "blurb": "Network slicing, admission control, and multi-agent resource orchestration for 5G and 6G open radio access networks, with a focus on ultra-reliable low-latency communications.", "tags": ["O-RAN", "Network Slicing", "URLLC", "5G/6G"] },
+    { "title": "Cyber Resilience & Zero Trust", "blurb": "Proactive and automated security for untrusted infrastructure, including zero trust architectures, cyber risk quantification, and supply chain risk analysis for mission-critical systems.", "tags": ["Zero Trust", "Cyber Risk", "Supply Chain", "Resilience"] },
+    { "title": "Autonomous & Aerial Systems", "blurb": "Distributed orchestration of UAV networks for coverage, connectivity, and resilient service delivery in dynamic, infrastructure-challenged, and contested environments.", "tags": ["UAV", "Coverage", "Backhaul", "Distributed Control"] },
+    { "title": "AI-Driven Network Management", "blurb": "Reinforcement learning, agentic AI, and large language model methods for autonomous management and orchestration of next-generation networks.", "tags": ["Reinforcement Learning", "LLM Agents", "Orchestration"] }
+  ],
+  "group": {
+    "blurb": "I lead the Cyber Resilient Networks (CyReN) Lab, where we develop solutions for secure and resilient wireless networks, automated cybersecurity compliance, cyber risk management, and next-generation network architectures.",
+    "members": [
+      { "name": "Xingqi Wu", "role": "Ph.D. Researcher", "focus": "O-RAN resource orchestration" },
+      { "name": "Yuhui Wang", "role": "Ph.D. Researcher", "focus": "UAV networks & RL" },
+      { "name": "Ritesh Honnalli", "role": "Ph.D. Researcher", "focus": "Agentic AI for security" },
+      { "name": "Ehsan Delavari", "role": "Ph.D. Researcher", "focus": "Resilient O-RAN slicing" }
+    ]
+  }
 }

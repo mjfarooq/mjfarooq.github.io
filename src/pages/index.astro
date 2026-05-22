@@ -1,244 +1,105 @@
 ---
 import Base from "../layouts/Base.astro";
+import UpdatesCarousel from "../components/UpdatesCarousel.astro";
 import site from "../data/site.json";
 import pubs from "../data/publications.json";
-import projects from "../data/projects.json";
-
-const stats = {
-  total: pubs.length,
-  journals: pubs.filter((p) => p.type === "Journal").length,
-  conferences: pubs.filter((p) => p.type === "Conference").length,
-  books: pubs.filter((p) => p.type === "Book").length,
+const recent = pubs.filter(p => p.type !== "Thesis").slice(0, 5);
+const counts = {
+  total: pubs.filter(p=>p.type!=="Thesis").length,
+  journals: pubs.filter(p=>p.type==="Journal").length,
+  conferences: pubs.filter(p=>p.type==="Conference").length,
+  books: pubs.filter(p=>p.type==="Book"||p.type==="Book Chapter").length,
 };
-const recent = pubs.slice(0, 4);
-const accentVar = { cyan: "var(--accent)", violet: "var(--accent-2)", amber: "var(--accent-3)" };
 ---
 <Base>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-text">
-        <span class="kicker">// {site.department}</span>
-        <h1 class="h-display">Junaid<br/>Farooq</h1>
-        <p class="hero-role mono">{site.role} · {site.institution}</p>
-        <p class="lead hero-lead">{site.tagline}</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="/publications">View Publications</a>
-          <a class="btn" href="#contact">Get in touch</a>
-          <a class="btn" href={site.lab.url} target="_blank" rel="noopener">{site.lab.name} Lab ↗</a>
-        </div>
-        <div class="hero-social">
-          {site.social.map((s) => <a href={s.url} target="_blank" rel="noopener" class="mono">{s.label}</a>)}
-        </div>
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">Welcome</span>
+      <h1 class="h-page">Secure, resilient, and intelligent networks.</h1>
+      <p class="lead intro">{site.bioShort}</p>
+      <div class="interests">
+        {site.interests.map((i) => <span class="tag">{i}</span>)}
       </div>
-      <div class="hero-side">
-        <div class="avatar-frame">
-          <img src="/images/avatar.jpg" alt="Junaid Farooq" loading="eager" />
-          <div class="avatar-glow"></div>
-        </div>
-        <div class="stat-strip">
-          <div class="stat"><span class="stat-n mono">{stats.total}</span><span class="stat-l">Publications</span></div>
-          <div class="stat"><span class="stat-n mono">{stats.journals}</span><span class="stat-l">Journals</span></div>
-          <div class="stat"><span class="stat-n mono">{stats.conferences}</span><span class="stat-l">Conferences</span></div>
-          <div class="stat"><span class="stat-n mono">{stats.books}</span><span class="stat-l">Books</span></div>
-        </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="/publications">Publications</a>
+        <a class="btn" href="/research">Research</a>
+        <a class="btn" href={"mailto:" + site.email}>Get in touch</a>
       </div>
-    </div>
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-row mono">
-        {[...site.interests, ...site.interests].map((i) => <span>{i}</span>)}
+      <div class="stats">
+        <div class="stat"><b>{counts.total}+</b><span>Publications</span></div>
+        <div class="stat"><b>{counts.journals}</b><span>Journal articles</span></div>
+        <div class="stat"><b>{counts.conferences}</b><span>Conference papers</span></div>
+        <div class="stat"><b>{counts.books}</b><span>Books & chapters</span></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RESEARCH -->
-  <section class="section" id="research">
-    <div class="wrap">
-      <span class="kicker">// research focus</span>
-      <h2 class="h-section">What I work on</h2>
-      <p class="lead">My research builds networks that stay secure and keep working under stress, attack, and uncertainty, from the wireless edge to autonomous systems.</p>
-      <div class="grid research-grid">
-        {site.researchAreas.map((a, i) => (
-          <article class="card research-card reveal">
-            <div class="rc-num mono">0{i + 1}</div>
-            <h3>{a.title}</h3>
-            <p>{a.blurb}</p>
-            <div class="rc-tags">{a.tags.map((t) => <span class="tag">{t}</span>)}</div>
+    <section class="section reveal">
+      <UpdatesCarousel />
+    </section>
+
+    <section class="section reveal">
+      <span class="eyebrow">Research</span>
+      <h2 class="h-sec">Focus areas</h2>
+      <p class="lead">My group builds networks that stay secure and keep working under stress, attack, and uncertainty, from the wireless edge to autonomous systems.</p>
+      <div class="grid-2 areas">
+        {site.researchAreas.map((a) => (
+          <article class="card">
+            <h3 class="area-title">{a.title}</h3>
+            <p class="area-blurb">{a.blurb}</p>
+            <div class="area-tags">{a.tags.map((t) => <span class="tag">{t}</span>)}</div>
           </article>
         ))}
       </div>
-    </div>
-  </section>
+      <a class="btn link-more" href="/research">Explore research and projects →</a>
+    </section>
 
-  <!-- RECENT PUBLICATIONS -->
-  <section class="section section-alt" id="publications">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="kicker">// recent work</span>
-          <h2 class="h-section">Selected publications</h2>
-        </div>
-        <a class="btn" href="/publications">All {stats.total} publications →</a>
-      </div>
-      <div class="grid recent-grid">
+    <section class="section reveal">
+      <span class="eyebrow">Publications</span>
+      <h2 class="h-sec">Selected recent work</h2>
+      <ul class="pub-mini">
         {recent.map((p) => (
-          <a class="card recent-card reveal" href={p.doi_url || "/publications"} target={p.doi_url ? "_blank" : "_self"} rel="noopener">
-            <div class="rec-top">
-              <span class={"badge badge-" + p.type.toLowerCase()}>{p.type}</span>
-              <span class="mono muted rec-year">{p.year}</span>
-            </div>
-            <h3 class="rec-title">{p.title}</h3>
-            <div class="rec-venue muted">{p.venue}</div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section" id="projects">
-    <div class="wrap">
-      <span class="kicker">// funded projects</span>
-      <h2 class="h-section">Projects in the lab</h2>
-      <div class="proj-list">
-        {projects.map((pr, i) => (
-          <article class="proj reveal" style={`--pa:${accentVar[pr.accent] || "var(--accent)"}`}>
-            <div class="proj-index mono">P{i + 1}</div>
-            <div class="proj-content">
-              <div class="proj-meta mono">{pr.funder}{pr.area ? " · " + pr.area : ""}</div>
-              <h3 class="proj-title">{pr.title}</h3>
-              <p class="proj-summary">{pr.summary}</p>
-              <div class="rc-tags">{pr.tags.slice(0,4).map((t) => <span class="tag">{t}</span>)}</div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section section-alt" id="about">
-    <div class="wrap about-grid">
-      <div class="about-bio">
-        <span class="kicker">// about</span>
-        <h2 class="h-section">Background</h2>
-        <p>{site.bio}</p>
-        <p>I lead the <a class="inline-link" href={site.lab.url} target="_blank" rel="noopener">{site.lab.fullName} ({site.lab.name})</a>, where we develop solutions for secure and resilient wireless networks, automated cybersecurity compliance, cyber risk management, and next-generation network architectures.</p>
-        <div class="interests-row">
-          {site.interests.map((i) => <span class="tag">{i}</span>)}
-        </div>
-      </div>
-      <div class="about-edu">
-        <div class="edu-label mono muted">EDUCATION</div>
-        {site.education.map((e) => (
-          <div class="edu-item">
-            <img src={e.logo} alt={e.institution} class="edu-logo" loading="lazy" />
+          <li>
+            <span class="pm-year">{p.year}</span>
             <div>
-              <div class="edu-degree">{e.degree}</div>
-              <div class="edu-inst muted">{e.institution}</div>
-              <div class="edu-year mono">{e.year}</div>
+              {p.url ? <a class="pm-title" href={p.url} target="_blank" rel="noopener">{p.title}</a> : <span class="pm-title">{p.title}</span>}
+              <div class="pm-venue">{p.venue}</div>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
-  </section>
+      </ul>
+      <a class="btn link-more" href="/publications">View all {counts.total} publications →</a>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="wrap contact-wrap reveal">
-      <span class="kicker">// contact</span>
-      <h2 class="h-section">Let's build resilient systems together</h2>
-      <p class="lead">Prospective students, collaborators, and partners are welcome to reach out. I am always interested in motivated researchers who want to work on NextG networks, cyber resilience, and autonomous systems.</p>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href={"mailto:" + site.email}>{site.email}</a>
-        <a class="btn" href={site.social.find((s) => s.key === "scholar").url} target="_blank" rel="noopener">Google Scholar ↗</a>
-        <a class="btn" href={site.lab.url} target="_blank" rel="noopener">Join the {site.lab.name} Lab ↗</a>
+    <section class="section reveal contact-band">
+      <h2 class="h-sec">Work with me</h2>
+      <p>Prospective students and collaborators interested in NextG networks, cyber resilience, and autonomous systems are welcome to reach out.</p>
+      <div class="cta">
+        <a class="btn btn-maize" href={"mailto:" + site.email}>{site.email}</a>
+        <a class="btn" href={site.lab.url} target="_blank" rel="noopener">Visit the {site.lab.name} Lab →</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </Base>
 
 <style>
-  /* HERO */
-  .hero { padding-top: clamp(2rem, 6vw, 4.5rem); position: relative; }
-  .hero-inner { display: grid; grid-template-columns: 1.25fr .9fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
-    padding-bottom: clamp(2rem, 5vw, 4rem); }
-  .h-display { margin: .3rem 0 1rem; }
-  .hero-role { font-size: 14.5px; color: var(--accent); letter-spacing: .02em; margin-bottom: 1.4rem; }
-  .hero-lead { margin-bottom: 2rem; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 1.8rem; }
-  .hero-social { display: flex; flex-wrap: wrap; gap: 1.3rem; }
-  .hero-social a { font-size: 12.5px; color: var(--text-mute); transition: color .2s; }
-  .hero-social a:hover { color: var(--accent); }
-
-  .hero-side { display: flex; flex-direction: column; gap: 1.6rem; }
-  .avatar-frame { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
-    aspect-ratio: 4/5; max-width: 360px; margin-left: auto; box-shadow: var(--glow); }
-  .avatar-frame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.02); }
-  .avatar-glow { position: absolute; inset: 0; background: radial-gradient(120% 80% at 80% 0%, transparent 40%, color-mix(in srgb, var(--accent) 16%, transparent)); mix-blend-mode: screen; pointer-events: none; }
-  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; max-width: 360px; margin-left: auto; width: 100%; }
-  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: .8rem .5rem; text-align: center; }
-  .stat-n { display: block; font-size: 1.5rem; color: var(--accent); line-height: 1; }
-  .stat-l { font-size: 10.5px; color: var(--text-mute); text-transform: uppercase; letter-spacing: .05em; }
-
-  .ticker { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; padding: .9rem 0; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .ticker-row { display: flex; gap: 3rem; white-space: nowrap; animation: ticker 26s linear infinite; font-size: 13px; color: var(--text-mute); width: max-content; }
-  .ticker-row span { display: inline-flex; align-items: center; gap: 3rem; }
-  .ticker-row span::before { content: "◆"; color: var(--accent); font-size: 8px; }
-  @keyframes ticker { to { transform: translateX(-50%); } }
-
-  .section-alt { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
-
-  /* research */
-  .research-grid { grid-template-columns: repeat(2, 1fr); margin-top: 2.4rem; }
-  .research-card { position: relative; }
-  .rc-num { position: absolute; top: 1.3rem; right: 1.4rem; font-size: 13px; color: var(--text-mute); }
-  .research-card h3 { font-size: 1.25rem; margin-bottom: .6rem; padding-right: 2rem; }
-  .rc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
-
-  /* recent pubs */
-  .recent-grid { grid-template-columns: repeat(2, 1fr); }
-  .recent-card { display: flex; flex-direction: column; gap: .7rem; }
-  .rec-top { display: flex; justify-content: space-between; align-items: center; }
-  .rec-year { font-size: 12.5px; }
-  .rec-title { font-size: 1.1rem; line-height: 1.32; }
-  .rec-venue { font-size: 13px; font-style: italic; margin-top: auto; }
-
-  /* projects */
-  .proj-list { display: flex; flex-direction: column; margin-top: 2.2rem; }
-  .proj { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid var(--border); align-items: start; }
-  .proj:last-child { border-bottom: 1px solid var(--border); }
-  .proj-index { font-size: 1.4rem; color: var(--pa); padding-top: .2rem; }
-  .proj-meta { font-size: 12px; color: var(--pa); letter-spacing: .04em; margin-bottom: .5rem; text-transform: uppercase; }
-  .proj-title { font-size: 1.4rem; margin-bottom: .7rem; line-height: 1.2; max-width: 30ch; }
-  .proj-summary { max-width: 70ch; }
-
-  /* about */
-  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem,5vw,4rem); align-items: start; }
-  .inline-link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-  .interests-row { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.5rem; }
-  .about-edu { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem; }
-  .edu-label { font-size: 11px; letter-spacing: .12em; margin-bottom: 1.2rem; }
-  .edu-item { display: flex; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border); align-items: center; }
-  .edu-item:first-of-type { border-top: 0; padding-top: 0; }
-  .edu-logo { width: 42px; height: 42px; object-fit: contain; background: #fff; border-radius: 8px; padding: 4px; flex-shrink: 0; }
-  .edu-degree { font-family: var(--ff-sans); font-weight: 600; font-size: 15px; }
-  .edu-inst { font-size: 13px; } .edu-year { font-size: 12px; color: var(--accent); }
-
-  .contact-wrap { max-width: 760px; }
-  .contact-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.8rem; }
-
-  @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-side { flex-direction: column-reverse; }
-    .avatar-frame, .stat-strip { margin: 0; max-width: 100%; }
-    .about-grid { grid-template-columns: 1fr; }
-    .research-grid, .recent-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 560px) {
-    .stat-strip { grid-template-columns: repeat(2, 1fr); }
-    .proj { grid-template-columns: 1fr; gap: .5rem; }
-  }
+  .intro { max-width: 64ch; }
+  .interests { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.3rem 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .stat b { font-family: var(--ff-serif); font-size: 1.7rem; color: var(--blue); display: block; line-height: 1; }
+  :root[data-theme="dark"] .stat b { color: var(--maize); }
+  .stat span { font-size: .8rem; color: var(--text-mute); }
+  .areas { margin-top: 1.4rem; }
+  .area-title { font-size: 1.2rem; margin-bottom: .5rem; }
+  .area-blurb { font-size: .92rem; margin-bottom: .8rem; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .link-more { margin-top: 1.4rem; }
+  .pub-mini { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+  .pub-mini li { display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border); }
+  .pm-year { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); }
+  .pm-title { font-weight: 500; color: var(--text); font-size: 1rem; line-height: 1.35; }
+  a.pm-title:hover { color: var(--blue-link); }
+  .pm-venue { font-size: .85rem; color: var(--text-mute); font-style: italic; margin-top: .15rem; }
+  .contact-band { border-top: 3px solid var(--maize); margin-top: 2.5rem; padding-top: 1.8rem; }
+  @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 </style>

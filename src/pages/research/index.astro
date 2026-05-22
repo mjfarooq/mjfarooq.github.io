@@ -1,0 +1,77 @@
+---
+import Base from "../../layouts/Base.astro";
+import site from "../../data/site.json";
+import projects from "../../data/projects.json";
+import talks from "../../data/talks.json";
+---
+<Base title="Research" description="Research themes, funded projects, and invited talks.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">Research</span>
+      <h1 class="h-page">Research</h1>
+      <p class="lead">My research develops secure and resilient next-generation networks. The work combines network theory, optimization, and AI to keep mission-critical systems connected and trustworthy under stress, attack, and uncertainty.</p>
+      <div class="grid-2 areas">
+        {site.researchAreas.map((a) => (
+          <article class="card">
+            <h3 class="area-title">{a.title}</h3>
+            <p class="area-blurb">{a.blurb}</p>
+            <div class="area-tags">{a.tags.map((t) => <span class="tag">{t}</span>)}</div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <span class="eyebrow">Projects</span>
+      <h2 class="h-sec">Funded and ongoing projects</h2>
+      <div class="projects">
+        {projects.map((pr, i) => (
+          <article class={"proj a-" + pr.accent}>
+            <div class="proj-i">P{i+1}</div>
+            <div>
+              <h3 class="proj-title">{pr.title}</h3>
+              <p class="proj-sum">{pr.summary}</p>
+              <div class="area-tags">{pr.tags.map((t) => <span class="tag">{t}</span>)}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <span class="eyebrow">Talks</span>
+      <h2 class="h-sec">Invited talks and seminars</h2>
+      <ul class="talks">
+        {talks.map((t) => (
+          <li>
+            <span class="t-date">{t.date}</span>
+            <div>
+              {t.url ? <a class="t-title" href={t.url} target="_blank" rel="noopener">{t.title}</a> : <span class="t-title">{t.title}</span>}
+              <div class="t-venue">{t.venue}</div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .areas { margin-top: 1.4rem; }
+  .area-title { font-size: 1.2rem; margin-bottom: .5rem; }
+  .area-blurb { font-size: .92rem; margin-bottom: .8rem; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .projects { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.4rem; }
+  .proj { display: grid; grid-template-columns: 56px 1fr; gap: 1.2rem; padding: 1.5rem; border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: var(--radius); background: var(--surface); }
+  .proj.a-maize { border-left-color: var(--maize); }
+  .proj-i { font-family: var(--ff-mono); font-size: 1.2rem; color: var(--blue-link); }
+  .proj-title { font-size: 1.2rem; margin-bottom: .5rem; }
+  .proj-sum { font-size: .92rem; margin-bottom: .8rem; }
+  .talks { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+  .talks li { display: grid; grid-template-columns: 70px 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border); }
+  .t-date { font-family: var(--ff-mono); font-size: 12.5px; color: var(--blue-link); }
+  .t-title { font-weight: 500; color: var(--text); line-height: 1.35; }
+  a.t-title:hover { color: var(--blue-link); }
+  .t-venue { font-size: .86rem; color: var(--text-mute); font-style: italic; margin-top: .15rem; }
+  @media (max-width: 560px){ .proj { grid-template-columns: 1fr; gap:.5rem; } .talks li { grid-template-columns: 1fr; gap:.2rem; } }
+</style>

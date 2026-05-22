@@ -1,133 +1,105 @@
 ---
 import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
-
-const types = ["All", "Journal", "Conference", "Book", "Preprint"];
+const types = ["All", "Journal", "Conference", "Book", "Book Chapter", "Thesis"];
 const total = pubs.length;
-const years = [...new Set(pubs.map((p) => p.year))].sort((a, b) => b - a);
+const years = pubs.map(p=>p.year);
+function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<strong>$1</strong>"); }
 ---
-<Base title="Publications" description="Peer-reviewed journal articles, conference papers, and books by Junaid Farooq.">
-  <section class="section">
-    <div class="wrap">
-      <span class="kicker">// publications</span>
-      <h1 class="h-section">Research output</h1>
-      <p class="lead">A complete, searchable record of {total} works spanning {years[years.length-1]} to {years[0]}, across journals, conferences, and books.</p>
+<Base title="Publications" description="Books, journal articles, and conference papers by Junaid Farooq.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">Publications</span>
+      <h1 class="h-page">Publications</h1>
+      <p class="lead">{total} works spanning {Math.min(...years)} to {Math.max(...years)}. Author names are listed as published; an asterisk denotes a student advisee. The full record is also on <a href="https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
 
-      <div class="pub-toolbar reveal">
-        <div class="search-wrap">
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
-          <input id="pub-search" type="search" placeholder="Search title, author, venue, topic…" autocomplete="off" />
+      <div class="toolbar reveal">
+        <div class="search">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+          <input id="q" type="search" placeholder="Search title, author, venue, topic…" autocomplete="off" />
         </div>
-        <div class="filters" id="type-filters">
-          {types.map((t) => (
-            <button class={"chip" + (t === "All" ? " active" : "")} data-type={t}>{t}</button>
-          ))}
+        <div class="chips" id="chips">
+          {types.map((t) => <button class={"chip" + (t==="All"?" on":"")} data-t={t}>{t}</button>)}
         </div>
       </div>
+      <div class="count mono" id="count">{total} results</div>
 
-      <div class="pub-count mono muted" id="pub-count">{total} results</div>
-
-      <ol class="pub-list" id="pub-list">
+      <ol class="plist" id="plist">
         {pubs.map((p) => (
-          <li class="pub reveal"
-              data-type={p.type}
-              data-search={(p.title + " " + p.authors.join(" ") + " " + p.venue + " " + p.tags.join(" ")).toLowerCase()}>
-            <div class="pub-year mono">{p.year || "—"}</div>
-            <div class="pub-body">
-              <div class="pub-top">
-                <span class={"badge badge-" + p.type.toLowerCase()}>{p.type}</span>
-                {p.tags.slice(0,3).map((t) => <span class="tag">{t}</span>)}
+          <li class="pitem" data-type={p.type} data-s={(p.title + " " + p.authors_str + " " + p.venue + " " + p.tags.join(" ")).toLowerCase()}>
+            <div class="pi-year">{p.year}</div>
+            <div class="pi-body">
+              <div class="pi-top">
+                <span class={"badge b-" + p.type.toLowerCase().replace(" ","")}>{p.type}</span>
+                {p.tags.map((t) => <span class="tag">{t}</span>)}
               </div>
-              <h3 class="pub-title">{p.title}</h3>
-              <div class="pub-authors" set:html={p.authors.map(a => a === "Junaid Farooq" ? `<strong>${a}</strong>` : a).join(", ")}></div>
-              {p.venue && <div class="pub-venue muted">{p.venue}</div>}
-              <div class="pub-actions">
-                {p.doi_url && <a class="pub-link" href={p.doi_url} target="_blank" rel="noopener">DOI ↗</a>}
-                {p.abstract && <button class="pub-link abstract-toggle" type="button">Abstract +</button>}
-              </div>
-              {p.abstract && <p class="pub-abstract">{p.abstract}</p>}
+              {p.url ? <a class="pi-title" href={p.url} target="_blank" rel="noopener">{p.title}</a> : <span class="pi-title">{p.title}</span>}
+              <div class="pi-auth" set:html={authorsHtml(p.authors_str)}></div>
+              <div class="pi-venue">{p.venue}</div>
             </div>
           </li>
         ))}
       </ol>
-      <div class="no-results mono muted" id="no-results" hidden>No matching publications. Try a different term.</div>
-    </div>
-  </section>
+      <div class="nores mono" id="nores" hidden>No matching publications.</div>
+    </section>
+  </div>
 </Base>
 
 <style>
-  .pub-toolbar { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 2.4rem 0 1rem; }
-  .search-wrap { display: flex; align-items: center; gap: .6rem; flex: 1 1 280px; min-width: 240px;
-    background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: .2rem 1rem; color: var(--text-mute); }
-  .search-wrap:focus-within { border-color: var(--accent); color: var(--accent); }
-  #pub-search { flex: 1; background: none; border: 0; outline: 0; color: var(--text); font-family: var(--ff-body); font-size: 14.5px; padding: .65rem 0; }
-  .filters { display: flex; gap: .45rem; flex-wrap: wrap; }
-  .chip { font-family: var(--ff-mono); font-size: 12.5px; padding: .5rem .9rem; border-radius: 100px;
-    background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); cursor: pointer; transition: all .2s; }
-  .chip:hover { border-color: var(--border-strong); color: var(--text); }
-  .chip.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 500; }
-  .pub-count { margin: .5rem 0 1.6rem; font-size: 12.5px; }
+  .toolbar { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 1.8rem 0 .6rem; }
+  .search { display: flex; align-items: center; gap: .5rem; flex: 1 1 260px; min-width: 220px; background: var(--surface); border: 1px solid var(--border-strong); border-radius: 8px; padding: .1rem .8rem; color: var(--text-mute); }
+  .search:focus-within { border-color: var(--blue); color: var(--blue); }
+  #q { flex: 1; border: 0; outline: 0; background: none; font-family: var(--ff-sans); font-size: 14px; color: var(--text); padding: .55rem 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .chip { font-family: var(--ff-mono); font-size: 12px; padding: .42rem .7rem; border-radius: 7px; background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); cursor: pointer; }
+  .chip:hover { border-color: var(--border-strong); }
+  .chip.on { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .count { font-size: 12px; color: var(--text-mute); margin: .4rem 0 1.2rem; font-family: var(--ff-mono); }
 
-  .pub-list { list-style: none; margin: 0; padding: 0; }
-  .pub { display: grid; grid-template-columns: 72px 1fr; gap: 1.2rem; padding: 1.7rem 0; border-top: 1px solid var(--border); }
-  .pub:last-child { border-bottom: 1px solid var(--border); }
-  .pub-year { font-size: 15px; color: var(--accent); padding-top: .2rem; }
-  .pub-top { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: .55rem; }
-  .pub-title { font-size: 1.18rem; line-height: 1.3; margin-bottom: .4rem; }
-  .pub-authors { font-size: 14.5px; color: var(--text-soft); margin-bottom: .15rem; }
-  .pub-authors strong { color: var(--text); }
-  .pub-venue { font-size: 13.5px; font-style: italic; }
-  .pub-actions { display: flex; gap: 1rem; margin-top: .7rem; }
-  .pub-link { font-family: var(--ff-mono); font-size: 12.5px; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; }
-  .pub-link:hover { text-decoration: underline; }
-  .pub-abstract { font-size: 14px; color: var(--text-soft); margin-top: .8rem; max-width: 75ch;
-    border-left: 2px solid var(--border-strong); padding-left: 1rem; display: none; }
-  .pub-abstract.show { display: block; }
-
-  .badge { font-family: var(--ff-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em;
-    padding: .25rem .55rem; border-radius: 6px; font-weight: 500; }
-  .badge-journal { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
-  .badge-conference { background: color-mix(in srgb, var(--accent-2) 18%, transparent); color: var(--accent-2); }
-  .badge-book { background: color-mix(in srgb, var(--accent-3) 18%, transparent); color: var(--accent-3); }
-  .badge-preprint { background: var(--surface-2); color: var(--text-mute); border: 1px solid var(--border); }
-  .no-results { padding: 3rem 0; }
-  @media (max-width: 620px) { .pub { grid-template-columns: 1fr; gap: .4rem; } .pub-year { padding-top: 0; } }
+  .plist { list-style: none; padding: 0; margin: 0; }
+  .pitem { display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid var(--border); }
+  .pi-year { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); padding-top: .15rem; }
+  .pi-top { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; margin-bottom: .45rem; }
+  .pi-title { font-weight: 500; font-size: 1.05rem; color: var(--text); line-height: 1.34; }
+  a.pi-title:hover { color: var(--blue-link); }
+  .pi-auth { font-size: .9rem; color: var(--text-soft); margin-top: .3rem; }
+  .pi-auth strong { color: var(--blue); }
+  :root[data-theme="dark"] .pi-auth strong { color: var(--maize); }
+  .pi-venue { font-size: .85rem; color: var(--text-mute); font-style: italic; margin-top: .1rem; }
+  .badge { font-family: var(--ff-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; padding: .2rem .5rem; border-radius: 5px; }
+  .b-journal { background: #e6eef7; color: #00274c; }
+  .b-conference { background: #fff3cc; color: #6b5200; }
+  .b-book, .b-bookchapter { background: #00274c; color: #ffcb05; }
+  .b-thesis { background: var(--surface-soft); color: var(--text-mute); border: 1px solid var(--border); }
+  :root[data-theme="dark"] .b-journal { background: #14304f; color: #cfe0f5; }
+  :root[data-theme="dark"] .b-conference { background: #3a3010; color: #ffd84a; }
+  .nores { padding: 2.5rem 0; color: var(--text-mute); }
+  @media (max-width: 560px) { .pitem { grid-template-columns: 1fr; gap: .3rem; } }
 </style>
 
 <script is:inline>
-  (function () {
-    var search = document.getElementById("pub-search");
-    var list = document.getElementById("pub-list");
-    var items = Array.prototype.slice.call(list.querySelectorAll(".pub"));
-    var countEl = document.getElementById("pub-count");
-    var noRes = document.getElementById("no-results");
-    var activeType = "All";
-
-    function apply() {
-      var q = (search.value || "").trim().toLowerCase();
-      var n = 0;
-      items.forEach(function (el) {
-        var okType = activeType === "All" || el.getAttribute("data-type") === activeType;
-        var okText = !q || el.getAttribute("data-search").indexOf(q) !== -1;
-        var show = okType && okText;
-        el.style.display = show ? "" : "none";
-        if (show) n++;
+  (function(){
+    var q = document.getElementById("q"), list = document.getElementById("plist");
+    var items = [].slice.call(list.querySelectorAll(".pitem"));
+    var count = document.getElementById("count"), nores = document.getElementById("nores");
+    var active = "All";
+    function norm(t){ return t.toLowerCase().replace(" ",""); }
+    function apply(){
+      var s = (q.value||"").trim().toLowerCase(), n = 0;
+      items.forEach(function(el){
+        var okT = active==="All" || el.getAttribute("data-type")===active;
+        var okS = !s || el.getAttribute("data-s").indexOf(s) !== -1;
+        var show = okT && okS; el.style.display = show?"":"none"; if(show) n++;
       });
-      countEl.textContent = n + (n === 1 ? " result" : " results");
-      noRes.hidden = n !== 0;
+      count.textContent = n + (n===1?" result":" results");
+      nores.hidden = n!==0;
     }
-    search.addEventListener("input", apply);
-    document.getElementById("type-filters").addEventListener("click", function (e) {
-      var b = e.target.closest(".chip"); if (!b) return;
-      activeType = b.getAttribute("data-type");
-      document.querySelectorAll("#type-filters .chip").forEach(function (c) { c.classList.toggle("active", c === b); });
+    q.addEventListener("input", apply);
+    document.getElementById("chips").addEventListener("click", function(e){
+      var b = e.target.closest(".chip"); if(!b) return;
+      active = b.getAttribute("data-t");
+      document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===b); });
       apply();
-    });
-    list.addEventListener("click", function (e) {
-      var t = e.target.closest(".abstract-toggle"); if (!t) return;
-      var ab = t.closest(".pub-body").querySelector(".pub-abstract");
-      var open = ab.classList.toggle("show");
-      t.textContent = open ? "Abstract −" : "Abstract +";
     });
   })();
 </script>

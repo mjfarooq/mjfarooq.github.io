@@ -1,0 +1,99 @@
+---
+import updates from "../data/updates.json";
+---
+<div class="uc" id="updates">
+  <div class="uc-head">
+    <div>
+      <span class="eyebrow">Recent updates</span>
+      <h2 class="h-sec">News from the lab</h2>
+    </div>
+    <div class="uc-nav">
+      <button class="uc-btn" onclick="ucMove(-1)" aria-label="Previous updates">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="uc-btn" onclick="ucMove(1)" aria-label="Next updates">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="uc-window">
+    <div class="uc-track" id="uc-track">
+      {updates.map((u) => (
+        <article class="uc-card">
+          <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
+            {u.images.slice(0, 3).map((img, i) => (
+              <div class="uc-photo" style={`background-image:url('${img}')`}>
+                {i === 2 && u.images.length > 3 && <span class="uc-more">+{u.images.length - 3}</span>}
+              </div>
+            ))}
+          </div>
+          <div class="uc-body">
+            <span class="uc-date">{u.date}</span>
+            <p class="uc-msg">{u.message}</p>
+            {u.link && <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+  <div class="uc-dots" id="uc-dots"></div>
+</div>
+
+<style>
+  .uc { margin-top: .5rem; }
+  .uc-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.2rem; }
+  .uc-nav { display: flex; gap: .5rem; }
+  .uc-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--blue); cursor: pointer; display: grid; place-items: center; transition: all .18s; }
+  :root[data-theme="dark"] .uc-btn { color: var(--text); }
+  .uc-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+  .uc-window { overflow: hidden; }
+  .uc-track { display: flex; gap: 16px; transition: transform .35s cubic-bezier(.2,.7,.3,1); }
+  .uc-card { flex: 0 0 264px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+
+  .uc-photos { display: grid; gap: 2px; height: 150px; }
+  .uc-photos.n1 { grid-template-columns: 1fr; }
+  .uc-photos.n2 { grid-template-columns: 1fr 1fr; }
+  .uc-photos.n3 { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; }
+  .uc-photos.n3 .uc-photo:first-child { grid-row: 1 / 3; }
+  .uc-photo { background-size: cover; background-position: center; background-color: var(--blue); position: relative; }
+  .uc-more { position: absolute; inset: 0; background: rgba(0,39,76,.62); color: #fff; font-family: var(--ff-mono); font-size: 15px; display: flex; align-items: center; justify-content: center; }
+
+  .uc-body { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; flex: 1; }
+  .uc-date { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .04em; color: var(--blue-link); background: var(--surface-soft); border: 1px solid var(--border); padding: .15rem .5rem; border-radius: 5px; align-self: flex-start; margin-bottom: .55rem; }
+  .uc-msg { font-size: 13.5px; color: var(--text); line-height: 1.5; margin: 0 0 .6rem; }
+  .uc-link { font-family: var(--ff-mono); font-size: 12px; margin-top: auto; }
+
+  .uc-dots { display: flex; gap: 6px; justify-content: center; margin-top: 1.1rem; }
+  .uc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); border: 0; padding: 0; cursor: pointer; }
+  .uc-dot.on { background: var(--maize); width: 20px; border-radius: 4px; }
+</style>
+
+<script is:inline>
+  (function(){
+    var track = document.getElementById("uc-track");
+    if(!track) return;
+    var cards = track.children.length;
+    var idx = 0;
+    function step(){ var c = track.querySelector(".uc-card"); return c ? c.offsetWidth + 16 : 280; }
+    function visible(){ return Math.max(1, Math.floor((track.parentElement.clientWidth + 16) / step())); }
+    function maxIdx(){ return Math.max(0, cards - visible()); }
+    function render(){
+      idx = Math.min(idx, maxIdx());
+      track.style.transform = "translateX(" + (-idx * step()) + "px)";
+      var dots = document.getElementById("uc-dots");
+      dots.innerHTML = "";
+      for(var i=0;i<=maxIdx();i++){
+        var b = document.createElement("button");
+        b.className = "uc-dot" + (i===idx?" on":"");
+        b.setAttribute("aria-label","Go to update "+(i+1));
+        (function(j){ b.onclick=function(){ idx=j; render(); }; })(i);
+        dots.appendChild(b);
+      }
+    }
+    window.ucMove = function(d){ idx += d; if(idx<0) idx=0; if(idx>maxIdx()) idx=maxIdx(); render(); };
+    window.addEventListener("resize", render);
+    render();
+  })();
+</script>

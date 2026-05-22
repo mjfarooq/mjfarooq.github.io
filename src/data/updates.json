@@ -1,0 +1,50 @@
+[
+  {
+    "date": "Apr 2026",
+    "message": "Members of the CyReN Lab presented their posters at the CECS Research Poster Competition.",
+    "images": ["/images/updates/placeholder-1.svg", "/images/updates/placeholder-2.svg", "/images/updates/placeholder-3.svg"],
+    "link": ""
+  },
+  {
+    "date": "Jan 2026",
+    "message": "New book published: Cyber Resilience in Next-Generation Networks (Foundations and Trends in Networking).",
+    "images": ["/images/updates/placeholder-1.svg"],
+    "link": ""
+  },
+  {
+    "date": "Nov 2025",
+    "message": "Paper accepted in IEEE Networking Letters. Congratulations to Xingqi and Yuhui!",
+    "images": ["/images/updates/placeholder-2.svg"],
+    "link": "https://ieeexplore.ieee.org/document/11494807"
+  },
+  {
+    "date": "Aug 2025",
+    "message": "Poster accepted at ACM MobiHoc 2025. Congratulations Xingqi and Ritesh!",
+    "images": ["/images/updates/placeholder-3.svg", "/images/updates/placeholder-1.svg"],
+    "link": "https://dl.acm.org/doi/10.1145/3704413.3765320"
+  },
+  {
+    "date": "Feb 2025",
+    "message": "Elevated to the rank of Senior Member of the IEEE.",
+    "images": ["/images/updates/placeholder-2.svg"],
+    "link": ""
+  },
+  {
+    "date": "Feb 2025",
+    "message": "Presented a seminar at UM-Flint on AI-Driven Management and Orchestration of Next-Generation Networks.",
+    "images": ["/images/updates/placeholder-3.svg"],
+    "link": "https://events.umflint.edu/cit/events/12408"
+  },
+  {
+    "date": "Aug 2022",
+    "message": "Multi-university project on Zero Trust cybersecurity for 5G networks kicks off, supported by the NSF.",
+    "images": ["/images/updates/placeholder-1.svg", "/images/updates/placeholder-2.svg"],
+    "link": "https://nsf.gov/awardsearch/showAward?AWD_ID=2226232"
+  },
+  {
+    "date": "Mar 2021",
+    "message": "Honored to receive the University-wide Outstanding Dissertation Award from New York University.",
+    "images": ["/images/updates/placeholder-3.svg"],
+    "link": ""
+  }
+]
