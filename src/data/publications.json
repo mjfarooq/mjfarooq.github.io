@@ -1,0 +1,675 @@
+[
+  {
+    "title": "Attack Resilient Wireless Backhaul Connectivity with Optimized Fronthaul Coverage in UAV Networks",
+    "authors": [
+      "Xingqi Wu",
+      "Junaid Farooq"
+    ],
+    "year": 2023,
+    "type": "Conference",
+    "venue": "in IEEE Conference on Communications and Network Security (CNS) - Cyber Resilience Workshop, Orlando FL USA",
+    "venue_short": "in IEEE CNS-CRW 2023",
+    "doi": "10.1109/CNS59707.2023.10288893",
+    "doi_url": "https://doi.org/10.1109/CNS59707.2023.10288893",
+    "abstract": "Multi-unmanned aerial vehicle (UAV) networks emerge as a viable solution, offering wireless coverage for dispersed Internet of Things (IoT) devices in remote and disaster struck areas. However, the placement of the UAVs plays a crucial role in the performance and resilience of the network. The UAVs need to cover all the ground users whilst staying in close proximity to sustain cyber attacks and failures, which is a non-trivial optimization problem since the users may have arbitrary locations. In this paper, we tackle the challenge of UAV placement optimization by cost-effectively providing both coverage and connectivity for end-to-end communication of spatially dispersed ground users or IoT devices. Our proposed approach leverages a two-step optimization framework that splits the UAVs according to their role of providing coverage or connectivity. Sequential execution of the optimization is able to generate the placement solutions that concurrently satisfy the requirements of user coverage and connectivity with fixed amount of UAVs. Simulation results show that the proposed framework can achieve resilient UAV formations compared to related works in the literature and is adaptive and scalable to a variety of user locations.",
+    "tags": [
+      "Unmanned Aerial Vehicles",
+      "Connectivity",
+      "Distributed algorithm"
+    ]
+  },
+  {
+    "title": "Deep Reinforcement Learning Based Placement for Integrated Access Backhauling in UAV-Assisted Wireless Networks",
+    "authors": [
+      "Yuhui Wang",
+      "Junaid Farooq"
+    ],
+    "year": 2023,
+    "type": "Preprint",
+    "venue": "Submitted to IEEE IoT Journal 2023",
+    "venue_short": "",
+    "doi": "",
+    "doi_url": "",
+    "abstract": "Unmanned aerial vehicles (UAVs) have emerged as a promising solution to enhance the performance and coverage of the fifth-generation (5G) mobile networks, especially in remote areas, disasters-struck regions or mission-critical operations. They can successfully enhance and extend the coverage of cellular base stations (BSs) and provide on-demand wireless communications to ground users in these scenarios. However, the user locations can be arbitrary and an orchestration of UAVs may be needed to provide coverage to distant set of users over multiple hops. One of the key enhancements in 5G networks, i.e., integrated access and backhaul (IAB) provides the ability to use access links for backhaul communications. This can be leveraged to create multi-hop UAV orchestrations for service delivery to ground users. To enable efficient and high performance end-to-end quality of service (QoS) for users, the UAVs are required to maintain strong backhaul connectivity, while ensuring maximum coverage to ground users. This paper addresses these challenges by proposing a dynamic, real-time approach based on deep reinforcement learning for end-to-end performance optimization in a UAV-assisted cellular network. We use a reward function based on the fronthaul and backhaul data rates to maximize the performance of users while ensuring a connected UAV network formation. Our evaluation is based on different scenarios demonstrating that the proposed method can achieve the autonomous placement of UAVs and effectively balances the tradeoff between backhaul and fronthaul links for optimized IAB performance.",
+    "tags": []
+  },
+  {
+    "title": "Optimal 3D Placement for Integrated Access Backhauling in UAV-Assisted Wireless Networks Using Reinforcement Learning",
+    "authors": [
+      "Yuhui Wang",
+      "Junaid Farooq"
+    ],
+    "year": 2023,
+    "type": "Conference",
+    "venue": "in IEEE 20th International Conference on Mobile Ad Hoc and Smart Systems (MASS) - UAV-IoT Workshop, Toronto ON Canada",
+    "venue_short": "in IEEE MASS 2023",
+    "doi": "10.1109/MASS58611.2023.00090",
+    "doi_url": "https://doi.org/10.1109/MASS58611.2023.00090",
+    "abstract": "Unmanned aerial vehicles (UAVs) have emerged as a promising solution to augment the performance of existing cellular networks, especially for mission-critical operations. Integrated access and backhaul (IAB) in 5G networks is a potential solution that can leverage UAVs to enhance the coverage in under-served regions. However, the dynamic user locations and the need for balancing backhaul and fronthaul connectivity for end-to-end performance can be challenging. This paper addresses these challenges by proposing a dynamic, real-time approach based on reinforcement learning for end-to-end performance optimization in a UAV-assisted cellular network. The proposed methodology considers both fronthaul and backhaul links to optimize the 3D placement of the UAV, while ensuring high data rates for ground users. Our results indicate that the proposed method effectively balances the tradeoff between backhaul and fronthaul links to achieve maximize the end user performance.",
+    "tags": [
+      "5G network",
+      "Internet of Things",
+      "Unmanned aerial vehicle",
+      "Quality of service",
+      "Reinforcement learning"
+    ]
+  },
+  {
+    "title": "QoS Based Contract Design for Profit Maximization in IoT-Enabled Data Markets",
+    "authors": [
+      "Juntao Chen",
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2023,
+    "type": "Journal",
+    "venue": "IEEE Internet of Things Journal 2023",
+    "venue_short": "IEEE IoT Journal 2023",
+    "doi": "10.1109/JIOT.2023.3236795",
+    "doi_url": "https://doi.org/10.1109/JIOT.2023.3236795",
+    "abstract": "The massive deployment of Internet of Things (IoT) devices, including sensors and actuators, is ushering in smart and connected communities of the future. The massive deployment of IoT devices, including sensors and actuators, is ushering in smart and connected communities of the future. The availability of real-time and high-quality sensor data is crucial for various IoT applications, particularly in healthcare, energy, transportation, etc. However, data collection may have to be outsourced to external service providers (SPs) due to cost considerations or lack of specialized equipment. Hence, the data market plays a critical role in such scenarios where SPs have different quality levels of available data, and IoT users have different application-specific data needs. The pairing between data available to the SP and users in the data market requires an effective mechanism design that considers the SPs’ profitability and the Quality-of-Service (QoS) needs of the users. We develop a generic framework to analyze and enable such interactions efficiently, leveraging tools from contract theory and mechanism design theory. It can enable and empower emerging data-sharing paradigms, such as Sensing-as-a-Service (SaaS). The contract design creates a pricing structure for on-demand sensing data for IoT users. By considering a continuum of user types, we capture a diverse range of application requirements and propose optimal pricing and allocation rules that ensure QoS provisioning and maximum profitability for the SP. Furthermore, we provide analytical solutions for fixed distributions of user types to analyze the developed approach. For comparison, we consider the benchmark case assuming complete information of the user types and obtain optimal contract solutions. Finally, a case study based on the example of a virtual reality application delivered using unmanned aerial vehicles (UAVs) is presented to demonstrate the efficacy of the proposed contract design framework.",
+    "tags": [
+      "Contract design",
+      "Data pricing",
+      "Internet of Things (IoT)",
+      "Maximum principle",
+      "Quality-of-Service (QoS)"
+    ]
+  },
+  {
+    "title": "IoT Supply Chain Security Risk Analysis and Mitigation: Modeling, Computations, and Software Tools",
+    "authors": [
+      "Timothy Kieras",
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2022,
+    "type": "Book",
+    "venue": "Springer Cham",
+    "venue_short": "Springer Cham",
+    "doi": "10.1007/978-3-031-08480-5",
+    "doi_url": "https://doi.org/10.1007/978-3-031-08480-5",
+    "abstract": "This SpringerBrief introduces methodologies and tools for quantitative understanding and assessment of supply chain risk to critical infrastructure systems. It unites system reliability analysis, optimization theory, detection theory and mechanism design theory to study vendor involvement in overall system security. It also provides decision support for risk mitigation. This SpringerBrief introduces I-SCRAM, a software tool to assess the risk. It enables critical infrastructure operators to make risk-informed decisions relating to the supply chain, while deploying their IT/OT and IoT systems. The authors present examples and case studies on supply chain risk assessment/mitigation of modern connected infrastructure systems such as autonomous vehicles, industrial control systems, autonomous truck platooning and more. It also discusses how vendors of different system components are involved in the overall security posture of the system and how the risk can be mitigated through vendor selection and diversification.",
+    "tags": [
+      "Supply chain risk management",
+      "Cybersecurity",
+      "Internet of Things",
+      "Supply chain attack",
+      "Risk assessment, cyber resilience"
+    ]
+  },
+  {
+    "title": "Proactive and Resilient UAV Orchestration for QoS Driven Connectivity and Coverage of Ground Users",
+    "authors": [
+      "Yuhui Wang",
+      "Junaid Farooq"
+    ],
+    "year": 2022,
+    "type": "Conference",
+    "venue": "in IEEE Conference on Communications and Network Security (CNS), Austin, TX, USA",
+    "venue_short": "in IEEE CNS-CRW 2022",
+    "doi": "10.1109/CNS56114.2022.9947272",
+    "doi_url": "https://doi.org/10.1109/CNS56114.2022.9947272",
+    "abstract": "Unmanned aerial vehicles (UAVs) are being successfully used to deliver communication services in applications such as extending the coverage of 5G cellular networks in remote areas, emergency situations, and enhancing the service quality in regions of dense user populations. While optimized placement solutions have been proposed in literature for ensuring quality of service (QoS) of users, they may not be ideal in highly mobile, autonomous, and diverse network scenarios. This paper proposes a proactive and resilient framework for distributed and dynamic orchestration of UAV small cells to provide QoS differentiation in the network. The UAV locations are tailored to end-user locations and service needs while ensuring that UAVs maintain localized backhaul connectivity. Simulation experiments show that under scenarios where physical placement can achieve service differentiation’ the developed framework leads to a stable configurations of UAVs satisfying above 90% of user QoS requirements.",
+    "tags": [
+      "Unmanned Aerial Vehicles",
+      "Connectivity",
+      "Resilience",
+      "Quality-of-Service",
+      "Swarming"
+    ]
+  },
+  {
+    "title": "Resilient UAV Formation for Coverage and Connectivity of Spatially Dispersed Users",
+    "authors": [
+      "Yuhui Wang",
+      "Junaid Farooq"
+    ],
+    "year": 2022,
+    "type": "Conference",
+    "venue": "in IEEE International Conference on Communications, Seoul, Republic of Korea",
+    "venue_short": "in IEEE ICC 2022",
+    "doi": "10.1109/CNS56114.2022.9947272",
+    "doi_url": "https://doi.org/10.1109/CNS56114.2022.9947272",
+    "abstract": "Unmanned aerial vehicles (UAVs) are a convenient choice for carrying mobile base stations to rapidly setup communication services for ground users. Unlike terrestrial networks, UAVs do not have fiber optic back-haul connectivity except when they are tethered to the ground, which restricts their mobility. In the absence of back-haul, e.g., in remote areas, emergency situations, or in battlefields, there is a need to ensure connectivity among UAVs in addition to coverage of ground users for creating local area networks. This paper provides a distributed and dynamic approach for UAV formation-based control for coverage and connectivity of spatially dispersed users. We use flocking dynamics as a guide to constructing tailored formations of UAVs on the fly. Simulation results demonstrate that if sufficient aerial base stations are available, the proposed approach results in a strongly connected network of UAVs that is able to provide both a backhaul and fronthaul network. The approach can be further extended to create multi-tier extra-terrestrial networks to cater for large-scale applications.",
+    "tags": [
+      "Unmanned Aerial Vehicles",
+      "Connectivity",
+      "Resilience",
+      "Distributed algorithm"
+    ]
+  },
+  {
+    "title": "Zero Touch Coordinated UAV Network Formation for 360∘ Views of a Moving Ground Target in Remote VR Applications",
+    "authors": [
+      "Yuhui Wang",
+      "Junaid Farooq"
+    ],
+    "year": 2022,
+    "type": "Conference",
+    "venue": "in IEEE Military Communications Conference (MILCOM), Rockville, MD, USA",
+    "venue_short": "in IEEE MILCOM 2022",
+    "doi": "10.1109/MILCOM55135.2022.10017956",
+    "doi_url": "https://doi.org/10.1109/MILCOM55135.2022.10017956",
+    "abstract": "Unmanned aerial vehicles (UAVs) with on-board cameras are widely used for remote surveillance and video capturing applications. In remote virtual reality (VR) applications, multiple UAVs can be used to capture different partially overlapping angles of the ground target, which can be stitched together to provide 360∘ views. This requires coordinated formation of UAVs that is adaptive to movements of the ground target. In this paper, we propose a joint UAV formation and tracking framework to capture 360∘ angles of the target. The proposed framework uses a zero touch approach for automated and adaptive reconfiguration of multiple UAVs in a coordinated manner without the need for human intervention. This is suited to both military and civilian applications. Simulation results demonstrate the convergence and configuration of the UAVs with arbitrary initial locations and orientations. The performance has been tested for various number of UAVs and different mobility patterns of the ground target.",
+    "tags": [
+      "Unmanned Aerial Vehicles",
+      "Connectivity",
+      "Virtual reality",
+      "Distributed algorithm"
+    ]
+  },
+  {
+    "title": "I-SCRAM: A Framework for IoT Supply Chain Risk Analysis and Mitigation Decisions",
+    "authors": [
+      "Timothy Kieras",
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2021,
+    "type": "Journal",
+    "venue": "IEEE Access 2021",
+    "venue_short": "IEEE Access 2021",
+    "doi": "10.1109/ACCESS.2021.3058338",
+    "doi_url": "https://doi.org/10.1109/ACCESS.2021.3058338",
+    "abstract": "Supply chain security is becoming an important factor in security risk analysis for modern information and communication technology (ICT) systems. As Internet of Things (IoT) devices proliferate and get adopted into critical infrastructure, the role of suppliers in risk assessment becomes all the more significant. IoT security risks are affected by supplier trust since suppliers possess the capacity to modify black box systems without detection. The risks posed by potentially malicious or compromised suppliers are compounded by interdependence among suppliers. In this paper, we propose I-SCRAM, a framework to analyze supply chain risks in IoT systems and to support risk mitigating decisions. After defining an expanded system model that consists of interconnected components and a hierarchy of component vendors, we develop and propose metrics to quantify systemic risks. Finally, we present a decision framework that helps in selection of vendors to mitigate supply chain risk. Through a case study and simulation, we show that I-SCRAM successfully minimizes system risk as higher budget and more reliable component sources become available, while allowing flexibility in prioritizing sources of risk.",
+    "tags": [
+      "Attack tree",
+      "Supply chain risk management",
+      "Internet of Things",
+      "Birnbaum structural importance",
+      "Component importance"
+    ]
+  },
+  {
+    "title": "QoE Based Revenue Maximizing Dynamic Resource Allocation and Pricing for Fog-Enabled Mission-Critical IoT Applications",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2021,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Mobile Computing 2021",
+    "venue_short": "IEEE TMC 2021",
+    "doi": "10.1109/TMC.2020.2999895",
+    "doi_url": "https://doi.org/10.1109/TMC.2020.2999895",
+    "abstract": "Fog computing is becoming a vital component for Internet of things (IoT) applications, acting as its computational engine. Mission-critical IoT applications are highly sensitive to latency, which depends on the physical location of the cloud server. Fog nodes of varying response rates are available to the cloud service provider (CSP) and it is faced with a challenge of forwarding the sequentially received IoT data to one of the fog nodes for processing. Since the arrival times and nature of requests is random, it is important to optimally classify the requests in real-time and allocate available virtual machine instances (VMIs) at the fog nodes to provide a high QoE to the users and consequently generate higher revenues for the CSP. In this paper, we use a pricing policy based on the QoE of the applications as a result of the allocation and obtain an optimal dynamic allocation rule based on the statistical information of the computational requests. The developed solution is statistically optimal, dynamic, and implementable in real-time as opposed to other static matching schemes in the literature. The performance of the proposed framework has been evaluated using simulations and the results show significant improvement as compared with benchmark schemes.",
+    "tags": [
+      "Cloud computing",
+      "Fog computing",
+      "Internet of Things",
+      "Mission-critical",
+      "Virtual machine instance"
+    ]
+  },
+  {
+    "title": "Resource Management for On-Demand Mission-Critical Internet of Things Applications",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2021,
+    "type": "Book",
+    "venue": "Wiley-IEEE Press",
+    "venue_short": "Wiley-IEEE Press",
+    "doi": "10.1007/978-3-031-08480-5",
+    "doi_url": "https://doi.org/10.1007/978-3-031-08480-5",
+    "abstract": "In Resource Management for On-Demand Mission-Critical Internet of Things ­Applications, an expert team of engineers delivers an insightful analytical perspective on modeling and decision support for mission-critical Internet of Things applications. The authors dissect the complex IoT ecosystem and provide a cross-layer perspective on the design and operation of IoT, especially in the context of smart and connected communities. The book offers an economic perspective on resource management in IoT systems with a particular emphasis on three main areas, i.e., spectrum management via reservation, allocation of cloud/fog resources to IoT applications, and resource provisioning to smart city service requests. It leverages theories from dynamic mechanism design, optimal control theory, and spatial point processes, providing an overview of integrated decision-making frameworks. Finally, the authors discuss future directions and relevant problems on the economics of resource management from new perspectives, like security and resilience.",
+    "tags": []
+  },
+  {
+    "title": "Modeling and Assessment of IoT Supply Chain Security Risks: The Role of Structural and Parametric Uncertainties",
+    "authors": [
+      "Timothy Kieras",
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2020,
+    "type": "Conference",
+    "venue": "in  IEEE Security and Privacy Workshops (SPW), San Francisco, CA, USA",
+    "venue_short": "in IEEE SPW 2020",
+    "doi": "10.1109/SPW50608.2020.00043",
+    "doi_url": "https://doi.org/10.1109/SPW50608.2020.00043",
+    "abstract": "Supply chain security threats pose new challenges to security risk modeling techniques for complex ICT systems such as the IoT. With established techniques drawn from attack trees and reliability analysis providing needed points of reference, graph-based analysis can provide a framework for considering the role of suppliers in such systems. We present such a framework here while highlighting the need for a component-centered model. Given resource limitations when applying this model to existing systems, we study various classes of uncertainties in model development, including structural uncertainties and uncertainties in the magnitude of estimated event probabilities. Using case studies, we find that structural uncertainties constitute a greater challenge to model utility and as such should receive particular attention. Best practices in the face of these uncertainties are proposed.",
+    "tags": [
+      "Supply chain",
+      "Internet of Things",
+      "Information technology",
+      "Operational technology",
+      "Risk assessment"
+    ]
+  },
+  {
+    "title": "PhD Forum: Enabling Autonomic IoT for Smart Urban Services",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2020,
+    "type": "Conference",
+    "venue": "in IEEE 6th World Forum on Internet of Things (WF-IoT) 2020, New Orleans, LA, USA",
+    "venue_short": "in IEEE WF-IoT 2020",
+    "doi": "10.1109/WF-IoT48130.2020.9221230",
+    "doi_url": "https://doi.org/10.1109/WF-IoT48130.2020.9221230",
+    "abstract": "The development of autonomous cyber-physical systems (CPS) and advances towards the fifth generation (5G) of wireless technology is promising to revolutionize many industry verticals such as healthcare, transportation, energy, retail services, building automation, education, etc., leading to the realization of the smart city paradigm. The Internet of things (IoT), enables powerful and unprecedented capabilities for intelligent and autonomous operation. We leverage ideas from network science, optimization & decision theory, incentive mechanism design, and data science/machine learning to achieve key design goals such as efficiency, security & resilience, and economics in IoT-enabled urban systems.",
+    "tags": [
+      "Internet of Things",
+      "Cyber-physical systems",
+      "Mission-critical",
+      "Network science"
+    ]
+  },
+  {
+    "title": "RIoTS: Risk Analysis of IoT Supply Chain Threats",
+    "authors": [
+      "Timothy Kieras",
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2020,
+    "type": "Conference",
+    "venue": "in IEEE 6th World Forum on Internet of Things (WF-IoT) 2020, New Orleans, LA, USA",
+    "venue_short": "in IEEE WF-IoT 2020",
+    "doi": "10.1109/WF-IoT48130.2020.9221323",
+    "doi_url": "https://doi.org/10.1109/WF-IoT48130.2020.9221323",
+    "abstract": "Securing the supply chain of information and communications technology (ICT) has recently emerged as a critical concern for national security and integrity. With the proliferation of Internet of Things (IoT) devices and their increasing role in controlling real world infrastructure, there is a need to analyze risks in networked systems beyond established security analyses. Existing methods in literature typically leverage attack and fault trees to analyze malicious activity and its impact. In this paper, we develop RIoTS, a security risk assessment framework borrowing from system reliability theory to incorporate the supply chain. We also analyze the impact of grouping within suppliers that may pose hidden risks to the systems from malicious supply chain actors. The results show that the proposed analysis is able to reveal hidden threats posed to the IoT ecosystem from potential supplier collusion.",
+    "tags": [
+      "Internet of Things",
+      "Supply Chain",
+      "Attack Tree",
+      "Birnbaum importance",
+      "Improvement potential"
+    ]
+  },
+  {
+    "title": "Dynamic Spatio-Temporal Resource Provisioning for On-Demand Urban Services in Smart Cities",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2019,
+    "type": "Preprint",
+    "venue": "",
+    "venue_short": "",
+    "doi": "",
+    "doi_url": "",
+    "abstract": "Efficient allocation of finite resources is a crucial problem in a wide variety of on-demand smart city applications. Service requests often appear randomly over time and space with varying intensity. Resource provisioning decisions need to be made strategically in real-time, particularly when there is incomplete information about the time, location, and intensity of future requests. In this paper, we develop a systematic approach to the dynamic resource provisioning problem at a centralized source node to spatio-temporal service requests. The spatial statistics are combined with dynamically optimal decision- making to derive recursive threshold based allocation policies. The developed results are easy to compute and implement in real-time applications. For illustrative purposes, we present ex- amples of commonly used utility functions, based on the power law decay and exponential decay coupled with exponentially, and uniformly distributed intensity of stochastic arrivals to demonstrate the efficacy of the developed framework. Semi- closed form expressions along with recursive computational procedure has been provided. Simulation results demonstrate the effectiveness of the proposed policies in comparison with less strategic methodologies.",
+    "tags": []
+  },
+  {
+    "title": "IoT Supply Chain Security: Overview, Challenges, and the Road Ahead",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2019,
+    "type": "Preprint",
+    "venue": "",
+    "venue_short": "",
+    "doi": "",
+    "doi_url": "",
+    "abstract": "Supply chain is emerging as the next frontier of threats in the rapidly evolving IoT ecosystem. It is fundamentally more complex compared to traditional ICT systems. We analyze supply chain risks in IoT systems and their unique aspects, discuss research challenges in supply chain security, and identify future research directions.",
+    "tags": []
+  },
+  {
+    "title": "Modeling, Analysis, and Mitigation of Dynamic Botnet Formation in Wireless IoT Networks",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2019,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Information Forensics and Security",
+    "venue_short": "IEEE TIFS 2019",
+    "doi": "10.1109/TIFS.2019.2898817",
+    "doi_url": "https://doi.org/10.1109/TIFS.2019.2898817",
+    "abstract": "The Internet of Things (IoT) relies heavily on wireless communication devices that are able to discover and interact with other wireless devices in their vicinity. The communication flexibility coupled with software vulnerabilities in devices, due to low cost and short time-to-market, exposes them to a high risk of malware infiltration. Malware may infect a large number of network devices using device-to-device (D2D) communication resulting in the formation of a botnet, i.e., a network of infected devices controlled by a common malware. A botmaster may exploit it to launch a network-wide attack sabotaging infrastructure and facilities, or for malicious purposes such as collecting ransom. In this paper, we propose an analytical model to study the D2D propagation of malware in wireless IoT networks. Leveraging tools from dynamic population processes and point process theory, we capture malware infiltration and coordination process over a network topology. The analysis of mean-field equilibrium in the population is used to construct and solve an optimization problem for the network defender to prevent botnet formation by patching devices while causing minimum overhead to network operation. The developed analytical model serves as a basis for assisting the planning, design, and defense of such networks from a defender’s standpoint.",
+    "tags": [
+      "Botnet",
+      "Internet of Things",
+      "Device-to-device communication",
+      "Population processes",
+      "Distributed denial of service"
+    ]
+  },
+  {
+    "title": "A Multi-Layer Feedback System Approach to Resilient Connectivity of Remotely Deployed Mobile Internet of Things",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2018,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Cognitive Communications and Networking",
+    "venue_short": "IEEE TCCN 2018",
+    "doi": "10.1109/TCCN.2018.2837907",
+    "doi_url": "https://doi.org/10.1109/TCCN.2018.2837907",
+    "abstract": "Enabling the Internet of Things in remote environments without traditional communication infrastructure requires a multi-layer network architecture. Devices in the overlay network such as unmanned aerial vehicles (UAVs) are required to provide coverage to underlay devices as well as remain connected to other overlay devices to exploit device-to-device (D2D) communication. The coordination, planning, and design of such overlay networks constrained by the underlay devices is a challenging problem. Existing frameworks for placement of UAVs do not consider the lack of backhaul connectivity and the need for D2D communication. Furthermore, they ignore the dynamical aspects of connectivity in such networks which presents additional challenges. For instance, the connectivity of devices can be affected by changes in the network, e.g., the mobility of underlay devices or unavailability of overlay devices due to failure or adversarial attacks. To this end, this work proposes a feedback based adaptive, self-configurable, and resilient framework for the overlay network that cognitively adapts to the changes in the network to provide reliable connectivity between spatially dispersed smart devices. Results show that the proposed framework requires significantly lower number of aerial base stations to provide higher coverage and connectivity to remotely deployed mobile devices as compared to existing approaches.",
+    "tags": [
+      "Connectivity",
+      "Feedback",
+      "Internet of Things",
+      "Resilience",
+      "Unmanned Aerial Vehicles"
+    ]
+  },
+  {
+    "title": "Adaptive and Resilient Revenue Maximizing Dynamic Resource Allocation and Pricing for Cloud-Enabled IoT Systems",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2018,
+    "type": "Conference",
+    "venue": "in Annual American Control Conference (ACC) 2018, Milwaukee, WI, USA",
+    "venue_short": "in IEEE ACC 2018",
+    "doi": "10.23919/ACC.2018.8430776",
+    "doi_url": "https://doi.org/10.23919/ACC.2018.8430776",
+    "abstract": "Cloud computing is becoming an essential component in the emerging Internet of Things (IoT) paradigm. The available resources at the cloud such as computing nodes, storage, databases, etc. are often packaged in the form of virtual machines (VMs) to be used by remotely located IoT client applications for computational tasks. However, the cloud has a limited number of VMs available and hence, for massive IoT systems, the available resources must be efficiently utilized to increase productivity and subsequently maximize revenue of the cloud service provider (CSP). IoT client applications generate requests with computational tasks at random times with random complexity to be processed by the cloud. The CSP has to decide whether to allocate a VM to a task at hand or to wait for a higher complexity task in the future. We propose a threshold-based mechanism to optimally decide the allocation and pricing of VMs to sequentially arriving requests in order to maximize the revenue of the CSP over a finite time horizon. Moreover, we develop an adaptive and resilient framework that can counter the effect of realtime changes in the number of available VMs at the cloud server, the frequency and nature of arriving tasks on the revenue of the CSP.",
+    "tags": [
+      "Task analysis",
+      "Resource management",
+      "Cloud computing",
+      "Complexity theory",
+      "Pricing"
+    ]
+  },
+  {
+    "title": "Cognitive Connectivity Resilience in Multi-Layer Remotely Deployed Mobile Internet of Things",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2018,
+    "type": "Conference",
+    "venue": "in IEEE Global Communications Conference (Globecom) 2017, Singapore",
+    "venue_short": "in IEEE GLOBECOM 2017",
+    "doi": "10.1109/GLOCOM.2017.8254106",
+    "doi_url": "https://doi.org/10.1109/GLOCOM.2017.8254106",
+    "abstract": "Enabling the Internet of things in remote areas without traditional communication infrastructure requires a multi-layer network architecture. The devices in the overlay network are required to provide coverage to the underlay devices as well as to remain connected to other overlay devices. The coordination, planning, and design of such two-layer heterogeneous networks is an important problem to address. Moreover, the mobility of the nodes and their vulnerability to adversaries pose new challenges to the connectivity. For instance, the connectivity of devices can be affected by changes in the network, e.g., the mobility of the underlay devices or the unavailability of overlay devices due to failure or adversarial attacks. To this end, this work proposes a feedback based adaptive, self-configurable, and resilient framework for the overlay network that cognitively adapts to the changes in the network to provide reliable connectivity between spatially dispersed smart devices. Our results show that if sufficient overlay devices are available, the framework leads to a connected configuration that ensures a high coverage of the mobile underlay network. Moreover, the framework can actively reconfigure itself in the event of varying levels of device failure.",
+    "tags": [
+      "Mobile communication",
+      "Overlay networks",
+      "Mobile computing",
+      "Resilience",
+      "Internet of Things"
+    ]
+  },
+  {
+    "title": "On the Secure and Reconfigurable Multi-Layer Network Design for Critical Information Dissemination in the Internet of Battlefield Things (IoBT)",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2018,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Wireless Communications",
+    "venue_short": "IEEE TWC 2018",
+    "doi": "10.1109/TWC.2018.2799860",
+    "doi_url": "https://doi.org/10.1109/TWC.2018.2799860",
+    "abstract": "The Internet of things (IoT) is revolutionizing the management and control of automated systems leading to a paradigm shift in areas, such as smart homes, smart cities, health care, and transportation. The IoT technology is also envisioned to play an important role in improving the effectiveness of military operations in battlefields. The interconnection of combat equipment and other battlefield resources for coordinated automated decisions is referred to as the Internet of battlefield things (IoBT). IoBT networks are significantly different from traditional IoT networks due to battlefield specific challenges, such as the absence of communication infrastructure, heterogeneity of devices, and susceptibility to cyber-physical attacks. The combat efficiency and coordinated decision-making in war scenarios depends highly on real-time data collection, which in turn relies on the connectivity of the network and information dissemination in the presence of adversaries. This paper aims to build the theoretical foundations of designing secure and reconfigurable IoBT networks. Leveraging the theories of stochastic geometry and mathematical epidemiology, we develop an integrated framework to quantify the information dissemination among heterogeneous network devices. Consequently, a tractable optimization problem is formulated that can assist commanders in cost effectively planning the network and reconfiguring it according to the changing mission requirements.",
+    "tags": [
+      "Battlefield",
+      "Epidemics",
+      "Internet of Things",
+      "Multiplex networks",
+      "Poisson point process"
+    ]
+  },
+  {
+    "title": "Optimal dynamic contract for spectrum reservation in mission-critical UNB-IoT systems",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2018,
+    "type": "Conference",
+    "venue": "in 16th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks (WiOpt) 2018, Shanghai, China",
+    "venue_short": "in IEEE WiOpt 2018",
+    "doi": "10.23919/WIOPT.2018.8362861",
+    "doi_url": "https://doi.org/10.23919/WIOPT.2018.8362861",
+    "abstract": "Spectrum reservation is emerging as one of the potential solutions to cater for the communication needs of massive number of wireless Internet of Things (IoT) devices with reliability constraints particularly in mission-critical scenarios. In most mission-critical systems, the true utility of a reservation may not be completely known ahead of time as the unforseen events might not be completely predictable. In this paper, we present a dynamic contract approach where an advance payment is made at the time of reservation based on partial information about spectrum reservation utility. Once the complete information is obtained, a rebate on the payment is made if the reservation is released. In this paper, we present a contract theoretic approach to design an incentivized mechanism that coerces the applications to reveal their true application type resulting in greater profitability of the IoT network operator. The operator offers a menu of contracts with advanced payments and rebate to the IoT applications without having knowledge about the types of applications. The decision of the applications in selecting a contract leads to a revelation of their true type to the operator which allows it to generate higher profits than a traditional spectrum auction mechanism. Under some assumptions on distribution of the utility of the applications, closed form solutions for the optimal dynamic spectrum reservation contract are provided and the sensitivity against system parameters is analyzed.",
+    "tags": [
+      "Internet of Things",
+      "Mission-critical",
+      "Ultra narrow band",
+      "Contract",
+      "Information asymmetry"
+    ]
+  },
+  {
+    "title": "Problems and Solutions in Undergraduate Probability",
+    "authors": [
+      "Junaid Farooq",
+      "Unnikrishna Pillai"
+    ],
+    "year": 2018,
+    "type": "Book",
+    "venue": "Amazon Web Publishing",
+    "venue_short": "Amazon Web Publishing",
+    "doi": "10.1007/978-3-031-08480-5",
+    "doi_url": "https://doi.org/10.1007/978-3-031-08480-5",
+    "abstract": "This book provides a set of problems and their solutions in undergraduate probability arranged according to topics to help both instructors and students. This has evolved out of classroom material at NYU Tandon School of Engineering over the course of three years. It is designed as a companion volume to “Lecture Slides on Undergraduate Engineering Probability” by U. Pillai and S. Dutta. The material covers basic probability, probability density/distribution functions, their properties, finding the probability density function of one function of one and two random variables, mean, variance, covariance, correlation coefficient, conditional density functions and characteristic functions. The practice problems and their solutions here should help the students at the undergraduate level to achieve mastery on the fundamental topics in probability. Moreover, this will hopefully facilitate the instructors in preparing homework material for their courses.",
+    "tags": [
+      "Probability"
+    ]
+  },
+  {
+    "title": "Green Virtualization for Multiple Collaborative Cellular Operators",
+    "authors": [
+      "Junaid Farooq",
+      "Hakim Ghazzai",
+      "Elias Yaacoub",
+      "Abdullah Kadri",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2017,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Cognitive Communications and Networking",
+    "venue_short": "IEEE TCCN 2017",
+    "doi": "10.1109/TCCN.2017.2712133",
+    "doi_url": "https://doi.org/10.1109/TCCN.2017.2712133",
+    "abstract": "This paper proposes and investigates a green virtualization framework for infrastructure sharing among multiple cellular operators whose networks are powered by a combination of conventional and renewable sources of energy. Under the proposed framework, the virtual network formed by unifying radio access infrastructures of all operators is optimized for minimum energy consumption by deactivating base stations (BSs) with low traffic loads. The users initially associated to those BSs are off-loaded to neighboring active ones. A fairness criterion for collaboration based on roaming prices is introduced to cover the additional energy costs incurred by host operators. The framework also ensures that any collaborating operator is not negatively affected by its participation in the proposed virtualization. A multi-objective linear programming problem is formulated to achieve energy and cost efficiency of the networks’ operation by identifying the set of inter-operator roaming prices. For the case when collaboration among all operators is infeasible due to profitability, capacity, or power constraints, an iterative algorithm is proposed to determine the groups of operators that can viably collaborate. Results show significant energy savings using the proposed virtualization as compared to the standalone case. Moreover, collaborative operators exploiting locally generated renewable energy are rewarded more than traditional ones.",
+    "tags": [
+      "Base station sleeping",
+      "Energy efficiency",
+      "Green networking",
+      "Mobile operator collaboration",
+      "Roaming price"
+    ]
+  },
+  {
+    "title": "Optimizing mission critical data dissemination in massive IoT networks",
+    "authors": [
+      "Junaid Farooq",
+      "Hesham ElSawy",
+      "Quanyan Zhu",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2017,
+    "type": "Conference",
+    "venue": "in 15th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks (WiOpt) 2017, Paris, France",
+    "venue_short": "in IEEE WiOpt 2017",
+    "doi": "10.23919/WIOPT.2017.7959930",
+    "doi_url": "https://doi.org/10.23919/WIOPT.2017.7959930",
+    "abstract": "Mission critical data dissemination in massive Internet of things (IoT) networks imposes constraints on the message transfer delay between devices. Due to low power and communication range of IoT devices, data is foreseen to be relayed over multiple device-to-device (D2D) links before reaching the destination. The coexistence of a massive number of IoT devices poses a challenge in maximizing the successful transmission capacity of the overall network alongside reducing the multi-hop transmission delay in order to support mission critical applications. There is a delicate interplay between the carrier sensing threshold of the contention based medium access protocol and the choice of packet forwarding strategy selected at each hop by the devices. The fundamental problem in optimizing the performance of such networks is to balance the tradeoff between conflicting performance objectives such as the spatial frequency reuse, transmission quality, and packet progress towards the destination. In this paper, we use a stochastic geometry approach to quantify the performance of multi-hop massive IoT networks in terms of the spatial frequency reuse and the transmission quality under different packet forwarding schemes. We also develop a comprehensive performance metric that can be used to optimize the system to achieve the best performance. The results can be used to select the best forwarding scheme and tune the carrier sensing threshold to optimize the performance of the network according to the delay constraints and transmission quality requirements.",
+    "tags": []
+  },
+  {
+    "title": "Secure and reconfigurable network design for critical information dissemination in the Internet of battlefield things (IoBT)",
+    "authors": [
+      "Junaid Farooq",
+      "Quanyan Zhu"
+    ],
+    "year": 2017,
+    "type": "Conference",
+    "venue": "in 15th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks (WiOpt) 2017, Paris, France",
+    "venue_short": "in IEEE WiOpt 2017",
+    "doi": "10.23919/WIOPT.2017.7959892",
+    "doi_url": "https://doi.org/10.23919/WIOPT.2017.7959892",
+    "abstract": "The Internet of things (IoT) is revolutionizing the management and control of automated systems leading to a paradigm shift in areas such as smart homes, smart cities, health care, transportation, etc. The IoT technology is also envisioned to play an important role in improving the effectiveness of military operations in battlefields. The interconnection of combat equipment and other battlefield resources for coordinated automated decisions is referred to as the Internet of battlefield things (IoBT). IoBT networks are significantly different from traditional IoT networks due to the battlefield specific challenges such as the absence of communication infrastructure, and the susceptibility of devices to cyber and physical attacks. The combat efficiency and coordinated decision-making in war scenarios depends highly on real-time data collection, which in turn relies on the connectivity of the network and the information dissemination in the presence of adversaries. This work aims to build the theoretical foundations of designing secure and reconfigurable IoBT networks. Leveraging the theories of stochastic geometry and mathematical epidemiology, we develop an integrated framework to study the communication of mission-critical data among different types of network devices and consequently design the network in a cost effective manner.",
+    "tags": [
+      "Battlefield",
+      "Epidemics",
+      "Internet of Things",
+      "Poisson point process"
+    ]
+  },
+  {
+    "title": "A Hybrid Energy Sharing Framework for Green Cellular Networks",
+    "authors": [
+      "Junaid Farooq",
+      "Hakim Ghazzai",
+      "Abdullah Kadri",
+      "Hesham ElSawy",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2016,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Communications",
+    "venue_short": "IEEE TCOM 2017",
+    "doi": "10.1109/TCOMM.2016.2637917",
+    "doi_url": "https://doi.org/10.1109/TCOMM.2016.2637917",
+    "abstract": "Cellular operators are increasingly turning toward renewable energy (RE) as an alternative to using traditional electricity in order to reduce operational expenditure and carbon footprint. Due to the randomness in both RE generation and mobile traffic at each base station (BS), a surplus or shortfall of energy may occur at any given time. To increase energy self-reliance and minimize the network’s energy cost, the operator needs to efficiently exploit the RE generated across all BSs. In this paper, a hybrid energy sharing framework for cellular network is proposed, where a combination of physical power lines and energy trading with other BSs using smart grid is used. Algorithms for physical power lines deployment between BSs, based on average and complete statistics of the net RE available, are developed. Afterward, an energy management framework is formulated to optimally determine the quantities of electricity and RE to be procured and exchanged among BSs, respectively, while considering battery capacities and real-time energy pricing. Three cases are investigated, where RE generation is unknown, perfectly known, and partially known ahead of time. Results investigate the time varying energy management of BSs and demonstrate considerable reduction in average energy cost thanks to the hybrid energy sharing scheme.",
+    "tags": [
+      "Cellular networks",
+      "Clustering",
+      "Energy sharing",
+      "Physical power lines",
+      "Smart grid"
+    ]
+  },
+  {
+    "title": "A stochastic geometry-based demand response management framework for cellular networks powered by smart grid",
+    "authors": [
+      "Junaid Farooq",
+      "Hakim Ghazzai",
+      "Abdullah Kadri"
+    ],
+    "year": 2016,
+    "type": "Conference",
+    "venue": "in IEEE Wireless Communications and Networking Conference (WCNC) 2016, Doha, Qatar",
+    "venue_short": "in IEEE WCNC 2016",
+    "doi": "10.1109/WCNC.2016.7564929",
+    "doi_url": "https://doi.org/10.1109/WCNC.2016.7564929",
+    "abstract": "In this paper, the production decisions across multiple energy suppliers in smart grid, powering cellular networks are investigated. The suppliers are characterized by different offered prices and pollutant emissions levels. The challenge is to decide the amount of energy provided by each supplier to each of the operators such that their profitability is maximized while respecting the maximum tolerated level of CO2 emissions. The cellular operators are characterized by their offered quality of service (QoS) to the subscribers and the number of users that determines their energy requirements. Stochastic geometry is used to determine the average power needed to achieve the target probability of coverage for each operator. The total average power requirements of all networks are fed to an optimization framework to find the optimal amount of energy to be provided from each supplier to the operators. The generalized alpha-fair utility function is used to avoid production bias among the suppliers based on profitability of generation. Results illustrate the production behavior of the energy suppliers versus QoS level, cost of energy, capacity of generation, and level of fairness.",
+    "tags": [
+      "Cellular networks",
+      "Demand response",
+      "Smart grid",
+      "Stochastic geometry"
+    ]
+  },
+  {
+    "title": "Energy Sharing Framework for Microgrid-Powered Cellular Base Stations",
+    "authors": [
+      "Junaid Farooq",
+      "Hakim Ghazzai",
+      "Abdullah Kadri",
+      "Hesham ElSawy",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2016,
+    "type": "Conference",
+    "venue": "in IEEE Global Communications Conference (Globecom) 2016, Washington, DC, USA",
+    "venue_short": "in IEEE GLOBECOM 2016",
+    "doi": "10.1109/GLOCOM.2016.7841800",
+    "doi_url": "https://doi.org/10.1109/GLOCOM.2016.7841800",
+    "abstract": "Cellular base stations (BSs) are increasingly becoming equipped with renewable energy generators to reduce operational expenditures and carbon footprint of wireless communications. Moreover, advancements in the traditional electricity grid allow two-way power flow and metering that enable the integration of distributed renewable energy generators at BS sites into a microgrid. In this paper, we develop an optimized energy management framework for microgrid-connected cellular BSs that are equipped with renewable energy generators and finite battery storage to minimize energy cost. The BSs share excess renewable energy with others to reduce the dependency on the conventional electricity grid. Three cases are investigated where the renewable energy generation is unknown, perfectly known, and partially known ahead of time. For the partially known case where only the statistics of renewable energy generation are available, stochastic programming is used to achieve a conservative solution. Results show the time varying energy management behaviour of the BSs and the effect of energy sharing between them.",
+    "tags": []
+  },
+  {
+    "title": "Green Networking in Cellular HetNets: A Unified Radio Resource Management Framework with Base Station ON/OFF Switching",
+    "authors": [
+      "Hakim Ghazzai",
+      "Junaid Farooq",
+      "Ahmad Alsharoa",
+      "Elias Yaacoub",
+      "Abdullah Kadri",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2016,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Vehicular Technology",
+    "venue_short": "IEEE TVT 2017",
+    "doi": "10.1109/TVT.2016.2636455",
+    "doi_url": "https://doi.org/10.1109/TVT.2016.2636455",
+    "abstract": "In this paper, the problem of energy efficiency in cellular heterogeneous networks (HetNets) is investigated using radio resource and power management combined with the base station (BS) ON/OFF switching. The objective is to minimize the total power consumption of the network while satisfying the quality of service requirements of each connected user. We consider the case of coexisting macrocell BS, small cell BSs, and private femtocell access points (FAPs). Three different network scenarios are investigated, depending on the status of the FAPs, i.e., HetNets without FAPs, HetNets with closed FAPs, and HetNets with semiclosed FAPs. A unified framework is proposed to simultaneously allocate spectrum resources to users in an energy efficient manner and switch OFF redundant small cell BSs. The high complexity dual decomposition technique is employed to achieve optimal solutions for the problem. A low complexity iterative algorithm is also proposed and its performances are compared to those of the optimal technique. The particularly interesting case of semiclosed FAPs, in which the FAPs accept to serve external users, achieves the highest energy efficiency due to increased degrees of freedom. In this paper, a cooperation scheme between FAPs and mobile operator is also investigated. The incentives for FAPs, e.g., renewable energy sharing and roaming prices, enabling cooperation are discussed to be considered as a useful guideline for interoperator agreements.",
+    "tags": [
+      "Base station (BS) ON/OFF switching",
+      "Femtocell access points (FAPs)",
+      "Green networking",
+      "Heterogeneous networks (HetNets)"
+    ]
+  },
+  {
+    "title": "A Stochastic Geometry Model for Multi-Hop Highway Vehicular Communication",
+    "authors": [
+      "Junaid Farooq",
+      "Hesham ElSawy",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2015,
+    "type": "Journal",
+    "venue": "IEEE Transactions on Wireless Communications",
+    "venue_short": "IEEE TWC 2016",
+    "doi": "10.1109/TWC.2015.2501817",
+    "doi_url": "https://doi.org/10.1109/TWC.2015.2501817",
+    "abstract": "Carrier sense multiple access (CSMA) protocol is standardized for vehicular communication to ensure a distributed and efficient communication between vehicles. However, several vehicular applications require efficient multi-hop information dissemination. This paper exploits stochastic geometry to develop a tractable and accurate modeling framework to characterize the multi-hop transmissions for vehicular networks in a multilane highway setup. In particular, we study the tradeoffs between per-hop packet forward progress, per-hop transmission success probability, and spatial frequency reuse (SFR) efficiency imposed by different packet forwarding schemes, namely, most forward with fixed radius (MFR), the nearest with forward progress (NFP), and the random with forward progress (RFP). We also define a new performance metric, denoted as the aggregate packet progress (APP), which is a dimensionless quantity that captures the aforementioned tradeoffs. To this end, the developed model reveals the interplay between the spectrum sensing threshold ( ρth ) of the CSMA protocol and the packet forwarding scheme. Our results show that, contrary to ALOHA networks, which always favor NFP, MFR may achieve the highest APP in CSMA networks if ρth is properly chosen.",
+    "tags": [
+      "Interference characterization",
+      "Multi-hop CSMA",
+      "Stochastic geometry",
+      "Vehicular communication"
+    ]
+  },
+  {
+    "title": "Modeling Inter-Vehicle Communication in Multi-Lane Highways: A Stochastic Geometry Approach",
+    "authors": [
+      "Junaid Farooq",
+      "Hesham ElSawy",
+      "Mohamed-Slim Alouini"
+    ],
+    "year": 2015,
+    "type": "Conference",
+    "venue": "in IEEE 82nd Vehicular Technology Conference (VTC2015-Fall) Boston, MA USA",
+    "venue_short": "in IEEE VTC-Fall 2015",
+    "doi": "10.1109/VTCFall.2015.7391025",
+    "doi_url": "https://doi.org/10.1109/VTCFall.2015.7391025",
+    "abstract": "This paper develops a modeling framework, based on stochastic geometry and queueing theory, for carrier sense multiple access (CSMA) coordinated inter-vehicle communication, with unsaturated buffers, in a multi-lane highway scenario. We show that the spectrum sensing threshold (ρth) of the CSMA protocol is a critical design parameter that imposes a tradeoff between the transmission success probability and the spatial frequency reuse. To this end, we show that there exists an optimal value for ρth, which maximizes the transmission capacity that depends on the highway setup and the traffic intensity.",
+    "tags": []
+  },
+  {
+    "title": "Optimized Energy Procurement for Cellular Networks Powered by Smart Grid Based on Stochastic Geometry",
+    "authors": [
+      "Junaid Farooq",
+      "Hakim Ghazzai",
+      "Abdullah Kadri"
+    ],
+    "year": 2015,
+    "type": "Conference",
+    "venue": "in IEEE Globecom Workshops (GC Wkshps) 2015, San Diego, CA, USA",
+    "venue_short": "in IEEE GLOBECOM Wkshps 2015",
+    "doi": "10.1109/GLOCOMW.2015.7414135",
+    "doi_url": "https://doi.org/10.1109/GLOCOMW.2015.7414135",
+    "abstract": "In this paper, we investigate the energy procurement decision of cellular networks powered by smart grid. Multiple retailers producing energy from different sources characterized by their prices and pollutant emission levels are available to power the network. The green cellular operator, constrained by a maximum tolerated level of CO2 emissions and quality of service (QoS) requirements, has to decide the optimal quantity of energy to procure from each retailer in order to minimize the energy cost and hence maximize its profit. Operators also provide multiple services to their subscribers characterized by the quality of the received signal and the probability of coverage. In this study, we employ stochastic geometry to determine the average power required per user to achieve the target probability of coverage which is then used to find the total base station power consumption. The resulting power requirements of the network are used in the optimization problem to find the optimal amount of energy to procure from each retailer. Our results illustrate the procurement behavior of cellular networks versus the CO2 emission threshold and the QoS requirements of the subscribers.",
+    "tags": []
+  },
+  {
+    "title": "A game-theoretic spectrum allocation framework for mixed unicast and broadcast traffic profile in cognitive radio networks",
+    "authors": [
+      "Junaid Farooq",
+      "Muddassar Hussain",
+      "Junaid Qadir",
+      "Adeel Baig"
+    ],
+    "year": 2013,
+    "type": "Conference",
+    "venue": "in 38th Annual IEEE Conference on Local Computer Networks (LCN) 2013, Sydney, NSW, Australia",
+    "venue_short": "in IEEE LCN 2013",
+    "doi": "10.1109/LCN.2013.6761275",
+    "doi_url": "https://doi.org/10.1109/LCN.2013.6761275",
+    "abstract": "In this paper, we present a game theoretic framework for spectrum allocation in distributed cognitive radio networks containing both unicast and broadcast traffic. Our proposed scheme aims to minimize broadcast latency for broadcast traffic and minimize interference and access contention for both types of traffic. We develop a utility function that ensures that both objectives are met yielding a higher network throughput. Our proposed spectrum allocation game is also formulated as a potential game and is guaranteed to converge to a Nash equilibrium if the sequential best response dynamics is followed. A proof of concept of the proposed algorithm has been implemented on the Orbit radio testbed and the results verify the convergence of the potential game. Our simulation and experimental results also reveal that the choice of utility function improves the average network throughput for a mixed traffic profile.",
+    "tags": []
+  }
+]

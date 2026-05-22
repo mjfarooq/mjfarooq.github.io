@@ -1,0 +1,57 @@
+{
+  "name": "Junaid Farooq",
+  "role": "Assistant Professor",
+  "department": "Electrical & Computer Engineering",
+  "institution": "University of Michigan-Dearborn",
+  "institutionUrl": "https://www.umdearborn.edu/",
+  "email": "mjfarooq@umich.edu",
+  "lab": {
+    "name": "CYREN",
+    "fullName": "CYber REsilient Networks Lab",
+    "url": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/"
+  },
+  "tagline": "Building secure, resilient, and intelligent networks for the next generation.",
+  "bio": "Junaid Farooq is an Assistant Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn. His research focuses on wireless communications, NextG networks, cybersecurity, cyber-physical systems, and resilient networked systems. He leads the CYber REsilient Networks (CYREN) Lab, which develops innovative solutions for secure and resilient wireless networks, automated cybersecurity compliance, cyber risk management, and next-generation network architectures.",
+  "interests": [
+    "Wireless Communications",
+    "NextG Networks",
+    "Cybersecurity",
+    "Internet of Things",
+    "Resilient Networks",
+    "Artificial Intelligence"
+  ],
+  "education": [
+    { "degree": "Ph.D. in Electrical Engineering", "institution": "New York University (NYU)", "year": "2020", "logo": "/images/nyu.png" },
+    { "degree": "M.S. in Electrical Engineering", "institution": "King Abdullah University of Science & Technology (KAUST)", "year": "2015", "logo": "/images/kaust.png" },
+    { "degree": "B.S. in Electrical Engineering", "institution": "National University of Sciences & Technology (NUST)", "year": "2013", "logo": "/images/nust.png" }
+  ],
+  "social": [
+    { "label": "Email", "key": "email", "url": "mailto:mjfarooq@umich.edu" },
+    { "label": "Google Scholar", "key": "scholar", "url": "https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" },
+    { "label": "GitHub", "key": "github", "url": "https://github.com/mjfarooq" },
+    { "label": "LinkedIn", "key": "linkedin", "url": "https://linkedin.com/in/mjfarooq" },
+    { "label": "Twitter", "key": "twitter", "url": "https://twitter.com/_mjfarooq" }
+  ],
+  "researchAreas": [
+    {
+      "title": "NextG & Wireless Networks",
+      "blurb": "Architectures and algorithms for 5G/6G connectivity, spectrum efficiency, and self-organizing wireless infrastructure that adapts to demand in real time.",
+      "tags": ["5G/6G", "Spectrum", "Connectivity", "Green Networking"]
+    },
+    {
+      "title": "Cyber Resilience & Zero Trust",
+      "blurb": "Proactive, automated security for untrusted infrastructure. Zero Trust principles, cyber risk quantification, and compliance for mission-critical systems.",
+      "tags": ["Zero Trust", "Cyber Risk", "Resilience", "Compliance"]
+    },
+    {
+      "title": "IoT & Cyber-Physical Systems",
+      "blurb": "Resource management and security for large-scale IoT deployments, supply chain risk, and the physical systems that depend on them.",
+      "tags": ["IoT", "Supply Chain", "CPS", "Risk Management"]
+    },
+    {
+      "title": "Autonomous & Aerial Systems",
+      "blurb": "Distributed orchestration of UAV networks for coverage, connectivity, and resilient service delivery in dynamic and contested environments.",
+      "tags": ["UAV", "Orchestration", "Distributed Algorithms", "QoS"]
+    }
+  ]
+}

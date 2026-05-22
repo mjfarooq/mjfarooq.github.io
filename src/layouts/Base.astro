@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import site from "../data/site.json";
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.role}, ${site.department}`;
+const desc = description || site.tagline;
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={desc} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:type" content="profile" />
+  <meta name="theme-color" content="#0a0e16" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script is:inline>
+    // set theme before paint to avoid flash
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <canvas id="net-canvas" aria-hidden="true"></canvas>
+  <div class="page">
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+
+  <script is:inline>
+    /* ---- scroll reveal ---- */
+    (function () {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      function bind(){ document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { io.observe(el); }); }
+      document.addEventListener("DOMContentLoaded", bind); bind();
+    })();
+
+    /* ---- theme toggle ---- */
+    function toggleTheme() {
+      var cur = document.documentElement.getAttribute("data-theme");
+      var next = cur === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    }
+    window.toggleTheme = toggleTheme;
+
+    /* ---- animated network background ---- */
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var c = document.getElementById("net-canvas");
+      if (!c) return;
+      var ctx = c.getContext("2d"), w, h, dpr, nodes = [], raf;
+      function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = c.width = innerWidth * dpr; h = c.height = innerHeight * dpr;
+        c.style.width = innerWidth + "px"; c.style.height = innerHeight + "px";
+        var count = Math.min(74, Math.floor((innerWidth * innerHeight) / 19000));
+        nodes = [];
+        for (var i = 0; i < count; i++) {
+          nodes.push({ x: Math.random()*w, y: Math.random()*h,
+            vx: (Math.random()-0.5)*0.22*dpr, vy: (Math.random()-0.5)*0.22*dpr,
+            r: (Math.random()*1.6+0.7)*dpr });
+        }
+      }
+      function hexToRgb(hex){ hex=hex.replace('#',''); if(hex.length===3) hex=hex.split('').map(function(x){return x+x;}).join(''); var n=parseInt(hex,16); return [(n>>16)&255,(n>>8)&255,n&255]; }
+      function draw() {
+        var ac = css("--accent") || "#5ee0c4";
+        var rgb = hexToRgb(ac);
+        ctx.clearRect(0,0,w,h);
+        var maxd = 150*dpr;
+        for (var i=0;i<nodes.length;i++){
+          var a=nodes[i]; a.x+=a.vx; a.y+=a.vy;
+          if(a.x<0||a.x>w)a.vx*=-1; if(a.y<0||a.y>h)a.vy*=-1;
+          for(var j=i+1;j<nodes.length;j++){
+            var b=nodes[j], dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
+            if(d<maxd){
+              ctx.strokeStyle="rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+","+(0.16*(1-d/maxd))+")";
+              ctx.lineWidth=dpr*0.6; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+            }
+          }
+          ctx.fillStyle="rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+",0.55)";
+          ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill();
+        }
+        raf=requestAnimationFrame(draw);
+      }
+      addEventListener("resize", resize); resize();
+      cancelAnimationFrame(raf); draw();
+    })();
+  </script>
+</body>
+</html>

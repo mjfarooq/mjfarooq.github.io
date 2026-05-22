@@ -1,0 +1,30 @@
+---
+import site from "../data/site.json";
+const year = new Date().getFullYear();
+---
+<footer class="ft">
+  <div class="wrap ft-inner">
+    <div>
+      <div class="ft-name">{site.name}</div>
+      <p class="muted ft-sub">{site.role}, {site.department}<br/>{site.institution}</p>
+    </div>
+    <div class="ft-links">
+      {site.social.map((s) => <a href={s.url} target="_blank" rel="noopener">{s.label}</a>)}
+    </div>
+  </div>
+  <div class="wrap ft-base">
+    <span class="mono muted">© {year} {site.name}</span>
+    <span class="mono muted">Built with Astro · Deployed on GitHub Pages</span>
+  </div>
+</footer>
+<style>
+  .ft { border-top: 1px solid var(--border); margin-top: 2rem; padding: 3.4rem 0 2rem; background: var(--bg-soft); }
+  .ft-inner { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .ft-name { font-family: var(--ff-sans); font-weight: 600; font-size: 1.25rem; }
+  .ft-sub { margin: .5rem 0 0; font-size: 14px; }
+  .ft-links { display: flex; flex-wrap: wrap; gap: 1.1rem; align-content: flex-start; }
+  .ft-links a { font-family: var(--ff-mono); font-size: 13px; color: var(--text-soft); transition: color .2s; }
+  .ft-links a:hover { color: var(--accent); }
+  .ft-base { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2.4rem;
+    padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 12px; }
+</style>
