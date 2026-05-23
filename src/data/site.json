@@ -319,19 +319,29 @@
         "name": "Xingqi Wu",
         "role": "Ph.D. Researcher",
         "focus": "O-RAN resource orchestration",
-        "photo": "/images/team/xingqi.jpg"
+        "photo": "/images/team/xingqi.jpg",
+        "profile": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/team/xingqi-wu"
       },
       {
         "name": "Yuhui Wang",
         "role": "Ph.D. Researcher",
         "focus": "UAV networks & RL",
-        "photo": "/images/team/yuhui.jpg"
+        "photo": "/images/team/yuhui.jpg",
+        "profile": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/team/yuhui-wang"
       },
       {
         "name": "Elahe Delavari",
         "role": "Ph.D. Researcher",
         "focus": "RL-driven O-RAN control",
-        "photo": "/images/team/elahe.jpg"
+        "photo": "/images/team/elahe.jpg",
+        "profile": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/team/elahe-delavari"
+      },
+      {
+        "name": "Tintu Jacob Shaji",
+        "role": "D.Eng. Researcher",
+        "focus": "",
+        "photo": "/images/team/tintu.jpg",
+        "profile": ""
       }
     ]
   },
