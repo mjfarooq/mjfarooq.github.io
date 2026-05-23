@@ -36,6 +36,21 @@ import talks from "../../data/talks.json";
           </article>
         ))}
       </div>
+
+      <h3 class="grants-head">Research grants</h3>
+      {site.grantsSummary && <p class="grants-summary">{site.grantsSummary}</p>}
+      <ul class="grant-list">
+        {site.grants.map((g) => (
+          <li class="grant-item">
+            <span class="g-year">{g.year}</span>
+            <div class="g-body">
+              {g.url ? <a class="g-title" href={g.url} target="_blank" rel="noopener">{g.title}</a> : <span class="g-title">{g.title}</span>}
+              <div class="g-meta">{g.sponsor} · {g.role}</div>
+            </div>
+            <span class="g-amount">{g.amount}</span>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section class="section reveal">
@@ -67,11 +82,21 @@ import talks from "../../data/talks.json";
   .proj-i { font-family: var(--ff-mono); font-size: 1.2rem; color: var(--blue-link); }
   .proj-title { font-size: 1.2rem; margin-bottom: .5rem; }
   .proj-sum { font-size: .92rem; margin-bottom: .8rem; }
+  .grants-head { font-size: 1.3rem; margin: 2.4rem 0 .3rem; }
+  .grants-summary { font-size: .95rem; color: var(--text-soft); margin: 0 0 1rem; }
+  .grant-list { list-style: none; padding: 0; margin: 0; }
+  .grant-item { display: grid; grid-template-columns: 64px 1fr auto; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border); align-items: baseline; }
+  .g-year { font-family: var(--ff-mono); font-size: 12.5px; color: var(--blue-link); }
+  .g-title { font-weight: 500; color: var(--text); font-size: .98rem; line-height: 1.35; }
+  a.g-title:hover { color: var(--blue-link); }
+  .g-meta { font-size: .84rem; color: var(--text-mute); margin-top: .15rem; }
+  .g-amount { font-family: var(--ff-mono); font-size: 13px; color: var(--blue); white-space: nowrap; }
+  :root[data-theme="dark"] .g-amount { color: var(--maize); }
   .talks { list-style: none; padding: 0; margin: 1.2rem 0 0; }
   .talks li { display: grid; grid-template-columns: 70px 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border); }
   .t-date { font-family: var(--ff-mono); font-size: 12.5px; color: var(--blue-link); }
   .t-title { font-weight: 500; color: var(--text); line-height: 1.35; }
   a.t-title:hover { color: var(--blue-link); }
   .t-venue { font-size: .86rem; color: var(--text-mute); font-style: italic; margin-top: .15rem; }
-  @media (max-width: 560px){ .proj { grid-template-columns: 1fr; gap:.5rem; } .talks li { grid-template-columns: 1fr; gap:.2rem; } }
+  @media (max-width: 560px){ .proj { grid-template-columns: 1fr; gap:.5rem; } .talks li { grid-template-columns: 1fr; gap:.2rem; } .grant-item { grid-template-columns: 1fr auto; gap:.4rem 1rem; } .grant-item .g-year { grid-column: 1 / -1; } }
 </style>

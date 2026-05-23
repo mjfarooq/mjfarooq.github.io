@@ -53,23 +53,6 @@ import site from "../../data/site.json";
     </section>
 
     <section class="section reveal">
-      <h2 class="h-sec">Research grants</h2>
-      {site.grantsSummary && <p class="grants-summary">{site.grantsSummary}</p>}
-      <ul class="grant-list">
-        {site.grants.map((g) => (
-          <li class="grant-item">
-            <span class="g-year">{g.year}</span>
-            <div class="g-body">
-              {g.url ? <a class="g-title" href={g.url} target="_blank" rel="noopener">{g.title}</a> : <span class="g-title">{g.title}</span>}
-              <div class="g-meta">{g.sponsor} · {g.role}</div>
-            </div>
-            <span class="g-amount">{g.amount}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <section class="section reveal">
       <h2 class="h-sec">Professional service</h2>
       <div class="eyebrow">Editorial</div>
       <ul class="svc-lead-list">
