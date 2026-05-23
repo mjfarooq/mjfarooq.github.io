@@ -54,6 +54,25 @@ const initials = (n) => n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCas
       </section>
     )}
 
+    {site.group.undergrads && site.group.undergrads.length > 0 && (
+      <section class="section reveal">
+        <h2 class="h-sec">Undergraduate researchers</h2>
+        <div class="grid-2 alumni-grid">
+          {site.group.undergrads.map((a) => (
+            <div class="alum">
+              <div class="alum-av">{initials(a.name)}</div>
+              <div>
+                {a.linkedin
+                  ? <a class="alum-name" href={a.linkedin} target="_blank" rel="noopener">{a.name}</a>
+                  : <span class="alum-name">{a.name}</span>}
+                {a.note && <div class="alum-note">{a.note}</div>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
     <section class="section reveal join">
       <h2 class="h-sec">Join the lab</h2>
       <p>I am looking for motivated Ph.D. and master's students interested in NextG networks, cyber resilience, and AI-driven network management. Prospective students should email me with a CV and a short note on research interests.</p>
