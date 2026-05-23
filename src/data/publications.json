@@ -24,7 +24,7 @@
       "S. Y. Chen",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang, X. Wu, J. Farooq, S. Y. Chen, and J. Chen",
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, S. Y. Chen, and J. Chen",
     "year": 2026,
     "type": "Conference",
     "venue": "in International Conference on Computer Communications and Networks (ICCCN 2026)",
@@ -46,7 +46,7 @@
       "Y. Chen",
       "J. Chen"
     ],
-    "authors_str": "M. Afane, Q. Long, H. Shen, Y. Mao, J. Farooq, Y. Chen, and J. Chen",
+    "authors_str": "M. Afane*, Q. Long, H. Shen, Y. Mao, J. Farooq, Y. Chen, and J. Chen",
     "year": 2026,
     "type": "Journal",
     "venue": "in Quantum Machine Intelligence, vol. 8, no. 2",
@@ -69,7 +69,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang, J. Farooq, and J. Chen",
+    "authors_str": "Y. Wang*, J. Farooq, and J. Chen",
     "year": 2026,
     "type": "Journal",
     "venue": "in IEEE Transactions on Mobile Computing, vol. 25, no. 2, pp. 2320-2334",
@@ -90,7 +90,7 @@
       "E. Delavari",
       "J. Farooq"
     ],
-    "authors_str": "E. Delavari and J. Farooq",
+    "authors_str": "E. Delavari* and J. Farooq",
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE DySPAN 2026 ML-Spec Workshop, Washington D.C., USA",
@@ -108,7 +108,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "X. Wu*, J. Farooq, and J. Chen",
     "year": 2026,
     "type": "Journal",
     "venue": "in IEEE Transactions on Network and Service Management, vol. 23, pp. 1766-1781",
@@ -131,7 +131,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang, X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, and J. Chen",
     "year": 2026,
     "type": "Conference",
     "venue": "in Proc. NDSS 2026 Workshop on Security and Privacy of Next-Generation Networks (FutureG), San Diego CA",
@@ -158,7 +158,7 @@
       "H. Ghazzai",
       "G. Setti"
     ],
-    "authors_str": "X. Wu, Y. Wang, J. Farooq, M. M. Butt, H. Ghazzai, and G. Setti",
+    "authors_str": "X. Wu*, Y. Wang*, J. Farooq, M. M. Butt, H. Ghazzai, and G. Setti",
     "year": 2026,
     "type": "Journal",
     "venue": "in IEEE Networking Letters",
@@ -181,7 +181,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "X. Wu*, J. Farooq, and J. Chen",
     "year": 2026,
     "type": "Book Chapter",
     "venue": "in Intent-Driven Network: Techniques and Applications, Springer Wireless Network Series",
@@ -198,7 +198,7 @@
       "X. Wu",
       "J. Farooq"
     ],
-    "authors_str": "E. Delavari, X. Wu, and J. Farooq",
+    "authors_str": "E. Delavari*, X. Wu*, and J. Farooq",
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE/IFIP NOMS 2026 Workshop on Resilience in Next Generation Network Management (NGResNet), Rome, Italy",
@@ -238,7 +238,7 @@
       "J. Chen",
       "J. Farooq"
     ],
-    "authors_str": "M. Afane, G. Ebbrecht, J. Chen, and J. Farooq",
+    "authors_str": "M. Afane*, G. Ebbrecht*, J. Chen, and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE/CVF CVPR 2025, Nashville TN, USA",
@@ -261,7 +261,7 @@
       "J. Chen",
       "J. Farooq"
     ],
-    "authors_str": "G. Ebbrecht, J. Hughes, J. Chen, and J. Farooq",
+    "authors_str": "G. Ebbrecht*, J. Hughes*, J. Chen, and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE INFOCOM 2025 Workshop on Resilience in Next-Generation Networks (NGResNet), London, UK",
@@ -286,7 +286,7 @@
       "J. Farooq",
       "Y. Wang"
     ],
-    "authors_str": "I. Aryendu, B. Mak, E. Forbes, J. Chen, J. Farooq, and Y. Wang",
+    "authors_str": "I. Aryendu, B. Mak, E. Forbes, J. Chen, J. Farooq, and Y. Wang*",
     "year": 2025,
     "type": "Journal",
     "venue": "in IEEE Open Journal of the Communications Society, vol. 6, pp. 9206-9228",
@@ -309,7 +309,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang, X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks, Montreal, Canada",
@@ -333,7 +333,7 @@
       "J. Chen",
       "Y. Wang"
     ],
-    "authors_str": "X. Wu, J. Farooq, T. Li, J. Chen, and Y. Wang",
+    "authors_str": "X. Wu*, J. Farooq, T. Li, J. Chen, and Y. Wang*",
     "year": 2025,
     "type": "Journal",
     "venue": "submitted to IEEE Networking Letters",
@@ -350,7 +350,7 @@
       "Hazime",
       "J. Farooq"
     ],
-    "authors_str": "Hazime and J. Farooq",
+    "authors_str": "Hazime* and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
@@ -372,7 +372,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "X. Wu*, J. Farooq, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE ICC 2025, Montreal, Canada",
@@ -396,7 +396,7 @@
       "H. Ghazzai",
       "G. Setti"
     ],
-    "authors_str": "Y. Wang, J. Farooq, H. Ghazzai, and G. Setti",
+    "authors_str": "Y. Wang*, J. Farooq, H. Ghazzai, and G. Setti",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE WCNC 2025, Milan, Italy",
@@ -419,7 +419,7 @@
       "H. Ghazzai",
       "G. Setti"
     ],
-    "authors_str": "Y. Wang, J. Farooq, H. Ghazzai, and G. Setti",
+    "authors_str": "Y. Wang*, J. Farooq, H. Ghazzai, and G. Setti",
     "year": 2025,
     "type": "Journal",
     "venue": "in IEEE Transactions on Mobile Computing, vol. 24, no. 10, pp. 9584-9598",
@@ -442,7 +442,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, Y. Wang, J. Farooq, and J. Chen",
+    "authors_str": "X. Wu*, Y. Wang*, J. Farooq, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE INFOCOM 2025 Workshop on Resilience in Next-Generation Networks (NGResNet), London, UK",
@@ -465,7 +465,7 @@
       "R. Honnalli",
       "J. Farooq"
     ],
-    "authors_str": "R. Honnalli and J. Farooq",
+    "authors_str": "R. Honnalli* and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in 3rd Workshop on Cybersecurity of Critical National Infrastructures (CCNI), IEEE WoWMoM 2025, Dallas TX, USA",
@@ -489,7 +489,7 @@
       "Y. Wang",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, J. Farooq, Y. Wang, and J. Chen",
+    "authors_str": "X. Wu*, J. Farooq, Y. Wang*, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "in Proc. NDSS 2025 Workshop on Security and Privacy of Next-Generation Networks (FutureG), San Diego CA",
@@ -513,7 +513,7 @@
       "J. Farooq",
       "Q. Zhu"
     ],
-    "authors_str": "M. Lyu, J. Farooq, and Q. Zhu",
+    "authors_str": "M. Lyu*, J. Farooq, and Q. Zhu",
     "year": 2025,
     "type": "Journal",
     "venue": "in IEEE Network, vol. 39, no. 1, pp. 251-269",
@@ -537,7 +537,7 @@
       "H. Ghazzai",
       "G. Setti"
     ],
-    "authors_str": "Y. Wang, J. Farooq, H. Ghazzai, and G. Setti",
+    "authors_str": "Y. Wang*, J. Farooq, H. Ghazzai, and G. Setti",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE WCNC 2025, Milan, Italy",
@@ -559,7 +559,7 @@
       "R. Honnalli",
       "J. Farooq"
     ],
-    "authors_str": "R. Honnalli and J. Farooq",
+    "authors_str": "R. Honnalli* and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
@@ -584,7 +584,7 @@
       "T. Li",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang, X. Wu, J. Farooq, T. Li, and J. Chen",
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, T. Li, and J. Chen",
     "year": 2025,
     "type": "Journal",
     "venue": "submitted to IEEE Transactions on Mobile Computing",
@@ -608,7 +608,7 @@
       "N. Doggaz",
       "G. Setti"
     ],
-    "authors_str": "E. Besbes, H. Ghazzai, J. Farooq, N. Doggaz, and G. Setti",
+    "authors_str": "E. Besbes*, H. Ghazzai, J. Farooq, N. Doggaz, and G. Setti",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE VTC-Spring 2025, Oslo, Norway",
@@ -630,7 +630,7 @@
       "R. Honnalli",
       "J. Farooq"
     ],
-    "authors_str": "X. Wu, R. Honnalli, and J. Farooq",
+    "authors_str": "X. Wu*, R. Honnalli*, and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in 26th ACM MobiHoc 2025, Houston, TX, USA",
@@ -653,7 +653,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang, U. Pillai, J. Farooq, and J. Chen",
+    "authors_str": "Y. Wang*, U. Pillai, J. Farooq, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
@@ -674,7 +674,7 @@
       "X. Wu",
       "J. Farooq"
     ],
-    "authors_str": "X. Wu and J. Farooq",
+    "authors_str": "X. Wu* and J. Farooq",
     "year": 2025,
     "type": "Journal",
     "venue": "in IEEE Open Journal of the Communications Society, vol. 6, pp. 5795-5809",
@@ -698,7 +698,7 @@
       "X. Wu",
       "J. Farooq"
     ],
-    "authors_str": "Y. Gao, X. Wu, and J. Farooq",
+    "authors_str": "Y. Gao*, X. Wu*, and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE Globecom Workshop on Resilience in Next-Generation Wireless Communication Networks (GC Wkshps 2025), Taiwan",
@@ -724,7 +724,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "M. Afane, A. Satyam, K. Chen, T. Li, J. Farooq, and J. Chen",
+    "authors_str": "M. Afane*, A. Satyam, K. Chen, T. Li, J. Farooq, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE BigData 2025 Workshop on AI in Big Data Analytic for Healthcare, Macau, China",
@@ -749,7 +749,7 @@
       "Y. Wang",
       "J. Chen"
     ],
-    "authors_str": "R. Kumar, W. Wei, Y. Mao, J. Farooq, Y. Wang, and J. Chen",
+    "authors_str": "R. Kumar, W. Wei, Y. Mao, J. Farooq, Y. Wang*, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "submitted to Quantum Machine Intelligence",
@@ -774,7 +774,7 @@
       "H. Ghazzai",
       "G. Setti"
     ],
-    "authors_str": "X. Wu, Y. Wang, J. Farooq, H. Ghazzai, and G. Setti",
+    "authors_str": "X. Wu*, Y. Wang*, J. Farooq, H. Ghazzai, and G. Setti",
     "year": 2025,
     "type": "Journal",
     "venue": "in IEEE Networking Letters, vol. 7, no. 4, pp. 323-327",
@@ -796,7 +796,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "X. Wu*, J. Farooq, and J. Chen",
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE ICC 2024 Workshop on Intelligent Cloud Continuum for B5G Services, Boulder, CO",
@@ -819,7 +819,7 @@
       "H. Ghazzai",
       "M. Hadded"
     ],
-    "authors_str": "D. Neifar, J. Farooq, H. Ghazzai, and M. Hadded",
+    "authors_str": "D. Neifar*, J. Farooq, H. Ghazzai, and M. Hadded",
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE VTC-Fall 2024, Washington D.C.",
@@ -841,7 +841,7 @@
       "Y. Wang",
       "J. Farooq"
     ],
-    "authors_str": "Y. Wang and J. Farooq",
+    "authors_str": "Y. Wang* and J. Farooq",
     "year": 2024,
     "type": "Journal",
     "venue": "in IEEE Internet of Things Journal, vol. 11, no. 8, pp. 14727-14738",
@@ -865,7 +865,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "X. Wu, J. Farooq, and J. Chen",
+    "authors_str": "X. Wu*, J. Farooq, and J. Chen",
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE CloudNet 2024, Rio De Janeiro, Brazil",
@@ -889,7 +889,7 @@
       "J. Farooq",
       "J. Chen"
     ],
-    "authors_str": "M. Afane, W. Wei, Y. Mao, J. Farooq, and J. Chen",
+    "authors_str": "M. Afane*, W. Wei, Y. Mao, J. Farooq, and J. Chen",
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE BigData CyberHunt 2024 Workshop, Washington D.C.",
@@ -915,7 +915,7 @@
       "Y. Mao",
       "J. Chen"
     ],
-    "authors_str": "R. Kumar, G. Ebbrecht, J. Farooq, W. Wei, Y. Mao, and J. Chen",
+    "authors_str": "R. Kumar, G. Ebbrecht*, J. Farooq, W. Wei, Y. Mao, and J. Chen",
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE CNS Cyber Resilience Workshop (CNS-CRW 2024), Taipei, Taiwan",
@@ -938,7 +938,7 @@
       "M. Lyu",
       "J. Farooq"
     ],
-    "authors_str": "M. Lyu and J. Farooq",
+    "authors_str": "M. Lyu* and J. Farooq",
     "year": 2024,
     "type": "Conference",
     "venue": "in Resilience Week (RW) 2024, Austin TX, USA",
@@ -960,7 +960,7 @@
       "X. Wu",
       "J. Farooq"
     ],
-    "authors_str": "X. Wu and J. Farooq",
+    "authors_str": "X. Wu* and J. Farooq",
     "year": 2023,
     "type": "Conference",
     "venue": "in IEEE CNS Cyber Resilience Workshop (CNS-CRW 2023), Orlando, FL",
@@ -982,7 +982,7 @@
       "Y. Wang",
       "J. Farooq"
     ],
-    "authors_str": "Y. Wang and J. Farooq",
+    "authors_str": "Y. Wang* and J. Farooq",
     "year": 2023,
     "type": "Conference",
     "venue": "in IEEE MASS Workshop on Unmanned Autonomous Vehicles and IoT (UAV-IoT 2023), Toronto, Canada",
@@ -1028,7 +1028,7 @@
       "J. Farooq",
       "Q. Zhu"
     ],
-    "authors_str": "T. Kieras, J. Farooq, and Q. Zhu",
+    "authors_str": "T. Kieras*, J. Farooq, and Q. Zhu",
     "year": 2022,
     "type": "Book",
     "venue": "SpringerBriefs in Computer Science",
@@ -1050,7 +1050,7 @@
       "Y. Wang",
       "J. Farooq"
     ],
-    "authors_str": "Y. Wang and J. Farooq",
+    "authors_str": "Y. Wang* and J. Farooq",
     "year": 2022,
     "type": "Conference",
     "venue": "in IEEE CNS Cyber Resilience Workshop (CNS 2022), Austin TX",
@@ -1072,7 +1072,7 @@
       "Y. Wang",
       "J. Farooq"
     ],
-    "authors_str": "Y. Wang and J. Farooq",
+    "authors_str": "Y. Wang* and J. Farooq",
     "year": 2022,
     "type": "Conference",
     "venue": "in IEEE ICC 2022, Seoul, South Korea",
@@ -1094,7 +1094,7 @@
       "Y. Wang",
       "J. Farooq"
     ],
-    "authors_str": "Y. Wang and J. Farooq",
+    "authors_str": "Y. Wang* and J. Farooq",
     "year": 2022,
     "type": "Conference",
     "venue": "in IEEE MILCOM 2022, Rockville MD",
@@ -1116,7 +1116,7 @@
       "J. Farooq",
       "Q. Zhu"
     ],
-    "authors_str": "T. Kieras, J. Farooq, and Q. Zhu",
+    "authors_str": "T. Kieras*, J. Farooq, and Q. Zhu",
     "year": 2021,
     "type": "Journal",
     "venue": "in IEEE Access, vol. 9, pp. 29827-29840",
@@ -1181,7 +1181,7 @@
       "M. J. Farooq",
       "Q. Zhu"
     ],
-    "authors_str": "T. Kieras, M. J. Farooq, and Q. Zhu",
+    "authors_str": "T. Kieras*, M. J. Farooq, and Q. Zhu",
     "year": 2020,
     "type": "Conference",
     "venue": "in IEEE S&P Workshop on Cyber Resilient Supply Chain Technologies, pp. 163-170",
@@ -1246,7 +1246,7 @@
       "M. J. Farooq",
       "Q. Zhu"
     ],
-    "authors_str": "T. Kieras, M. J. Farooq, and Q. Zhu",
+    "authors_str": "T. Kieras*, M. J. Farooq, and Q. Zhu",
     "year": 2020,
     "type": "Conference",
     "venue": "in Proc. IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, LA, USA",

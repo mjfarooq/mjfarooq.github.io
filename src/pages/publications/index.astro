@@ -11,7 +11,7 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
     <section class="section">
       <span class="eyebrow">Publications</span>
       <h1 class="h-page">Publications</h1>
-      <p class="lead">{total} works spanning {Math.min(...years)} to {Math.max(...years)}. Author names are listed as published; an asterisk denotes a student advisee. The full record is also on <a href="https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+      <p class="lead">Author names are listed as published; an asterisk denotes a student advisee. The full record is also on <a href="https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
 
       <div class="toolbar reveal">
         <div class="search">
@@ -22,7 +22,7 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
           {types.map((t) => <button class={"chip" + (t==="All"?" on":"")} data-t={t}>{t}</button>)}
         </div>
       </div>
-      <div class="count mono" id="count">{total} results</div>
+      <div class="count mono" id="count" style="display:none"></div>
 
       <ol class="plist" id="plist">
         {pubs.map((p) => (
@@ -99,7 +99,9 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
         var okS = !s || el.getAttribute("data-s").indexOf(s) !== -1;
         var show = okT && okS; el.style.display = show?"":"none"; if(show) n++;
       });
-      count.textContent = n + (n===1?" result":" results");
+      var filtering = (s !== "" || active !== "All");
+      count.style.display = filtering ? "" : "none";
+      if (filtering) count.textContent = n + (n===1?" result":" results");
       nores.hidden = n!==0;
     }
     q.addEventListener("input", apply);
