@@ -95,7 +95,10 @@ a:hover { text-decoration: underline; }
 
 ::selection { background: var(--maize); color: var(--blue); }
 
+img { max-width: 100%; height: auto; }
+
 @media (max-width: 880px) {
   .main { margin-left: 0; }
   .grid-2 { grid-template-columns: 1fr; }
+  .container { padding-top: 72px; }
 }
