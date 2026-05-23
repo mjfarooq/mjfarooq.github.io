@@ -1,50 +1,74 @@
 [
   {
+    "date": "May 2026",
+    "message": "Organized the 2nd Workshop on Resilience in Next Generation Networks (NGResNet) at IEEE/IFIP NOMS 2026 in Rome, with a keynote by Dr. Hans-Peter Bernhard.",
+    "images": ["/images/updates/ngresnet_2026_1.jpg", "/images/updates/ngresnet_2026_2.jpg", "/images/updates/ngresnet_2026_3.jpg"],
+    "link": ""
+  },
+  {
+    "date": "May 2026",
+    "message": "Co-organizing the 5th IEEE CNS Cyber Resilience Workshop (CRW'26) in Newark, Delaware. Call for papers open, with a submission deadline of June 22, 2026.",
+    "images": ["/images/updates/cns_crw26.jpg"],
+    "link": "https://edas.info/N35374"
+  },
+  {
     "date": "Apr 2026",
-    "message": "Members of the CyReN Lab presented their posters at the CECS Research Poster Competition.",
+    "message": "Ph.D. student Yuhui Wang received the Rackham Predoctoral Fellowship at the University of Michigan for research on aerial communication systems.",
+    "images": ["/images/updates/yuhui_rackham_1.jpg", "/images/updates/yuhui_rackham_2.jpg", "/images/updates/yuhui_rackham_3.jpg"],
+    "link": ""
+  },
+  {
+    "date": "Apr 2026",
+    "message": "Lab members presented their research posters at the CECS Research Poster Competition.",
     "images": ["/images/updates/cecs_poster_yuhui.jpg", "/images/updates/cecs_poster_xingqi.jpg", "/images/updates/cecs_poster_elahe.jpg"],
     "link": ""
   },
   {
     "date": "Jan 2026",
     "message": "New book published: Cyber Resilience in Next-Generation Networks (Foundations and Trends in Networking).",
-    "images": ["/images/updates/placeholder-1.svg"],
+    "images": [],
     "link": ""
   },
   {
     "date": "Nov 2025",
-    "message": "Paper accepted in IEEE Networking Letters. Congratulations to Xingqi and Yuhui!",
-    "images": ["/images/updates/placeholder-2.svg"],
+    "message": "Hosted Prof. Waheed Bajwa at the University of Michigan-Dearborn for a seminar and discussions with faculty and students.",
+    "images": ["/images/updates/bajwa_visit_1.jpg", "/images/updates/bajwa_visit_2.jpg"],
+    "link": ""
+  },
+  {
+    "date": "Nov 2025",
+    "message": "Paper accepted in IEEE Networking Letters.",
+    "images": [],
     "link": "https://ieeexplore.ieee.org/document/11494807"
   },
   {
     "date": "Aug 2025",
-    "message": "Poster accepted at ACM MobiHoc 2025. Congratulations Xingqi and Ritesh!",
-    "images": ["/images/updates/placeholder-3.svg", "/images/updates/placeholder-1.svg"],
+    "message": "Poster accepted at ACM MobiHoc 2025.",
+    "images": [],
     "link": "https://dl.acm.org/doi/10.1145/3704413.3765320"
   },
   {
     "date": "Feb 2025",
-    "message": "Elevated to the rank of Senior Member of the IEEE.",
-    "images": ["/images/updates/placeholder-2.svg"],
+    "message": "Elevated to Senior Member of the IEEE.",
+    "images": [],
     "link": ""
   },
   {
     "date": "Feb 2025",
     "message": "Presented a seminar at UM-Flint on AI-Driven Management and Orchestration of Next-Generation Networks.",
-    "images": ["/images/updates/placeholder-3.svg"],
+    "images": [],
     "link": "https://events.umflint.edu/cit/events/12408"
   },
   {
     "date": "Aug 2022",
-    "message": "Multi-university project on Zero Trust cybersecurity for 5G networks kicks off, supported by the NSF.",
-    "images": ["/images/updates/placeholder-1.svg", "/images/updates/placeholder-2.svg"],
+    "message": "Multi-university project on Zero Trust cybersecurity for 5G networks begins, supported by the NSF.",
+    "images": [],
     "link": "https://nsf.gov/awardsearch/showAward?AWD_ID=2226232"
   },
   {
     "date": "Mar 2021",
-    "message": "Honored to receive the University-wide Outstanding Dissertation Award from New York University.",
-    "images": ["/images/updates/placeholder-3.svg"],
+    "message": "Received the University-wide Outstanding Dissertation Award from New York University.",
+    "images": [],
     "link": ""
   }
 ]
