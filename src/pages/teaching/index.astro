@@ -1,0 +1,39 @@
+---
+import Base from "../../layouts/Base.astro";
+import teaching from "../../data/teaching.json";
+---
+<Base title="Teaching" description="Courses taught by Junaid Farooq.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">Teaching</span>
+      <h1 class="h-page">Teaching</h1>
+      <p class="lead">{teaching.statement}</p>
+
+      {teaching.courses.length > 0 ? (
+        <ul class="course-list">
+          {teaching.courses.map((c) => (
+            <li class="course">
+              <span class="c-code">{c.code}</span>
+              <div>
+                <div class="c-title">{c.title}</div>
+                <div class="c-meta">{[c.level, c.term].filter(Boolean).join(" · ")}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="muted course-soon">Course listings are being added.</p>
+      )}
+    </section>
+  </div>
+</Base>
+<style>
+  .course-list { list-style: none; padding: 0; margin: 1.8rem 0 0; }
+  .course { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--border); }
+  .c-code { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); }
+  .c-title { font-family: var(--ff-serif); font-weight: 600; color: var(--blue); font-size: 1.05rem; }
+  :root[data-theme="dark"] .c-title { color: var(--text); }
+  .c-meta { font-size: .85rem; color: var(--text-mute); font-family: var(--ff-mono); }
+  .course-soon { margin-top: 1.4rem; }
+  @media (max-width: 560px) { .course { grid-template-columns: 1fr; gap: .2rem; } }
+</style>

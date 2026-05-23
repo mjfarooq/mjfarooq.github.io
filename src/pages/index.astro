@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import UpdatesCarousel from "../components/UpdatesCarousel.astro";
 import site from "../data/site.json";
+import areaIcons from "../data/areaIcons.js";
 import pubs from "../data/publications.json";
 const recent = pubs
   .filter(p => p.type !== "Thesis")
@@ -49,6 +50,7 @@ const counts = {
       <div class="grid-2 areas">
         {site.researchAreas.map((a) => (
           <article class="card">
+            {areaIcons[a.title] && <div class="area-icon" set:html={areaIcons[a.title]}></div>}
             <h3 class="area-title">{a.title}</h3>
             <p class="area-blurb">{a.blurb}</p>
             <div class="area-tags">{a.tags.map((t) => <span class="tag">{t}</span>)}</div>
@@ -82,6 +84,10 @@ const counts = {
         <a class="btn btn-maize" href={"mailto:" + site.email}>{site.email}</a>
         <a class="btn" href={site.lab.url} target="_blank" rel="noopener">Visit the {site.lab.name} Lab →</a>
       </div>
+      <div class="contact-details">
+        {site.office && <div><span class="cd-label">Office</span>{site.office}</div>}
+        {site.phone && <div><span class="cd-label">Phone</span><a href={"tel:" + site.phone.replace(/[^+0-9]/g, "")}>{site.phone}</a></div>}
+      </div>
     </section>
   </div>
 </Base>
@@ -98,6 +104,9 @@ const counts = {
   :root[data-theme="dark"] .stat b { color: var(--maize); }
   .stat span { font-size: .8rem; color: var(--text-mute); }
   .areas { margin-top: 1.4rem; }
+  .area-icon { width: 48px; height: 48px; border-radius: 11px; background: var(--bg-soft); border: 1px solid var(--border); color: var(--blue); display: grid; place-items: center; margin-bottom: .9rem; }
+  .area-icon :global(svg) { width: 26px; height: 26px; }
+  :root[data-theme="dark"] .area-icon { color: var(--maize); background: var(--surface); }
   .area-title { font-size: 1.2rem; margin-bottom: .5rem; }
   .area-blurb { font-size: .92rem; margin-bottom: .8rem; }
   .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
@@ -109,5 +118,7 @@ const counts = {
   a.pm-title:hover { color: var(--blue-link); }
   .pm-venue { font-size: .85rem; color: var(--text-mute); font-style: italic; margin-top: .15rem; }
   .contact-band { border-top: 3px solid var(--maize); margin-top: 2.5rem; padding-top: 1.8rem; }
+  .contact-details { margin-top: 1.4rem; display: flex; flex-direction: column; gap: .4rem; font-size: .92rem; color: var(--text-soft); }
+  .cd-label { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mute); margin-right: .7rem; }
   @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 </style>

@@ -3,6 +3,7 @@ import Base from "../../layouts/Base.astro";
 import site from "../../data/site.json";
 import projects from "../../data/projects.json";
 import talks from "../../data/talks.json";
+import areaIcons from "../../data/areaIcons.js";
 ---
 <Base title="Research" description="Research themes, funded projects, and invited talks.">
   <div class="container">
@@ -13,6 +14,7 @@ import talks from "../../data/talks.json";
       <div class="grid-2 areas">
         {site.researchAreas.map((a) => (
           <article class="card">
+            {areaIcons[a.title] && <div class="area-icon" set:html={areaIcons[a.title]}></div>}
             <h3 class="area-title">{a.title}</h3>
             <p class="area-blurb">{a.blurb}</p>
             <div class="area-tags">{a.tags.map((t) => <span class="tag">{t}</span>)}</div>
@@ -73,6 +75,9 @@ import talks from "../../data/talks.json";
 
 <style>
   .areas { margin-top: 1.4rem; }
+  .area-icon { width: 48px; height: 48px; border-radius: 11px; background: var(--bg-soft); border: 1px solid var(--border); color: var(--blue); display: grid; place-items: center; margin-bottom: .9rem; }
+  .area-icon :global(svg) { width: 26px; height: 26px; }
+  :root[data-theme="dark"] .area-icon { color: var(--maize); background: var(--surface); }
   .area-title { font-size: 1.2rem; margin-bottom: .5rem; }
   .area-blurb { font-size: .92rem; margin-bottom: .8rem; }
   .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
