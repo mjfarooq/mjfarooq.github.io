@@ -1,0 +1,50 @@
+---
+import Base from "../../layouts/Base.astro";
+import updates from "../../data/updates.json";
+---
+<Base title="News" description="Recent news and activities from Junaid Farooq and the CyReN Lab.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">News</span>
+      <h1 class="h-page">News &amp; activities</h1>
+      <p class="lead">Recent activities, talks, awards, and updates from the lab.</p>
+
+      <div class="news-feed">
+        {updates.map((u) => (
+          <article class="news-item">
+            <div class="ni-meta">
+              <span class="ni-date">{u.date}</span>
+            </div>
+            <div class="ni-body">
+              <p class="ni-text">{u.message}</p>
+              {u.link && <a class="ni-link" href={u.link} target="_blank" rel="noopener">View details →</a>}
+              {u.images && u.images.length > 0 && (
+                <div class="ni-photos">
+                  {u.images.map((img, i) => (
+                    <img class="ni-photo" src={img} data-gallery={JSON.stringify(u.images)} data-index={i} alt="" loading="lazy" onerror="this.style.display='none'" />
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .news-feed { margin-top: 1.8rem; }
+  .news-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.4rem; padding: 1.8rem 0; border-top: 1px solid var(--border); }
+  .ni-date { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); padding-top: .2rem; display: inline-block; }
+  .ni-text { font-size: 1.05rem; color: var(--text); margin: 0 0 .6rem; }
+  .ni-link { font-family: var(--ff-mono); font-size: 13px; }
+  .ni-photos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+  .ni-photo { width: 240px; height: 168px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); cursor: zoom-in; transition: transform .2s; }
+  .ni-photo:hover { transform: translateY(-2px); }
+  @media (max-width: 700px) {
+    .news-item { grid-template-columns: 1fr; gap: .5rem; }
+    .ni-photo { width: calc(50% - 5px); height: 130px; }
+  }
+  @media (max-width: 440px) { .ni-photo { width: 100%; height: 200px; } }
+</style>

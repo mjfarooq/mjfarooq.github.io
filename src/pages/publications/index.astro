@@ -111,5 +111,10 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
       document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===b); });
       apply();
     });
+    var ptype = new URLSearchParams(location.search).get("type");
+    if(ptype){
+      var chip = document.querySelector('#chips .chip[data-t="' + ptype.replace(/"/g,"") + '"]');
+      if(chip){ active = chip.getAttribute("data-t"); document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===chip); }); apply(); }
+    }
   })();
 </script>

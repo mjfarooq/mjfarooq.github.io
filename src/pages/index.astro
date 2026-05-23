@@ -26,15 +26,16 @@ const counts = {
         <a class="btn" href={"mailto:" + site.email}>Get in touch</a>
       </div>
       <div class="stats">
-        <div class="stat"><b>{counts.total}+</b><span>Publications</span></div>
-        <div class="stat"><b>{counts.journals}</b><span>Journal articles</span></div>
-        <div class="stat"><b>{counts.conferences}</b><span>Conference papers</span></div>
-        <div class="stat"><b>{counts.books}</b><span>Books & chapters</span></div>
+        <a class="stat" href="/publications"><b>{counts.total}+</b><span>Publications</span></a>
+        <a class="stat" href="/publications?type=Journal"><b>{counts.journals}</b><span>Journal articles</span></a>
+        <a class="stat" href="/publications?type=Conference"><b>{counts.conferences}</b><span>Conference papers</span></a>
+        <a class="stat" href="/publications?type=Book"><b>{counts.books}</b><span>Books & chapters</span></a>
       </div>
     </section>
 
     <section class="section reveal">
       <UpdatesCarousel />
+      <a class="btn link-more" href="/news">All news →</a>
     </section>
 
     <section class="section reveal">
@@ -67,7 +68,7 @@ const counts = {
           </li>
         ))}
       </ul>
-      <a class="btn link-more" href="/publications">View all {counts.total} publications →</a>
+      <a class="btn link-more" href="/publications">View all publications →</a>
     </section>
 
     <section class="section reveal contact-band">
@@ -86,6 +87,9 @@ const counts = {
   .interests { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.3rem 0; }
   .cta { display: flex; flex-wrap: wrap; gap: .6rem; }
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .stat { display: block; padding: .4rem .2rem; border-radius: 8px; transition: background .15s; }
+  a.stat:hover { text-decoration: none; background: var(--bg-soft); }
+  a.stat:hover b { color: var(--blue-link); }
   .stat b { font-family: var(--ff-serif); font-size: 1.7rem; color: var(--blue); display: block; line-height: 1; }
   :root[data-theme="dark"] .stat b { color: var(--maize); }
   .stat span { font-size: .8rem; color: var(--text-mute); }
