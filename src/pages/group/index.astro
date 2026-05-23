@@ -46,7 +46,7 @@ const initials = (n) => n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCas
                   ? <a class="alum-name" href={a.linkedin} target="_blank" rel="noopener">{a.name}</a>
                   : <span class="alum-name">{a.name}</span>}
                 {a.note && <div class="alum-note">{a.note}</div>}
-                {a.year && <div class="alum-year">{a.year}</div>}
+                {(a.grad || a.position) && <div class="alum-year">{[a.grad, a.position].filter(Boolean).join(" · ")}</div>}
               </div>
             </div>
           ))}

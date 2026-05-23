@@ -348,37 +348,43 @@
       {
         "name": "Ritesh Honnalli",
         "note": "AI-driven cybersecurity for EV charging systems",
-        "year": "2024 - 2025",
+        "grad": "2026",
+        "position": "Rocket Mortgage",
         "linkedin": "https://www.linkedin.com/in/riho/"
       },
       {
         "name": "Dhia Neifar",
         "note": "Federated learning for vehicular networks",
-        "year": "2023 - 2024",
+        "grad": "2025",
+        "position": "University of Arizona",
         "linkedin": ""
       },
       {
         "name": "Moyan Lyu",
         "note": "Zero trust cybersecurity for 5G networks",
-        "year": "2023 - 2024",
+        "grad": "2025",
+        "position": "Michigan State University",
         "linkedin": "https://www.linkedin.com/in/moyan-lyu-38a689239/"
       },
       {
         "name": "Zhaoguo Wang",
         "note": "Resource matching for ride sharing",
-        "year": "2021 - 2022",
+        "grad": "2022",
+        "position": "XPeng",
         "linkedin": ""
       },
       {
         "name": "Tim Kieras",
         "note": "",
-        "year": "",
+        "grad": "2021",
+        "position": "Morse Corp.",
         "linkedin": ""
       },
       {
         "name": "Yunfan Xu",
         "note": "",
-        "year": "",
+        "grad": "2022",
+        "position": "Hubspot",
         "linkedin": ""
       }
     ],
