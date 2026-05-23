@@ -20,7 +20,8 @@
     { "degree": "B.E. in Electrical Engineering", "institution": "National University of Sciences & Technology (NUST)", "location": "Islamabad, Pakistan", "year": "2013", "logo": "/images/nust.png" }
   ],
   "appointments": [
-    { "role": "Assistant Professor, Electrical & Computer Engineering", "org": "University of Michigan-Dearborn", "years": "2020 - present" },
+    { "role": "Associate Professor, Electrical & Computer Engineering", "org": "University of Michigan-Dearborn", "years": "2026 - present" },
+    { "role": "Assistant Professor, Electrical & Computer Engineering", "org": "University of Michigan-Dearborn", "years": "2020 - 2026" },
     { "role": "Research Assistant, Department of Applied Research", "org": "Qatar Mobility Innovations Center (QMIC)", "years": "2015 - 2016" },
     { "role": "Research Assistant, Communication Theory Lab", "org": "KAUST", "years": "2013 - 2015" }
   ],
