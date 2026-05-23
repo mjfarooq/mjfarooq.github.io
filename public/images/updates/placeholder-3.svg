@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#00274C"/>
-  <rect x="0" y="248" width="400" height="52" fill="#FFCB05"/>
-  <circle cx="200" cy="120" r="46" fill="none" stroke="#FFCB05" stroke-width="3"/>
-  <text x="200" y="132" font-family="Georgia, serif" font-size="34" fill="#FFCB05" text-anchor="middle">JF</text>
-  <text x="200" y="200" font-family="monospace" font-size="13" fill="#9fb3cc" text-anchor="middle">add your LinkedIn photo 3</text>
-</svg>
