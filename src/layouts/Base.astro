@@ -37,9 +37,18 @@ const desc = description || site.bioShort;
       </footer>
     </div>
   </div>
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <img class="lb-img" alt="" />
+  </div>
   <style>
     .site-foot { border-top: 1px solid var(--border); margin-top: 2.5rem; }
     .foot-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.6rem; padding-bottom: 2rem; font-family: var(--ff-mono); font-size: 12px; color: var(--text-mute); }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(8,18,34,.9); align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+    .lightbox.open { display: flex; }
+    .lb-img { max-width: 92vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 24px 70px rgba(0,0,0,.55); }
+    .lb-close { position: fixed; top: 16px; right: 20px; width: 46px; height: 46px; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 28px; line-height: 1; border-radius: 50%; cursor: pointer; }
+    .lb-close:hover { background: rgba(255,255,255,.26); }
   </style>
   <script is:inline>
     (function(){
@@ -50,6 +59,18 @@ const desc = description || site.bioShort;
     function toggleTheme(){ var c=document.documentElement.getAttribute("data-theme"); var n=c==="dark"?"":"dark"; if(n) document.documentElement.setAttribute("data-theme",n); else document.documentElement.removeAttribute("data-theme"); try{ localStorage.setItem("theme",n);}catch(e){} }
     function toggleSidebar(){ document.body.classList.toggle("nav-open"); }
     window.toggleTheme=toggleTheme; window.toggleSidebar=toggleSidebar;
+    (function(){
+      var lb=document.getElementById("lightbox"); if(!lb) return;
+      var img=lb.querySelector(".lb-img");
+      function open(url){ img.src=url; lb.classList.add("open"); lb.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+      function close(){ lb.classList.remove("open"); lb.setAttribute("aria-hidden","true"); img.src=""; document.body.style.overflow=""; }
+      document.addEventListener("click",function(e){
+        var t=e.target.closest("[data-zoom]");
+        if(t){ e.preventDefault(); open(t.getAttribute("data-zoom")); return; }
+        if(e.target.closest(".lightbox")){ close(); }
+      });
+      document.addEventListener("keydown",function(e){ if(e.key==="Escape") close(); });
+    })();
   </script>
 </body>
 </html>

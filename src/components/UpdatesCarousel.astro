@@ -23,7 +23,7 @@ import updates from "../data/updates.json";
         <article class="uc-card">
           <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
             {u.images.slice(0, 3).map((img, i) => (
-              <div class="uc-photo" style={`background-image:url('${img}')`}>
+              <div class="uc-photo" style={`background-image:url('${img}')`} data-zoom={img} role="button" tabindex="0" aria-label="Open photo">
                 {i === 2 && u.images.length > 3 && <span class="uc-more">+{u.images.length - 3}</span>}
               </div>
             ))}
@@ -57,7 +57,7 @@ import updates from "../data/updates.json";
   .uc-photos.n2 { grid-template-columns: 1fr 1fr; }
   .uc-photos.n3 { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; }
   .uc-photos.n3 .uc-photo:first-child { grid-row: 1 / 3; }
-  .uc-photo { background-size: cover; background-position: center; background-color: var(--blue); position: relative; }
+  .uc-photo { background-size: cover; background-position: center; background-color: var(--blue); position: relative; cursor: zoom-in; }
   .uc-more { position: absolute; inset: 0; background: rgba(0,39,76,.62); color: #fff; font-family: var(--ff-mono); font-size: 15px; display: flex; align-items: center; justify-content: center; }
 
   .uc-body { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; flex: 1; }
