@@ -36,6 +36,11 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
               {p.url ? <a class="pi-title" href={p.url} target="_blank" rel="noopener">{p.title}</a> : <span class="pi-title">{p.title}</span>}
               <div class="pi-auth" set:html={authorsHtml(p.authors_str)}></div>
               <div class="pi-venue">{p.venue}</div>
+              {p.links && p.links.length > 0 && (
+                <div class="pi-links">
+                  {p.links.map((l) => <a class="pi-link" href={l.url} target="_blank" rel="noopener">{l.label}</a>)}
+                </div>
+              )}
             </div>
           </li>
         ))}
@@ -66,13 +71,16 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
   .pi-auth strong { color: var(--blue); }
   :root[data-theme="dark"] .pi-auth strong { color: var(--maize); }
   .pi-venue { font-size: .85rem; color: var(--text-mute); font-style: italic; margin-top: .1rem; }
+  .pi-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+  .pi-link { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .03em; padding: .25rem .6rem; border: 1px solid var(--border-strong); border-radius: 5px; color: var(--blue-link); background: var(--surface); }
+  .pi-link:hover { background: var(--blue); color: #fff; border-color: var(--blue); text-decoration: none; }
   .badge { font-family: var(--ff-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; padding: .2rem .5rem; border-radius: 5px; }
-  .b-journal { background: #e6eef7; color: #00274c; }
-  .b-conference { background: #fff3cc; color: #6b5200; }
-  .b-book, .b-bookchapter { background: #00274c; color: #ffcb05; }
+  .b-journal { background: #00274c; color: #fff; }
+  .b-conference { background: #ffcb05; color: #00274c; }
+  .b-book, .b-bookchapter { background: #1f5394; color: #fff; }
   .b-thesis { background: var(--surface-soft); color: var(--text-mute); border: 1px solid var(--border); }
-  :root[data-theme="dark"] .b-journal { background: #14304f; color: #cfe0f5; }
-  :root[data-theme="dark"] .b-conference { background: #3a3010; color: #ffd84a; }
+  :root[data-theme="dark"] .b-journal { background: #2b6cb0; color: #fff; }
+  :root[data-theme="dark"] .b-conference { background: #ffcb05; color: #00274c; }
   .nores { padding: 2.5rem 0; color: var(--text-mute); }
   @media (max-width: 560px) { .pitem { grid-template-columns: 1fr; gap: .3rem; } }
 </style>

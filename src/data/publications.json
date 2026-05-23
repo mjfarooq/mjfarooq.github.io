@@ -12,7 +12,8 @@
     "url": "",
     "tags": [
       "Cyber Resilience"
-    ]
+    ],
+    "links": []
   },
   {
     "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
@@ -31,7 +32,8 @@
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
-    ]
+    ],
+    "links": []
   },
   {
     "title": "Differentiable architecture search for adversarially robust quantum computer vision",
@@ -52,6 +54,12 @@
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "Springer",
+        "url": "https://link.springer.com/article/10.1007/s42484-026-00353-0"
+      }
     ]
   },
   {
@@ -68,6 +76,12 @@
     "url": "https://www.computer.org/csdl/journal/tm/5555/01/11152341/29LAw5X8z2E",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://www.computer.org/csdl/journal/tm/5555/01/11152341/29LAw5X8z2E"
+      }
     ]
   },
   {
@@ -84,7 +98,8 @@
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
-    ]
+    ],
+    "links": []
   },
   {
     "title": "Multi-agent Resource Orchestration Based on D3QN for Network Slicing in 5G Edge-Cloud Networks",
@@ -100,6 +115,12 @@
     "url": "https://ieeexplore.ieee.org/document/11297800",
     "tags": [
       "NextG / O-RAN"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11297800"
+      }
     ]
   },
   {
@@ -119,6 +140,12 @@
       "NextG / O-RAN",
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.ndss-symposium.org/wp-content/uploads/futureg26-22.pdf"
+      }
     ]
   },
   {
@@ -139,6 +166,12 @@
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11494807"
+      }
     ]
   },
   {
@@ -155,7 +188,8 @@
     "url": "",
     "tags": [
       "NextG / O-RAN"
-    ]
+    ],
+    "links": []
   },
   {
     "title": "Temporally Encoded Double DQN for Proactive PRB Allocation in O-RAN Enabled Industrial Networks",
@@ -172,7 +206,8 @@
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
-    ]
+    ],
+    "links": []
   },
   {
     "title": "A Probabilistic Alternative to Coverage Analysis in Uniform Random Wireless Networks",
@@ -187,6 +222,12 @@
     "url": "https://ieeexplore.ieee.org/document/11142613",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11142613"
+      }
     ]
   },
   {
@@ -204,6 +245,12 @@
     "url": "https://arxiv.org/abs/2503.21815",
     "tags": [
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2503.21815"
+      }
     ]
   },
   {
@@ -221,6 +268,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1277867",
     "tags": [
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1277867"
+      }
     ]
   },
   {
@@ -240,6 +293,12 @@
     "url": "https://ieeexplore.ieee.org/document/11206314",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11206314"
+      }
     ]
   },
   {
@@ -257,6 +316,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1277869",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1277869"
+      }
     ]
   },
   {
@@ -276,7 +341,8 @@
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
-    ]
+    ],
+    "links": []
   },
   {
     "title": "Evaluation of LLM powered agentic AI for solving multi-arm bandit problems",
@@ -291,6 +357,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1315647",
     "tags": [
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1315647"
+      }
     ]
   },
   {
@@ -308,6 +380,12 @@
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.174284729.99809422/v1"
+      }
     ]
   },
   {
@@ -325,6 +403,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1234294",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1234294"
+      }
     ]
   },
   {
@@ -342,6 +426,12 @@
     "url": "https://ieeexplore.ieee.org/document/10971880",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10971880"
+      }
     ]
   },
   {
@@ -361,6 +451,12 @@
       "NextG / O-RAN",
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1277868"
+      }
     ]
   },
   {
@@ -377,6 +473,12 @@
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/257574/preprint_pdf/8de6e8c31bd5d57611c5653f7751537f.pdf"
+      }
     ]
   },
   {
@@ -396,6 +498,12 @@
       "NextG / O-RAN",
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.ndss-symposium.org/ndss-paper/auto-draft-567/"
+      }
     ]
   },
   {
@@ -413,6 +521,12 @@
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10634234"
+      }
     ]
   },
   {
@@ -431,6 +545,12 @@
     "tags": [
       "UAV & Aerial",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1229164"
+      }
     ]
   },
   {
@@ -447,6 +567,12 @@
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1315646"
+      }
     ]
   },
   {
@@ -465,6 +591,12 @@
     "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.176315222.25704753",
     "tags": [
       "Networks"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.176315222.25704753"
+      }
     ]
   },
   {
@@ -483,6 +615,12 @@
     "url": "https://ieeexplore.ieee.org/document/11174390",
     "tags": [
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11174390"
+      }
     ]
   },
   {
@@ -499,6 +637,12 @@
     "url": "https://dl.acm.org/doi/10.1145/3704413.3765320",
     "tags": [
       "NextG / O-RAN"
+    ],
+    "links": [
+      {
+        "label": "ACM",
+        "url": "https://dl.acm.org/doi/10.1145/3704413.3765320"
+      }
     ]
   },
   {
@@ -516,6 +660,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1315645",
     "tags": [
       "Networks"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1315645"
+      }
     ]
   },
   {
@@ -533,6 +683,12 @@
       "UAV & Aerial",
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11062492"
+      }
     ]
   },
   {
@@ -550,6 +706,12 @@
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1341419"
+      }
     ]
   },
   {
@@ -569,6 +731,12 @@
     "url": "https://arxiv.org/pdf/2512.10998",
     "tags": [
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/2512.10998"
+      }
     ]
   },
   {
@@ -589,6 +757,12 @@
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/2506.24081"
+      }
     ]
   },
   {
@@ -607,6 +781,12 @@
     "url": "https://ieeexplore.ieee.org/document/11251017",
     "tags": [
       "NextG / O-RAN"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11251017"
+      }
     ]
   },
   {
@@ -623,6 +803,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1091386",
     "tags": [
       "NextG / O-RAN"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1091386"
+      }
     ]
   },
   {
@@ -641,6 +827,12 @@
     "tags": [
       "AI / Learning",
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/217473/preprint_pdf/a8c76d89a117990c12a996e6ad807747.pdf"
+      }
     ]
   },
   {
@@ -658,6 +850,12 @@
       "UAV & Aerial",
       "IoT",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10365695"
+      }
     ]
   },
   {
@@ -674,6 +872,12 @@
     "url": "https://www.techrxiv.org/users/793184/articles/1235407",
     "tags": [
       "NextG / O-RAN"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1235407"
+      }
     ]
   },
   {
@@ -693,6 +897,12 @@
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/html/2411.13874v1"
+      }
     ]
   },
   {
@@ -714,6 +924,12 @@
       "Cyber Resilience",
       "AI / Learning",
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/abstract/document/10735501"
+      }
     ]
   },
   {
@@ -730,6 +946,12 @@
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/users/793184/articles/1229171"
+      }
     ]
   },
   {
@@ -746,6 +968,12 @@
     "tags": [
       "UAV & Aerial",
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10288893"
+      }
     ]
   },
   {
@@ -763,6 +991,12 @@
       "UAV & Aerial",
       "IoT",
       "AI / Learning"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10298362"
+      }
     ]
   },
   {
@@ -779,6 +1013,12 @@
     "url": "https://ieeexplore.ieee.org/document/10016667",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10016667"
+      }
     ]
   },
   {
@@ -796,6 +1036,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "Springer",
+        "url": "https://link.springer.com/book/9783031084799"
+      }
     ]
   },
   {
@@ -812,6 +1058,12 @@
     "tags": [
       "UAV & Aerial",
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9947272"
+      }
     ]
   },
   {
@@ -828,6 +1080,12 @@
     "tags": [
       "UAV & Aerial",
       "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9838960"
+      }
     ]
   },
   {
@@ -843,6 +1101,12 @@
     "url": "https://arxiv.org/abs/2211.02833",
     "tags": [
       "UAV & Aerial"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2211.02833"
+      }
     ]
   },
   {
@@ -860,6 +1124,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9350583"
+      }
     ]
   },
   {
@@ -875,6 +1145,12 @@
     "url": "https://ieeexplore.ieee.org/document/9108583",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9108583"
+      }
     ]
   },
   {
@@ -890,6 +1166,12 @@
     "url": "https://www.wiley.com/en-us/Resource+Management+for+On+Demand+Mission+Critical+Internet+of+Things+Applications-p-9781119716099",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "Book",
+        "url": "https://www.wiley.com/en-us/Resource+Management+for+On+Demand+Mission+Critical+Internet+of+Things+Applications-p-9781119716099"
+      }
     ]
   },
   {
@@ -907,6 +1189,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/2003.12363.pdf"
+      }
     ]
   },
   {
@@ -922,6 +1210,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://drive.google.com/file/d/122WvyZt9gzIR5bhfWPwZIamQ-tCNLJkF/view"
+      }
     ]
   },
   {
@@ -937,6 +1231,12 @@
     "url": "https://arxiv.org/pdf/2001.01561.pdf",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/2001.01561.pdf"
+      }
     ]
   },
   {
@@ -954,6 +1254,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/1911.12862.pdf"
+      }
     ]
   },
   {
@@ -969,6 +1275,12 @@
     "url": "https://arxiv.org/pdf/1901.08331.pdf",
     "tags": [
       "Networks"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/1901.08331.pdf"
+      }
     ]
   },
   {
@@ -985,6 +1297,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/1908.07828.pdf"
+      }
     ]
   },
   {
@@ -1001,6 +1319,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/1901.00741.pdf"
+      }
     ]
   },
   {
@@ -1016,6 +1340,12 @@
     "url": "https://www.amazon.com/Problems-Solutions-Undergraduate-Probability-Muhammad-ebook/dp/B07MH8K9J6",
     "tags": [
       "Networks"
+    ],
+    "links": [
+      {
+        "label": "Book",
+        "url": "https://www.amazon.com/Problems-Solutions-Undergraduate-Probability-Muhammad-ebook/dp/B07MH8K9J6"
+      }
     ]
   },
   {
@@ -1032,6 +1362,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/8360491/"
+      }
     ]
   },
   {
@@ -1048,6 +1384,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/pdf/1707.08691.pdf"
+      }
     ]
   },
   {
@@ -1063,6 +1405,12 @@
     "url": "http://ieeexplore.ieee.org/document/8279518/",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/8279518/"
+      }
     ]
   },
   {
@@ -1078,6 +1426,12 @@
     "url": "https://ieeexplore.ieee.org/document/8362861/",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/8362861/"
+      }
     ]
   },
   {
@@ -1096,6 +1450,12 @@
     "url": "https://arxiv.org/abs/1701.01322",
     "tags": [
       "Green Networks"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1701.01322"
+      }
     ]
   },
   {
@@ -1112,6 +1472,12 @@
     "tags": [
       "Cyber Resilience",
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1709.00621"
+      }
     ]
   },
   {
@@ -1132,6 +1498,12 @@
     "tags": [
       "Green Networks",
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1612.01416"
+      }
     ]
   },
   {
@@ -1150,6 +1522,12 @@
     "url": "https://arxiv.org/abs/1706.00107",
     "tags": [
       "Green Networks"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1706.00107"
+      }
     ]
   },
   {
@@ -1167,6 +1545,12 @@
     "url": "https://arxiv.org/abs/1704.05954",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1704.05954"
+      }
     ]
   },
   {
@@ -1182,6 +1566,12 @@
     "url": "https://arxiv.org/abs/1703.01224",
     "tags": [
       "IoT"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1703.01224"
+      }
     ]
   },
   {
@@ -1198,6 +1588,12 @@
     "url": "http://ieeexplore.ieee.org/document/7331645/",
     "tags": [
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/7331645/"
+      }
     ]
   },
   {
@@ -1214,6 +1610,12 @@
     "url": "http://ieeexplore.ieee.org/document/7564929/",
     "tags": [
       "Green Networks"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/7564929/"
+      }
     ]
   },
   {
@@ -1230,6 +1632,12 @@
     "url": "http://ieeexplore.ieee.org/document/7841800/",
     "tags": [
       "Green Networks"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/7841800/"
+      }
     ]
   },
   {
@@ -1244,6 +1652,12 @@
     "url": "http://repository.kaust.edu.sa/kaust/bitstream/10754/552717/1/Thesis_Junaid_Farooq.pdf",
     "tags": [
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "http://repository.kaust.edu.sa/kaust/bitstream/10754/552717/1/Thesis_Junaid_Farooq.pdf"
+      }
     ]
   },
   {
@@ -1260,6 +1674,12 @@
     "url": "http://ieeexplore.ieee.org/document/7391025/",
     "tags": [
       "Vehicular"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/7391025/"
+      }
     ]
   },
   {
@@ -1276,6 +1696,12 @@
     "url": "http://ieeexplore.ieee.org/document/7414135/",
     "tags": [
       "Green Networks"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/7414135/"
+      }
     ]
   },
   {
@@ -1293,6 +1719,12 @@
     "url": "http://ieeexplore.ieee.org/document/6761275/",
     "tags": [
       "Networks"
+    ],
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "http://ieeexplore.ieee.org/document/6761275/"
+      }
     ]
   },
   {
@@ -1307,6 +1739,12 @@
     "url": "https://drive.google.com/open?id=0B4l87UWdDneweGxqNzR5bGJxbjA",
     "tags": [
       "Networks"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://drive.google.com/open?id=0B4l87UWdDneweGxqNzR5bGJxbjA"
+      }
     ]
   }
 ]
