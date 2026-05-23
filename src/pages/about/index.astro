@@ -29,11 +29,18 @@ import site from "../../data/site.json";
 
     <section class="section reveal">
       <h2 class="h-sec">Appointments</h2>
-      <ul class="rows">
+      <div class="appt-list">
         {site.appointments.map((a) => (
-          <li><span class="r-when">{a.years}</span><div><div class="r-main">{a.role}</div><div class="r-sub">{a.org}</div></div></li>
+          <div class="appt-item">
+            {a.logo && <img src={a.logo} alt={a.org} class="appt-logo" loading="lazy" />}
+            <div>
+              <div class="appt-role">{a.role}</div>
+              <div class="appt-org">{a.org}</div>
+              <div class="appt-when">{a.years}</div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
 
     <section class="section reveal grid-2 aw-grid">
@@ -76,6 +83,14 @@ import site from "../../data/site.json";
   :root[data-theme="dark"] .edu-deg { color: var(--text); }
   .edu-inst { font-size: .92rem; color: var(--text-soft); }
   .edu-meta { font-size: .82rem; color: var(--text-mute); font-family: var(--ff-mono); }
+  .appt-list { margin: 1rem 0 0; }
+  .appt-item { display: flex; gap: 1rem; align-items: center; padding: 1rem 0; border-top: 1px solid var(--border); }
+  .appt-item:first-child { border-top: 0; }
+  .appt-logo { width: 46px; height: 46px; object-fit: contain; background: #fff; border-radius: 8px; padding: 4px; flex: 0 0 46px; border: 1px solid var(--border); }
+  .appt-role { font-weight: 600; font-family: var(--ff-serif); color: var(--blue); font-size: 1.05rem; }
+  :root[data-theme="dark"] .appt-role { color: var(--text); }
+  .appt-org { font-size: .92rem; color: var(--text-soft); }
+  .appt-when { font-size: .82rem; color: var(--text-mute); font-family: var(--ff-mono); }
   .rows { list-style: none; padding: 0; margin: 1rem 0 0; }
   .rows li { display: grid; grid-template-columns: 92px 1fr; gap: 1rem; padding: .8rem 0; border-top: 1px solid var(--border); }
   .r-when { font-family: var(--ff-mono); font-size: 12.5px; color: var(--blue-link); }

@@ -48,22 +48,26 @@
     {
       "role": "Associate Professor, Electrical & Computer Engineering",
       "org": "University of Michigan-Dearborn",
-      "years": "2026 - present"
+      "years": "2026 - present",
+      "logo": "/images/umich.png"
     },
     {
-      "role": "Associate Professor, Electrical & Computer Engineering",
+      "role": "Assistant Professor, Electrical & Computer Engineering",
       "org": "University of Michigan-Dearborn",
-      "years": "2020 - 2026"
+      "years": "2020 - 2026",
+      "logo": "/images/umich.png"
     },
     {
       "role": "Research Assistant, Department of Applied Research",
       "org": "Qatar Mobility Innovations Center (QMIC)",
-      "years": "2015 - 2016"
+      "years": "2015 - 2016",
+      "logo": "/images/qmic.png"
     },
     {
       "role": "Research Assistant, Communication Theory Lab",
       "org": "KAUST",
-      "years": "2013 - 2015"
+      "years": "2013 - 2015",
+      "logo": "/images/kaust.png"
     }
   ],
   "awards": [
