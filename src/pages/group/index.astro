@@ -17,7 +17,9 @@ const initials = (n) => n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCas
       <div class="grid-2 members">
         {site.group.members.map((m) => (
           <article class="card member">
-            <div class="m-av">{initials(m.name)}</div>
+            {m.photo
+              ? <div class="m-av m-photo" style={`background-image:url('${m.photo}')`}></div>
+              : <div class="m-av">{initials(m.name)}</div>}
             <div>
               <div class="m-name">{m.name}</div>
               <div class="m-role">{m.role}</div>
@@ -39,7 +41,8 @@ const initials = (n) => n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCas
 <style>
   .members { margin-top: 1.3rem; }
   .member { display: flex; gap: 1rem; align-items: center; }
-  .m-av { width: 52px; height: 52px; flex: 0 0 52px; border-radius: 50%; background: var(--blue); color: var(--maize); font-family: var(--ff-mono); display: grid; place-items: center; font-size: 15px; }
+  .m-av { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%; background: var(--blue); color: var(--maize); font-family: var(--ff-mono); display: grid; place-items: center; font-size: 16px; }
+  .m-photo { background-size: cover; background-position: center; border: 2px solid var(--maize); }
   .m-name { font-weight: 600; font-family: var(--ff-serif); font-size: 1.1rem; color: var(--blue); }
   :root[data-theme="dark"] .m-name { color: var(--text); }
   .m-role { font-size: .85rem; color: var(--blue-link); }
