@@ -12,15 +12,33 @@
     "link": "https://edas.info/N35374"
   },
   {
+    "date": "May 2026",
+    "message": "Yuhui Wang attended the ceremony recognizing Rackham Predoctoral Fellows in Ann Arbor.",
+    "images": ["/images/updates/rackham_ceremony_1.jpg", "/images/updates/rackham_ceremony_2.jpg", "/images/updates/rackham_ceremony_3.jpg"],
+    "link": ""
+  },
+  {
     "date": "Apr 2026",
-    "message": "Ph.D. student Yuhui Wang received the Rackham Predoctoral Fellowship at the University of Michigan for research on aerial communication systems.",
+    "message": "Yuhui Wang received his Rackham Predoctoral Fellowship certificate from Rackham Dean Dewey Jung, recognizing his research on aerial communication systems.",
     "images": ["/images/updates/yuhui_rackham_1.jpg", "/images/updates/yuhui_rackham_2.jpg", "/images/updates/yuhui_rackham_3.jpg"],
+    "link": ""
+  },
+  {
+    "date": "Apr 2026",
+    "message": "Yuhui Wang and Xingqi Wu received pins at the CECS Doctoral Pinning and Recognition Ceremony, celebrating their advancement to candidacy.",
+    "images": ["/images/updates/cecs_pinning_1.jpg", "/images/updates/cecs_pinning_2.jpg", "/images/updates/cecs_pinning_3.jpg"],
     "link": ""
   },
   {
     "date": "Apr 2026",
     "message": "Lab members presented their research posters at the CECS Research Poster Competition.",
     "images": ["/images/updates/cecs_poster_yuhui.jpg", "/images/updates/cecs_poster_xingqi.jpg", "/images/updates/cecs_poster_elahe.jpg"],
+    "link": ""
+  },
+  {
+    "date": "Feb 2026",
+    "message": "Elahe Delavari participated in the Three Minute Thesis (3MT) competition at the University of Michigan-Dearborn.",
+    "images": ["/images/updates/elahe_3mt_1.jpg", "/images/updates/elahe_3mt_2.jpg", "/images/updates/elahe_3mt_3.jpg"],
     "link": ""
   },
   {
@@ -32,7 +50,7 @@
   {
     "date": "Nov 2025",
     "message": "Hosted Prof. Waheed Bajwa at the University of Michigan-Dearborn for a seminar and discussions with faculty and students.",
-    "images": ["/images/updates/bajwa_visit_1.jpg", "/images/updates/bajwa_visit_2.jpg"],
+    "images": ["/images/updates/bajwa_visit_1.jpg", "/images/updates/bajwa_visit_2.jpg", "/images/updates/bajwa_visit_3.jpg"],
     "link": ""
   },
   {
