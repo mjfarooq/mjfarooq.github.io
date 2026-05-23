@@ -343,6 +343,32 @@
         "photo": "/images/team/tintu.jpg",
         "profile": ""
       }
+    ],
+    "alumni": [
+      {
+        "name": "Ritesh Honnalli",
+        "note": "AI-driven cybersecurity for EV charging systems",
+        "year": "2024 - 2025",
+        "linkedin": "https://www.linkedin.com/in/riho/"
+      },
+      {
+        "name": "Dhia Neifar",
+        "note": "Federated learning for vehicular networks",
+        "year": "2023 - 2024",
+        "linkedin": ""
+      },
+      {
+        "name": "Moyan Lyu",
+        "note": "Zero trust cybersecurity for 5G networks",
+        "year": "2023 - 2024",
+        "linkedin": "https://www.linkedin.com/in/moyan-lyu-38a689239/"
+      },
+      {
+        "name": "Zhaoguo Wang",
+        "note": "Resource matching for ride sharing",
+        "year": "2021 - 2022",
+        "linkedin": ""
+      }
     ]
   },
   "grantsSummary": "$2.31M total in research funding ($1.37M as PI, $0.94M as Co-PI).",
