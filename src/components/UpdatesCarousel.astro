@@ -99,6 +99,34 @@ const updates = all.slice(0, 12);
     }
     window.ucMove = function(d){ idx += d; if(idx<0) idx=0; if(idx>maxIdx()) idx=maxIdx(); render(); };
     window.addEventListener("resize", render);
+
+    // touch swipe (finger-following drag with snap)
+    var win = track.parentElement;
+    var startX=0, startY=0, base=0, dragging=false, horiz=false;
+    win.addEventListener("touchstart", function(e){
+      if(e.touches.length!==1) return;
+      startX=e.touches[0].clientX; startY=e.touches[0].clientY;
+      base=-idx*step(); dragging=true; horiz=false;
+      track.style.transition="none";
+    }, {passive:true});
+    win.addEventListener("touchmove", function(e){
+      if(!dragging) return;
+      var dx=e.touches[0].clientX-startX, dy=e.touches[0].clientY-startY;
+      if(!horiz && Math.abs(dx)>Math.abs(dy)+4) horiz=true;
+      if(horiz){ e.preventDefault(); track.style.transform="translateX("+(base+dx)+"px)"; }
+    }, {passive:false});
+    function endDrag(e){
+      if(!dragging) return; dragging=false;
+      track.style.transition="";
+      var dx=(e.changedTouches&&e.changedTouches[0]?e.changedTouches[0].clientX:startX)-startX;
+      var th=Math.max(40, step()*0.18);
+      if(dx<=-th) idx=Math.min(idx+1, maxIdx());
+      else if(dx>=th) idx=Math.max(idx-1, 0);
+      render();
+    }
+    win.addEventListener("touchend", endDrag);
+    win.addEventListener("touchcancel", endDrag);
+
     render();
   })();
 </script>
