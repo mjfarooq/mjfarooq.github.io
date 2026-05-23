@@ -90,32 +90,137 @@
   ],
   "grants": [
     {
-      "year": "2022",
-      "title": "Zero Trust Cybersecurity for 5G Networks",
-      "sponsor": "National Science Foundation (NSF)",
-      "url": "https://nsf.gov/awardsearch/showAward?AWD_ID=2226232"
+      "year": "2026",
+      "title": "Securing Digital Supply Chains through Cyber Risk Intelligence",
+      "sponsor": "UM OVPR Bold Challenges Pollination Award",
+      "role": "PI",
+      "amount": "$10,000",
+      "url": ""
     },
     {
-      "year": "2022",
-      "title": "Cyber Supply Chain Risk Analysis and Mitigation for Automotive IoT",
+      "year": "2026",
+      "title": "AI-Driven NextG Networks to Support High Fidelity and Responsive Manufacturing",
+      "sponsor": "UM OVPR Bold Challenges & AIIM Seed Award",
+      "role": "PI",
+      "amount": "$5,000",
+      "url": ""
+    },
+    {
+      "year": "2025",
+      "title": "CMMC Focus Study of Various Manufacturing Industries",
+      "sponsor": "U.S. Department of Defense via MxD USA",
+      "role": "PI",
+      "amount": "$49,995",
+      "url": ""
+    },
+    {
+      "year": "2025",
+      "title": "Robotic Wireless Signal Strength Mapping of Industrial Facilities (Supplement)",
+      "sponsor": "U.S. Department of Defense via MxD USA",
+      "role": "Co-PI",
+      "amount": "$40,000",
+      "url": ""
+    },
+    {
+      "year": "2024",
+      "title": "5G Hardware Encryption Cybersecurity Integration Evaluation",
+      "sponsor": "U.S. Department of Defense via MxD USA / OPEX Systems",
+      "role": "PI",
+      "amount": "$45,000",
+      "url": ""
+    },
+    {
+      "year": "2024",
+      "title": "Systemic Cyber Risk Management for Complex Automotive Supply Chains",
       "sponsor": "Michigan Economic Development Corporation, MTRAC",
+      "role": "PI",
+      "amount": "$99,960",
+      "url": ""
+    },
+    {
+      "year": "2024",
+      "title": "Comprehensive Wireless Signal Measurement and Analysis: From WiFi to 5G Cellular Spectra",
+      "sponsor": "UM-Dearborn SURE",
+      "role": "PI",
+      "amount": "$3,200",
+      "url": ""
+    },
+    {
+      "year": "2023",
+      "title": "Robotic Wireless Signal Strength Mapping of Industrial Facilities",
+      "sponsor": "U.S. Department of Defense via MxD USA",
+      "role": "Co-PI",
+      "amount": "$899,999",
       "url": ""
     },
     {
       "year": "2022",
-      "title": "Cyber Supply Chain Risk Analysis and Mitigation",
-      "sponsor": "Department of Homeland Security",
+      "title": "NSF Convergence Accelerator Track G: Proactive End-to-End Zero Trust-Based Security Intelligence for Resilient Non-cooperative 5G Networks",
+      "sponsor": "National Science Foundation",
+      "role": "PI",
+      "amount": "$749,866",
+      "url": "https://nsf.gov/awardsearch/showAward?AWD_ID=2226232"
+    },
+    {
+      "year": "2022",
+      "title": "5G Cybersecurity Reference Architecture",
+      "sponsor": "U.S. Department of Defense via MxD USA / OPEX Systems",
+      "role": "PI",
+      "amount": "$50,000",
+      "url": ""
+    },
+    {
+      "year": "2022",
+      "title": "Cyber Supply Chain Risk Assessment and Mitigation for Automotive IoT",
+      "sponsor": "Michigan Economic Development Corporation, MTRAC",
+      "role": "PI",
+      "amount": "$34,500",
+      "url": ""
+    },
+    {
+      "year": "2022",
+      "title": "Experimentation on Drone Testbed for 5G and Beyond Wireless",
+      "sponsor": "UM-Dearborn SURE",
+      "role": "PI",
+      "amount": "$3,200",
+      "url": ""
+    },
+    {
+      "year": "2022",
+      "title": "OVPR Pandemic Relief Funding",
+      "sponsor": "University of Michigan OVPR",
+      "role": "PI",
+      "amount": "$3,000",
+      "url": ""
+    },
+    {
+      "year": "2021",
+      "title": "Multi-layer Cyber-Physical Supply Chain Risk Analysis for Critical Infrastructure Resilience",
+      "sponsor": "U.S. Department of Homeland Security S&T via CIRI",
+      "role": "PI",
+      "amount": "$299,747",
       "url": "https://umdearborn.edu/news/looming-security-threat-posed-cyber-supply-chain"
     },
     {
-      "year": "2019",
-      "title": "Multi-layer Cyber-Physical Supply Chain Risk Analysis for Critical Infrastructure Resilience",
-      "sponsor": "Critical Infrastructure Resilience Institute (CIRI)",
+      "year": "2021",
+      "title": "Multi-tier Aerial Network Formation and Control for Emergency Communications",
+      "sponsor": "UM-Dearborn Research Initiation and Development Grant",
+      "role": "PI",
+      "amount": "$10,000",
+      "url": ""
+    },
+    {
+      "year": "2021",
+      "title": "Cost-Effective Charging and Refueling Strategies for Autonomous Vehicles",
+      "sponsor": "UM-Dearborn SURE",
+      "role": "PI",
+      "amount": "$3,200",
       "url": ""
     }
   ],
   "service": {
     "editorial": [
+      "Associate Editor, IEEE Transactions on Communications (TCOM), 2025 - 2030",
       "Editorial Board, Springer Neural Processing Letters"
     ],
     "reviewer": [
@@ -229,5 +334,6 @@
         "photo": "/images/team/elahe.jpg"
       }
     ]
-  }
+  },
+  "grantsSummary": "$2.31M total in research funding ($1.37M as PI, $0.94M as Co-PI)."
 }
