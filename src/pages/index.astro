@@ -3,7 +3,11 @@ import Base from "../layouts/Base.astro";
 import UpdatesCarousel from "../components/UpdatesCarousel.astro";
 import site from "../data/site.json";
 import pubs from "../data/publications.json";
-const recent = pubs.filter(p => p.type !== "Thesis").slice(0, 5);
+const recent = pubs
+  .filter(p => p.type !== "Thesis")
+  .map(p => ({ ...p, link: p.url || (p.links && p.links[0] && p.links[0].url) || "" }))
+  .filter(p => p.link)
+  .slice(0, 5);
 const counts = {
   total: pubs.filter(p=>p.type!=="Thesis").length,
   journals: pubs.filter(p=>p.type==="Journal").length,
@@ -62,7 +66,7 @@ const counts = {
           <li>
             <span class="pm-year">{p.year}</span>
             <div>
-              {p.url ? <a class="pm-title" href={p.url} target="_blank" rel="noopener">{p.title}</a> : <span class="pm-title">{p.title}</span>}
+              {p.link ? <a class="pm-title" href={p.link} target="_blank" rel="noopener">{p.title}</a> : <span class="pm-title">{p.title}</span>}
               <div class="pm-venue">{p.venue}</div>
             </div>
           </li>
