@@ -1,6 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
 import updates from "../../data/updates.json";
+import site from "../../data/site.json";
+const linkMembers = (site.group.members || []).filter((m) => m.profile);
+const linkify = (t) => {
+  let s = t;
+  for (const m of linkMembers) s = s.split(m.name).join(`<a class="ni-namelink" href="${m.profile}">${m.name}</a>`);
+  return s;
+};
 ---
 <Base title="News" description="Recent news and activities from Junaid Farooq and the CyReN Lab.">
   <div class="container">
@@ -16,7 +23,7 @@ import updates from "../../data/updates.json";
               <span class="ni-date">{u.date}</span>
             </div>
             <div class="ni-body">
-              <p class="ni-text">{u.message}</p>
+              <p class="ni-text" set:html={linkify(u.message)}></p>
               {u.link && <a class="ni-link" href={u.link} target="_blank" rel="noopener">View details →</a>}
               {u.images && u.images.length > 0 && (
                 <div class="ni-photos">
@@ -38,6 +45,7 @@ import updates from "../../data/updates.json";
   .news-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.4rem; padding: 1.8rem 0; border-top: 1px solid var(--border); }
   .ni-date { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); padding-top: .2rem; display: inline-block; }
   .ni-text { font-size: 1.05rem; color: var(--text); margin: 0 0 .6rem; }
+  .ni-text :global(.ni-namelink) { color: var(--blue-link); font-weight: 600; }
   .ni-link { font-family: var(--ff-mono); font-size: 13px; }
   .ni-photos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
   .ni-photo { width: 240px; height: 168px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid var(--border); cursor: zoom-in; transition: transform .2s; }

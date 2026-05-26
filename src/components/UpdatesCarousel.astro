@@ -1,6 +1,13 @@
 ---
 import all from "../data/updates.json";
+import site from "../data/site.json";
 const updates = all.slice(0, 12);
+const linkMembers = (site.group.members || []).filter((m) => m.profile);
+const linkify = (t) => {
+  let s = t;
+  for (const m of linkMembers) s = s.split(m.name).join(`<a class="uc-namelink" href="${m.profile}">${m.name}</a>`);
+  return s;
+};
 ---
 <div class="uc" id="updates">
   <div class="uc-head">
@@ -34,7 +41,7 @@ const updates = all.slice(0, 12);
           )}
           <div class="uc-body">
             <span class="uc-date">{u.date}</span>
-            <p class="uc-msg">{u.message}</p>
+            <p class="uc-msg" set:html={linkify(u.message)}></p>
             {u.link && <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>}
           </div>
         </article>
@@ -69,6 +76,7 @@ const updates = all.slice(0, 12);
   .uc-body { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; flex: 1; }
   .uc-date { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .04em; color: var(--blue-link); background: var(--surface-soft); border: 1px solid var(--border); padding: .15rem .5rem; border-radius: 5px; align-self: flex-start; margin-bottom: .55rem; }
   .uc-msg { font-size: 13.5px; color: var(--text); line-height: 1.5; margin: 0 0 .6rem; }
+  .uc-msg :global(.uc-namelink) { color: var(--blue-link); font-weight: 600; }
   .uc-link { font-family: var(--ff-mono); font-size: 12px; margin-top: auto; }
 
   .uc-dots { display: flex; gap: 6px; justify-content: center; margin-top: 1.1rem; }

@@ -316,18 +316,18 @@
     "blurb": "I lead the Cyber Resilient Networks (CyReN) Lab, where we develop solutions for secure and resilient wireless networks, automated cybersecurity compliance, cyber risk management, and next-generation network architectures.",
     "members": [
       {
-        "name": "Xingqi Wu",
-        "role": "Ph.D. Researcher",
-        "focus": "O-RAN resource orchestration",
-        "photo": "/images/team/xingqi.jpg",
-        "profile": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/team/xingqi-wu"
-      },
-      {
         "name": "Yuhui Wang",
         "role": "Ph.D. Researcher",
         "focus": "UAV networks & RL",
         "photo": "/images/team/yuhui.jpg",
         "profile": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/team/yuhui-wang"
+      },
+      {
+        "name": "Xingqi Wu",
+        "role": "Ph.D. Researcher",
+        "focus": "O-RAN resource orchestration",
+        "photo": "/images/team/xingqi.jpg",
+        "profile": "https://mjfarooq.github.io/mjfarooq.github.io-cyren/team/xingqi-wu"
       },
       {
         "name": "Elahe Delavari",
