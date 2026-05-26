@@ -16,6 +16,26 @@
     "links": []
   },
   {
+    "title": "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
+    "authors": [
+      "X. Wu",
+      "J. Farooq",
+      "T. Li",
+      "J. Chen",
+      "Ying Wang"
+    ],
+    "authors_str": "X. Wu*, J. Farooq, T. Li, J. Chen, and Ying Wang",
+    "year": 2026,
+    "type": "Journal",
+    "venue": "in IEEE Networking Letters",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
     "authors": [
       "Y. Wang",
