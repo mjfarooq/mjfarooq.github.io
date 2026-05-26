@@ -127,6 +127,27 @@ const updates = all.slice(0, 12);
     win.addEventListener("touchend", endDrag);
     win.addEventListener("touchcancel", endDrag);
 
+    // trackpad / mouse-wheel horizontal gesture (follow + snap)
+    var wheeling=false, accum=0, wheelTimer=null;
+    win.addEventListener("wheel", function(e){
+      if(Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // let vertical page scroll pass
+      if(maxIdx()<=0) return; // nothing to scroll
+      e.preventDefault();
+      if(!wheeling){ wheeling=true; accum=-idx*step(); track.style.transition="none"; }
+      accum -= e.deltaX;
+      var min=-maxIdx()*step();
+      if(accum>0) accum=0; if(accum<min) accum=min;
+      track.style.transform="translateX("+accum+"px)";
+      clearTimeout(wheelTimer);
+      wheelTimer=setTimeout(function(){
+        wheeling=false;
+        track.style.transition="";
+        idx=Math.round(-accum/step());
+        if(idx<0) idx=0; if(idx>maxIdx()) idx=maxIdx();
+        render();
+      }, 120);
+    }, {passive:false});
+
     render();
   })();
 </script>
