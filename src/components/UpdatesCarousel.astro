@@ -52,7 +52,7 @@ const updates = all.slice(0, 12);
   :root[data-theme="dark"] .uc-btn { color: var(--text); }
   .uc-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
-  .uc-window { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .uc-window { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .uc-window::-webkit-scrollbar { display: none; }
   .uc-track { display: flex; gap: 16px; }
   .uc-card { flex: 0 0 264px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
@@ -107,6 +107,24 @@ const updates = all.slice(0, 12);
       raf = requestAnimationFrame(function(){ raf=null; renderDots(); });
     }, {passive:true});
     window.addEventListener("resize", renderDots);
+
+    // trackpad / mouse wheel: translate scrolling into horizontal movement.
+    // Uses horizontal delta when present, otherwise vertical, and releases to
+    // the page once the carousel reaches its start or end so you never get stuck.
+    win.addEventListener("wheel", function(e){
+      var maxScroll = win.scrollWidth - win.clientWidth;
+      if(maxScroll <= 1) return; // nothing to scroll horizontally
+      var horiz = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+      var delta = horiz ? e.deltaX : e.deltaY;
+      if(!delta) return;
+      var atStart = win.scrollLeft <= 0;
+      var atEnd = win.scrollLeft >= maxScroll - 1;
+      // at an edge, let vertical page scrolling continue normally
+      if(!horiz && ((delta < 0 && atStart) || (delta > 0 && atEnd))) return;
+      e.preventDefault();
+      win.scrollLeft += delta;
+    }, {passive:false});
+
     renderDots();
   })();
 </script>
