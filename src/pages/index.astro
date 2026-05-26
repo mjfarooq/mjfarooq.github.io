@@ -26,6 +26,7 @@ const counts = {
         {site.interests.map((i) => <span class="tag">{i}</span>)}
       </div>
       <div class="cta">
+        <a class="btn btn-maize lab-cta" href={site.lab.url} target="_blank" rel="noopener">Visit the {site.lab.name} Lab →</a>
         <a class="btn btn-primary" href="/publications">Publications</a>
         <a class="btn" href="/research">Research</a>
         <a class="btn" href={"mailto:" + site.email}>Get in touch</a>

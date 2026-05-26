@@ -25,8 +25,7 @@ const linkify = (t) => {
     </div>
   </div>
 
-  <div class="uc-window">
-    <div class="uc-track" id="uc-track">
+  <div class="uc-window" id="uc-track">
       {updates.map((u) => (
         <article class="uc-card">
           {u.images && u.images.length > 0 && (
@@ -46,7 +45,6 @@ const linkify = (t) => {
           </div>
         </article>
       ))}
-    </div>
   </div>
   <div class="uc-dots" id="uc-dots"></div>
 </div>
@@ -59,9 +57,8 @@ const linkify = (t) => {
   :root[data-theme="dark"] .uc-btn { color: var(--text); }
   .uc-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
-  .uc-window { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .uc-window { display: flex; gap: 16px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .uc-window::-webkit-scrollbar { display: none; }
-  .uc-track { display: flex; gap: 16px; }
   .uc-card { flex: 0 0 264px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
 
   .uc-photos { display: grid; gap: 2px; height: 150px; }
@@ -88,7 +85,7 @@ const linkify = (t) => {
   (function(){
     var track = document.getElementById("uc-track");
     if(!track) return;
-    var win = track.parentElement; // native horizontal scroll container
+    var win = track; // the flex row is itself the native horizontal scroll container
     var dots = document.getElementById("uc-dots");
     var cards = track.children.length;
     function step(){ var c = track.querySelector(".uc-card"); return c ? c.offsetWidth + 16 : 280; }
