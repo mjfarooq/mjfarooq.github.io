@@ -97,8 +97,17 @@ a:hover { text-decoration: underline; }
 
 img { max-width: 100%; height: auto; }
 
+.mobile-id { display: none; }
+
 @media (max-width: 880px) {
   .main { margin-left: 0; }
   .grid-2 { grid-template-columns: 1fr; }
-  .container { padding-top: 72px; }
+  .container { padding-top: 1.4rem; }
+  .mobile-id { display: flex; align-items: center; gap: 1rem; padding: 60px 20px 1.1rem; border-bottom: 1px solid var(--border); }
+  .mid-avatar { width: 76px; height: 76px; flex: 0 0 76px; border-radius: 50%; object-fit: cover; border: 2px solid var(--maize); }
+  .mid-name { font-family: var(--ff-serif); font-size: 1.28rem; font-weight: 600; color: var(--blue); line-height: 1.1; }
+  .mid-role { font-size: .86rem; color: var(--blue-link); margin-top: .15rem; }
+  .mid-dept { font-size: .78rem; color: var(--text-mute); margin-top: .05rem; }
 }
+
+:root[data-theme="dark"] .mid-name { color: var(--text); }

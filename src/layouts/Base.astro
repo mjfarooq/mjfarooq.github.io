@@ -61,6 +61,14 @@ const personLd = {
   <div class="layout">
     <Sidebar />
     <div class="main">
+      <div class="mobile-id">
+        <img class="mid-avatar" src="/images/avatar.jpg" alt={site.name} />
+        <div>
+          <div class="mid-name">{site.name}</div>
+          <div class="mid-role">{site.role}</div>
+          <div class="mid-dept">{site.department}</div>
+        </div>
+      </div>
       <slot />
       <footer class="site-foot">
         <div class="container foot-inner">
