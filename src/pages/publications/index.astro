@@ -3,7 +3,8 @@ import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
 const types = ["All", "Journal", "Conference", "Book", "Book Chapter", "Thesis"];
 const total = pubs.length;
-const years = pubs.map(p=>p.year);
+const years = Array.from(new Set(pubs.map((p) => p.year))).sort((a, b) => b - a);
+const authorList = Array.from(new Set(pubs.flatMap((p) => p.authors || []))).sort((a, b) => a.localeCompare(b));
 function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<strong>$1</strong>"); }
 ---
 <Base title="Publications" description="Books, journal articles, and conference papers by Junaid Farooq.">
@@ -22,11 +23,19 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
           {types.map((t) => <button class={"chip" + (t==="All"?" on":"")} data-t={t}>{t}</button>)}
         </div>
       </div>
+      <div class="filters reveal">
+        <label class="fl"><span>Year</span>
+          <select id="year"><option value="All">All years</option>{years.map((y) => <option value={y}>{y}</option>)}</select>
+        </label>
+        <label class="fl"><span>Author</span>
+          <select id="author"><option value="All">All authors</option>{authorList.map((a) => <option value={a}>{a}</option>)}</select>
+        </label>
+      </div>
       <div class="count mono" id="count" style="display:none"></div>
 
       <ol class="plist" id="plist">
         {pubs.map((p) => (
-          <li class="pitem" data-type={p.type} data-s={(p.title + " " + p.authors_str + " " + p.venue + " " + p.tags.join(" ")).toLowerCase()}>
+          <li class="pitem" data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={(p.title + " " + p.authors_str + " " + p.venue + " " + p.tags.join(" ")).toLowerCase()}>
             <div class="pi-year">{p.year}</div>
             <div class="pi-body">
               <div class="pi-top">
@@ -60,6 +69,10 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
   .chip:hover { border-color: var(--border-strong); }
   .chip.on { background: var(--blue); color: #fff; border-color: var(--blue); }
   .count { font-size: 12px; color: var(--text-mute); margin: .4rem 0 1.2rem; font-family: var(--ff-mono); }
+  .filters { display: flex; flex-wrap: wrap; gap: .9rem; margin: .7rem 0 0; }
+  .fl { display: flex; align-items: center; gap: .45rem; font-family: var(--ff-mono); font-size: 12px; color: var(--text-mute); }
+  .fl select { font-family: var(--ff-sans); font-size: 13px; color: var(--text); background: var(--surface); border: 1px solid var(--border-strong); border-radius: 7px; padding: .4rem .6rem; cursor: pointer; max-width: 220px; }
+  .fl select:focus { outline: 0; border-color: var(--blue); }
 
   .plist { list-style: none; padding: 0; margin: 0; }
   .pitem { display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid var(--border); }
@@ -90,31 +103,39 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
     var q = document.getElementById("q"), list = document.getElementById("plist");
     var items = [].slice.call(list.querySelectorAll(".pitem"));
     var count = document.getElementById("count"), nores = document.getElementById("nores");
+    var yearSel = document.getElementById("year"), authorSel = document.getElementById("author");
     var active = "All";
-    function norm(t){ return t.toLowerCase().replace(" ",""); }
     function apply(){
       var s = (q.value||"").trim().toLowerCase(), n = 0;
+      var yr = yearSel.value, au = authorSel.value;
       items.forEach(function(el){
         var okT = active==="All" || el.getAttribute("data-type")===active;
         var okS = !s || el.getAttribute("data-s").indexOf(s) !== -1;
-        var show = okT && okS; el.style.display = show?"":"none"; if(show) n++;
+        var okY = yr==="All" || el.getAttribute("data-year")===yr;
+        var okA = au==="All" || ("|"+el.getAttribute("data-authors")+"|").indexOf("|"+au+"|") !== -1;
+        var show = okT && okS && okY && okA; el.style.display = show?"":"none"; if(show) n++;
       });
-      var filtering = (s !== "" || active !== "All");
+      var filtering = (s !== "" || active !== "All" || yr !== "All" || au !== "All");
       count.style.display = filtering ? "" : "none";
       if (filtering) count.textContent = n + (n===1?" result":" results");
       nores.hidden = n!==0;
     }
     q.addEventListener("input", apply);
+    yearSel.addEventListener("change", apply);
+    authorSel.addEventListener("change", apply);
     document.getElementById("chips").addEventListener("click", function(e){
       var b = e.target.closest(".chip"); if(!b) return;
       active = b.getAttribute("data-t");
       document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===b); });
       apply();
     });
-    var ptype = new URLSearchParams(location.search).get("type");
+    var params = new URLSearchParams(location.search);
+    var ptype = params.get("type");
     if(ptype){
       var chip = document.querySelector('#chips .chip[data-t="' + ptype.replace(/"/g,"") + '"]');
-      if(chip){ active = chip.getAttribute("data-t"); document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===chip); }); apply(); }
+      if(chip){ active = chip.getAttribute("data-t"); document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===chip); }); }
     }
+    var pyear = params.get("year"); if(pyear){ var yo = yearSel.querySelector('option[value="'+pyear.replace(/"/g,"")+'"]'); if(yo) yearSel.value = yo.value; }
+    apply();
   })();
 </script>
