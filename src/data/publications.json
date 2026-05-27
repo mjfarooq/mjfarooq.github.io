@@ -1669,14 +1669,14 @@
     "year": 2015,
     "type": "Thesis",
     "venue": "KAUST",
-    "url": "http://repository.kaust.edu.sa/kaust/bitstream/10754/552717/1/Thesis_Junaid_Farooq.pdf",
+    "url": "https://repository.kaust.edu.sa/handle/10754/552717",
     "tags": [
       "Vehicular"
     ],
     "links": [
       {
         "label": "PDF",
-        "url": "http://repository.kaust.edu.sa/kaust/bitstream/10754/552717/1/Thesis_Junaid_Farooq.pdf"
+        "url": "https://repository.kaust.edu.sa/handle/10754/552717"
       }
     ]
   },
@@ -1756,14 +1756,14 @@
     "year": 2013,
     "type": "Thesis",
     "venue": "NUST",
-    "url": "https://drive.google.com/open?id=0B4l87UWdDneweGxqNzR5bGJxbjA",
+    "url": "https://drive.google.com/file/d/0B4l87UWdDneweGxqNzR5bGJxbjA/view",
     "tags": [
       "Networks"
     ],
     "links": [
       {
         "label": "PDF",
-        "url": "https://drive.google.com/open?id=0B4l87UWdDneweGxqNzR5bGJxbjA"
+        "url": "https://drive.google.com/file/d/0B4l87UWdDneweGxqNzR5bGJxbjA/view"
       }
     ]
   }
