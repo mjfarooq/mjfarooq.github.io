@@ -1,7 +1,11 @@
 ---
 import all from "../data/updates.json";
 import site from "../data/site.json";
-const updates = all.slice(0, 12);
+const isPub = (u) => u.category === "publication";
+const sections = [
+  { title: "Publications", items: all.filter(isPub).slice(0, 12) },
+  { title: "News from the lab", items: all.filter((u) => !isPub(u)).slice(0, 12) },
+];
 const linkMembers = (site.group.members || []).filter((m) => m.profile);
 const linkify = (t) => {
   let s = t;
@@ -9,47 +13,52 @@ const linkify = (t) => {
   return s;
 };
 ---
-<div class="uc" id="updates">
-  <div class="uc-head">
-    <div>
-      <span class="eyebrow">Recent updates</span>
-      <h2 class="h-sec">News from the lab</h2>
-    </div>
-    <div class="uc-nav">
-      <button class="uc-btn" onclick="ucMove(-1)" aria-label="Previous updates">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="uc-btn" onclick="ucMove(1)" aria-label="Next updates">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </div>
+<div class="uc-wrap" id="updates">
+  {sections.map((sec) => sec.items.length > 0 && (
+    <div class="uc">
+      <div class="uc-head">
+        <div>
+          <span class="eyebrow">Recent updates</span>
+          <h2 class="h-sec">{sec.title}</h2>
+        </div>
+        <div class="uc-nav">
+          <button class="uc-btn" data-dir="-1" aria-label="Previous">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="uc-btn" data-dir="1" aria-label="Next">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
 
-  <div class="uc-window" id="uc-track">
-      {updates.map((u) => (
-        <article class="uc-card">
-          {u.images && u.images.length > 0 && (
-            <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
-              {u.images.slice(0, 3).map((img, i) => (
-                <div class="uc-photo">
-                  <img src={img} style={`object-position:${(u.imgPos && u.imgPos[i]) || 'center'}`} data-gallery={JSON.stringify(u.images)} data-index={i} alt="" loading="lazy" onerror="this.closest('.uc-photo').style.display='none'" />
-                  {i === 2 && u.images.length > 3 && <span class="uc-more" data-gallery={JSON.stringify(u.images)} data-index={i}>+{u.images.length - 3}</span>}
-                </div>
-              ))}
+      <div class="uc-window">
+        {sec.items.map((u) => (
+          <article class="uc-card">
+            {u.images && u.images.length > 0 && (
+              <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
+                {u.images.slice(0, 3).map((img, i) => (
+                  <div class="uc-photo">
+                    <img src={img} style={`object-position:${(u.imgPos && u.imgPos[i]) || 'center'}`} data-gallery={JSON.stringify(u.images)} data-index={i} alt="" loading="lazy" onerror="this.closest('.uc-photo').style.display='none'" />
+                    {i === 2 && u.images.length > 3 && <span class="uc-more" data-gallery={JSON.stringify(u.images)} data-index={i}>+{u.images.length - 3}</span>}
+                  </div>
+                ))}
+              </div>
+            )}
+            <div class="uc-body">
+              <span class="uc-date">{u.date}</span>
+              <p class="uc-msg" set:html={linkify(u.message)}></p>
+              {u.link && <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>}
             </div>
-          )}
-          <div class="uc-body">
-            <span class="uc-date">{u.date}</span>
-            <p class="uc-msg" set:html={linkify(u.message)}></p>
-            {u.link && <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>}
-          </div>
-        </article>
-      ))}
-  </div>
-  <div class="uc-dots" id="uc-dots"></div>
+          </article>
+        ))}
+      </div>
+      <div class="uc-dots"></div>
+    </div>
+  ))}
 </div>
 
 <style>
+  .uc-wrap { display: flex; flex-direction: column; gap: 2.4rem; }
   .uc { margin-top: .5rem; }
   .uc-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.2rem; }
   .uc-nav { display: flex; gap: .5rem; }
@@ -83,53 +92,44 @@ const linkify = (t) => {
 
 <script is:inline>
   (function(){
-    var track = document.getElementById("uc-track");
-    if(!track) return;
-    var win = track; // the flex row is itself the native horizontal scroll container
-    var dots = document.getElementById("uc-dots");
-    var cards = track.children.length;
-    function step(){ var c = track.querySelector(".uc-card"); return c ? c.offsetWidth + 16 : 280; }
-    function visible(){ return Math.max(1, Math.round(win.clientWidth / step())); }
-    function maxIdx(){ return Math.max(0, cards - visible()); }
-    function curIdx(){ return Math.max(0, Math.min(maxIdx(), Math.round(win.scrollLeft / step()))); }
-    function renderDots(){
-      var ci = curIdx();
-      dots.innerHTML = "";
-      for(var i=0;i<=maxIdx();i++){
-        var b = document.createElement("button");
-        b.className = "uc-dot" + (i===ci?" on":"");
-        b.setAttribute("aria-label","Go to update "+(i+1));
-        (function(j){ b.onclick=function(){ win.scrollTo({ left: j*step(), behavior:"smooth" }); }; })(i);
-        dots.appendChild(b);
+    document.querySelectorAll(".uc").forEach(function(uc){
+      var win = uc.querySelector(".uc-window");
+      var dots = uc.querySelector(".uc-dots");
+      if(!win || !dots) return;
+      var cards = win.children.length;
+      function step(){ var c = win.querySelector(".uc-card"); return c ? c.offsetWidth + 16 : 280; }
+      function visible(){ return Math.max(1, Math.round(win.clientWidth / step())); }
+      function maxIdx(){ return Math.max(0, cards - visible()); }
+      function curIdx(){ return Math.max(0, Math.min(maxIdx(), Math.round(win.scrollLeft / step()))); }
+      function renderDots(){
+        var ci = curIdx();
+        dots.innerHTML = "";
+        for(var i=0;i<=maxIdx();i++){
+          var b = document.createElement("button");
+          b.className = "uc-dot" + (i===ci?" on":"");
+          b.setAttribute("aria-label","Go to update "+(i+1));
+          (function(j){ b.onclick=function(){ win.scrollTo({ left: j*step(), behavior:"smooth" }); }; })(i);
+          dots.appendChild(b);
+        }
       }
-    }
-    // arrows: move one card; native smooth scroll handles the motion
-    window.ucMove = function(d){ win.scrollBy({ left: d*step(), behavior:"smooth" }); };
-    // keep dots in sync with trackpad / touch / arrow scrolling
-    var raf=null;
-    win.addEventListener("scroll", function(){
-      if(raf) return;
-      raf = requestAnimationFrame(function(){ raf=null; renderDots(); });
-    }, {passive:true});
-    window.addEventListener("resize", renderDots);
-
-    // trackpad / mouse wheel: translate scrolling into horizontal movement.
-    // Uses horizontal delta when present, otherwise vertical, and releases to
-    // the page once the carousel reaches its start or end so you never get stuck.
-    win.addEventListener("wheel", function(e){
-      var maxScroll = win.scrollWidth - win.clientWidth;
-      if(maxScroll <= 1) return; // nothing to scroll horizontally
-      var horiz = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      var delta = horiz ? e.deltaX : e.deltaY;
-      if(!delta) return;
-      var atStart = win.scrollLeft <= 0;
-      var atEnd = win.scrollLeft >= maxScroll - 1;
-      // at an edge, let vertical page scrolling continue normally
-      if(!horiz && ((delta < 0 && atStart) || (delta > 0 && atEnd))) return;
-      e.preventDefault();
-      win.scrollLeft += delta;
-    }, {passive:false});
-
-    renderDots();
+      uc.querySelectorAll(".uc-btn").forEach(function(b){
+        b.addEventListener("click", function(){ win.scrollBy({ left: parseInt(b.getAttribute("data-dir"),10)*step(), behavior:"smooth" }); });
+      });
+      var raf=null;
+      win.addEventListener("scroll", function(){ if(raf) return; raf = requestAnimationFrame(function(){ raf=null; renderDots(); }); }, {passive:true});
+      window.addEventListener("resize", renderDots);
+      win.addEventListener("wheel", function(e){
+        var maxScroll = win.scrollWidth - win.clientWidth;
+        if(maxScroll <= 1) return;
+        var horiz = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+        var delta = horiz ? e.deltaX : e.deltaY;
+        if(!delta) return;
+        var atStart = win.scrollLeft <= 0, atEnd = win.scrollLeft >= maxScroll - 1;
+        if(!horiz && ((delta < 0 && atStart) || (delta > 0 && atEnd))) return;
+        e.preventDefault();
+        win.scrollLeft += delta;
+      }, {passive:false});
+      renderDots();
+    });
   })();
 </script>

@@ -1,6 +1,15 @@
 [
   {
     "date": "May 2026",
+    "message": "Our paper \"Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback\" was accepted in IEEE Networking Letters. Congratulations Xingqi!",
+    "images": [
+      "/images/updates/delay_aware_oran.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
+    "date": "May 2026",
     "message": "Ph.D. student Yuhui Wang joins Nokia Bell Labs as a Generative AI Intern for Summer 2026.",
     "images": [
       "/images/updates/yuhui_nokia.jpg"
@@ -89,7 +98,8 @@
     "date": "Jan 2026",
     "message": "New book published: Cyber Resilience in Next-Generation Networks (Foundations and Trends in Networking).",
     "images": [],
-    "link": ""
+    "link": "",
+    "category": "publication"
   },
   {
     "date": "Nov 2025",
@@ -105,13 +115,15 @@
     "date": "Nov 2025",
     "message": "Paper accepted in IEEE Networking Letters.",
     "images": [],
-    "link": "https://ieeexplore.ieee.org/document/11494807"
+    "link": "https://ieeexplore.ieee.org/document/11494807",
+    "category": "publication"
   },
   {
     "date": "Aug 2025",
     "message": "Poster accepted at ACM MobiHoc 2025.",
     "images": [],
-    "link": "https://dl.acm.org/doi/10.1145/3704413.3765320"
+    "link": "https://dl.acm.org/doi/10.1145/3704413.3765320",
+    "category": "publication"
   },
   {
     "date": "Jun 2025",
@@ -127,7 +139,8 @@
     "date": "Jun 2025",
     "message": "Paper accepted in IEEE Open Journal of the Communications Society.",
     "images": [],
-    "link": ""
+    "link": "",
+    "category": "publication"
   },
   {
     "date": "May 2025",
