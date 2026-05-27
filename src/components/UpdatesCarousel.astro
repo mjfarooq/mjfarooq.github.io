@@ -67,7 +67,7 @@ const linkify = (t) => {
   .uc-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
   /* native horizontal scroll, identical to the student-page "In the news" strip */
-  .uc-row { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+  .uc-row { display: flex; align-items: flex-start; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
   .uc-row::-webkit-scrollbar { display: none; }
   .uc-card { flex: 0 0 264px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
 
@@ -78,6 +78,10 @@ const linkify = (t) => {
   .uc-photos.n3 .uc-photo:first-child { grid-row: 1 / 3; }
   .uc-photo { position: relative; overflow: hidden; background-color: var(--blue); }
   .uc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; cursor: zoom-in; }
+  /* single-image cards show the whole figure (no clipping) */
+  .uc-photos.n1 { height: auto; }
+  .uc-photos.n1 .uc-photo { background: var(--surface-soft); }
+  .uc-photos.n1 .uc-photo img { height: auto; max-height: 300px; object-fit: contain; object-position: center; }
   .uc-more { position: absolute; inset: 0; background: rgba(0,39,76,.62); color: #fff; font-family: var(--ff-mono); font-size: 15px; display: flex; align-items: center; justify-content: center; cursor: zoom-in; }
 
   .uc-body { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; flex: 1; }
