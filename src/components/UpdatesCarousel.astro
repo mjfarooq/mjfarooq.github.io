@@ -2,10 +2,9 @@
 import all from "../data/updates.json";
 import site from "../data/site.json";
 const isPub = (u) => u.category === "publication";
-const sections = [
-  { title: "Publications", items: all.filter(isPub).slice(0, 12) },
-  { title: "News from the lab", items: all.filter((u) => !isPub(u)).slice(0, 12) },
-];
+const newsItems = all.filter((u) => !isPub(u)).slice(0, 12).map((u) => ({ u, cat: "news" }));
+const pubItems = all.filter(isPub).slice(0, 12).map((u) => ({ u, cat: "publication" }));
+const items = newsItems.concat(pubItems);
 const linkMembers = (site.group.members || []).filter((m) => m.profile);
 const linkify = (t) => {
   let s = t;
@@ -13,54 +12,58 @@ const linkify = (t) => {
   return s;
 };
 ---
-<div class="uc-wrap" id="updates">
-  {sections.map((sec) => sec.items.length > 0 && (
-    <div class="uc">
-      <div class="uc-head">
-        <div>
-          <span class="eyebrow">Recent updates</span>
-          <h2 class="h-sec">{sec.title}</h2>
-        </div>
-        <div class="uc-nav">
-          <button class="uc-btn" data-dir="-1" aria-label="Previous">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="uc-btn" data-dir="1" aria-label="Next">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+<div class="uc" id="updates">
+  <div class="uc-head">
+    <div>
+      <span class="eyebrow">Recent updates</span>
+      <h2 class="h-sec">News from the lab</h2>
+      <div class="uc-tabs" role="tablist">
+        <button class="uc-tab on" data-cat="news">News</button>
+        <button class="uc-tab" data-cat="publication">Publications</button>
       </div>
-
-      <div class="uc-window">
-        {sec.items.map((u) => (
-          <article class="uc-card">
-            {u.images && u.images.length > 0 && (
-              <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
-                {u.images.slice(0, 3).map((img, i) => (
-                  <div class="uc-photo">
-                    <img src={img} style={`object-position:${(u.imgPos && u.imgPos[i]) || 'center'}`} data-gallery={JSON.stringify(u.images)} data-index={i} alt="" loading="lazy" onerror="this.closest('.uc-photo').style.display='none'" />
-                    {i === 2 && u.images.length > 3 && <span class="uc-more" data-gallery={JSON.stringify(u.images)} data-index={i}>+{u.images.length - 3}</span>}
-                  </div>
-                ))}
-              </div>
-            )}
-            <div class="uc-body">
-              <span class="uc-date">{u.date}</span>
-              <p class="uc-msg" set:html={linkify(u.message)}></p>
-              {u.link && <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>}
-            </div>
-          </article>
-        ))}
-      </div>
-      <div class="uc-dots"></div>
     </div>
-  ))}
+    <div class="uc-nav">
+      <button class="uc-btn" data-dir="-1" aria-label="Previous">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="uc-btn" data-dir="1" aria-label="Next">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="uc-window">
+    {items.map(({ u, cat }) => (
+      <article class="uc-card" data-cat={cat} style={cat === "publication" ? "display:none" : undefined}>
+        {u.images && u.images.length > 0 && (
+          <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
+            {u.images.slice(0, 3).map((img, i) => (
+              <div class="uc-photo">
+                <img src={img} style={`object-position:${(u.imgPos && u.imgPos[i]) || 'center'}`} data-gallery={JSON.stringify(u.images)} data-index={i} alt="" loading="lazy" onerror="this.closest('.uc-photo').style.display='none'" />
+                {i === 2 && u.images.length > 3 && <span class="uc-more" data-gallery={JSON.stringify(u.images)} data-index={i}>+{u.images.length - 3}</span>}
+              </div>
+            ))}
+          </div>
+        )}
+        <div class="uc-body">
+          <span class="uc-date">{u.date}</span>
+          <p class="uc-msg" set:html={linkify(u.message)}></p>
+          {u.link && <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>}
+        </div>
+      </article>
+    ))}
+  </div>
+  <div class="uc-dots"></div>
 </div>
 
 <style>
-  .uc-wrap { display: flex; flex-direction: column; gap: 2.4rem; }
   .uc { margin-top: .5rem; }
   .uc-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.2rem; }
+  .uc-tabs { display: flex; gap: .4rem; margin-top: .8rem; }
+  .uc-tab { font-family: var(--ff-mono); font-size: 12px; padding: .38rem .8rem; border-radius: 7px; background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); cursor: pointer; }
+  .uc-tab:hover { border-color: var(--border-strong); }
+  .uc-tab.on { background: var(--blue); color: #fff; border-color: var(--blue); }
+  :root[data-theme="dark"] .uc-tab.on { background: var(--maize); color: var(--blue); border-color: var(--maize); }
   .uc-nav { display: flex; gap: .5rem; }
   .uc-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--blue); cursor: pointer; display: grid; place-items: center; transition: all .18s; }
   :root[data-theme="dark"] .uc-btn { color: var(--text); }
@@ -68,7 +71,8 @@ const linkify = (t) => {
 
   .uc-window { display: flex; gap: 16px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .uc-window::-webkit-scrollbar { display: none; }
-  .uc-card { flex: 0 0 264px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+  .uc-card { flex: 0 0 264px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; flex-direction: column; }
+  .uc-card[data-cat] { display: flex; }
 
   .uc-photos { display: grid; gap: 2px; height: 150px; }
   .uc-photos.n1 { grid-template-columns: 1fr; }
@@ -92,44 +96,52 @@ const linkify = (t) => {
 
 <script is:inline>
   (function(){
-    document.querySelectorAll(".uc").forEach(function(uc){
-      var win = uc.querySelector(".uc-window");
-      var dots = uc.querySelector(".uc-dots");
-      if(!win || !dots) return;
-      var cards = win.children.length;
-      function step(){ var c = win.querySelector(".uc-card"); return c ? c.offsetWidth + 16 : 280; }
-      function visible(){ return Math.max(1, Math.round(win.clientWidth / step())); }
-      function maxIdx(){ return Math.max(0, cards - visible()); }
-      function curIdx(){ return Math.max(0, Math.min(maxIdx(), Math.round(win.scrollLeft / step()))); }
-      function renderDots(){
-        var ci = curIdx();
-        dots.innerHTML = "";
-        for(var i=0;i<=maxIdx();i++){
-          var b = document.createElement("button");
-          b.className = "uc-dot" + (i===ci?" on":"");
-          b.setAttribute("aria-label","Go to update "+(i+1));
-          (function(j){ b.onclick=function(){ win.scrollTo({ left: j*step(), behavior:"smooth" }); }; })(i);
-          dots.appendChild(b);
-        }
+    var uc = document.getElementById("updates");
+    if(!uc) return;
+    var win = uc.querySelector(".uc-window");
+    var dots = uc.querySelector(".uc-dots");
+    var active = "news";
+    function cards(){ return [].slice.call(win.querySelectorAll('.uc-card[data-cat="' + active + '"]')); }
+    function step(){ var c = cards()[0]; return c ? c.offsetWidth + 16 : 280; }
+    function visible(){ return Math.max(1, Math.round(win.clientWidth / step())); }
+    function maxIdx(){ return Math.max(0, cards().length - visible()); }
+    function curIdx(){ return Math.max(0, Math.min(maxIdx(), Math.round(win.scrollLeft / step()))); }
+    function renderDots(){
+      var ci = curIdx(), mx = maxIdx();
+      dots.innerHTML = "";
+      for(var i=0;i<=mx;i++){
+        var b = document.createElement("button");
+        b.className = "uc-dot" + (i===ci?" on":"");
+        b.setAttribute("aria-label","Go to update "+(i+1));
+        (function(j){ b.onclick=function(){ win.scrollTo({ left: j*step(), behavior:"smooth" }); }; })(i);
+        dots.appendChild(b);
       }
-      uc.querySelectorAll(".uc-btn").forEach(function(b){
-        b.addEventListener("click", function(){ win.scrollBy({ left: parseInt(b.getAttribute("data-dir"),10)*step(), behavior:"smooth" }); });
-      });
-      var raf=null;
-      win.addEventListener("scroll", function(){ if(raf) return; raf = requestAnimationFrame(function(){ raf=null; renderDots(); }); }, {passive:true});
-      window.addEventListener("resize", renderDots);
-      win.addEventListener("wheel", function(e){
-        var maxScroll = win.scrollWidth - win.clientWidth;
-        if(maxScroll <= 1) return;
-        var horiz = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-        var delta = horiz ? e.deltaX : e.deltaY;
-        if(!delta) return;
-        var atStart = win.scrollLeft <= 0, atEnd = win.scrollLeft >= maxScroll - 1;
-        if(!horiz && ((delta < 0 && atStart) || (delta > 0 && atEnd))) return;
-        e.preventDefault();
-        win.scrollLeft += delta;
-      }, {passive:false});
+    }
+    function setCat(cat){
+      active = cat;
+      uc.querySelectorAll(".uc-tab").forEach(function(t){ t.classList.toggle("on", t.getAttribute("data-cat")===cat); });
+      [].slice.call(win.querySelectorAll(".uc-card")).forEach(function(c){ c.style.display = c.getAttribute("data-cat")===cat ? "flex" : "none"; });
+      win.scrollLeft = 0;
       renderDots();
+    }
+    uc.querySelectorAll(".uc-tab").forEach(function(t){ t.addEventListener("click", function(){ setCat(t.getAttribute("data-cat")); }); });
+    uc.querySelectorAll(".uc-btn").forEach(function(b){
+      b.addEventListener("click", function(){ win.scrollBy({ left: parseInt(b.getAttribute("data-dir"),10)*step(), behavior:"smooth" }); });
     });
+    var raf=null;
+    win.addEventListener("scroll", function(){ if(raf) return; raf = requestAnimationFrame(function(){ raf=null; renderDots(); }); }, {passive:true});
+    window.addEventListener("resize", renderDots);
+    win.addEventListener("wheel", function(e){
+      var maxScroll = win.scrollWidth - win.clientWidth;
+      if(maxScroll <= 1) return;
+      var horiz = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+      var delta = horiz ? e.deltaX : e.deltaY;
+      if(!delta) return;
+      var atStart = win.scrollLeft <= 0, atEnd = win.scrollLeft >= maxScroll - 1;
+      if(!horiz && ((delta < 0 && atStart) || (delta > 0 && atEnd))) return;
+      e.preventDefault();
+      win.scrollLeft += delta;
+    }, {passive:false});
+    setCat("news");
   })();
 </script>
