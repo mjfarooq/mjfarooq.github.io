@@ -38,13 +38,13 @@
   {
     "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
     "authors": [
-      "Y. Wang",
+      "Ying Wang",
       "X. Wu",
       "J. Farooq",
       "S. Y. Chen",
       "J. Chen"
     ],
-    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, S. Y. Chen, and J. Chen",
+    "authors_str": "Ying Wang, X. Wu*, J. Farooq, S. Y. Chen, and J. Chen",
     "year": 2026,
     "type": "Conference",
     "venue": "in International Conference on Computer Communications and Networks (ICCCN 2026)",
@@ -343,26 +343,6 @@
         "url": "https://www.techrxiv.org/users/793184/articles/1277869"
       }
     ]
-  },
-  {
-    "title": "Dynamic Resource Provisioning in Edge-Cloud O-RAN Systems via Deep Reinforcement Learning under Stochastic Delayed Rewards",
-    "authors": [
-      "X. Wu",
-      "J. Farooq",
-      "T. Li",
-      "J. Chen",
-      "Y. Wang"
-    ],
-    "authors_str": "X. Wu*, J. Farooq, T. Li, J. Chen, and Y. Wang*",
-    "year": 2025,
-    "type": "Journal",
-    "venue": "submitted to IEEE Networking Letters",
-    "url": "",
-    "tags": [
-      "NextG / O-RAN",
-      "AI / Learning"
-    ],
-    "links": []
   },
   {
     "title": "Evaluation of LLM powered agentic AI for solving multi-arm bandit problems",
