@@ -6,14 +6,6 @@ const types = ["All", "Journal", "Conference", "Book", "Book Chapter", "Thesis"]
 const total = pubs.length;
 const years = Array.from(new Set(pubs.map((p) => p.year))).sort((a, b) => b - a);
 const authorList = Array.from(new Set(pubs.flatMap((p) => p.authors || []))).sort((a, b) => a.localeCompare(b));
-const _yrs = pubs.map((p) => p.year).filter((y) => typeof y === "number");
-const minYear = Math.min(..._yrs);
-const maxYear = Math.max(..._yrs);
-const yearCounts = {};
-for (const y of _yrs) yearCounts[y] = (yearCounts[y] || 0) + 1;
-const yearBars = [];
-for (let y = minYear; y <= maxYear; y++) yearBars.push({ year: y, count: yearCounts[y] || 0 });
-const maxCount = Math.max(...yearBars.map((b) => b.count), 1);
 function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<strong>$1</strong>"); }
 ---
 <Base title="Publications" description="Books, journal articles, and conference papers by Junaid Farooq.">
@@ -33,32 +25,12 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
         </div>
       </div>
       <div class="filters reveal">
+        <label class="fl"><span>Year</span>
+          <select id="year"><option value="All">All years</option>{years.map((y) => <option value={y}>{y}</option>)}</select>
+        </label>
         <label class="fl"><span>Author</span>
           <select id="author"><option value="All">All authors</option>{authorList.map((a) => <option value={a}>{a}</option>)}</select>
         </label>
-      </div>
-      <div class="pchart reveal">
-        <div class="pchart-head">
-          <span class="pchart-label">Publications by year</span>
-          <span class="pchart-range-label" id="range-label">{minYear}–{maxYear}</span>
-        </div>
-        <div class="pchart-bars">
-          {yearBars.map((b) => (
-            <div class="pbar on" data-year={b.year} style={`height:${b.count ? Math.max(8, (b.count / maxCount) * 56) : 2}px`}>
-              <span class="pbar-tip">{b.year}: {b.count}</span>
-            </div>
-          ))}
-        </div>
-        <div class="pchart-slider">
-          <div class="pchart-track"></div>
-          <div class="pchart-fill" id="pfill"></div>
-          <input type="range" class="rng rng-min" id="rmin" min={minYear} max={maxYear} value={minYear} step="1" aria-label="Start year" />
-          <input type="range" class="rng rng-max" id="rmax" min={minYear} max={maxYear} value={maxYear} step="1" aria-label="End year" />
-        </div>
-        <div class="pchart-axis">
-          <span>{minYear}</span>
-          <span>{maxYear}</span>
-        </div>
       </div>
       <div class="count mono" id="count" style="display:none"></div>
 
@@ -106,25 +78,6 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
   .fl select { font-family: var(--ff-sans); font-size: 13px; color: var(--text); background: var(--surface); border: 1px solid var(--border-strong); border-radius: 7px; padding: .4rem .6rem; cursor: pointer; max-width: 220px; }
   .fl select:focus { outline: 0; border-color: var(--blue); }
 
-  .pchart { margin: 1.2rem 0 1.6rem; max-width: 720px; }
-  .pchart-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .5rem; }
-  .pchart-label { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--text-mute); }
-  .pchart-range-label { font-family: var(--ff-mono); font-size: 12px; color: var(--blue-link); }
-  .pchart-bars { display: flex; align-items: flex-end; gap: 2px; height: 60px; }
-  .pbar { flex: 1; background: var(--border-strong); border-radius: 2px 2px 0 0; min-height: 2px; position: relative; transition: background .15s; }
-  .pbar.on { background: var(--blue-link); }
-  .pbar-tip { position: absolute; bottom: 100%; left: 50%; transform: translate(-50%, -3px); white-space: nowrap; background: var(--blue); color: #fff; font-family: var(--ff-mono); font-size: 10px; padding: .2rem .45rem; border-radius: 4px; opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 2; }
-  .pbar:hover .pbar-tip { opacity: 1; }
-  .pchart-slider { position: relative; height: 24px; margin-top: 6px; }
-  .pchart-track { position: absolute; left: 0; right: 0; top: 10px; height: 4px; background: var(--border-strong); border-radius: 4px; }
-  .pchart-fill { position: absolute; top: 10px; height: 4px; background: var(--blue); border-radius: 4px; pointer-events: none; }
-  .pchart-slider input[type=range] { position: absolute; left: 0; right: 0; width: 100%; height: 24px; background: transparent; pointer-events: none; appearance: none; margin: 0; padding: 0; }
-  .pchart-slider input[type=range]::-webkit-slider-runnable-track { background: transparent; height: 24px; }
-  .pchart-slider input[type=range]::-webkit-slider-thumb { appearance: none; pointer-events: auto; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid var(--blue); cursor: ew-resize; margin-top: -6px; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
-  .pchart-slider input[type=range]::-moz-range-track { background: transparent; height: 24px; }
-  .pchart-slider input[type=range]::-moz-range-thumb { pointer-events: auto; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid var(--blue); cursor: ew-resize; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
-  .pchart-axis { display: flex; justify-content: space-between; margin-top: .25rem; font-family: var(--ff-mono); font-size: 12px; color: var(--text-mute); }
-
   .plist { list-style: none; padding: 0; margin: 0; }
   .pitem { display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid var(--border); }
   .pi-year { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); padding-top: .15rem; }
@@ -161,44 +114,26 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
     var q = document.getElementById("q"), list = document.getElementById("plist");
     var items = [].slice.call(list.querySelectorAll(".pitem"));
     var count = document.getElementById("count"), nores = document.getElementById("nores");
-    var authorSel = document.getElementById("author");
-    var rMin = document.getElementById("rmin"), rMax = document.getElementById("rmax");
-    var pfill = document.getElementById("pfill"), rangeLabel = document.getElementById("range-label");
-    var Y0 = +rMin.min, Y1 = +rMax.max;
+    var yearSel = document.getElementById("year"), authorSel = document.getElementById("author");
     var active = "All";
-    function rng(){ return [Math.min(+rMin.value, +rMax.value), Math.max(+rMin.value, +rMax.value)]; }
-    function paintRange(){
-      var r = rng(); var span = Y1 - Y0;
-      var loPct = span ? (r[0] - Y0) / span * 100 : 0;
-      var hiPct = span ? (r[1] - Y0) / span * 100 : 100;
-      pfill.style.left = loPct + "%"; pfill.style.right = (100 - hiPct) + "%";
-      rangeLabel.textContent = r[0] === r[1] ? r[0] : (r[0] + "–" + r[1]);
-      document.querySelectorAll(".pbar").forEach(function(b){
-        var y = +b.getAttribute("data-year");
-        b.classList.toggle("on", y >= r[0] && y <= r[1]);
-      });
-    }
     function apply(){
       var s = (q.value||"").trim().toLowerCase(), n = 0;
-      var r = rng(), au = authorSel.value;
+      var yr = yearSel.value, au = authorSel.value;
       items.forEach(function(el){
-        var y = +el.getAttribute("data-year");
         var okT = active==="All" || el.getAttribute("data-type")===active;
         var okS = !s || el.getAttribute("data-s").indexOf(s) !== -1;
-        var okY = y >= r[0] && y <= r[1];
+        var okY = yr==="All" || el.getAttribute("data-year")===yr;
         var okA = au==="All" || ("|"+el.getAttribute("data-authors")+"|").indexOf("|"+au+"|") !== -1;
         var show = okT && okS && okY && okA; el.style.display = show?"":"none"; if(show) n++;
       });
-      var rangeNarrowed = (r[0] !== Y0 || r[1] !== Y1);
-      var filtering = (s !== "" || active !== "All" || rangeNarrowed || au !== "All");
+      var filtering = (s !== "" || active !== "All" || yr !== "All" || au !== "All");
       count.style.display = filtering ? "" : "none";
       if (filtering) count.textContent = n + (n===1?" result":" results");
       nores.hidden = n!==0;
     }
     q.addEventListener("input", apply);
+    yearSel.addEventListener("change", apply);
     authorSel.addEventListener("change", apply);
-    rMin.addEventListener("input", function(){ paintRange(); apply(); });
-    rMax.addEventListener("input", function(){ paintRange(); apply(); });
     document.getElementById("chips").addEventListener("click", function(e){
       var b = e.target.closest(".chip"); if(!b) return;
       active = b.getAttribute("data-t");
@@ -211,9 +146,7 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
       var chip = document.querySelector('#chips .chip[data-t="' + ptype.replace(/"/g,"") + '"]');
       if(chip){ active = chip.getAttribute("data-t"); document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===chip); }); }
     }
-    var pyear = params.get("year");
-    if (pyear && /^\d{4}$/.test(pyear)) { var y = +pyear; if (y>=Y0 && y<=Y1) { rMin.value = y; rMax.value = y; } }
-    paintRange();
+    var pyear = params.get("year"); if(pyear){ var yo = yearSel.querySelector('option[value="'+pyear.replace(/"/g,"")+'"]'); if(yo) yearSel.value = yo.value; }
     apply();
 
     document.addEventListener("click", function(e){
