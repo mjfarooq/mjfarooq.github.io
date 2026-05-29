@@ -345,59 +345,68 @@
         "note": "AI-driven cybersecurity for EV charging systems",
         "grad": "2026",
         "position": "Rocket Mortgage",
-        "linkedin": "https://www.linkedin.com/in/riho/"
+        "linkedin": "https://www.linkedin.com/in/riho/",
+        "photo": "/images/team/ritesh.jpg"
       },
       {
         "name": "Dhia Neifar",
         "note": "Federated learning for vehicular networks",
         "grad": "2025",
         "position": "University of Arizona",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/dhia-neifar/",
+        "photo": "/images/team/dhia.jpg"
       },
       {
         "name": "Moyan Lyu",
         "note": "Zero trust cybersecurity for 5G networks",
         "grad": "2025",
         "position": "Michigan State University",
-        "linkedin": "https://www.linkedin.com/in/moyan-lyu-38a689239/"
+        "linkedin": "https://www.linkedin.com/in/moyan-lyu-38a689239",
+        "photo": "/images/team/moyan.jpg"
       },
       {
         "name": "Zhaoguo Wang",
         "note": "Resource matching for ride sharing",
         "grad": "2022",
         "position": "XPeng",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/zhaoguo-wang-842619157/",
+        "photo": "/images/team/zhaoguo.jpg"
       },
       {
         "name": "Tim Kieras",
         "note": "",
         "grad": "2021",
         "position": "Morse Corp.",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/tkieras/",
+        "photo": "/images/team/tim.jpg"
       },
       {
         "name": "Yunfan Xu",
         "note": "",
         "grad": "2022",
         "position": "Hubspot",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/yunfanxu/",
+        "photo": "/images/team/yunfan.jpg"
       }
     ],
     "undergrads": [
       {
         "name": "Jawad Hazime",
         "note": "",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/jawadhazime/",
+        "photo": "/images/team/jawad.jpg"
       },
       {
         "name": "Meher Jabbar",
         "note": "",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/meherjabbar",
+        "photo": ""
       },
       {
         "name": "Shouryan Nikam",
         "note": "",
-        "linkedin": ""
+        "linkedin": "https://www.linkedin.com/in/shouryannikam/",
+        "photo": ""
       }
     ]
   },
