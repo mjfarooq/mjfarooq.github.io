@@ -22,9 +22,9 @@
       "J. Farooq",
       "T. Li",
       "J. Chen",
-      "Ying Wang"
+      "Y. Wang"
     ],
-    "authors_str": "X. Wu*, J. Farooq, T. Li, J. Chen, and Ying Wang",
+    "authors_str": "X. Wu*, J. Farooq, T. Li, J. Chen, and Y. Wang",
     "year": 2026,
     "type": "Journal",
     "venue": "in IEEE Networking Letters",
@@ -33,18 +33,21 @@
       "NextG / O-RAN",
       "AI / Learning"
     ],
-    "links": []
+    "links": [],
+    "peopleExclude": [
+      "yuhui-wang"
+    ]
   },
   {
     "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
     "authors": [
-      "Ying Wang",
+      "Y. Wang",
       "X. Wu",
       "J. Farooq",
       "S. Y. Chen",
       "J. Chen"
     ],
-    "authors_str": "Ying Wang, X. Wu*, J. Farooq, S. Y. Chen, and J. Chen",
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, S. Y. Chen, and J. Chen",
     "year": 2026,
     "type": "Conference",
     "venue": "in International Conference on Computer Communications and Networks (ICCCN 2026)",
@@ -324,9 +327,9 @@
       "E. Forbes",
       "J. Chen",
       "J. Farooq",
-      "Ying Wang"
+      "Y. Wang"
     ],
-    "authors_str": "I. Aryendu, B. Mak, E. Forbes, J. Chen, J. Farooq, and Ying Wang",
+    "authors_str": "I. Aryendu, B. Mak, E. Forbes, J. Chen, J. Farooq, and Y. Wang",
     "year": 2025,
     "type": "Journal",
     "venue": "in IEEE Open Journal of the Communications Society, vol. 6, pp. 9206-9228",
@@ -339,6 +342,9 @@
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11206314"
       }
+    ],
+    "peopleExclude": [
+      "yuhui-wang"
     ]
   },
   {
@@ -367,10 +373,10 @@
   {
     "title": "Evaluation of LLM powered agentic AI for solving multi-arm bandit problems",
     "authors": [
-      "Hazime",
+      "J. Hazime",
       "J. Farooq"
     ],
-    "authors_str": "Hazime* and J. Farooq",
+    "authors_str": "J. Hazime* and J. Farooq",
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
@@ -766,10 +772,10 @@
       "W. Wei",
       "Y. Mao",
       "J. Farooq",
-      "Ying Wang",
+      "Y. Wang",
       "J. Chen"
     ],
-    "authors_str": "R. Kumar, W. Wei, Y. Mao, J. Farooq, Ying Wang, and J. Chen",
+    "authors_str": "R. Kumar, W. Wei, Y. Mao, J. Farooq, Y. Wang, and J. Chen",
     "year": 2025,
     "type": "Conference",
     "venue": "submitted to Quantum Machine Intelligence",
@@ -783,6 +789,9 @@
         "label": "PDF",
         "url": "https://arxiv.org/pdf/2506.24081"
       }
+    ],
+    "peopleExclude": [
+      "yuhui-wang"
     ]
   },
   {
@@ -819,7 +828,7 @@
     "authors_str": "X. Wu*, J. Farooq, and J. Chen",
     "year": 2024,
     "type": "Conference",
-    "venue": "in IEEE ICC 2024 Workshop on Intelligent Cloud Continuum for B5G Services, Boulder, CO",
+    "venue": "in IEEE ICC 2024 Workshop on Intelligent Cloud Continuum for B5G Services, Denver, CO",
     "url": "https://www.techrxiv.org/users/793184/articles/1091386",
     "tags": [
       "NextG / O-RAN"
@@ -1204,7 +1213,7 @@
     "authors_str": "T. Kieras*, M. J. Farooq, and Q. Zhu",
     "year": 2020,
     "type": "Conference",
-    "venue": "in IEEE S&P Workshop on Cyber Resilient Supply Chain Technologies, pp. 163-170",
+    "venue": "in 2020 IEEE Security and Privacy Workshops (SPW), San Francisco, CA, USA",
     "url": "https://arxiv.org/pdf/2003.12363.pdf",
     "tags": [
       "Cyber Resilience",
@@ -1561,7 +1570,7 @@
     "authors_str": "M. J. Farooq, H. ElSawy, Q. Zhu, and M.-S. Alouini",
     "year": 2017,
     "type": "Conference",
-    "venue": "in Workshop on Spatial Stochastic Models for Wireless Networks (SpaSWiN 2017), Paris, France",
+    "venue": "in 2017 15th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks (WiOpt), Paris, France",
     "url": "https://arxiv.org/abs/1704.05954",
     "tags": [
       "IoT"
