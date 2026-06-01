@@ -56,6 +56,26 @@
     "links": []
   },
   {
+    "title": "Collaborative Cloud-Edge Computing via LLM-Guided Constrained Reinforcement Learning",
+    "authors": [
+      "Y. Wang",
+      "X. Wu",
+      "J. Farooq",
+      "T. Li",
+      "J. Chen"
+    ],
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, T. Li, and J. Chen",
+    "year": 2026,
+    "type": "Conference",
+    "venue": "in IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC 2026), Singapore",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "Differentiable architecture search for adversarially robust quantum computer vision",
     "authors": [
       "M. Afane",
