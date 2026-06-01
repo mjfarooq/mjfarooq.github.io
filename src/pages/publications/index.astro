@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
 import { bibtex } from "../../data/bibtex.js";
-const types = ["All", "Journal", "Conference", "Book", "Book Chapter", "Thesis"];
+const types = ["All", "Journal", "Conference", "Book", "Book Chapter", "Preprint", "Thesis"];
 const total = pubs.length;
 const years = Array.from(new Set(pubs.map((p) => p.year))).sort((a, b) => b - a);
 const authorList = Array.from(new Set(pubs.flatMap((p) => p.authors || []))).sort((a, b) => a.localeCompare(b));
@@ -103,6 +103,7 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
   .b-conference { background: #ffcb05; color: #00274c; }
   .b-book, .b-bookchapter { background: #1f5394; color: #fff; }
   .b-thesis { background: var(--surface-soft); color: var(--text-mute); border: 1px solid var(--border); }
+  .b-preprint { background: var(--surface-soft); color: var(--blue-link); border: 1px solid var(--border-strong); }
   :root[data-theme="dark"] .b-journal { background: #2b6cb0; color: #fff; }
   :root[data-theme="dark"] .b-conference { background: #ffcb05; color: #00274c; }
   .nores { padding: 2.5rem 0; color: var(--text-mute); }
