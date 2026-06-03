@@ -52,6 +52,24 @@ import site from "../../data/site.json";
       </ul>
     </section>
 
+    {site.patents && site.patents.length > 0 && (
+      <section class="section reveal">
+        <h2 class="h-sec">Patents</h2>
+        <ul class="rows">
+          {site.patents.map((p) => (
+            <li>
+              <span class="r-when">{p.filed || p.year}</span>
+              <div class="r-main">
+                <div class="pat-title">{p.title}</div>
+                <div class="pat-meta">{(p.inventors || []).join(", ")}</div>
+                <div class="pat-meta">{[p.type, p.applicationNumber && "Application No. " + p.applicationNumber, p.assignee].filter(Boolean).join(" · ")}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <section class="section reveal">
       <h2 class="h-sec">Professional service</h2>
       <div class="eyebrow">Editorial</div>
@@ -63,6 +81,11 @@ import site from "../../data/site.json";
     </section>
   </div>
 </Base>
+<style>
+  .pat-title { font-family: var(--ff-serif); font-weight: 600; color: var(--blue); font-size: 1.02rem; line-height: 1.3; }
+  :root[data-theme="dark"] .pat-title { color: var(--text); }
+  .pat-meta { font-size: .86rem; color: var(--text-soft); margin-top: .2rem; }
+</style>
 
 <style>
   .edu { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }

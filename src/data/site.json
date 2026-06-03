@@ -412,5 +412,20 @@
   },
   "grantsSummary": "$2.31M total in research funding ($1.37M as PI, $0.94M as Co-PI).",
   "office": "4901 Evergreen Rd, Institute for Advanced Vehicular Systems (IAVS), Dearborn, MI 48128",
-  "phone": "+1 (646) 509-3602"
+  "phone": "+1 (646) 509-3602",
+  "patents": [
+    {
+      "title": "Online Detection and Containment of Disruptive User Equipment (UE) in Radio Access Networks",
+      "inventors": [
+        "X. Wu",
+        "J. Farooq"
+      ],
+      "type": "U.S. Provisional Patent Application",
+      "applicationNumber": "64/080,683",
+      "docketNumber": "7935-3341-US1",
+      "filed": "Jun 2026",
+      "year": 2026,
+      "assignee": "University of Michigan"
+    }
+  ]
 }
