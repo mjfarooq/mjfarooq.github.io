@@ -146,8 +146,10 @@
   },
   {
     "date": "Nov 2025",
-    "message": "Paper accepted in IEEE Networking Letters.",
-    "images": [],
+    "message": "Our paper \"Process-Informed Multi-Agent Reinforcement Learning for Joint Radio-Compute Orchestration in Industrial O-RAN\" was accepted in IEEE Networking Letters. Congratulations to Xingqi and Yuhui!",
+    "images": [
+      "/images/updates/process_informed_marl.jpg"
+    ],
     "link": "https://ieeexplore.ieee.org/document/11494807",
     "category": "publication"
   },
