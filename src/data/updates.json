@@ -2,7 +2,9 @@
   {
     "date": "Jun 2026",
     "message": "Filed U.S. provisional patent application: \"Online Detection and Containment of Disruptive User Equipment (UE) in Radio Access Networks.\" Inventors: X. Wu and J. Farooq (Application No. 64/080,683).",
-    "images": [],
+    "images": [
+      "/images/updates/Patent_disruptive_UEs.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
