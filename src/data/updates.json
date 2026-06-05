@@ -128,7 +128,9 @@
   {
     "date": "Jan 2026",
     "message": "New book published: Cyber Resilience in Next-Generation Networks (Foundations and Trends in Networking).",
-    "images": [],
+    "images": [
+      "/images/updates/FnT_Book.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
