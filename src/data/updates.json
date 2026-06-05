@@ -122,7 +122,9 @@
   {
     "date": "Feb 2026",
     "message": "Invited talk at Grand Valley State University: \"Enabling Assured Autonomy: AI-Driven Optimization and Reliability in Next-Generation Networks.\"",
-    "images": [],
+    "images": [
+      "/images/updates/gvsu_talk.jpg"
+    ],
     "link": ""
   },
   {
