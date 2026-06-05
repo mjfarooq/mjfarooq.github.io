@@ -2,14 +2,18 @@
   {
     "date": "Sep 2026",
     "message": "Our paper \"Collaborative Cloud-Edge Computing via LLM-Guided Constrained Reinforcement Learning\" was accepted in IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC 2026), Singapore. Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/collaborative_llm_rl.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
   {
     "date": "Jul 2026",
     "message": "Our paper \"Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems\" was accepted in International Conference on Computer Communications and Networks (ICCCN 2026). Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/quantum_graph_attention.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
@@ -25,7 +29,9 @@
   {
     "date": "Jun 2026",
     "message": "Our paper \"Risk-Aware Resource Orchestration in Multi-Tier 5G Edge-Cloud Networks\" was accepted in Intent-Driven Network: Techniques and Applications, Springer Wireless Network Series. Congratulations Xingqi!",
-    "images": [],
+    "images": [
+      "/images/updates/risk_aware_orchestration.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
@@ -76,14 +82,18 @@
   {
     "date": "May 2026",
     "message": "Our paper \"Jamming-Resilient PRB Reservation for Latency-Critical O-RAN Network Slicing\" was accepted in IEEE DySPAN 2026 ML-Spec Workshop, Washington D.C., USA. Congratulations Elahe!",
-    "images": [],
+    "images": [
+      "/images/updates/jamming_resilient_prb.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
   {
     "date": "May 2026",
     "message": "Our paper \"Temporally Encoded Double DQN for Proactive PRB Allocation in O-RAN Enabled Industrial Networks\" was accepted in IEEE/IFIP NOMS 2026 Workshop on Resilience in Next Generation Network Management (NGResNet), Rome, Italy. Congratulations Xingqi and Elahe!",
-    "images": [],
+    "images": [
+      "/images/updates/temporal_ddqn_prb.jpg"
+    ],
     "link": "",
     "category": "publication"
   },
@@ -174,14 +184,18 @@
   {
     "date": "Feb 2026",
     "message": "Our paper \"PROMPTGUARD: Zero Trust Prompting for Securing LLM-Driven O-RAN Control\" was accepted in Proc. NDSS 2026 Workshop on Security and Privacy of Next-Generation Networks (FutureG), San Diego CA. Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/promptguard.jpg"
+    ],
     "link": "https://www.ndss-symposium.org/wp-content/uploads/futureg26-22.pdf",
     "category": "publication"
   },
   {
     "date": "Feb 2026",
     "message": "Our paper \"Dynamic Multi-Modal UAV Control for Optimized Coverage and Backhaul Connectivity in Spatially Unstructured and Dispersed User Environments\" was accepted in IEEE Transactions on Mobile Computing. Congratulations Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/dynamic_multimodal_uav.jpg"
+    ],
     "link": "https://www.computer.org/csdl/journal/tm/5555/01/11152341/29LAw5X8z2E",
     "category": "publication"
   },
@@ -197,21 +211,27 @@
   {
     "date": "Dec 2025",
     "message": "Our paper \"SliceWise: Traffic-Aware Multi-Agent RL with Temporal Encoding for Joint Slice Admission and Resource Orchestration in O-RAN\" was accepted in IEEE Networking Letters. Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/slicewise.jpg"
+    ],
     "link": "https://ieeexplore.ieee.org/document/11251017",
     "category": "publication"
   },
   {
     "date": "Dec 2025",
     "message": "Our paper \"Resilient PRB Allocation for High Mobility UEs in 5G O-RAN via LSTM-Enhanced MPC\" was accepted in IEEE Globecom Workshop on Resilience in Next-Generation Wireless Communication Networks (GC Wkshps 2025), Taiwan. Congratulations Xingqi and Yuxuan!",
-    "images": [],
+    "images": [
+      "/images/updates/prb_high_mobility.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1341419",
     "category": "publication"
   },
   {
     "date": "Nov 2025",
     "message": "Our paper \"Multi-agent Resource Orchestration Based on D3QN for Network Slicing in 5G Edge-Cloud Networks\" was accepted in IEEE Transactions on Network and Service Management. Congratulations Xingqi!",
-    "images": [],
+    "images": [
+      "/images/updates/d3qn_orchestration.jpg"
+    ],
     "link": "https://ieeexplore.ieee.org/document/11297800",
     "category": "publication"
   },
@@ -228,14 +248,18 @@
   {
     "date": "Oct 2025",
     "message": "Our paper \"Joint Positioning and Computation Offloading in Multi-UAV MEC for Low Latency Applications: A Proximal Policy Optimization Approach\" was accepted in IEEE Transactions on Mobile Computing. Congratulations Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/joint_positioning_uav_mec.jpg"
+    ],
     "link": "https://ieeexplore.ieee.org/document/10971880",
     "category": "publication"
   },
   {
     "date": "Oct 2025",
     "message": "Our paper \"Poster: Triage Slicing: Online Detection and Containment of Disruptive UEs in O-RAN Slices\" was accepted in 26th ACM MobiHoc 2025, Houston, TX, USA. Congratulations Xingqi and Ritesh!",
-    "images": [],
+    "images": [
+      "/images/updates/triage_slicing.jpg"
+    ],
     "link": "https://dl.acm.org/doi/10.1145/3704413.3765320",
     "category": "publication"
   },
@@ -249,28 +273,36 @@
   {
     "date": "Aug 2025",
     "message": "Our paper \"Evaluation of LLM powered agentic AI for solving multi-arm bandit problems\" was accepted in IEEE COINS 2025, Madison WI, USA. Congratulations Jawad!",
-    "images": [],
+    "images": [
+      "/images/updates/llm_bandit.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1315647",
     "category": "publication"
   },
   {
     "date": "Aug 2025",
     "message": "Our paper \"Multimodal LLM-guided sequential detection of cyber threats in electric vehicle charging systems\" was accepted in IEEE COINS 2025, Madison WI, USA. Congratulations Ritesh!",
-    "images": [],
+    "images": [
+      "/images/updates/llm_ev_charging.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1315646",
     "category": "publication"
   },
   {
     "date": "Aug 2025",
     "message": "Our paper \"Real-time multiple obstacle avoidance and navigation in unstructured spaces with applications to indoor delivery robots\" was accepted in IEEE COINS 2025, Madison WI, USA. Congratulations Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/indoor_robot_navigation.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1315645",
     "category": "publication"
   },
   {
     "date": "Jul 2025",
     "message": "Our paper \"Reliable and Resilient Connectivity and Coverage under Localized Backhauling in UAV-IoT Networks\" was accepted in IEEE Open Journal of the Communications Society. Congratulations Xingqi!",
-    "images": [],
+    "images": [
+      "/images/updates/reliable_resilient_uav_iot.jpg"
+    ],
     "link": "https://ieeexplore.ieee.org/document/11062492",
     "category": "publication"
   },
@@ -294,14 +326,18 @@
   {
     "date": "Jun 2025",
     "message": "Our paper \"Coordinated UAV Deployment and Task Offloading in UAV-Assisted LEO Satellite Edge Computing Systems via Proximal Policy Optimization\" was accepted in IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks, Montreal, Canada. Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/uav_leo_satellite.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1277869",
     "category": "publication"
   },
   {
     "date": "Jun 2025",
     "message": "Our paper \"Joint Admission Control and Resource Provisioning for URLLC Traffic in O-RAN: A Constrained Multi-Agent Reinforcement Learning Approach\" was accepted in IEEE ICC 2025, Montreal, Canada. Congratulations Xingqi!",
-    "images": [],
+    "images": [
+      "/images/updates/urllc_admission.jpg"
+    ],
     "link": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.174284729.99809422/v1",
     "category": "publication"
   },
@@ -328,14 +364,18 @@
   {
     "date": "May 2025",
     "message": "Our paper \"LLM-Driven Agentic AI Approach to Enhanced O-RAN Resilience in Next-Generation Networks\" was accepted in IEEE INFOCOM 2025 Workshop on Resilience in Next-Generation Networks (NGResNet), London, UK. Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/llm_agentic_oran.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1277868",
     "category": "publication"
   },
   {
     "date": "May 2025",
     "message": "Our paper \"LLM-Powered Agentic AI Approach to Securing EV Charging Systems Against Cyber Threats\" was accepted in 3rd Workshop on Cybersecurity of Critical National Infrastructures (CCNI), IEEE WoWMoM 2025, Dallas TX, USA. Congratulations Ritesh!",
-    "images": [],
+    "images": [
+      "/images/updates/llm_ev_securing.jpg"
+    ],
     "link": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/257574/preprint_pdf/8de6e8c31bd5d57611c5653f7751537f.pdf",
     "category": "publication"
   },
@@ -352,14 +392,18 @@
   {
     "date": "Mar 2025",
     "message": "Our paper \"Joint Optimization of Positioning and Computation Offloading in Multi-UAV MEC Networks for Low Latency Applications\" was accepted in IEEE WCNC 2025, Milan, Italy. Congratulations Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/joint_optimization_uav.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1234294",
     "category": "publication"
   },
   {
     "date": "Mar 2025",
     "message": "Our paper \"Multi-UAV Placement for Integrated Access and Backhauling Using LLM-Based Optimizers\" was accepted in IEEE WCNC 2025, Milan, Italy. Congratulations Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/multi_uav_iab.jpg"
+    ],
     "link": "https://www.techrxiv.org/users/793184/articles/1229164",
     "category": "publication"
   },
@@ -390,14 +434,18 @@
   {
     "date": "Feb 2025",
     "message": "Our paper \"LLM-xApp: A Large Language Model Empowered Radio Resource Management xApp for 5G O-RAN\" was accepted in Proc. NDSS 2025 Workshop on Security and Privacy of Next-Generation Networks (FutureG), San Diego CA. Congratulations Xingqi and Yuhui!",
-    "images": [],
+    "images": [
+      "/images/updates/llm_xapp.jpg"
+    ],
     "link": "https://www.ndss-symposium.org/ndss-paper/auto-draft-567/",
     "category": "publication"
   },
   {
     "date": "Jan 2025",
     "message": "Our paper \"Mapping Cyber Threats in the 5G Supply Chain: Landscape, Vulnerabilities, and Risk Management\" was accepted in IEEE Network. Congratulations Moyan!",
-    "images": [],
+    "images": [
+      "/images/updates/mapping_cyber_threats_5g.jpg"
+    ],
     "link": "https://ieeexplore.ieee.org/document/10634234",
     "category": "publication"
   },
