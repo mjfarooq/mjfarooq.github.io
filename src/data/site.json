@@ -427,5 +427,12 @@
       "year": 2026,
       "assignee": "University of Michigan"
     }
+  ],
+  "featuredPubs": [
+    "Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms",
+    "PROMPTGUARD: Zero Trust Prompting for Securing LLM-Driven O-RAN Control",
+    "Process-Informed Multi-Agent Reinforcement Learning for Joint Radio-Compute Orchestration in Industrial O-RAN",
+    "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
+    "Mapping Cyber Threats in the 5G Supply Chain: Landscape, Vulnerabilities, and Risk Management"
   ]
 }

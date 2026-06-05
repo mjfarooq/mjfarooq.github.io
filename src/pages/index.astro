@@ -4,11 +4,12 @@ import UpdatesCarousel from "../components/UpdatesCarousel.astro";
 import site from "../data/site.json";
 import areaIcons from "../data/areaIcons.js";
 import pubs from "../data/publications.json";
-const recent = pubs
-  .filter(p => p.type !== "Thesis")
-  .map(p => ({ ...p, link: p.url || (p.links && p.links[0] && p.links[0].url) || "" }))
-  .filter(p => p.link)
-  .slice(0, 5);
+const featuredTitles = site.featuredPubs || [];
+const byTitle = new Map(pubs.map((p) => [p.title, p]));
+const recent = featuredTitles
+  .map((t) => byTitle.get(t))
+  .filter(Boolean)
+  .map((p) => ({ ...p, link: p.url || (p.links && p.links[0] && p.links[0].url) || "" }));
 const counts = {
   total: pubs.filter(p=>p.type!=="Thesis").length,
   journals: pubs.filter(p=>p.type==="Journal").length,
