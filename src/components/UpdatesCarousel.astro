@@ -33,7 +33,7 @@ const linkify = (t) => {
       </div>
       <div class="uc-row">
         {sec.items.map((u) => (
-          <article class="uc-card">
+          <article class="uc-card" data-date={u.date} data-message={linkify(u.message)} data-images={JSON.stringify(u.images || [])} data-link={u.link || ""}>
             {u.images && u.images.length > 0 && (
               <div class={"uc-photos n" + Math.min(u.images.length, 3)}>
                 {u.images.slice(0, 3).map((img, i) => (
@@ -47,15 +47,26 @@ const linkify = (t) => {
             <div class="uc-body">
               <span class="uc-date">{u.date}</span>
               <p class="uc-msg" set:html={linkify(u.message)}></p>
-              {u.link
-            ? <a class="uc-link" href={u.link} target="_blank" rel="noopener">View post →</a>
-            : <a class="uc-link" href="/news">Read more →</a>}
+              <button type="button" class="uc-link uc-expand">Read more →</button>
             </div>
           </article>
         ))}
       </div>
     </div>
   ))}
+</div>
+
+<div class="uc-modal" id="uc-modal" aria-hidden="true">
+  <div class="uc-modal-overlay" data-close></div>
+  <div class="uc-modal-panel">
+    <button class="uc-modal-close" type="button" data-close aria-label="Close">×</button>
+    <div class="uc-modal-content">
+      <span class="uc-modal-date"></span>
+      <div class="uc-modal-images"></div>
+      <p class="uc-modal-msg"></p>
+      <a class="uc-modal-link" target="_blank" rel="noopener" hidden>Visit source →</a>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -89,6 +100,21 @@ const linkify = (t) => {
   .uc-date { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .04em; color: var(--blue-link); background: var(--surface-soft); border: 1px solid var(--border); padding: .15rem .5rem; border-radius: 5px; align-self: flex-start; margin-bottom: .55rem; }
   .uc-msg { font-size: 13.5px; color: var(--text); line-height: 1.5; margin: 0 0 .6rem; display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
   .uc-msg :global(.uc-namelink) { color: var(--blue-link); font-weight: 600; }
+  .uc-expand { background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--ff-mono); font-size: 12px; color: var(--blue-link); margin-top: auto; text-align: left; }
+  .uc-expand:hover { text-decoration: underline; }
+
+  .uc-modal { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+  .uc-modal.open { display: flex; }
+  .uc-modal-overlay { position: absolute; inset: 0; background: rgba(8,18,34,.7); cursor: zoom-out; }
+  .uc-modal-panel { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; max-width: 720px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 2rem; box-shadow: 0 24px 70px rgba(0,0,0,.45); }
+  .uc-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 22px; line-height: 1; cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .uc-modal-close:hover { background: var(--bg-soft); }
+  .uc-modal-date { font-family: var(--ff-mono); font-size: 12px; letter-spacing: .04em; color: var(--blue-link); background: var(--surface-soft); border: 1px solid var(--border); padding: .2rem .55rem; border-radius: 5px; display: inline-block; }
+  .uc-modal-images { display: flex; flex-direction: column; gap: 12px; margin: 1.1rem 0 1rem; }
+  .uc-modal-images img { width: 100%; height: auto; max-height: 520px; object-fit: contain; border-radius: 8px; background: var(--surface-soft); cursor: zoom-in; }
+  .uc-modal-msg { font-size: 1.02rem; line-height: 1.65; color: var(--text); margin: 0 0 1rem; }
+  .uc-modal-msg :global(.uc-namelink) { color: var(--blue-link); font-weight: 600; }
+  .uc-modal-link { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); }
   .uc-link { font-family: var(--ff-mono); font-size: 12px; margin-top: auto; }
 </style>
 
@@ -102,5 +128,46 @@ const linkify = (t) => {
         b.addEventListener("click", function(){ row.scrollBy({ left: parseInt(b.getAttribute("data-dir"),10) * step(), behavior: "smooth" }); });
       });
     });
+
+    var modal = document.getElementById("uc-modal");
+    if(modal){
+      var msgEl = modal.querySelector(".uc-modal-msg");
+      var dateEl = modal.querySelector(".uc-modal-date");
+      var imgsEl = modal.querySelector(".uc-modal-images");
+      var linkEl = modal.querySelector(".uc-modal-link");
+      function openModal(card){
+        dateEl.textContent = card.getAttribute("data-date") || "";
+        msgEl.innerHTML = card.getAttribute("data-message") || "";
+        imgsEl.innerHTML = "";
+        try{
+          var imgs = JSON.parse(card.getAttribute("data-images") || "[]");
+          imgs.forEach(function(src){
+            var img = document.createElement("img");
+            img.src = src; img.alt = "";
+            img.setAttribute("data-gallery", JSON.stringify(imgs));
+            img.setAttribute("data-index", String(imgs.indexOf(src)));
+            img.onerror = function(){ img.style.display = "none"; };
+            imgsEl.appendChild(img);
+          });
+        }catch(e){}
+        var link = card.getAttribute("data-link") || "";
+        if(link){ linkEl.href = link; linkEl.hidden = false; } else { linkEl.hidden = true; }
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden","false");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal(){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden","true");
+        msgEl.innerHTML = ""; imgsEl.innerHTML = "";
+        document.body.style.overflow = "";
+      }
+      document.addEventListener("click", function(e){
+        var btn = e.target.closest(".uc-expand");
+        if(btn){ openModal(btn.closest(".uc-card")); return; }
+        if(e.target.closest("#uc-modal [data-close]")){ closeModal(); }
+      });
+      document.addEventListener("keydown", function(e){ if(e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+    }
   })();
 </script>

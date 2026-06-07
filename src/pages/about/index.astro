@@ -77,7 +77,7 @@ import site from "../../data/site.json";
         {site.service.editorial.map((e) => <li>{e}</li>)}
       </ul>
       <div class="eyebrow" style="margin-top:1.2rem;">Reviewer for</div>
-      <div class="area-tags">{site.service.reviewer.map((r) => <span class="tag">{r}</span>)}</div>
+      <div class="area-tags">{site.service.reviewer.map((r) => <a class="tag" href={"/publications?q=" + encodeURIComponent(r)}>{r}</a>)}</div>
     </section>
   </div>
 </Base>

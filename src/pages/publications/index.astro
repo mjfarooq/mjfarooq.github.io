@@ -41,7 +41,7 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
             <div class="pi-body">
               <div class="pi-top">
                 <span class={"badge b-" + p.type.toLowerCase().replace(" ","")}>{p.type}</span>
-                {p.tags.map((t) => <span class="tag">{t}</span>)}
+                {p.tags.map((t) => <a class="tag" href={"?q=" + encodeURIComponent(t)}>{t}</a>)}
               </div>
               {p.url ? <a class="pi-title" href={p.url} target="_blank" rel="noopener">{p.title}</a> : <span class="pi-title">{p.title}</span>}
               <div class="pi-auth" set:html={authorsHtml(p.authors_str)}></div>
@@ -148,6 +148,7 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
       if(chip){ active = chip.getAttribute("data-t"); document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c===chip); }); }
     }
     var pyear = params.get("year"); if(pyear){ var yo = yearSel.querySelector('option[value="'+pyear.replace(/"/g,"")+'"]'); if(yo) yearSel.value = yo.value; }
+    var pq = params.get("q"); if(pq){ q.value = pq; }
     apply();
 
     document.addEventListener("click", function(e){
