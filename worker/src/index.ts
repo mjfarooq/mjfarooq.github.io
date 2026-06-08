@@ -10,12 +10,110 @@
  *   wrangler secret put HF_TOKEN
  */
 
+import site from "../../src/data/site.json";
+import team from "../../src/data/team.json";
+import lab from "../../src/data/lab.json";
+import pubs from "../../src/data/publications.json";
+import news from "../../src/data/news.json";
+
 interface Env {
   HF_TOKEN: string;
   HF_MODEL?: string;   // optional override, e.g. "HuggingFaceH4/zephyr-7b-beta"
   ALLOWED_ORIGIN?: string; // e.g. "https://mjfarooq.github.io"
   ASK_RATE: KVNamespace;   // KV namespace for per-IP rate limiting (optional)
 }
+
+function buildKnowledge(): string {
+  const out: string[] = [];
+  // Bio + role
+  out.push(`# About ${site.name}`);
+  out.push(`Role: ${site.role}, ${site.department}, ${site.institution}`);
+  if (site.office) out.push(`Office: ${site.office}`);
+  out.push(`Email: ${site.email}`);
+  out.push("");
+  out.push(`Bio: ${site.bioLong || site.bioShort}`);
+  out.push("");
+  out.push(`Research interests: ${(site.interests || []).join(", ")}`);
+  out.push("");
+
+  // Education + Appointments
+  if (site.education) {
+    out.push(`# Education`);
+    for (const e of site.education) out.push(`- ${e.degree}, ${e.institution} (${e.year})`);
+    out.push("");
+  }
+  if (site.appointments) {
+    out.push(`# Appointments`);
+    for (const a of site.appointments) out.push(`- ${a.role}, ${a.org} (${a.years})`);
+    out.push("");
+  }
+  // Awards
+  if (site.awards) {
+    out.push(`# Honors and Awards`);
+    for (const a of site.awards) out.push(`- ${a.year}: ${a.title}`);
+    out.push("");
+  }
+  // Grants summary
+  if (site.grants) {
+    out.push(`# Funded Projects (${site.grants.length} grants total${site.grantsSummary ? "; " + site.grantsSummary : ""})`);
+    for (const g of site.grants.slice(0, 20)) out.push(`- ${g.year}: ${g.title} (${g.sponsor}, ${g.role}${g.amount ? ", " + g.amount : ""})`);
+    out.push("");
+  }
+  // Patents
+  if ((site as any).patents) {
+    out.push(`# Patents`);
+    for (const p of (site as any).patents) out.push(`- ${p.filed || p.year}: ${p.title} (${p.type}; inventors: ${(p.inventors || []).join(", ")}; ${p.applicationNumber || ""})`);
+    out.push("");
+  }
+  // Lab
+  out.push(`# CyReN Lab`);
+  out.push(`Full name: ${lab.fullName}`);
+  out.push(`Tagline: ${lab.tagline}`);
+  if (lab.intro) out.push(`About: ${lab.intro}`);
+  if (lab.thrusts) {
+    out.push(`Research thrusts:`);
+    for (const t of lab.thrusts) out.push(`- ${t.title}: ${t.blurb}`);
+  }
+  out.push("");
+
+  // Group / team
+  out.push(`# Lab Members`);
+  for (const m of team.members || []) {
+    out.push(`- ${m.name} (${m.role}${m.focus ? "; focus: " + m.focus : ""}${m.grad ? "; graduation " + m.grad : ""})`);
+    if (m.bio) out.push(`  Bio: ${m.bio}`);
+    if (m.linkedin) out.push(`  LinkedIn: ${m.linkedin}`);
+    if ((m as any).scholar) out.push(`  Scholar: ${(m as any).scholar}`);
+  }
+  if (team.alumni && team.alumni.length) {
+    out.push(`Alumni:`);
+    for (const a of team.alumni) out.push(`- ${a.name}${a.note ? " (" + a.note + ")" : ""}${a.grad ? ", grad " + a.grad : ""}${a.position ? ", now at " + a.position : ""}`);
+  }
+  if (team.interns && team.interns.length) {
+    out.push(`Interns/visiting:`);
+    for (const a of team.interns) out.push(`- ${a.name}${a.note ? " (" + a.note + ")" : ""}`);
+  }
+  if (team.undergrads && team.undergrads.length) {
+    out.push(`Undergraduate researchers:`);
+    for (const a of team.undergrads) out.push(`- ${a.name}`);
+  }
+  out.push("");
+
+  // Publications: compact one-line each, all of them
+  out.push(`# Publications (${pubs.length} total)`);
+  for (const p of pubs as any[]) {
+    out.push(`- [${p.year}] (${p.type}) "${p.title}" — ${p.authors_str} — ${p.venue}${p.url ? " — " + p.url : ""}`);
+  }
+  out.push("");
+
+  // Recent news (top 30)
+  out.push(`# Recent News and Activities`);
+  for (const n of (news as any[]).slice(0, 30)) {
+    out.push(`- ${n.date}: ${n.text}${n.link ? " (" + n.link + ")" : ""}`);
+  }
+  return out.join("\n");
+}
+
+const SITE_KNOWLEDGE = buildKnowledge();
 
 const DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.3";
 
@@ -100,7 +198,7 @@ export default {
     // completions endpoint). This is the supported API going forward and works
     // with Mistral, Llama, Qwen, Gemma, and many other open-source models.
     const chatMessages = [
-      { role: "system", content: SYSTEM_PROMPT },
+      { role: "system", content: SYSTEM_PROMPT + "\n\nUse the following site content as your source of truth. When a visitor asks about anything below, answer from this content directly rather than saying you don't know. If the question is not covered here AND is not about Junaid Farooq's research, students, publications, news, or teaching, politely decline.\n\n" + SITE_KNOWLEDGE },
       ...messages.map((m: any) => ({ role: m.role === "assistant" ? "assistant" : "user", content: String(m.content || "") })),
     ];
 
