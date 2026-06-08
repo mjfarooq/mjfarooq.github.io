@@ -1,0 +1,17 @@
+name = "cyren-ask"
+main = "src/index.ts"
+compatibility_date = "2026-06-01"
+
+# Optional: restrict CORS to your site origin once deployed.
+# Run `wrangler secret put ALLOWED_ORIGIN` and set to https://mjfarooq.github.io
+# Or set inline as a [vars] entry below.
+[vars]
+HF_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
+ALLOWED_ORIGIN = "https://mjfarooq.github.io"
+
+# KV namespace for per-IP rate limiting (optional but recommended).
+# Create one: `wrangler kv namespace create ASK_RATE`
+# Then paste the returned id below.
+# [[kv_namespaces]]
+# binding = "ASK_RATE"
+# id = "PASTE_KV_ID_HERE"

@@ -1,0 +1,135 @@
+---
+import Base from "../../layouts/Base.astro";
+import site from "../../data/site.json";
+---
+<Base title="Ask AI" description="Ask an open-source AI about Junaid Farooq's research, publications, and lab.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">Ask AI</span>
+      <h1 class="h-page">Ask the assistant</h1>
+      <p class="lead">An assistant scoped to this site only. It answers questions about Junaid Farooq's research, students, publications, news, and teaching. Off-topic questions are politely declined. Powered by an open-source model (Mistral 7B) served via Hugging Face. Answers may be imperfect; verify anything important.</p>
+
+      <div class="ask-wrap">
+        <div class="ask-msgs" id="ask-msgs">
+          <div class="ask-msg ask-bot">
+            <span class="ask-role">Assistant</span>
+            <div class="ask-text">Hi. I can answer questions about Junaid Farooq's research, students, publications, news, and teaching. Try asking about a topic, paper, or lab member.</div>
+          </div>
+        </div>
+        <form class="ask-form" id="ask-form">
+          <textarea id="ask-input" rows="2" placeholder="e.g., Which CyReN papers are about O-RAN security? Who works on UAV networks? What is the lab's most recent publication?" required></textarea>
+          <button class="btn btn-primary" type="submit" id="ask-send">Ask</button>
+        </form>
+        <div class="ask-meta">
+          <span id="ask-status"></span>
+          <button class="ask-clear" type="button" id="ask-clear">Clear chat</button>
+        </div>
+      </div>
+
+      <details class="ask-about">
+        <summary>How this works</summary>
+        <p>Your question is sent to a Cloudflare Worker that forwards it to an open-source model on Hugging Face. The assistant is given context about this site (bio, interests, recent publications, group). Conversation history is kept in your browser only; it is not stored on any server. There is a per-visitor rate limit to keep the service free.</p>
+      </details>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .ask-wrap { margin-top: 1.4rem; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); padding: 1.2rem; }
+  .ask-msgs { display: flex; flex-direction: column; gap: 1rem; min-height: 240px; max-height: 56vh; overflow-y: auto; padding-right: .4rem; margin-bottom: 1rem; }
+  .ask-msg { display: flex; flex-direction: column; gap: .3rem; }
+  .ask-msg.ask-user { align-items: flex-end; }
+  .ask-role { font-family: var(--ff-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-mute); }
+  .ask-text { font-size: .98rem; line-height: 1.55; max-width: 78ch; padding: .85rem 1.1rem; border-radius: 12px; background: var(--surface-soft); border: 1px solid var(--border); white-space: pre-wrap; color: var(--text); }
+  .ask-msg.ask-user .ask-text { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .ask-text :global(a) { color: var(--blue-link); }
+  .ask-msg.ask-user .ask-text :global(a) { color: #fff; text-decoration: underline; }
+  .ask-form { display: flex; gap: .6rem; align-items: stretch; }
+  #ask-input { flex: 1; min-width: 0; padding: .8rem 1rem; border: 1px solid var(--border-strong); border-radius: 10px; font-family: var(--ff-sans); font-size: 14px; color: var(--text); background: var(--surface); resize: vertical; }
+  #ask-input:focus { outline: 0; border-color: var(--blue); }
+  #ask-send { flex: 0 0 auto; align-self: stretch; }
+  #ask-send:disabled { opacity: .5; cursor: not-allowed; }
+  .ask-meta { display: flex; justify-content: space-between; align-items: center; margin-top: .6rem; font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); }
+  .ask-clear { background: none; border: 0; padding: 0; cursor: pointer; color: var(--blue-link); font-family: var(--ff-mono); font-size: 11px; }
+  .ask-clear:hover { text-decoration: underline; }
+  .ask-about { margin-top: 1.4rem; }
+  .ask-about summary { cursor: pointer; font-family: var(--ff-mono); font-size: 12px; color: var(--blue-link); }
+  .ask-about p { margin-top: .6rem; font-size: .92rem; color: var(--text-soft); }
+  .ask-bot.ask-typing .ask-text::after { content: "▍"; animation: ask-blink 1s steps(2) infinite; margin-left: 2px; }
+  @keyframes ask-blink { 50% { opacity: 0; } }
+</style>
+
+<script is:inline define:vars={{ WORKER_URL: "https://cyren-ask.YOUR-CLOUDFLARE-SUBDOMAIN.workers.dev/chat" }}>
+  (function(){
+    var msgsEl = document.getElementById("ask-msgs");
+    var form = document.getElementById("ask-form");
+    var input = document.getElementById("ask-input");
+    var send = document.getElementById("ask-send");
+    var status = document.getElementById("ask-status");
+    var clearBtn = document.getElementById("ask-clear");
+    var history = [];
+
+    function escapeHtml(s){ return (s||"").replace(/[&<>"']/g, function(c){ return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]; }); }
+    function renderText(t){
+      // Basic markdown-ish: link autoformat
+      return escapeHtml(t).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    }
+    function addMsg(role, text){
+      var wrap = document.createElement("div");
+      wrap.className = "ask-msg ask-" + role;
+      wrap.innerHTML = '<span class="ask-role">' + (role === "user" ? "You" : "Assistant") + '</span><div class="ask-text">' + (role === "user" ? escapeHtml(text) : renderText(text)) + '</div>';
+      msgsEl.appendChild(wrap);
+      msgsEl.scrollTop = msgsEl.scrollHeight;
+      return wrap;
+    }
+
+    async function ask(question){
+      history.push({ role: "user", content: question });
+      addMsg("user", question);
+      var botEl = addMsg("bot", "");
+      botEl.classList.add("ask-typing");
+      send.disabled = true;
+      status.textContent = "Thinking...";
+      try {
+        var res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: history.slice(-10) })
+        });
+        if (!res.ok) {
+          var errText = await res.text();
+          throw new Error("Service returned " + res.status + (errText ? ": " + errText : ""));
+        }
+        var data = await res.json();
+        var reply = (data && (data.reply || data.text)) || "(no response)";
+        history.push({ role: "assistant", content: reply });
+        botEl.querySelector(".ask-text").innerHTML = renderText(reply);
+        status.textContent = "";
+      } catch (err) {
+        botEl.querySelector(".ask-text").textContent = "Sorry, the assistant is unavailable right now. " + (err.message || "");
+        status.textContent = "Error";
+      } finally {
+        botEl.classList.remove("ask-typing");
+        send.disabled = false;
+        input.focus();
+      }
+    }
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var q = input.value.trim();
+      if (!q) return;
+      input.value = "";
+      ask(q);
+    });
+    input.addEventListener("keydown", function(e){
+      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); form.requestSubmit(); }
+    });
+    clearBtn.addEventListener("click", function(){
+      history = [];
+      msgsEl.innerHTML = "";
+      addMsg("bot", "Cleared. Ask me anything.");
+      status.textContent = "";
+    });
+  })();
+</script>
