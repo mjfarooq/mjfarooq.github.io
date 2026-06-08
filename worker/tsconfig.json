@@ -12,5 +12,5 @@
     "noEmit": true,
     "allowJs": true
   },
-  "include": ["src/**/*.ts", "../src/data/*.json"]
+  "include": ["src/**/*.ts", "../src/data/*.json", "../../mjfarooq.github.io-cyren/src/data/*.json"]
 }

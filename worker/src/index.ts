@@ -11,10 +11,10 @@
  */
 
 import site from "../../src/data/site.json";
-import team from "../../src/data/team.json";
-import lab from "../../src/data/lab.json";
 import pubs from "../../src/data/publications.json";
-import news from "../../src/data/news.json";
+import team from "../../../mjfarooq.github.io-cyren/src/data/team.json";
+import lab from "../../../mjfarooq.github.io-cyren/src/data/lab.json";
+import news from "../../../mjfarooq.github.io-cyren/src/data/news.json";
 
 interface Env {
   HF_TOKEN: string;
