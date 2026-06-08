@@ -95,28 +95,39 @@ export default {
     if (!messages.length) return new Response(JSON.stringify({ reply: "Empty request." }), { status: 400, headers: { ...cors, "Content-Type": "application/json" } });
 
     const model = env.HF_MODEL || DEFAULT_MODEL;
-    const prompt = buildPrompt(messages);
 
-    const hfRes = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
+    // Use the Hugging Face Inference Providers router (OpenAI-compatible chat
+    // completions endpoint). This is the supported API going forward and works
+    // with Mistral, Llama, Qwen, Gemma, and many other open-source models.
+    const chatMessages = [
+      { role: "system", content: SYSTEM_PROMPT },
+      ...messages.map((m: any) => ({ role: m.role === "assistant" ? "assistant" : "user", content: String(m.content || "") })),
+    ];
+
+    const hfRes = await fetch("https://router.huggingface.co/v1/chat/completions", {
       method: "POST",
       headers: { "Authorization": `Bearer ${env.HF_TOKEN}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        inputs: prompt,
-        parameters: { max_new_tokens: 512, temperature: 0.4, return_full_text: false, do_sample: true, top_p: 0.95 },
-        options: { wait_for_model: true }
+        model,
+        messages: chatMessages,
+        max_tokens: 512,
+        temperature: 0.4,
+        top_p: 0.95,
+        stream: false,
       })
     });
 
     if (!hfRes.ok) {
       const text = await hfRes.text();
-      return new Response(JSON.stringify({ reply: `Model service error (${hfRes.status}). ${text.slice(0, 200)}` }), { status: 502, headers: { ...cors, "Content-Type": "application/json" } });
+      return new Response(JSON.stringify({ reply: `Model service error (${hfRes.status}). ${text.slice(0, 300)}` }), { status: 502, headers: { ...cors, "Content-Type": "application/json" } });
     }
 
     const data = await hfRes.json() as any;
     let reply: string = "";
-    if (Array.isArray(data) && data[0]?.generated_text) reply = data[0].generated_text;
+    if (data?.choices && data.choices[0]?.message?.content) reply = data.choices[0].message.content;
+    else if (Array.isArray(data) && data[0]?.generated_text) reply = data[0].generated_text;
     else if (data?.generated_text) reply = data.generated_text;
-    else reply = JSON.stringify(data);
+    else reply = JSON.stringify(data).slice(0, 500);
 
     reply = reply.replace(/^<\/?s>/g, "").trim();
 
