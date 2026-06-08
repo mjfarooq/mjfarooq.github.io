@@ -6,7 +6,7 @@ compatibility_date = "2026-06-01"
 # Run `wrangler secret put ALLOWED_ORIGIN` and set to https://mjfarooq.github.io
 # Or set inline as a [vars] entry below.
 [vars]
-HF_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
+HF_MODEL = "Qwen/Qwen2.5-7B-Instruct"
 ALLOWED_ORIGIN = "https://mjfarooq.github.io"
 
 # KV namespace for per-IP rate limiting (optional but recommended).
