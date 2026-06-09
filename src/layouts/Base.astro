@@ -115,11 +115,7 @@ const personLd = {
       .ask-fab-label { display: none; }
     }
     .foot-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.6rem; padding-bottom: 2rem; font-family: var(--ff-mono); font-size: 12px; color: var(--text-mute); }
-    .foot-updated { display: inline-flex; align-items: center; gap: .5rem; }
-    .foot-updated::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--maize); box-shadow: 0 0 0 0 var(--maize); animation: foot-pulse 2.6s ease-out infinite; }
     .foot-updated b { color: var(--text-soft); font-weight: 600; }
-    @keyframes foot-pulse { 0% { box-shadow: 0 0 0 0 rgba(255,203,5,.5); } 70% { box-shadow: 0 0 0 7px rgba(255,203,5,0); } 100% { box-shadow: 0 0 0 0 rgba(255,203,5,0); } }
-    @media (prefers-reduced-motion: reduce) { .foot-updated::before { animation: none; } }
     .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(8,18,34,.9); align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
     .lightbox.open { display: flex; }
     .lb-img { max-width: 88vw; max-height: 86vh; border-radius: 8px; box-shadow: 0 24px 70px rgba(0,0,0,.55); }

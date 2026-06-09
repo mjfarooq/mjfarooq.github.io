@@ -30,8 +30,19 @@ const topTags = _topTags.map(([t, n]) => ({
 <Base title="Publications" description="Books, journal articles, and conference papers by Junaid Farooq.">
   <div class="container">
     <section class="section">
-      <span class="eyebrow">Publications</span>
-      <h1 class="h-page">Publications</h1>
+      <div class="page-head-row">
+        <div>
+          <span class="eyebrow">Publications</span>
+          <h1 class="h-page">Publications</h1>
+        </div>
+        <a class="net-cta" href="/network">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/>
+            <path d="M7 7l4 9M17 7l-4 9M7 6h10" stroke-linecap="round"/>
+          </svg>
+          <span>Collaboration network</span>
+        </a>
+      </div>
       <p class="lead">Author names are listed as published; an asterisk denotes a student advisee. The full record is also on <a href="https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
 
       <div class="pubviz reveal">
@@ -76,6 +87,7 @@ const topTags = _topTags.map(([t, n]) => ({
       </div>
       <div class="count mono" id="count" style="display:none"></div>
 
+      <div id="plist-top"></div>
       <ol class="plist" id="plist">
         {pubs.map((p) => (
           <li class="pitem" data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={(p.title + " " + p.authors_str + " " + p.venue + " " + p.tags.join(" ")).toLowerCase()}>
@@ -101,12 +113,20 @@ const topTags = _topTags.map(([t, n]) => ({
         ))}
       </ol>
       <div class="nores mono" id="nores" hidden>No matching publications.</div>
-      <p class="pub-foot"><a href="/network">View collaboration network →</a></p>
+      <p class="pub-foot"><a href="/network">Explore the collaboration network →</a></p>
     </section>
   </div>
 </Base>
 
 <style>
+  /* Page header with prominent network CTA */
+  .page-head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.4rem; flex-wrap: wrap; }
+  .net-cta { display: inline-flex; align-items: center; gap: .55rem; padding: .6rem 1rem; border: 1px solid var(--maize); background: var(--maize-soft); color: var(--blue); border-radius: 8px; font-family: var(--ff-mono); font-size: 12.5px; letter-spacing: .03em; text-decoration: none; transition: transform .15s, background .15s, border-color .15s; }
+  .net-cta:hover { background: var(--maize); border-color: var(--blue); transform: translateY(-1px); text-decoration: none; }
+  .net-cta svg { color: var(--blue); }
+  :root[data-theme="dark"] .net-cta { background: rgba(255,203,5,.18); color: var(--maize); border-color: var(--maize); }
+  :root[data-theme="dark"] .net-cta svg { color: var(--maize); }
+
   /* Publication visualizations */
   .pubviz { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; margin: 1.8rem 0 1.2rem; }
   .yh, .tc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; }
@@ -220,19 +240,21 @@ const topTags = _topTags.map(([t, n]) => ({
     var pq = params.get("q"); if(pq){ q.value = pq; }
     apply();
 
-    // Year heatmap: click a bar to filter by year
-    document.querySelectorAll(".yh-bar").forEach(function(b){
-      b.addEventListener("click", function(){
-        var y = b.getAttribute("data-year");
-        var same = b.classList.contains("on");
-        document.querySelectorAll(".yh-bar.on").forEach(function(o){ o.classList.remove("on"); });
-        if(same){ yearSel.value = "All"; }
-        else { yearSel.value = y; b.classList.add("on"); }
-        apply();
-        document.getElementById("plist").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+    function safeScroll(){
+      try { var t = document.getElementById("plist-top"); if(t && t.scrollIntoView) t.scrollIntoView({ behavior: "smooth", block: "start" }); } catch(e){}
+    }
+    // Year heatmap: event delegation so dynamic content still works
+    var heat = document.querySelector(".yh-bars");
+    if (heat) heat.addEventListener("click", function(e){
+      var b = e.target.closest(".yh-bar"); if(!b) return;
+      var y = b.getAttribute("data-year");
+      var same = b.classList.contains("on");
+      heat.querySelectorAll(".yh-bar.on").forEach(function(o){ o.classList.remove("on"); });
+      if(same){ yearSel.value = "All"; }
+      else { yearSel.value = y; b.classList.add("on"); }
+      apply();
+      safeScroll();
     });
-    // Sync heatmap selection when year select changes
     yearSel.addEventListener("change", function(){
       document.querySelectorAll(".yh-bar.on").forEach(function(o){ o.classList.remove("on"); });
       if(yearSel.value !== "All"){
@@ -240,16 +262,16 @@ const topTags = _topTags.map(([t, n]) => ({
         if(bar) bar.classList.add("on");
       }
     });
-    // Tag cloud: click a topic to set search
-    document.querySelectorAll(".tc-tag").forEach(function(t){
-      t.addEventListener("click", function(){
-        var same = t.classList.contains("on");
-        document.querySelectorAll(".tc-tag.on").forEach(function(o){ o.classList.remove("on"); });
-        if(same){ q.value = ""; }
-        else { q.value = t.getAttribute("data-tag"); t.classList.add("on"); }
-        apply();
-        document.getElementById("plist").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+    // Tag cloud: event delegation
+    var cloud = document.querySelector(".tc-cloud");
+    if (cloud) cloud.addEventListener("click", function(e){
+      var t = e.target.closest(".tc-tag"); if(!t) return;
+      var same = t.classList.contains("on");
+      cloud.querySelectorAll(".tc-tag.on").forEach(function(o){ o.classList.remove("on"); });
+      if(same){ q.value = ""; }
+      else { q.value = t.getAttribute("data-tag"); t.classList.add("on"); }
+      apply();
+      safeScroll();
     });
 
     document.addEventListener("click", function(e){

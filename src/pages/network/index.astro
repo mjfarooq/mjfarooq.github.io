@@ -2,180 +2,507 @@
 import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
 
-// Build co-authorship network
+// Build co-authorship network from publications
 const list = pubs.filter((p) => p.type !== "Thesis");
 const ME = "J. Farooq";
 const ME_ALT = "M. J. Farooq";
-
-// Normalize author name (treat J. Farooq and M. J. Farooq as same person)
 const norm = (a) => (a === ME_ALT ? ME : a);
 
-const pubCount = {};
-const coauth = {};
-for (const p of list) {
+// papersByAuthor: author -> array of publication indices
+const papersByAuthor = {};
+// papersByEdge: "A§§B" sorted -> array of publication indices
+const papersByEdge = {};
+
+list.forEach((p, idx) => {
   const auths = Array.from(new Set((p.authors || []).map(norm)));
   for (const a of auths) {
-    pubCount[a] = (pubCount[a] || 0) + 1;
+    if (!papersByAuthor[a]) papersByAuthor[a] = [];
+    papersByAuthor[a].push(idx);
   }
   for (let i = 0; i < auths.length; i++) {
     for (let j = i + 1; j < auths.length; j++) {
       const key = [auths[i], auths[j]].sort().join("§§");
-      coauth[key] = (coauth[key] || 0) + 1;
+      if (!papersByEdge[key]) papersByEdge[key] = [];
+      papersByEdge[key].push(idx);
     }
   }
-}
+});
 
-// Include all authors who co-authored with Farooq at least once
-const farooqCoauthors = new Set();
-for (const key of Object.keys(coauth)) {
+// Keep authors who co-authored with Farooq at least once
+const include = new Set([ME]);
+for (const key of Object.keys(papersByEdge)) {
   const [a, b] = key.split("§§");
-  if (a === ME || b === ME) {
-    farooqCoauthors.add(a === ME ? b : a);
-  }
+  if (a === ME || b === ME) include.add(a === ME ? b : a);
 }
-farooqCoauthors.add(ME);
 
-const nodes = Array.from(farooqCoauthors).map((a) => ({
+const nodes = Array.from(include).map((a) => ({
   id: a,
-  count: pubCount[a] || 0,
+  count: (papersByAuthor[a] || []).length,
   isMe: a === ME,
 }));
 
-// Edges between included nodes
 const links = [];
-for (const key of Object.keys(coauth)) {
+for (const key of Object.keys(papersByEdge)) {
   const [a, b] = key.split("§§");
-  if (farooqCoauthors.has(a) && farooqCoauthors.has(b)) {
-    links.push({ source: a, target: b, weight: coauth[key] });
+  if (include.has(a) && include.has(b)) {
+    links.push({ source: a, target: b, weight: papersByEdge[key].length });
   }
 }
 
+// Compact publications payload (only what the side panel needs)
+const pubsLite = list.map((p) => ({
+  title: p.title,
+  year: p.year,
+  venue: p.venue,
+  url: p.url || "",
+  type: p.type,
+  authors_str: p.authors_str,
+}));
+
 const totalCoauthors = nodes.length - 1;
 const totalEdges = links.length;
+const totalPapers = list.length;
+
+// Top collaborators (excluding self)
+const topCollabs = nodes
+  .filter((n) => !n.isMe)
+  .sort((a, b) => b.count - a.count)
+  .slice(0, 12);
 ---
-<Base title="Collaboration network" description="Co-authorship network for Junaid Farooq's publications.">
+<Base title="Collaboration network" description="Interactive co-authorship network for Junaid Farooq's publications.">
   <div class="container">
     <section class="section">
-      <span class="eyebrow">Explore</span>
-      <h1 class="h-page">Collaboration network</h1>
-      <p class="lead">Each node is a co-author. Lines connect researchers who have appeared on the same paper, with thicker lines for stronger collaborations. Drag any node to reshape the graph; hover for paper counts; click a node to filter the publications page.</p>
-
-      <div class="net-meta">
-        <span><b>{totalCoauthors}</b> co-authors</span>
-        <span><b>{totalEdges}</b> collaborations</span>
+      <div class="net-head">
+        <div>
+          <span class="eyebrow">Explore</span>
+          <h1 class="h-page">Collaboration network</h1>
+          <p class="lead">Every node is a co-author. Edges connect researchers who appear together on a paper, with thicker lines for stronger collaborations. Drag any node to reshape the graph. Click a node to see that author's papers. Click an edge to see the papers two authors share.</p>
+        </div>
+        <div class="net-stats">
+          <div><b>{totalCoauthors}</b><span>Co-authors</span></div>
+          <div><b>{totalEdges}</b><span>Collaborations</span></div>
+          <div><b>{totalPapers}</b><span>Publications</span></div>
+        </div>
       </div>
 
-      <div class="net-wrap reveal">
-        <svg id="net-svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet" aria-label="Collaboration network graph"></svg>
+      <div class="net-toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+          <input type="search" id="net-search" placeholder="Find a co-author…" autocomplete="off" />
+        </div>
+        <label class="net-slider">
+          <span>Min collaborations</span>
+          <input type="range" id="net-min" min="1" max="6" value="1" />
+          <span class="net-min-val" id="net-min-val">1</span>
+        </label>
+        <button type="button" class="net-reset" id="net-reset">Reset view</button>
+        <a class="btn back-btn" href="/publications">← Back to publications</a>
       </div>
 
-      <p class="net-footnote">Drawn from {list.length} publications. Author abbreviations match how names appear in the venue. <a href="/publications">Back to publications →</a></p>
+      <div class="net-grid">
+        <div class="net-canvas" id="net-canvas">
+          <svg id="net-svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet" aria-label="Collaboration network graph"></svg>
+          <div class="net-hint" id="net-hint">drag · scroll to zoom · click a node or edge for details</div>
+        </div>
+        <aside class="net-panel" id="net-panel">
+          <div class="np-empty" id="np-empty">
+            <div class="np-eyebrow">Top collaborators</div>
+            <ol class="np-list">
+              {topCollabs.map((c) => (
+                <li>
+                  <button type="button" class="np-item" data-author={c.id}>
+                    <span class="np-name">{c.id}</span>
+                    <span class="np-bar"><span class="np-bar-fill" style={`width:${Math.round((c.count / topCollabs[0].count) * 100)}%`}></span></span>
+                    <span class="np-num">{c.count}</span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+            <p class="np-foot">Click a name to focus that researcher, or pick a node from the graph.</p>
+          </div>
+          <div class="np-detail" id="np-detail" hidden></div>
+        </aside>
+      </div>
+
+      <p class="net-footnote">Drawn from {totalPapers} publications spanning {Math.min(...list.map(p=>p.year))}–{Math.max(...list.map(p=>p.year))}. Author abbreviations match how names appear in the venues.</p>
     </section>
   </div>
 </Base>
 
-<script is:inline define:vars={{ NODES: nodes, LINKS: links }}>
+<script is:inline define:vars={{ NODES: nodes, LINKS: links, PUBS: pubsLite, PAPERS_BY_AUTHOR: papersByAuthor, PAPERS_BY_EDGE: papersByEdge, ME }}>
   (function(){
-    var svg = document.getElementById("net-svg");
-    if(!svg) return;
-    var w = 900, h = 600;
+    var svgEl = document.getElementById("net-svg");
+    var canvasEl = document.getElementById("net-canvas");
+    var panelEmpty = document.getElementById("np-empty");
+    var panelDetail = document.getElementById("np-detail");
+    var searchEl = document.getElementById("net-search");
+    var minEl = document.getElementById("net-min");
+    var minValEl = document.getElementById("net-min-val");
+    var resetBtn = document.getElementById("net-reset");
+    var hint = document.getElementById("net-hint");
+    if (!svgEl) return;
+
     var reduced = typeof matchMedia==="function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Inject D3 from CDN once
     function loadD3(cb){
-      if(window.d3) return cb();
+      if (window.d3) return cb(window.d3);
       var s = document.createElement("script");
       s.src = "https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js";
-      s.onload = cb;
-      s.onerror = function(){ console.error("d3 failed to load"); };
+      s.onload = function(){ cb(window.d3); };
+      s.onerror = function(){ hint && (hint.textContent = "Network library failed to load. Check your connection."); };
       document.head.appendChild(s);
     }
 
-    loadD3(function(){
-      var d3 = window.d3;
-      var nodes = NODES.map(function(n){ return Object.assign({}, n); });
+    function esc(s){ return (s||"").replace(/[&<>"']/g, function(c){ return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]; }); }
+    function boldFarooq(s){ return esc(s).replace(/(M\. J\. Farooq|J\. Farooq)/g, "<strong>$1</strong>"); }
+
+    function pubItem(idx){
+      var p = PUBS[idx];
+      var title = p.url ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' : esc(p.title);
+      return '<li class="np-pub">' +
+        '<div class="np-pub-year">' + p.year + '</div>' +
+        '<div class="np-pub-body">' +
+          '<div class="np-pub-title">' + title + '</div>' +
+          '<div class="np-pub-auth">' + boldFarooq(p.authors_str) + '</div>' +
+          '<div class="np-pub-venue">' + esc(p.venue) + '</div>' +
+        '</div>' +
+      '</li>';
+    }
+
+    function showAuthor(name){
+      var idxs = (PAPERS_BY_AUTHOR[name] || []).slice().sort(function(a,b){ return PUBS[b].year - PUBS[a].year; });
+      var co = {};
+      idxs.forEach(function(i){
+        (PUBS[i].authors_str.match(/[A-Z]\.(\s+[A-Z]\.)*\s+[A-Z][a-z\-']+/g) || []).forEach(function(a){
+          if (a !== name && a !== "M. J. Farooq" && a !== "J. Farooq" && a !== name.replace("M. J.","J.")) co[a] = (co[a]||0)+1;
+        });
+      });
+      var topCo = Object.entries(co).sort(function(a,b){ return b[1]-a[1]; }).slice(0, 6);
+      var html = '<div class="np-detail-head">' +
+        '<span class="np-eyebrow">Author</span>' +
+        '<button type="button" class="np-close" aria-label="Back to list">×</button>' +
+      '</div>' +
+      '<h2 class="np-name-big">' + esc(name) + '</h2>' +
+      '<div class="np-summary">' + idxs.length + ' paper' + (idxs.length===1?'':'s') + ' with ' + esc(ME) + '</div>' +
+      (topCo.length ? '<div class="np-also"><span>Also published with</span> ' + topCo.map(function(c){ return '<button type="button" class="np-coa" data-author="' + esc(c[0]) + '">' + esc(c[0]) + ' <em>'+c[1]+'</em></button>'; }).join(' ') + '</div>' : '') +
+      '<a class="np-link-pubs" href="/publications?q=' + encodeURIComponent(name) + '">Filter publications page by ' + esc(name) + ' →</a>' +
+      '<ol class="np-pubs">' + idxs.map(pubItem).join("") + '</ol>';
+      panelDetail.innerHTML = html;
+      panelEmpty.hidden = true;
+      panelDetail.hidden = false;
+    }
+
+    function showEdge(a, b){
+      var key = [a, b].sort().join("§§");
+      var idxs = (PAPERS_BY_EDGE[key] || []).slice().sort(function(x,y){ return PUBS[y].year - PUBS[x].year; });
+      var html = '<div class="np-detail-head">' +
+        '<span class="np-eyebrow">Collaboration</span>' +
+        '<button type="button" class="np-close" aria-label="Back to list">×</button>' +
+      '</div>' +
+      '<h2 class="np-name-big">' + esc(a) + ' <span class="np-amp">+</span> ' + esc(b) + '</h2>' +
+      '<div class="np-summary">' + idxs.length + ' shared paper' + (idxs.length===1?'':'s') + '</div>' +
+      '<ol class="np-pubs">' + idxs.map(pubItem).join("") + '</ol>';
+      panelDetail.innerHTML = html;
+      panelEmpty.hidden = true;
+      panelDetail.hidden = false;
+    }
+
+    function clearDetail(){
+      panelDetail.innerHTML = "";
+      panelDetail.hidden = true;
+      panelEmpty.hidden = false;
+    }
+
+    // Close button + co-author chips in detail panel (event delegation)
+    panelDetail.addEventListener("click", function(e){
+      if (e.target.closest(".np-close")) { clearDetail(); selectNone(); return; }
+      var c = e.target.closest(".np-coa");
+      if (c){ focusOn(c.getAttribute("data-author")); }
+    });
+    panelEmpty.addEventListener("click", function(e){
+      var b = e.target.closest(".np-item");
+      if (b){ focusOn(b.getAttribute("data-author")); }
+    });
+
+    var selectedNode = null;
+    var selectedEdge = null;
+    var hoveredNode = null;
+    var nodeSel, linkSel, labelSel;
+    var simRef = null;
+    var origTransform = null;
+    var sRef = null, gRef = null;
+    var zoomBehavior = null;
+
+    function selectNone(){
+      selectedNode = null;
+      selectedEdge = null;
+      hoveredNode = null;
+      applyVisualState();
+    }
+
+    function applyVisualState(){
+      if (!nodeSel) return;
+      var focus = hoveredNode || selectedNode;
+      if (focus) {
+        var connected = new Set([focus]);
+        linkSel.each(function(l){
+          if (l.source.id === focus) connected.add(l.target.id);
+          if (l.target.id === focus) connected.add(l.source.id);
+        });
+        nodeSel.style("opacity", function(n){ return connected.has(n.id) ? 1 : 0.18; });
+        linkSel.style("opacity", function(l){ return (l.source.id === focus || l.target.id === focus) ? 0.95 : 0.06; });
+        linkSel.style("stroke", function(l){ return (l.source.id === focus || l.target.id === focus) ? "#143a66" : "#9aaec8"; });
+      } else if (selectedEdge) {
+        nodeSel.style("opacity", function(n){ return (n.id === selectedEdge.source.id || n.id === selectedEdge.target.id) ? 1 : 0.18; });
+        linkSel.style("opacity", function(l){ return l === selectedEdge ? 0.95 : 0.06; });
+        linkSel.style("stroke", function(l){ return l === selectedEdge ? "#ffcb05" : "#9aaec8"; });
+      } else {
+        nodeSel.style("opacity", 1);
+        linkSel.style("opacity", 0.55);
+        linkSel.style("stroke", "#9aaec8");
+      }
+      nodeSel.classed("selected", function(n){ return n.id === selectedNode; });
+    }
+
+    function focusOn(name){
+      selectedNode = name;
+      selectedEdge = null;
+      showAuthor(name);
+      applyVisualState();
+      // pan/zoom to the node
+      if (sRef && gRef && zoomBehavior){
+        var d = NODES_INSTANCE.find(function(n){ return n.id === name; });
+        if (d && d.x != null){
+          var k = 1.4;
+          var w = 900, h = 620;
+          var t = window.d3.zoomIdentity.translate(w/2 - k*d.x, h/2 - k*d.y).scale(k);
+          sRef.transition().duration(reduced?0:450).call(zoomBehavior.transform, t);
+        }
+      }
+    }
+
+    var NODES_INSTANCE = NODES.map(function(n){ return Object.assign({}, n); });
+
+    loadD3(function(d3){
+      if (!d3) return;
+      var w = 900, h = 620;
+      var nodes = NODES_INSTANCE;
       var links = LINKS.map(function(l){ return Object.assign({}, l); });
 
       var maxCount = d3.max(nodes, function(n){ return n.count; }) || 1;
-      var rScale = d3.scaleSqrt().domain([0, maxCount]).range([4, 18]);
-      var wScale = d3.scaleLinear().domain([1, d3.max(links, function(l){ return l.weight; }) || 1]).range([0.7, 3.2]);
+      var maxW = d3.max(links, function(l){ return l.weight; }) || 1;
+      var rScale = d3.scaleSqrt().domain([0, maxCount]).range([5, 22]);
+      var wScale = d3.scaleLinear().domain([1, maxW]).range([0.7, 3.6]);
 
-      var s = d3.select(svg);
+      var s = d3.select(svgEl);
+      sRef = s;
+      s.selectAll("*").remove();
       var g = s.append("g");
-      var link = g.append("g").attr("class","links").selectAll("line")
+      gRef = g;
+
+      linkSel = g.append("g").attr("class","net-links").selectAll("line")
         .data(links).enter().append("line")
         .attr("stroke","#9aaec8")
         .attr("stroke-opacity", 0.55)
-        .attr("stroke-width", function(d){ return wScale(d.weight); });
-      var node = g.append("g").attr("class","nodes").selectAll("g")
+        .attr("stroke-width", function(d){ return wScale(d.weight); })
+        .attr("data-weight", function(d){ return d.weight; })
+        .style("cursor","pointer");
+
+      var nodeG = g.append("g").attr("class","net-nodes").selectAll("g")
         .data(nodes).enter().append("g")
+        .attr("class","net-node")
         .attr("cursor","pointer");
-      node.append("circle")
+      nodeG.append("circle")
         .attr("r", function(d){ return rScale(d.count); })
         .attr("fill", function(d){ return d.isMe ? "#ffcb05" : "#1f5394"; })
         .attr("stroke", function(d){ return d.isMe ? "#00274c" : "#fff"; })
-        .attr("stroke-width", function(d){ return d.isMe ? 2.5 : 1.2; });
-      node.append("title").text(function(d){ return d.id + " — " + d.count + " paper" + (d.count===1?"":"s"); });
-      node.filter(function(d){ return d.isMe || rScale(d.count) > 8; })
+        .attr("stroke-width", function(d){ return d.isMe ? 2.5 : 1.4; });
+      nodeG.append("title").text(function(d){ return d.id + " — " + d.count + " paper" + (d.count===1?"":"s"); });
+      nodeG.filter(function(d){ return d.isMe || rScale(d.count) >= 10; })
         .append("text")
         .text(function(d){ return d.id; })
         .attr("font-family", "IBM Plex Mono, monospace")
         .attr("font-size", function(d){ return d.isMe ? 12 : 10; })
-        .attr("fill", function(d){ return d.isMe ? "#00274c" : "#1c2c44"; })
-        .attr("dx", function(d){ return rScale(d.count) + 4; })
-        .attr("dy", 4);
+        .attr("fill", "#0c1b2e")
+        .attr("dx", function(d){ return rScale(d.count) + 5; })
+        .attr("dy", 4)
+        .style("pointer-events","none");
+
+      nodeSel = nodeG;
 
       var sim = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(function(d){ return d.id; }).distance(function(d){ return 80 / Math.sqrt(d.weight); }).strength(0.55))
-        .force("charge", d3.forceManyBody().strength(-160))
+        .force("link", d3.forceLink(links).id(function(d){ return d.id; })
+          .distance(function(d){ return 95 / Math.sqrt(d.weight); })
+          .strength(0.6))
+        .force("charge", d3.forceManyBody().strength(-200))
         .force("center", d3.forceCenter(w/2, h/2))
         .force("collide", d3.forceCollide().radius(function(d){ return rScale(d.count) + 6; }));
-
+      simRef = sim;
       if (reduced) sim.alphaDecay(0.5);
 
       sim.on("tick", function(){
-        link
-          .attr("x1", function(d){ return d.source.x; }).attr("y1", function(d){ return d.source.y; })
-          .attr("x2", function(d){ return d.target.x; }).attr("y2", function(d){ return d.target.y; });
-        node.attr("transform", function(d){ return "translate(" + d.x + "," + d.y + ")"; });
+        linkSel
+          .attr("x1", function(d){ return d.source.x; })
+          .attr("y1", function(d){ return d.source.y; })
+          .attr("x2", function(d){ return d.target.x; })
+          .attr("y2", function(d){ return d.target.y; });
+        nodeG.attr("transform", function(d){ return "translate(" + d.x + "," + d.y + ")"; });
       });
 
-      function dragstart(event, d){ if(!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
+      function dragstart(event, d){ if (!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
       function dragmove(event, d){ d.fx = event.x; d.fy = event.y; }
-      function dragend(event, d){ if(!event.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }
-      node.call(d3.drag().on("start", dragstart).on("drag", dragmove).on("end", dragend));
+      function dragend(event, d){ if (!event.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }
+      nodeG.call(d3.drag().on("start", dragstart).on("drag", dragmove).on("end", dragend));
 
-      var zoom = d3.zoom().scaleExtent([0.5, 4]).on("zoom", function(e){ g.attr("transform", e.transform); });
-      s.call(zoom);
+      zoomBehavior = d3.zoom().scaleExtent([0.4, 4]).on("zoom", function(e){ g.attr("transform", e.transform); });
+      s.call(zoomBehavior);
+      origTransform = d3.zoomIdentity;
 
-      // Click a node to filter publications page by that author
-      node.on("click", function(event, d){
-        if (d.isMe) return;
-        window.location.href = "/publications?q=" + encodeURIComponent(d.id);
+      // Click handlers
+      nodeG.on("click", function(event, d){
+        event.stopPropagation();
+        focusOn(d.id);
+      });
+      nodeG.on("mouseenter", function(event, d){
+        hoveredNode = d.id;
+        applyVisualState();
+      }).on("mouseleave", function(){
+        hoveredNode = null;
+        applyVisualState();
+      });
+      linkSel.on("click", function(event, d){
+        event.stopPropagation();
+        selectedEdge = d;
+        selectedNode = null;
+        showEdge(d.source.id, d.target.id);
+        applyVisualState();
+      });
+      linkSel.on("mouseenter", function(event, d){
+        d3.select(this).attr("stroke", "#143a66").attr("stroke-opacity", 0.95);
+      }).on("mouseleave", function(event, d){
+        if (selectedEdge !== d) d3.select(this).attr("stroke", "#9aaec8").attr("stroke-opacity", selectedEdge?0.06:0.55);
+      });
+      // Background click clears selection
+      s.on("click", function(){ selectNone(); clearDetail(); });
+
+      // Search
+      searchEl.addEventListener("input", function(){
+        var s = (searchEl.value || "").toLowerCase().trim();
+        if (!s){ nodeG.style("opacity", 1); linkSel.style("opacity", 0.55); return; }
+        var match = new Set();
+        nodes.forEach(function(n){ if (n.id.toLowerCase().indexOf(s) !== -1) match.add(n.id); });
+        nodeG.style("opacity", function(n){ return match.has(n.id) ? 1 : 0.15; });
+        linkSel.style("opacity", function(l){ return (match.has(l.source.id) || match.has(l.target.id)) ? 0.5 : 0.05; });
+        // If exactly one match, focus it
+        if (match.size === 1){ focusOn(Array.from(match)[0]); }
       });
 
-      // Hover dims unrelated nodes/links
-      node.on("mouseenter", function(event, d){
-        var connected = new Set([d.id]);
-        links.forEach(function(l){
-          if(l.source.id === d.id) connected.add(l.target.id);
-          if(l.target.id === d.id) connected.add(l.source.id);
+      // Min collaborations filter (hides edges with weight below threshold, and isolated nodes)
+      minEl.addEventListener("input", function(){
+        var th = parseInt(minEl.value, 10);
+        minValEl.textContent = String(th);
+        var keepNodes = new Set([NODES_INSTANCE.find(function(n){return n.isMe;}).id]);
+        linkSel.style("display", function(l){
+          var keep = l.weight >= th;
+          if (keep) { keepNodes.add(l.source.id); keepNodes.add(l.target.id); }
+          return keep ? "" : "none";
         });
-        node.style("opacity", function(n){ return connected.has(n.id) ? 1 : 0.2; });
-        link.style("opacity", function(l){ return (l.source.id === d.id || l.target.id === d.id) ? 0.9 : 0.08; });
-      }).on("mouseleave", function(){
-        node.style("opacity", 1);
-        link.style("opacity", 0.55);
+        nodeG.style("display", function(n){ return keepNodes.has(n.id) ? "" : "none"; });
+        sim.alpha(0.3).restart();
+      });
+
+      resetBtn.addEventListener("click", function(){
+        searchEl.value = "";
+        minEl.value = "1";
+        minValEl.textContent = "1";
+        linkSel.style("display", "");
+        nodeG.style("display", "");
+        selectNone();
+        clearDetail();
+        s.transition().duration(reduced?0:450).call(zoomBehavior.transform, d3.zoomIdentity);
+        sim.alpha(0.5).restart();
+      });
+
+      // Allow Enter in search to focus first match
+      searchEl.addEventListener("keydown", function(e){
+        if (e.key === "Enter"){
+          e.preventDefault();
+          var s = (searchEl.value || "").toLowerCase().trim();
+          if (!s) return;
+          var first = nodes.find(function(n){ return n.id.toLowerCase().indexOf(s) !== -1; });
+          if (first) focusOn(first.id);
+        }
       });
     });
   })();
 </script>
 
 <style>
-  .net-meta { display: flex; gap: 1.6rem; margin: 1rem 0 1.5rem; font-family: var(--ff-mono); font-size: 13px; color: var(--text-mute); }
-  .net-meta b { font-family: var(--ff-serif); font-size: 1.4rem; color: var(--blue); display: inline-block; margin-right: .35rem; }
-  :root[data-theme="dark"] .net-meta b { color: var(--maize); }
-  .net-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .8rem; aspect-ratio: 3 / 2; max-height: 620px; }
+  .net-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .net-head .lead { max-width: 60ch; margin-top: .6rem; }
+  .net-stats { display: flex; gap: 1.4rem; padding: .8rem 1.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .net-stats > div { text-align: center; }
+  .net-stats b { font-family: var(--ff-serif); font-size: 1.45rem; color: var(--blue); display: block; line-height: 1; }
+  :root[data-theme="dark"] .net-stats b { color: var(--maize); }
+  .net-stats span { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .04em; color: var(--text-mute); }
+
+  .net-toolbar { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 0 0 1rem; padding: .7rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .net-toolbar .search { display: flex; align-items: center; gap: .5rem; flex: 1 1 220px; min-width: 200px; background: var(--bg); border: 1px solid var(--border-strong); border-radius: 7px; padding: .1rem .7rem; color: var(--text-mute); }
+  .net-toolbar .search input { flex: 1; border: 0; outline: 0; background: none; font-family: var(--ff-sans); font-size: 13px; color: var(--text); padding: .5rem 0; }
+  .net-slider { display: flex; align-items: center; gap: .55rem; font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); }
+  .net-slider input[type=range] { accent-color: var(--blue); width: 110px; }
+  .net-min-val { font-weight: 600; color: var(--blue-link); min-width: 12px; text-align: right; }
+  .net-reset { font-family: var(--ff-mono); font-size: 12px; padding: .4rem .8rem; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-soft); border-radius: 6px; cursor: pointer; }
+  .net-reset:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .back-btn { font-family: var(--ff-mono); font-size: 12px; margin-left: auto; }
+
+  .net-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1.2rem; align-items: stretch; }
+  .net-canvas { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .6rem; aspect-ratio: 3 / 2.1; }
   #net-svg { width: 100%; height: 100%; display: block; }
-  .net-footnote { margin-top: 1.4rem; font-size: .9rem; color: var(--text-mute); }
+  .net-hint { position: absolute; bottom: 10px; left: 12px; right: 12px; text-align: center; font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-mute); pointer-events: none; }
+  .net-node.selected circle { stroke: var(--maize) !important; stroke-width: 3.5 !important; }
+
+  .net-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; overflow-y: auto; max-height: 78vh; }
+  .np-eyebrow { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-link); margin-bottom: .8rem; display: block; }
+  .np-list { list-style: none; padding: 0; margin: 0; }
+  .np-list li { margin: 0; padding: 0; }
+  .np-item { display: grid; grid-template-columns: 1fr 80px 28px; gap: .7rem; align-items: center; width: 100%; padding: .55rem .2rem; background: none; border: 0; border-bottom: 1px solid var(--border); cursor: pointer; text-align: left; font-family: var(--ff-sans); }
+  .np-item:hover { background: var(--surface-soft); }
+  .np-name { font-family: var(--ff-mono); font-size: 12.5px; color: var(--text); }
+  .np-bar { display: block; height: 6px; background: var(--surface-soft); border-radius: 3px; overflow: hidden; }
+  .np-bar-fill { display: block; height: 100%; background: linear-gradient(90deg, var(--blue-link), var(--blue)); border-radius: 3px; }
+  .np-num { font-family: var(--ff-mono); font-size: 12px; color: var(--blue-link); text-align: right; }
+  .np-foot { margin-top: 1rem; font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); }
+
+  .np-detail-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .8rem; }
+  .np-close { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-soft); font-size: 18px; line-height: 1; cursor: pointer; padding: 0; }
+  .np-close:hover { background: var(--bg-soft); color: var(--blue); }
+  .np-name-big { font-family: var(--ff-serif); font-weight: 600; font-size: 1.4rem; color: var(--blue); margin: 0 0 .3rem; line-height: 1.18; }
+  :root[data-theme="dark"] .np-name-big { color: var(--maize); }
+  .np-amp { color: var(--maize); font-weight: 400; padding: 0 .15rem; }
+  .np-summary { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); margin-bottom: 1rem; }
+  .np-also { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); margin-bottom: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); }
+  .np-also > span { display: block; margin-bottom: .5rem; }
+  .np-coa { font-family: var(--ff-mono); font-size: 11.5px; padding: .25rem .5rem; margin: 0 .25rem .3rem 0; border: 1px solid var(--border); background: var(--surface-soft); color: var(--text); border-radius: 5px; cursor: pointer; }
+  .np-coa em { font-style: normal; color: var(--blue-link); margin-left: .25rem; }
+  .np-coa:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .np-coa:hover em { color: var(--maize); }
+  .np-link-pubs { display: inline-block; font-family: var(--ff-mono); font-size: 11.5px; color: var(--blue-link); margin-bottom: 1rem; }
+  .np-pubs { list-style: none; padding: 0; margin: 0; }
+  .np-pub { display: grid; grid-template-columns: 42px 1fr; gap: .8rem; padding: .9rem 0; border-top: 1px solid var(--border); }
+  .np-pub-year { font-family: var(--ff-mono); font-size: 11.5px; color: var(--blue-link); padding-top: .15rem; }
+  .np-pub-title { font-size: .94rem; font-weight: 500; color: var(--text); line-height: 1.32; }
+  .np-pub-auth { font-size: .82rem; color: var(--text-soft); margin-top: .2rem; }
+  .np-pub-auth strong { color: var(--blue); }
+  :root[data-theme="dark"] .np-pub-auth strong { color: var(--maize); }
+  .np-pub-venue { font-size: .78rem; color: var(--text-mute); font-style: italic; margin-top: .1rem; }
+
+  .net-footnote { margin-top: 1.4rem; font-size: .88rem; color: var(--text-mute); font-family: var(--ff-mono); }
+
+  @media (max-width: 980px) {
+    .net-grid { grid-template-columns: 1fr; }
+    .net-canvas { aspect-ratio: 4 / 3; }
+    .net-panel { max-height: none; }
+    .net-head { flex-direction: column; align-items: flex-start; }
+  }
 </style>
