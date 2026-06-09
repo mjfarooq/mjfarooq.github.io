@@ -1,12 +1,29 @@
 ---
 import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
+import aliases from "../../data/authorAliases.json";
 
 // Build co-authorship network from publications
 const list = pubs.filter((p) => p.type !== "Thesis");
-const ME = "J. Farooq";
-const ME_ALT = "M. J. Farooq";
-const norm = (a) => (a === ME_ALT ? ME : a);
+const ME_DISPLAY = "Junaid Farooq";
+
+// Resolve an author abbreviation to a canonical name based on aliases + paper context.
+// 1. If the abbreviation has an alias entry, check whether the paper title is in any override list.
+// 2. If found, return that override name. Otherwise return the alias default.
+// 3. If no alias entry, return the raw abbreviation unchanged.
+function resolveAuthor(raw, paperTitle) {
+  const entry = aliases[raw];
+  if (!entry) return raw;
+  const overrides = entry.overrides || {};
+  for (const canonical of Object.keys(overrides)) {
+    const titles = overrides[canonical] || [];
+    if (titles.indexOf(paperTitle) !== -1) return canonical;
+  }
+  return entry.default || raw;
+}
+
+const ME = ME_DISPLAY;
+const norm = (a, title) => resolveAuthor(a, title);
 
 // papersByAuthor: author -> array of publication indices
 const papersByAuthor = {};
@@ -14,7 +31,7 @@ const papersByAuthor = {};
 const papersByEdge = {};
 
 list.forEach((p, idx) => {
-  const auths = Array.from(new Set((p.authors || []).map(norm)));
+  const auths = Array.from(new Set((p.authors || []).map((a) => norm(a, p.title))));
   for (const a of auths) {
     if (!papersByAuthor[a]) papersByAuthor[a] = [];
     papersByAuthor[a].push(idx);

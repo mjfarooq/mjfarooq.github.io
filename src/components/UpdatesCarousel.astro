@@ -7,9 +7,26 @@ const sections = [
   { title: "Publications", items: all.filter(isPub).slice(0, 12) },
 ];
 const linkMembers = (site.group.members || []).filter((m) => m.profile);
+const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const linkify = (t) => {
+  if (!t) return t;
+  const cands = [];
+  for (const m of linkMembers) {
+    cands.push({ name: m.name, href: m.profile });
+    const first = m.name.split(" ")[0];
+    if (first && first !== m.name) cands.push({ name: first, href: m.profile });
+  }
+  cands.sort((a, b) => b.name.length - a.name.length);
   let s = t;
-  for (const m of linkMembers) s = s.split(m.name).join(`<a class="uc-namelink" href="${m.profile}">${m.name}</a>`);
+  const placeholders = [];
+  cands.forEach((c, i) => {
+    const ph = "\x00LINK" + i + "\x00";
+    const re = new RegExp("\\b" + escRe(c.name) + "\\b", "g");
+    let hit = false;
+    s = s.replace(re, () => { hit = true; return ph; });
+    if (hit) placeholders.push({ ph, html: `<a class="uc-namelink" href="${c.href}">${c.name}</a>` });
+  });
+  for (const p of placeholders) s = s.split(p.ph).join(p.html);
   return s;
 };
 ---

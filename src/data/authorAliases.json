@@ -1,0 +1,21 @@
+{
+  "_doc": "Disambiguates author abbreviations that map to multiple real people. For each ambiguous abbreviation, set a default canonical name, and list paper titles that belong to other people under overrides. The network page and publications search will treat these as separate authors.",
+  "Y. Wang": {
+    "default": "Yuhui Wang",
+    "overrides": {
+      "Ying Wang": [
+        "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
+        "Communication Systems for Autonomous eVTOL: Regulatory Challenges, Emerging Technologies, and Future Directions",
+        "SQUASH: A SWAP-Based Quantum Attack to Sabotage Hybrid Quantum Neural Networks"
+      ]
+    }
+  },
+  "J. Farooq": {
+    "default": "Junaid Farooq",
+    "overrides": {}
+  },
+  "M. J. Farooq": {
+    "default": "Junaid Farooq",
+    "overrides": {}
+  }
+}
