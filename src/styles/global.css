@@ -59,6 +59,36 @@ p { margin: 0 0 1rem; color: var(--text-soft); }
 a { color: var(--blue-link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+/* Editorial underline for prose links: faint at rest, saturates on hover */
+p a, li a, .lead a, .bio a, blockquote a, .prose a, .ask-text a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color .25s ease;
+}
+p a:hover, li a:hover, .lead a:hover, .bio a:hover, blockquote a:hover, .prose a:hover, .ask-text a:hover {
+  text-decoration-color: currentColor;
+}
+@media (prefers-reduced-motion: reduce) {
+  p a, li a, .lead a, .bio a, blockquote a, .prose a, .ask-text a { transition: none; }
+}
+
+/* Consistent focus ring in brand maize */
+:focus-visible {
+  outline: 2px solid var(--maize);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+:root[data-theme="dark"] :focus-visible { outline-color: var(--maize); }
+
+/* MPA View Transitions: subtle crossfade between pages (Chromium 126+) */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
 /* layout */
 .layout { display: flex; min-height: 100vh; }
 .main { flex: 1; min-width: 0; margin-left: var(--sb-w); }
