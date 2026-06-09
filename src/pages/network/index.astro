@@ -1,0 +1,181 @@
+---
+import Base from "../../layouts/Base.astro";
+import pubs from "../../data/publications.json";
+
+// Build co-authorship network
+const list = pubs.filter((p) => p.type !== "Thesis");
+const ME = "J. Farooq";
+const ME_ALT = "M. J. Farooq";
+
+// Normalize author name (treat J. Farooq and M. J. Farooq as same person)
+const norm = (a) => (a === ME_ALT ? ME : a);
+
+const pubCount = {};
+const coauth = {};
+for (const p of list) {
+  const auths = Array.from(new Set((p.authors || []).map(norm)));
+  for (const a of auths) {
+    pubCount[a] = (pubCount[a] || 0) + 1;
+  }
+  for (let i = 0; i < auths.length; i++) {
+    for (let j = i + 1; j < auths.length; j++) {
+      const key = [auths[i], auths[j]].sort().join("§§");
+      coauth[key] = (coauth[key] || 0) + 1;
+    }
+  }
+}
+
+// Include all authors who co-authored with Farooq at least once
+const farooqCoauthors = new Set();
+for (const key of Object.keys(coauth)) {
+  const [a, b] = key.split("§§");
+  if (a === ME || b === ME) {
+    farooqCoauthors.add(a === ME ? b : a);
+  }
+}
+farooqCoauthors.add(ME);
+
+const nodes = Array.from(farooqCoauthors).map((a) => ({
+  id: a,
+  count: pubCount[a] || 0,
+  isMe: a === ME,
+}));
+
+// Edges between included nodes
+const links = [];
+for (const key of Object.keys(coauth)) {
+  const [a, b] = key.split("§§");
+  if (farooqCoauthors.has(a) && farooqCoauthors.has(b)) {
+    links.push({ source: a, target: b, weight: coauth[key] });
+  }
+}
+
+const totalCoauthors = nodes.length - 1;
+const totalEdges = links.length;
+---
+<Base title="Collaboration network" description="Co-authorship network for Junaid Farooq's publications.">
+  <div class="container">
+    <section class="section">
+      <span class="eyebrow">Explore</span>
+      <h1 class="h-page">Collaboration network</h1>
+      <p class="lead">Each node is a co-author. Lines connect researchers who have appeared on the same paper, with thicker lines for stronger collaborations. Drag any node to reshape the graph; hover for paper counts; click a node to filter the publications page.</p>
+
+      <div class="net-meta">
+        <span><b>{totalCoauthors}</b> co-authors</span>
+        <span><b>{totalEdges}</b> collaborations</span>
+      </div>
+
+      <div class="net-wrap reveal">
+        <svg id="net-svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet" aria-label="Collaboration network graph"></svg>
+      </div>
+
+      <p class="net-footnote">Drawn from {list.length} publications. Author abbreviations match how names appear in the venue. <a href="/publications">Back to publications →</a></p>
+    </section>
+  </div>
+</Base>
+
+<script is:inline define:vars={{ NODES: nodes, LINKS: links }}>
+  (function(){
+    var svg = document.getElementById("net-svg");
+    if(!svg) return;
+    var w = 900, h = 600;
+    var reduced = typeof matchMedia==="function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Inject D3 from CDN once
+    function loadD3(cb){
+      if(window.d3) return cb();
+      var s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js";
+      s.onload = cb;
+      s.onerror = function(){ console.error("d3 failed to load"); };
+      document.head.appendChild(s);
+    }
+
+    loadD3(function(){
+      var d3 = window.d3;
+      var nodes = NODES.map(function(n){ return Object.assign({}, n); });
+      var links = LINKS.map(function(l){ return Object.assign({}, l); });
+
+      var maxCount = d3.max(nodes, function(n){ return n.count; }) || 1;
+      var rScale = d3.scaleSqrt().domain([0, maxCount]).range([4, 18]);
+      var wScale = d3.scaleLinear().domain([1, d3.max(links, function(l){ return l.weight; }) || 1]).range([0.7, 3.2]);
+
+      var s = d3.select(svg);
+      var g = s.append("g");
+      var link = g.append("g").attr("class","links").selectAll("line")
+        .data(links).enter().append("line")
+        .attr("stroke","#9aaec8")
+        .attr("stroke-opacity", 0.55)
+        .attr("stroke-width", function(d){ return wScale(d.weight); });
+      var node = g.append("g").attr("class","nodes").selectAll("g")
+        .data(nodes).enter().append("g")
+        .attr("cursor","pointer");
+      node.append("circle")
+        .attr("r", function(d){ return rScale(d.count); })
+        .attr("fill", function(d){ return d.isMe ? "#ffcb05" : "#1f5394"; })
+        .attr("stroke", function(d){ return d.isMe ? "#00274c" : "#fff"; })
+        .attr("stroke-width", function(d){ return d.isMe ? 2.5 : 1.2; });
+      node.append("title").text(function(d){ return d.id + " — " + d.count + " paper" + (d.count===1?"":"s"); });
+      node.filter(function(d){ return d.isMe || rScale(d.count) > 8; })
+        .append("text")
+        .text(function(d){ return d.id; })
+        .attr("font-family", "IBM Plex Mono, monospace")
+        .attr("font-size", function(d){ return d.isMe ? 12 : 10; })
+        .attr("fill", function(d){ return d.isMe ? "#00274c" : "#1c2c44"; })
+        .attr("dx", function(d){ return rScale(d.count) + 4; })
+        .attr("dy", 4);
+
+      var sim = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).id(function(d){ return d.id; }).distance(function(d){ return 80 / Math.sqrt(d.weight); }).strength(0.55))
+        .force("charge", d3.forceManyBody().strength(-160))
+        .force("center", d3.forceCenter(w/2, h/2))
+        .force("collide", d3.forceCollide().radius(function(d){ return rScale(d.count) + 6; }));
+
+      if (reduced) sim.alphaDecay(0.5);
+
+      sim.on("tick", function(){
+        link
+          .attr("x1", function(d){ return d.source.x; }).attr("y1", function(d){ return d.source.y; })
+          .attr("x2", function(d){ return d.target.x; }).attr("y2", function(d){ return d.target.y; });
+        node.attr("transform", function(d){ return "translate(" + d.x + "," + d.y + ")"; });
+      });
+
+      function dragstart(event, d){ if(!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
+      function dragmove(event, d){ d.fx = event.x; d.fy = event.y; }
+      function dragend(event, d){ if(!event.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }
+      node.call(d3.drag().on("start", dragstart).on("drag", dragmove).on("end", dragend));
+
+      var zoom = d3.zoom().scaleExtent([0.5, 4]).on("zoom", function(e){ g.attr("transform", e.transform); });
+      s.call(zoom);
+
+      // Click a node to filter publications page by that author
+      node.on("click", function(event, d){
+        if (d.isMe) return;
+        window.location.href = "/publications?q=" + encodeURIComponent(d.id);
+      });
+
+      // Hover dims unrelated nodes/links
+      node.on("mouseenter", function(event, d){
+        var connected = new Set([d.id]);
+        links.forEach(function(l){
+          if(l.source.id === d.id) connected.add(l.target.id);
+          if(l.target.id === d.id) connected.add(l.source.id);
+        });
+        node.style("opacity", function(n){ return connected.has(n.id) ? 1 : 0.2; });
+        link.style("opacity", function(l){ return (l.source.id === d.id || l.target.id === d.id) ? 0.9 : 0.08; });
+      }).on("mouseleave", function(){
+        node.style("opacity", 1);
+        link.style("opacity", 0.55);
+      });
+    });
+  })();
+</script>
+
+<style>
+  .net-meta { display: flex; gap: 1.6rem; margin: 1rem 0 1.5rem; font-family: var(--ff-mono); font-size: 13px; color: var(--text-mute); }
+  .net-meta b { font-family: var(--ff-serif); font-size: 1.4rem; color: var(--blue); display: inline-block; margin-right: .35rem; }
+  :root[data-theme="dark"] .net-meta b { color: var(--maize); }
+  .net-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .8rem; aspect-ratio: 3 / 2; max-height: 620px; }
+  #net-svg { width: 100%; height: 100%; display: block; }
+  .net-footnote { margin-top: 1.4rem; font-size: .9rem; color: var(--text-mute); }
+</style>

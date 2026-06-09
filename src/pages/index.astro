@@ -35,10 +35,10 @@ const counts = {
         <a class="btn" href={"mailto:" + site.email}>Get in touch</a>
       </div>
       <div class="stats">
-        <a class="stat" href="/publications"><b class="counter" data-target={counts.total} data-suffix="+">0</b><span>Publications</span></a>
-        <a class="stat" href="/publications?type=Journal"><b class="counter" data-target={counts.journals}>0</b><span>Journal articles</span></a>
-        <a class="stat" href="/publications?type=Conference"><b class="counter" data-target={counts.conferences}>0</b><span>Conference papers</span></a>
-        <a class="stat" href="/publications?type=Book"><b class="counter" data-target={counts.books}>0</b><span>Books & chapters</span></a>
+        <a class="stat" href="/publications"><b>{counts.total}+</b><span>Publications</span></a>
+        <a class="stat" href="/publications?type=Journal"><b>{counts.journals}</b><span>Journal articles</span></a>
+        <a class="stat" href="/publications?type=Conference"><b>{counts.conferences}</b><span>Conference papers</span></a>
+        <a class="stat" href="/publications?type=Book"><b>{counts.books}</b><span>Books & chapters</span></a>
       </div>
     </section>
 

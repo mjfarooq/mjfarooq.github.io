@@ -7,6 +7,25 @@ const total = pubs.length;
 const years = Array.from(new Set(pubs.map((p) => p.year))).sort((a, b) => b - a);
 const authorList = Array.from(new Set(pubs.flatMap((p) => p.authors || []))).sort((a, b) => a.localeCompare(b));
 function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<strong>$1</strong>"); }
+
+// Heatmap data: count publications per year, excluding theses
+const pubsNoThesis = pubs.filter(p => p.type !== "Thesis");
+const _yc = {};
+pubsNoThesis.forEach(p => { _yc[p.year] = (_yc[p.year]||0) + 1; });
+const _yKeys = Object.keys(_yc).map(Number).sort((a,b)=>a-b);
+const _yMax = Math.max(1, ..._yKeys.map(y => _yc[y]));
+const yearBars = _yKeys.map(y => ({ year: y, n: _yc[y], h: Math.max(10, Math.round((_yc[y] / _yMax) * 100)) }));
+
+// Tag cloud data: top topics by paper count
+const _tc = {};
+pubsNoThesis.forEach(p => (p.tags || []).forEach(t => { _tc[t] = (_tc[t]||0) + 1; }));
+const _topTags = Object.entries(_tc).sort((a,b) => b[1]-a[1]).slice(0, 22);
+const _tMax = Math.max(1, ..._topTags.map(x => x[1]));
+const _tMin = Math.min(..._topTags.map(x => x[1]), _tMax);
+const topTags = _topTags.map(([t, n]) => ({
+  t, n,
+  size: 11 + Math.round(((n - _tMin) / Math.max(1, _tMax - _tMin)) * 9)
+}));
 ---
 <Base title="Publications" description="Books, journal articles, and conference papers by Junaid Farooq.">
   <div class="container">
@@ -14,6 +33,29 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
       <span class="eyebrow">Publications</span>
       <h1 class="h-page">Publications</h1>
       <p class="lead">Author names are listed as published; an asterisk denotes a student advisee. The full record is also on <a href="https://scholar.google.com/citations?user=Per3ks8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+
+      <div class="pubviz reveal">
+        <div class="yh">
+          <div class="yh-head"><span class="yh-label">Activity by year</span><span class="yh-hint">click a bar to filter</span></div>
+          <div class="yh-bars">
+            {yearBars.map((b) => (
+              <button type="button" class="yh-bar" data-year={b.year} title={`${b.year}: ${b.n} publication${b.n===1?'':'s'}`}>
+                <span class="yh-num">{b.n}</span>
+                <span class="yh-track"><span class="yh-fill" style={`height:${b.h}%`}></span></span>
+                <span class="yh-year">{"'" + String(b.year).slice(-2)}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div class="tc">
+          <div class="tc-head"><span class="tc-label">Browse by topic</span></div>
+          <div class="tc-cloud">
+            {topTags.map((t) => (
+              <button type="button" class="tc-tag" data-tag={t.t} style={`font-size:${t.size}px`} title={`${t.n} paper${t.n===1?'':'s'}`}>{t.t}</button>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <div class="toolbar reveal">
         <div class="search">
@@ -59,11 +101,36 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
         ))}
       </ol>
       <div class="nores mono" id="nores" hidden>No matching publications.</div>
+      <p class="pub-foot"><a href="/network">View collaboration network →</a></p>
     </section>
   </div>
 </Base>
 
 <style>
+  /* Publication visualizations */
+  .pubviz { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; margin: 1.8rem 0 1.2rem; }
+  .yh, .tc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; }
+  .yh-head, .tc-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .8rem; }
+  .yh-label, .tc-label { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-link); }
+  .yh-hint { font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-mute); }
+  .yh-bars { display: flex; align-items: flex-end; gap: 4px; height: 96px; }
+  .yh-bar { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0; background: none; border: 0; cursor: pointer; height: 100%; min-width: 24px; }
+  .yh-num { font-family: var(--ff-mono); font-size: 9.5px; color: var(--text-mute); opacity: 0; transition: opacity .15s; line-height: 1; }
+  .yh-bar:hover .yh-num, .yh-bar.on .yh-num { opacity: 1; color: var(--blue-link); }
+  .yh-track { flex: 1; width: 100%; display: flex; align-items: flex-end; background: var(--surface-soft); border-radius: 3px; overflow: hidden; }
+  .yh-fill { display: block; width: 100%; background: linear-gradient(180deg, var(--blue-link), var(--blue)); border-radius: 3px 3px 0 0; transition: background .2s, transform .25s; transform-origin: bottom; }
+  .yh-bar:hover .yh-fill { background: linear-gradient(180deg, var(--maize), var(--blue)); }
+  .yh-bar.on .yh-fill { background: var(--maize); }
+  .yh-year { font-family: var(--ff-mono); font-size: 10px; color: var(--text-mute); line-height: 1; }
+  .yh-bar:hover .yh-year, .yh-bar.on .yh-year { color: var(--blue-link); }
+
+  .tc-cloud { display: flex; flex-wrap: wrap; gap: .35rem .55rem; align-items: center; line-height: 1.5; }
+  .tc-tag { font-family: var(--ff-mono); border: 0; background: none; padding: .15rem .3rem; color: var(--text-soft); cursor: pointer; border-radius: 4px; transition: color .15s, background .15s; line-height: 1.2; }
+  .tc-tag:hover { color: var(--blue); background: var(--maize-soft); }
+  .tc-tag.on { color: var(--blue); background: var(--maize); }
+  :root[data-theme="dark"] .tc-tag:hover, :root[data-theme="dark"] .tc-tag.on { color: var(--blue); }
+  @media (max-width: 720px) { .pubviz { grid-template-columns: 1fr; } .yh-bars { height: 80px; } }
+
   .toolbar { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 1.8rem 0 .6rem; }
   .search { display: flex; align-items: center; gap: .5rem; flex: 1 1 260px; min-width: 220px; background: var(--surface); border: 1px solid var(--border-strong); border-radius: 8px; padding: .1rem .8rem; color: var(--text-mute); }
   .search:focus-within { border-color: var(--blue); color: var(--blue); }
@@ -107,6 +174,8 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
   :root[data-theme="dark"] .b-journal { background: #2b6cb0; color: #fff; }
   :root[data-theme="dark"] .b-conference { background: #ffcb05; color: #00274c; }
   .nores { padding: 2.5rem 0; color: var(--text-mute); }
+  .pub-foot { margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-family: var(--ff-mono); font-size: 12px; color: var(--text-mute); }
+  .pub-foot a { color: var(--blue-link); }
   @media (max-width: 560px) { .pitem { grid-template-columns: 1fr; gap: .3rem; } }
 </style>
 
@@ -150,6 +219,38 @@ function authorsHtml(s){ return s.replace(/(M\. J\. Farooq|J\. Farooq)/g, "<stro
     var pyear = params.get("year"); if(pyear){ var yo = yearSel.querySelector('option[value="'+pyear.replace(/"/g,"")+'"]'); if(yo) yearSel.value = yo.value; }
     var pq = params.get("q"); if(pq){ q.value = pq; }
     apply();
+
+    // Year heatmap: click a bar to filter by year
+    document.querySelectorAll(".yh-bar").forEach(function(b){
+      b.addEventListener("click", function(){
+        var y = b.getAttribute("data-year");
+        var same = b.classList.contains("on");
+        document.querySelectorAll(".yh-bar.on").forEach(function(o){ o.classList.remove("on"); });
+        if(same){ yearSel.value = "All"; }
+        else { yearSel.value = y; b.classList.add("on"); }
+        apply();
+        document.getElementById("plist").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+    // Sync heatmap selection when year select changes
+    yearSel.addEventListener("change", function(){
+      document.querySelectorAll(".yh-bar.on").forEach(function(o){ o.classList.remove("on"); });
+      if(yearSel.value !== "All"){
+        var bar = document.querySelector('.yh-bar[data-year="' + yearSel.value + '"]');
+        if(bar) bar.classList.add("on");
+      }
+    });
+    // Tag cloud: click a topic to set search
+    document.querySelectorAll(".tc-tag").forEach(function(t){
+      t.addEventListener("click", function(){
+        var same = t.classList.contains("on");
+        document.querySelectorAll(".tc-tag.on").forEach(function(o){ o.classList.remove("on"); });
+        if(same){ q.value = ""; }
+        else { q.value = t.getAttribute("data-tag"); t.classList.add("on"); }
+        apply();
+        document.getElementById("plist").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
 
     document.addEventListener("click", function(e){
       var tog = e.target.closest(".pi-cite-toggle");
