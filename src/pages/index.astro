@@ -4,6 +4,8 @@ import UpdatesCarousel from "../components/UpdatesCarousel.astro";
 import site from "../data/site.json";
 import areaIcons from "../data/areaIcons.js";
 import pubs from "../data/publications.json";
+import updates from "../data/updates.json";
+const latestUpdate = updates[0]?.date || "";
 const featuredTitles = site.featuredPubs || [];
 const byTitle = new Map(pubs.map((p) => [p.title, p]));
 const recent = featuredTitles
@@ -33,16 +35,19 @@ const counts = {
         <a class="btn" href={"mailto:" + site.email}>Get in touch</a>
       </div>
       <div class="stats">
-        <a class="stat" href="/publications"><b>{counts.total}+</b><span>Publications</span></a>
-        <a class="stat" href="/publications?type=Journal"><b>{counts.journals}</b><span>Journal articles</span></a>
-        <a class="stat" href="/publications?type=Conference"><b>{counts.conferences}</b><span>Conference papers</span></a>
-        <a class="stat" href="/publications?type=Book"><b>{counts.books}</b><span>Books & chapters</span></a>
+        <a class="stat" href="/publications"><b class="counter" data-target={counts.total} data-suffix="+">0</b><span>Publications</span></a>
+        <a class="stat" href="/publications?type=Journal"><b class="counter" data-target={counts.journals}>0</b><span>Journal articles</span></a>
+        <a class="stat" href="/publications?type=Conference"><b class="counter" data-target={counts.conferences}>0</b><span>Conference papers</span></a>
+        <a class="stat" href="/publications?type=Book"><b class="counter" data-target={counts.books}>0</b><span>Books & chapters</span></a>
       </div>
     </section>
 
     <section class="section reveal">
       <UpdatesCarousel />
-      <a class="btn link-more" href="/news">All news →</a>
+      <div class="news-cta-row">
+        <a class="btn link-more" href="/news">All news →</a>
+        {latestUpdate && <span class="latest-mark">Latest update <b>{latestUpdate}</b></span>}
+      </div>
     </section>
 
     <section class="section reveal">
@@ -113,6 +118,13 @@ const counts = {
   .area-blurb { font-size: .92rem; margin-bottom: .8rem; }
   .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
   .link-more { margin-top: 1.4rem; }
+  .news-cta-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; }
+  .news-cta-row .link-more { margin-top: 0; }
+  .latest-mark { font-family: var(--ff-mono); font-size: 11.5px; letter-spacing: .04em; color: var(--text-mute); display: inline-flex; align-items: center; gap: .55rem; }
+  .latest-mark::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--maize); box-shadow: 0 0 0 0 var(--maize); animation: latest-pulse 2.4s ease-out infinite; }
+  .latest-mark b { font-weight: 600; color: var(--text-soft); }
+  @keyframes latest-pulse { 0% { box-shadow: 0 0 0 0 rgba(255,203,5,.55); } 70% { box-shadow: 0 0 0 8px rgba(255,203,5,0); } 100% { box-shadow: 0 0 0 0 rgba(255,203,5,0); } }
+  @media (prefers-reduced-motion: reduce) { .latest-mark::before { animation: none; } }
   .pub-mini { list-style: none; padding: 0; margin: 1.2rem 0 0; }
   .pub-mini li { display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--border); }
   .pm-year { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); }
