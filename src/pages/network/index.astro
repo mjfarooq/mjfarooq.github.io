@@ -135,6 +135,11 @@ const topCollabs = nodes
       <div class="net-grid">
         <div class="net-canvas" id="net-canvas">
           <svg id="net-svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet" aria-label="Collaboration network graph"></svg>
+          <div class="net-legend">
+            <span><i class="lg-me"></i>Junaid Farooq</span>
+            <span><i class="lg-member"></i>CyReN Lab member</span>
+            <span><i class="lg-other"></i>External co-author</span>
+          </div>
           <div class="net-hint" id="net-hint">drag · scroll to zoom · click a node or edge for details</div>
         </div>
         <aside class="net-panel" id="net-panel">
@@ -333,52 +338,9 @@ const topCollabs = nodes
       var g = s.append("g");
       gRef = g;
 
-      // CyReN members envelope (renders BEHIND links and nodes)
-      var studentSet = new Set(CYREN_MEMBERS);
-      var hullLayer = g.append("g").attr("class","cyren-hull-layer").style("pointer-events","none");
-      var hullPath = hullLayer.append("path")
-        .attr("class","cyren-hull")
-        .attr("fill", "#ffcb05")
-        .attr("fill-opacity", 0.13)
-        .attr("stroke", "#ffcb05")
-        .attr("stroke-width", 1.5)
-        .attr("stroke-dasharray", "5 4")
-        .attr("stroke-opacity", 0.75)
-        .attr("stroke-linejoin", "round");
-      var hullLabel = hullLayer.append("text")
-        .attr("class","cyren-hull-label")
-        .text("CyReN Lab")
-        .attr("font-family","IBM Plex Mono, monospace")
-        .attr("font-size", 10.5)
-        .attr("font-weight", 600)
-        .attr("letter-spacing", "0.14em")
-        .attr("fill", "#8a6d00")
-        .attr("text-anchor","middle");
-      var lineGen = d3.line().curve(d3.curveCatmullRomClosed.alpha(0.85));
-      function computeHull(currentNodes, rScale){
-        var students = currentNodes.filter(function(n){ return studentSet.has(n.id) && n.x != null; });
-        if (students.length === 0) return null;
-        // Build a cloud of points around each student node so the hull is smooth
-        // even when there are only 3 students (instead of a tight triangle).
-        var pad = 26;
-        var points = [];
-        var ring = 12;
-        students.forEach(function(n){
-          var r = rScale(n.count) + pad;
-          for (var a = 0; a < ring; a++) {
-            var theta = (a / ring) * Math.PI * 2;
-            points.push([n.x + Math.cos(theta) * r, n.y + Math.sin(theta) * r]);
-          }
-        });
-        if (students.length === 1) {
-          return { d: lineGen(points), centroid: [students[0].x, students[0].y - rScale(students[0].count) - pad - 12] };
-        }
-        var hull = d3.polygonHull(points);
-        if (!hull) return null;
-        var cx = d3.mean(hull, function(p){ return p[0]; });
-        var cy = d3.min(hull, function(p){ return p[1]; }) - 8;
-        return { d: lineGen(hull), centroid: [cx, cy] };
-      }
+      // CyReN members are marked with a maize ring around their own node only,
+      // so the marking can never visually claim non-members in between.
+      var memberSet = new Set(CYREN_MEMBERS);
 
       linkSel = g.append("g").attr("class","net-links").selectAll("line")
         .data(links).enter().append("line")
@@ -392,6 +354,15 @@ const topCollabs = nodes
         .data(nodes).enter().append("g")
         .attr("class","net-node")
         .attr("cursor","pointer");
+      // Maize halo for CyReN members (drawn first, behind the main circle)
+      nodeG.filter(function(d){ return !d.isMe && memberSet.has(d.id); })
+        .append("circle")
+        .attr("class","cyren-halo")
+        .attr("r", function(d){ return rScale(d.count) + 5; })
+        .attr("fill", "none")
+        .attr("stroke", "#ffcb05")
+        .attr("stroke-width", 2.2)
+        .attr("stroke-opacity", 0.95);
       nodeG.append("circle")
         .attr("r", function(d){ return rScale(d.count); })
         .attr("fill", function(d){ return d.isMe ? "#ffcb05" : "#1f5394"; })
@@ -427,14 +398,6 @@ const topCollabs = nodes
           .attr("x2", function(d){ return d.target.x; })
           .attr("y2", function(d){ return d.target.y; });
         nodeG.attr("transform", function(d){ return "translate(" + d.x + "," + d.y + ")"; });
-        var hull = computeHull(nodes, rScale);
-        if (hull) {
-          hullPath.attr("d", hull.d).style("display", "");
-          hullLabel.attr("x", hull.centroid[0]).attr("y", hull.centroid[1]).style("display", "");
-        } else {
-          hullPath.style("display", "none");
-          hullLabel.style("display", "none");
-        }
       });
 
       function dragstart(event, d){ if (!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
@@ -547,6 +510,12 @@ const topCollabs = nodes
   .net-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1.2rem; align-items: stretch; }
   .net-canvas { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .6rem; aspect-ratio: 3 / 2.1; }
   #net-svg { width: 100%; height: 100%; display: block; }
+  .net-legend { position: absolute; top: 12px; left: 14px; display: flex; gap: 1rem; font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-soft); pointer-events: none; background: var(--surface); padding: .35rem .7rem; border: 1px solid var(--border); border-radius: 6px; }
+  .net-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+  .net-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; box-sizing: border-box; }
+  .net-legend .lg-me { background: #ffcb05; border: 1.5px solid #00274c; }
+  .net-legend .lg-member { background: #1f5394; box-shadow: 0 0 0 2px #ffcb05; margin: 2px; }
+  .net-legend .lg-other { background: #1f5394; }
   .net-hint { position: absolute; bottom: 10px; left: 12px; right: 12px; text-align: center; font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-mute); pointer-events: none; }
   .net-node.selected circle { stroke: var(--maize) !important; stroke-width: 3.5 !important; }
 
