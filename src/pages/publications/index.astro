@@ -2,6 +2,27 @@
 import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
 import { bibtex } from "../../data/bibtex.js";
+import tagAliases from "../../data/tagAliases.json";
+
+// Build a synonym-expanded search haystack for each publication so that
+// display labels like "NextG Networks" on the home page match papers whose
+// real tags read "O-RAN" or "5G". For each synonym group: if ANY term in the
+// group appears in the paper's content, ALL terms in the group are appended.
+const aliasGroups = (tagAliases.synonyms || []).map((g) => g.map((t) => t.toLowerCase()));
+function searchHaystack(p) {
+  const base = (p.title + " " + p.authors_str + " " + p.venue + " " + (p.tags || []).join(" ")).toLowerCase();
+  const extra = new Set();
+  for (const group of aliasGroups) {
+    for (const term of group) {
+      if (base.indexOf(term) !== -1) {
+        for (const t of group) extra.add(t);
+        break;
+      }
+    }
+  }
+  return extra.size ? base + " " + Array.from(extra).join(" ") : base;
+}
+
 const types = ["All", "Journal", "Conference", "Book", "Book Chapter", "Preprint", "Thesis"];
 const total = pubs.length;
 const years = Array.from(new Set(pubs.map((p) => p.year))).sort((a, b) => b - a);
@@ -90,7 +111,7 @@ const topTags = _topTags.map(([t, n]) => ({
       <div id="plist-top"></div>
       <ol class="plist" id="plist">
         {pubs.map((p) => (
-          <li class="pitem" data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={(p.title + " " + p.authors_str + " " + p.venue + " " + p.tags.join(" ")).toLowerCase()}>
+          <li class="pitem" data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={searchHaystack(p)}>
             <div class="pi-year">{p.year}</div>
             <div class="pi-body">
               <div class="pi-top">

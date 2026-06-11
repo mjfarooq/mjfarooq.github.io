@@ -1,0 +1,24 @@
+{
+  "_doc": "Synonym groups for publication search. If any term in a group appears in a paper's title, authors, venue, or tags, ALL terms in the group are appended to that paper's search haystack. This makes display labels like 'NextG Networks' on the home page filter the publications list correctly, even though the underlying paper data uses different wording like 'O-RAN'.",
+  "synonyms": [
+    ["NextG Networks", "NextG", "Next-Gen", "Next Generation", "5G", "5G/6G", "6G", "O-RAN", "Open RAN", "OpenRAN", "xApp", "rApp", "RIC"],
+    ["Cyber Resilience", "Resilience", "Resilient", "cyber-resilient", "robust networks"],
+    ["Zero Trust", "zero-trust"],
+    ["Internet of Things", "IoT", "industrial IoT", "IIoT", "edge devices"],
+    ["UAV Systems", "UAV", "UAV-assisted", "drone", "drones", "aerial", "aerial vehicle", "VTOL", "eVTOL", "uncrewed", "unmanned aerial"],
+    ["AI for Networks", "AI", "machine learning", "deep learning", "reinforcement learning", "RL", "MARL", "multi-agent reinforcement learning", "LLM", "LLMs", "large language model", "GenAI", "agentic"],
+    ["Cyber Risk", "supply chain", "supply-chain", "risk", "threat", "vulnerability", "SBOM"],
+    ["Distributed Control", "distributed", "multi-agent", "decentralized"],
+    ["Robotics", "robot", "obstacle avoidance", "indoor navigation", "delivery robot"],
+    ["Network Slicing", "Slicing", "slice", "slice admission"],
+    ["URLLC", "low latency", "low-latency", "ultra-reliable", "latency-critical"],
+    ["Backhaul", "backhauling", "IAB", "integrated access and backhaul", "integrated access backhaul"],
+    ["Coverage", "connectivity", "coverage area"],
+    ["Orchestration", "resource orchestration", "task offloading", "computation offloading", "MEC", "mobile edge computing", "edge computing"],
+    ["Vehicular", "VANET", "C-V2X", "V2X", "connected vehicle", "autonomous vehicle"],
+    ["Quantum", "quantum computing", "quantum neural network", "QNN"],
+    ["Satellite", "LEO", "satellite edge"],
+    ["Game Theory", "game-theoretic", "Stackelberg", "equilibrium"],
+    ["Green Networks", "energy", "energy-efficient", "sustainability", "carbon"]
+  ]
+}
