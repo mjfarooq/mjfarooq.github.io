@@ -76,6 +76,22 @@ const pubsLite = list.map((p) => ({
   authors_str: p.authors_str,
 }));
 
+// CyReN lab members (current + alumni + interns + undergrads) whose
+// nodes should be surrounded by a soft envelope on the graph. Matches
+// the canonical node IDs produced by the alias resolution + raw author
+// abbreviations as they appear in publications.
+// Current: Yuhui Wang, X. Wu (Xingqi), E. Delavari (Elahe).
+// Alumni: R. Honnalli (Ritesh), D. Neifar (Dhia), M. Lyu (Moyan), T. Kieras (Tim).
+// Intern: Y. Gao (Yuxuan).
+// Undergrad: J. Hazime (Jawad).
+// (Tintu Jacob Shaji, Zhaoguo Wang, and Yunfan Xu have no co-authored
+//  publications yet so no node exists in the graph.)
+const CYREN_MEMBERS = [
+  "Yuhui Wang", "X. Wu", "E. Delavari",
+  "R. Honnalli", "D. Neifar", "M. Lyu", "T. Kieras",
+  "Y. Gao", "J. Hazime"
+];
+
 const totalCoauthors = nodes.length - 1;
 const totalEdges = links.length;
 const totalPapers = list.length;
@@ -146,7 +162,7 @@ const topCollabs = nodes
   </div>
 </Base>
 
-<script is:inline define:vars={{ NODES: nodes, LINKS: links, PUBS: pubsLite, PAPERS_BY_AUTHOR: papersByAuthor, PAPERS_BY_EDGE: papersByEdge, ME }}>
+<script is:inline define:vars={{ NODES: nodes, LINKS: links, PUBS: pubsLite, PAPERS_BY_AUTHOR: papersByAuthor, PAPERS_BY_EDGE: papersByEdge, ME, CYREN_MEMBERS }}>
   (function(){
     var svgEl = document.getElementById("net-svg");
     var canvasEl = document.getElementById("net-canvas");
@@ -317,6 +333,53 @@ const topCollabs = nodes
       var g = s.append("g");
       gRef = g;
 
+      // CyReN members envelope (renders BEHIND links and nodes)
+      var studentSet = new Set(CYREN_MEMBERS);
+      var hullLayer = g.append("g").attr("class","cyren-hull-layer").style("pointer-events","none");
+      var hullPath = hullLayer.append("path")
+        .attr("class","cyren-hull")
+        .attr("fill", "#ffcb05")
+        .attr("fill-opacity", 0.13)
+        .attr("stroke", "#ffcb05")
+        .attr("stroke-width", 1.5)
+        .attr("stroke-dasharray", "5 4")
+        .attr("stroke-opacity", 0.75)
+        .attr("stroke-linejoin", "round");
+      var hullLabel = hullLayer.append("text")
+        .attr("class","cyren-hull-label")
+        .text("CyReN Lab")
+        .attr("font-family","IBM Plex Mono, monospace")
+        .attr("font-size", 10.5)
+        .attr("font-weight", 600)
+        .attr("letter-spacing", "0.14em")
+        .attr("fill", "#8a6d00")
+        .attr("text-anchor","middle");
+      var lineGen = d3.line().curve(d3.curveCatmullRomClosed.alpha(0.85));
+      function computeHull(currentNodes, rScale){
+        var students = currentNodes.filter(function(n){ return studentSet.has(n.id) && n.x != null; });
+        if (students.length === 0) return null;
+        // Build a cloud of points around each student node so the hull is smooth
+        // even when there are only 3 students (instead of a tight triangle).
+        var pad = 26;
+        var points = [];
+        var ring = 12;
+        students.forEach(function(n){
+          var r = rScale(n.count) + pad;
+          for (var a = 0; a < ring; a++) {
+            var theta = (a / ring) * Math.PI * 2;
+            points.push([n.x + Math.cos(theta) * r, n.y + Math.sin(theta) * r]);
+          }
+        });
+        if (students.length === 1) {
+          return { d: lineGen(points), centroid: [students[0].x, students[0].y - rScale(students[0].count) - pad - 12] };
+        }
+        var hull = d3.polygonHull(points);
+        if (!hull) return null;
+        var cx = d3.mean(hull, function(p){ return p[0]; });
+        var cy = d3.min(hull, function(p){ return p[1]; }) - 8;
+        return { d: lineGen(hull), centroid: [cx, cy] };
+      }
+
       linkSel = g.append("g").attr("class","net-links").selectAll("line")
         .data(links).enter().append("line")
         .attr("stroke","#9aaec8")
@@ -364,6 +427,14 @@ const topCollabs = nodes
           .attr("x2", function(d){ return d.target.x; })
           .attr("y2", function(d){ return d.target.y; });
         nodeG.attr("transform", function(d){ return "translate(" + d.x + "," + d.y + ")"; });
+        var hull = computeHull(nodes, rScale);
+        if (hull) {
+          hullPath.attr("d", hull.d).style("display", "");
+          hullLabel.attr("x", hull.centroid[0]).attr("y", hull.centroid[1]).style("display", "");
+        } else {
+          hullPath.style("display", "none");
+          hullLabel.style("display", "none");
+        }
       });
 
       function dragstart(event, d){ if (!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
