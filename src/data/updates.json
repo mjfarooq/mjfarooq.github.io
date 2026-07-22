@@ -10,6 +10,14 @@
   },
   {
     "date": "Jul 2026",
+    "message": "Featured in UM-Dearborn News: WiseBot, an autonomous Wi-Fi and 5G scanning robot for smart-manufacturing environments. Prof. Farooq and team contributed the wireless scanning subsystem (the antennas mounted on the robot) and the on-board software that lets WiseBot sniff Wi-Fi, LTE, and 5G signals and generate facility-wide coverage heat maps. Developed with Samir Rawashdeh, Jaerock Kwon, Alireza Mohammadi, and a team of students including CyReN intern Sourabh Harapanahalli, under a $900,000 MxD grant.",
+    "images": [
+      "/images/updates/wisebot_team.jpg"
+    ],
+    "link": "https://umdearborn.edu/news/wi-fi-scanning-robot-makes-manufacturing-more-flexible-secure"
+  },
+  {
+    "date": "Jul 2026",
     "message": "Our paper \"Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems\" was accepted in International Conference on Computer Communications and Networks (ICCCN 2026). Congratulations Xingqi and Yuhui!",
     "images": [
       "/images/updates/quantum_graph_attention.jpg"
