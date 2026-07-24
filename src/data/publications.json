@@ -28,11 +28,13 @@
     "year": 2026,
     "type": "Book",
     "venue": "Foundations and Trends in Networking (FnT), Emerald Publishers",
-    "url": "",
+    "url": "https://arxiv.org/abs/2512.22721",
     "tags": [
       "Cyber Resilience"
     ],
-    "links": []
+    "links": [
+      { "label": "arXiv", "url": "https://arxiv.org/abs/2512.22721" }
+    ]
   },
   {
     "title": "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
@@ -156,12 +158,14 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE DySPAN 2026 ML-Spec Workshop, Washington D.C., USA",
-    "url": "",
+    "url": "https://arxiv.org/abs/2605.30622",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
-    "links": []
+    "links": [
+      { "label": "arXiv", "url": "https://arxiv.org/abs/2605.30622" }
+    ]
   },
   {
     "title": "Multi-agent Resource Orchestration Based on D3QN for Network Slicing in 5G Edge-Cloud Networks",
@@ -264,12 +268,14 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE/IFIP NOMS 2026 Workshop on Resilience in Next Generation Network Management (NGResNet), Rome, Italy",
-    "url": "",
+    "url": "https://arxiv.org/abs/2605.30630",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
-    "links": []
+    "links": [
+      { "label": "arXiv", "url": "https://arxiv.org/abs/2605.30630" }
+    ]
   },
   {
     "title": "A Probabilistic Alternative to Coverage Analysis in Uniform Random Wireless Networks",
