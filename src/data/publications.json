@@ -1,5 +1,24 @@
 [
   {
+    "title": "Performative Security Games: Strategic Manipulation of Decision-Dependent Distributions in Learning-Based O-RAN Control",
+    "authors": [
+      "X. Wu",
+      "J. Farooq",
+      "T. Li"
+    ],
+    "authors_str": "X. Wu*, J. Farooq, and T. Li",
+    "year": 2026,
+    "type": "Conference",
+    "venue": "in Conference on Decision and Game Theory for Security (GameSec 2026)",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "AI / Learning",
+      "Cyber Resilience"
+    ],
+    "links": []
+  },
+  {
     "title": "Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms",
     "authors": [
       "J. Farooq",

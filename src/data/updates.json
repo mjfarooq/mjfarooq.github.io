@@ -1,6 +1,15 @@
 [
   {
     "date": "Sep 2026",
+    "message": "Our paper \"Performative Security Games: Strategic Manipulation of Decision-Dependent Distributions in Learning-Based O-RAN Control\" was accepted in the Conference on Decision and Game Theory for Security (GameSec 2026). Congratulations Xingqi!",
+    "images": [
+      "/images/updates/performative_security_games.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
+    "date": "Sep 2026",
     "message": "Our paper \"Collaborative Cloud-Edge Computing via LLM-Guided Constrained Reinforcement Learning\" was accepted in IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC 2026), Singapore. Congratulations Xingqi and Yuhui!",
     "images": [
       "/images/updates/collaborative_llm_rl.jpg"
