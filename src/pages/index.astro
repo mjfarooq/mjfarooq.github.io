@@ -5,7 +5,17 @@ import site from "../data/site.json";
 import areaIcons from "../data/areaIcons.js";
 import pubs from "../data/publications.json";
 import updates from "../data/updates.json";
-const latestUpdate = updates[0]?.date || "";
+const _MONTHS = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+function _parseMY(s) {
+  const m = (s || "").match(/^([A-Za-z]+)\.?\s+(\d{4})$/);
+  if (!m) return null;
+  const mi = _MONTHS[m[1].slice(0,3)];
+  if (mi === undefined) return null;
+  return new Date(Number(m[2]), mi, 1);
+}
+const _now = new Date();
+const _cm = new Date(_now.getFullYear(), _now.getMonth(), 1);
+const latestUpdate = (updates.find(u => { const d = _parseMY(u.date); return d && d <= _cm; })?.date) || updates[0]?.date || "";
 const featuredTitles = site.featuredPubs || [];
 const byTitle = new Map(pubs.map((p) => [p.title, p]));
 const recent = featuredTitles

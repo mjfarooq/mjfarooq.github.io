@@ -49,12 +49,14 @@
     "year": 2026,
     "type": "Journal",
     "venue": "in IEEE Networking Letters",
-    "url": "",
+    "url": "https://ieeexplore.ieee.org/document/11547201",
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
     ],
-    "links": [],
+    "links": [
+      { "label": "IEEE", "url": "https://ieeexplore.ieee.org/document/11547201" }
+    ],
     "peopleExclude": [
       "yuhui-wang"
     ]
