@@ -5,6 +5,8 @@ import site from "../data/site.json";
 import areaIcons from "../data/areaIcons.js";
 import pubs from "../data/publications.json";
 import updates from "../data/updates.json";
+import fs from "node:fs";
+import path from "node:path";
 const _MONTHS = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
 function _parseMY(s) {
   const m = (s || "").match(/^([A-Za-z]+)\.?\s+(\d{4})$/);
@@ -13,9 +15,21 @@ function _parseMY(s) {
   if (mi === undefined) return null;
   return new Date(Number(m[2]), mi, 1);
 }
+const _pubDir = path.resolve("./public");
+function _hasImg(u) {
+  const imgs = u.images || [];
+  if (imgs.length === 0) return false;
+  return imgs.some((p) => {
+    if (!p) return false;
+    if (/^https?:\/\//i.test(p)) return true;
+    const rel = p.startsWith("/") ? p.slice(1) : p;
+    return fs.existsSync(path.join(_pubDir, rel));
+  });
+}
+const _visUpdates = updates.filter(_hasImg);
 const _now = new Date();
 const _cm = new Date(_now.getFullYear(), _now.getMonth(), 1);
-const latestUpdate = (updates.find(u => { const d = _parseMY(u.date); return d && d <= _cm; })?.date) || updates[0]?.date || "";
+const latestUpdate = (_visUpdates.find(u => { const d = _parseMY(u.date); return d && d <= _cm; })?.date) || _visUpdates[0]?.date || "";
 const featuredTitles = site.featuredPubs || [];
 const byTitle = new Map(pubs.map((p) => [p.title, p]));
 const recent = featuredTitles

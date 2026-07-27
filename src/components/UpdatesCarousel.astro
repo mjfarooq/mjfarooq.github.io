@@ -1,10 +1,26 @@
 ---
 import all from "../data/updates.json";
 import site from "../data/site.json";
+import fs from "node:fs";
+import path from "node:path";
+// Hide items whose images aren't uploaded yet. External URLs are trusted;
+// site-root paths (starting with "/") are checked against public/ on disk.
+const publicDir = path.resolve("./public");
+function hasImage(u) {
+  const imgs = u.images || [];
+  if (imgs.length === 0) return false;
+  return imgs.some((p) => {
+    if (!p) return false;
+    if (/^https?:\/\//i.test(p)) return true;
+    const rel = p.startsWith("/") ? p.slice(1) : p;
+    return fs.existsSync(path.join(publicDir, rel));
+  });
+}
+const withImages = all.filter(hasImage);
 const isPub = (u) => u.category === "publication";
 const sections = [
-  { title: "Activities", items: all.filter((u) => !isPub(u)).slice(0, 12) },
-  { title: "Publications", items: all.filter(isPub).slice(0, 12) },
+  { title: "Activities", items: withImages.filter((u) => !isPub(u)).slice(0, 12) },
+  { title: "Publications", items: withImages.filter(isPub).slice(0, 12) },
 ];
 const linkMembers = (site.group.members || []).filter((m) => m.profile);
 const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

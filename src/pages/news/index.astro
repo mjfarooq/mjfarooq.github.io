@@ -2,6 +2,20 @@
 import Base from "../../layouts/Base.astro";
 import updates from "../../data/updates.json";
 import site from "../../data/site.json";
+import fs from "node:fs";
+import path from "node:path";
+const publicDir = path.resolve("./public");
+function hasImage(u) {
+  const imgs = u.images || [];
+  if (imgs.length === 0) return false;
+  return imgs.some((p) => {
+    if (!p) return false;
+    if (/^https?:\/\//i.test(p)) return true;
+    const rel = p.startsWith("/") ? p.slice(1) : p;
+    return fs.existsSync(path.join(publicDir, rel));
+  });
+}
+const visibleUpdates = updates.filter(hasImage);
 const linkMembers = (site.group.members || []).filter((m) => m.profile);
 const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const linkify = (t) => {
@@ -34,7 +48,7 @@ const linkify = (t) => {
       <p class="lead">Recent activities, talks, awards, and updates from the lab.</p>
 
       <div class="news-feed">
-        {updates.map((u) => (
+        {visibleUpdates.map((u) => (
           <article class="news-item">
             <div class="ni-meta">
               <span class="ni-date">{u.date}</span>
