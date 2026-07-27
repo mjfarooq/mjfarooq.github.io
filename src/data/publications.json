@@ -73,7 +73,10 @@
       "Cyber Resilience"
     ],
     "links": [
-      { "label": "arXiv", "url": "https://arxiv.org/abs/2512.22721" }
+      {
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2512.22721"
+      }
     ]
   },
   {
@@ -95,7 +98,10 @@
       "AI / Learning"
     ],
     "links": [
-      { "label": "IEEE", "url": "https://ieeexplore.ieee.org/document/11547201" }
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11547201"
+      }
     ],
     "peopleExclude": [
       "yuhui-wang"
@@ -206,7 +212,10 @@
       "Cyber Resilience"
     ],
     "links": [
-      { "label": "arXiv", "url": "https://arxiv.org/abs/2605.30622" }
+      {
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2605.30622"
+      }
     ]
   },
   {
@@ -316,7 +325,10 @@
       "Cyber Resilience"
     ],
     "links": [
-      { "label": "arXiv", "url": "https://arxiv.org/abs/2605.30630" }
+      {
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2605.30630"
+      }
     ]
   },
   {
@@ -679,7 +691,7 @@
     ],
     "authors_str": "Y. Wang*, X. Wu*, J. Farooq, T. Li, and J. Chen",
     "year": 2025,
-    "type": "Journal",
+    "type": "Preprint",
     "venue": "submitted to IEEE Transactions on Mobile Computing",
     "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.176315222.25704753",
     "tags": [
@@ -844,7 +856,7 @@
     ],
     "authors_str": "R. Kumar, W. Wei, Y. Mao, J. Farooq, Y. Wang, and J. Chen",
     "year": 2025,
-    "type": "Conference",
+    "type": "Preprint",
     "venue": "submitted to Quantum Machine Intelligence",
     "url": "https://arxiv.org/pdf/2506.24081",
     "tags": [

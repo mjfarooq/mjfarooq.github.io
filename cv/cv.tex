@@ -1,0 +1,445 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\cfoot{Page \thepage \ of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{0.9in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+\usepackage[left=0.8in, right=0.8in, top=1in, bottom= 1in]{geometry}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\renewcommand{\labelitemii}{$\circ$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+  \LARGE \textbf{Junaid Farooq, Ph.D.}
+\end{center}
+\begin{center}
+4901 Evergreen Rd, Institute for Advanced Vehicular Systems, Dearborn, MI 48128 USA,
+\par
+\href{mailto:mjfarooq@umich.edu}
+{mjfarooq@umich.edu},
++1\,(646)\,509-3602, \url{https://www.junaidfarooq.com/}
+\end{center}
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {New York University}{Brooklyn, NY}
+      {Ph.D. in Electrical Engineering}{\textnormal{Sept. 2016 -- May 2020}}
+    \resumeItemListStart
+     \resumeItem{Dissertation}{Dynamic Cyber-Physical Decision Mechanisms for Large Scale Internet of Things (IoT) Systems and Networks.}
+     \resumeItem{Advisor}{\href{https://wp.nyu.edu/quanyan/}{Prof. Quanyan~Zhu}}
+     \resumeItem{Awards}{NYU University Wide Dissertation Award (Technology \& Applied Science) 2021, Dante Youla Award 2020, Athanasios Papoulis Award 2018}
+     \resumeItemListEnd
+    \resumeSubheading
+      {King Abdullah University of Science \& Technology (KAUST)}{Thuwal, Saudi Arabia}
+      {M.S. in Electrical Engineering}{\textnormal{Sept. 2013 -- Jun. 2015}}
+      \resumeItemListStart
+      \resumeItem{Dissertation}{Modeling and Analysis of Inter-Vehicle Communication: A Stochastic Geometry Approach.}
+      \resumeItem{Advisor}{\href{https://www.kaust.edu.sa/en/study/faculty/mohamed-slim-alouini}{Prof. Mohamed-Slim Alouini}}
+      \resumeItemListEnd
+    \resumeSubheading
+      {National University of Sciences \& Technology (NUST)}{Islamabad, Pakistan}
+      {B.S. in Electrical Engineering}{\textnormal{Sept. 2009 -- Jun. 2013}}
+      \resumeItemListStart
+      \resumeItem{Dissertation}{A Game-Theoretic Spectrum Allocation Framework for Mixed Unicast and Broadcast Traffic Profile in Cognitive Radio Networks.}
+      \resumeItem{Advisor}{\href{http://qufaculty.qu.edu.qa/jqadir/}{Prof. Junaid Qadir}}
+      \resumeItem{Awards}{President's Gold Medal}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------RESEARCH INTERESTS-----------------
+\section{Research Interests}
+5G/6G Wireless Networks, O-RAN, Edge-Cloud Computing, Cybersecurity, Cyber-Physical Systems, Multi-Agent Systems, UAV Communications.
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Michigan-Dearborn}{Dearborn, MI}
+      {Associate Professor}{\textnormal{Sept. 2026 - present}}
+      \resumeItemListStart
+        \resumeItem{Department}
+          {Electrical \& Computer Engineering.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {University of Michigan-Dearborn}{Dearborn, MI}
+      {Assistant Professor}{\textnormal{Sept. 2020 - Aug. 2026}}
+      \resumeItemListStart
+        \resumeItem{Department}
+          {Electrical \& Computer Engineering.}
+      \resumeItemListEnd
+     \resumeSubheading
+      {New York University}{Brooklyn, NY}
+      {Research Scientist}{\textnormal{Jun. 2020 - Aug. 2020}}
+      \resumeItemListStart
+        \resumeItem{Department}
+          {Electrical \& Computer Engineering.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Qatar Mobility Innovations Center}{Doha, Qatar}
+      {Research Assistant}{\textnormal{Jun. 2015 - Jun. 2016}}
+  \resumeSubHeadingListEnd
+%-----------PUBLICATIONS-----------------
+\section{Publications}
+\textit{\small \rm{*} indicates supervised student author}
+\resumeSubHeadingListStart
+\resumeSubItem{Under Submission/Revision}{}
+\justifying
+   \begin{itemize}
+    \item[\rm{[U6]}] E. Besbes, H. Ghazzai, M. E. Haddad, \underline{J. Farooq}, A. Eltawil, and G. Setti, ``Optimized BEV Sharing for Enhanced LiDAR-based Collaborative Perception in CAVs'', submitted to \emph{IEEE Open Journal of the Communications Society}, Apr. 2026.
+    \item[\rm{[U5]}] X. Wu*, \underline{J. Farooq}, T. Li, J. Chen, and Y. Wang, ``A stochastic delay-reward reinforcement learning framework for resource orchestration in O-RAN'', submitted to \emph{IEEE Networking Letters}, Jul. 2025.
+   \item[\rm{[U4]}] Y. Wang*, X. Wu*, \underline{J. Farooq}, T. Li, and J. Chen, ``ORCA: Offloading and resource coordination via multi-agent learning in dynamic cloud-edge systems'', submitted to \textit{IEEE Transactions on Mobile Computing}, Sept. 2025.
+   \item[\rm{[U3]}] R. Kumar, W. Wei, Y. Mao, \underline{J. Farooq}, Y. Wang, and J. Chen, ``SQUASH: A SWAP-based quantum attack to sabotage hybrid quantum neural networks," submitted to \emph{Quantum Machine Intelligence}, 2025.
+   \item[\rm{[U2]}] X. Wu*, \underline{J. Farooq}, and Q. Zhu, ``Dynamic spatio-temporal resource provisioning for on-demand urban services in smart cities'', \url{https://arxiv.org/abs/1901.08331}.
+   \item[\rm{[U1]}] \underline{J. Farooq} and Q. Zhu, ``IoT supply chain security: Overview, challenges, and the road ahead'', \url{https://arxiv.org/abs/1908.07828}.
+   \end{itemize}
+
+    \resumeSubItem{Books/Chapters}{}
+      \justifying
+      \begin{enumerate}
+      \item[\rm{[BC1]}] X. Wu*, \underline{J. Farooq}, and J. Chen, ``Risk-Aware Resource Orchestration in Multi-Tier 5G Edge-Cloud Networks," in \emph{Intent-Driven Network: Techniques and Applications} (Springer Wireless Network Series), 2026.
+      \item[\rm{[B4]}] \underline{J. Farooq} and Q. Zhu, ``Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms," in \emph{Foundations and Trends in Networking}, now publishers, 2025.
+      \item[\rm{[B3]}] T. Kieras*, \underline{J. Farooq} and Q. Zhu, ``IoT Supply Chain Security Risk Analysis and Mitigation: Modeling, Computations, and Software Tools'', \textit{Springerbriefs in Computer Science}, Sept. 2022.
+      \item[\rm{[B2]}] \underline{J. Farooq} and Q. Zhu, ``Resource Management for On-Demand Mission-Critical Internet of Things Applications'', \textit{Wiley-IEEE}, Sept. 2021.
+     \item[\rm{[B1]}] \underline{J. Farooq} and U. Pillai, ``Problems and Solutions in Undergraduate Probability'', in \textit{Amazon Kindle Direct Publishing}, 2019.
+      \end{enumerate}
+
+  \resumeSubItem{Journals}{}
+      \justifying
+      \begin{enumerate}
+      \item[\rm{[J22]}] X. Wu*, \underline{J. Farooq}, T. Li, J. Chen, and Y. Wang, ``Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback," in \emph{IEEE Networking Letters}, 2026.
+      \item[\rm{[J21]}] X. Wu*, Y. Wang*, \underline{J. Farooq}, M. M. Butt, H. Ghazzai, and G. Setti, ``Process-informed multi-agent reinforcement learning for joint radio-compute orchestration in industrial O-RAN," in \emph{IEEE Networking Letters}, 2026.
+      \item[\rm{[J20]}] M. Afane, Q. Long, H. Shen, Y. Mao, \underline{J. Farooq}, Y. Chen, and J. Chen, ``Differentiable architecture search for adversarially robust quantum computer vision," in \emph{Quantum Machine Intelligence},  vol. 8, no. 2, Jan. 2026.
+        \item[\rm{[J19]}] X. Wu*, \underline{J. Farooq}, and J. Chen, ``Multi-agent resource orchestration based on D3QN for network slicing in 5G edge-cloud networks'', in \textit{IEEE Transactions on Network and Service Management}, vol. 23, pp. 1766-1781, 2026.
+        \item[\rm{[J18]}] X. Wu*, Y. Wang*, \underline{J. Farooq}, H. Ghazzai, and G. Setti, ``\textsc{SliceEWise}: Traffic-aware multi-agent RL with temporal encoding for joint slice admission and resource orchestration in O-RAN'', in \emph{IEEE Networking Letters}, vol. 7, no. 4, pp. 323-327, Dec. 2025.
+        \item[\rm{[J17]}] I. Aryendu, B. Mak, E. Forbes, J. Chen, \underline{J. Farooq}, and Y. Wang, ``Communication systems for autonomous eVTOL: Regulatory challenges, emerging technologies, and future directions'', in \textit{IEEE Open Journal of the Communications Society}, Oct. 2025.
+        \item[\rm{[J16]}] Y. Wang*, \underline{J. Farooq}, and J. Chen, ``Dynamic multi-modal UAV control for optimized coverage and backhaul connectivity in spatially unstructured and dispersed user environments'', in \textit{IEEE Transactions on Mobile Computing}, vol. 25, no. 2, pp. 2320-2334, Feb. 2026.
+        \item[\rm{[J15]}] X. Wu* and \underline{J. Farooq}, ``Reliable and resilient connectivity and coverage under localized backhauling in UAV-IoT networks'', in \textit{IEEE Open Journal of the Communications Society}, vol. 6, pp. 5795-5809, Jul. 2025.
+        \item[\rm{[J14]}] \underline{J. Farooq} and U. Pillai, ``A probabilistic approach to coverage analysis in uniform random wireless networks'', in \textit{Journal of Communications and Networks}, vol. 27, no. 5, pp. 282-297, Oct. 2025.
+        \item[\rm{[J13]}] Y. Wang*, \underline{J. Farooq}, H. Ghazzai, and G. Setti ``Joint positioning and computation offloading in multi-UAV MEC for low latency applications: A proximal policy optimization approach'', in \textit{IEEE Transactions on Mobile Computing}, vol. 24, no. 10, pp. 9584-9598, Oct. 2025.
+        \item[\rm{[J12]}] M. Lyu*, \underline{J. Farooq}, and Q. Zhu ``Mapping cyber threats in the 5G supply chain: Landscape, vulnerabilities, and risk management'', in \textit{IEEE Network}, vol. 39, no. 1, pp. 251-260, Jan. 2025.
+        \item[\rm{[J11]}] Y. Wang* and \underline{J. Farooq}, ``Deep reinforcement learning based placement for integrated access backhauling in UAV-assisted wireless networks", in \textit{IEEE Internet of Things Journal}, vol. 11, no. 8, pp. 14727-14738, April 2024.
+        \item[\rm{[J10]}] J. Chen, \underline{J. Farooq} and Q. Zhu, ``Contract-based data pricing mechanism for sensing-as-a-service in the Internet of things", in \textit{IEEE Internet of Things Journal}, vol. 10, no. 11, pp. 10080-10094, June, 2023.
+        \item[\rm{[J9]}] T. Kieras*, \underline{M. J. Farooq}, and Q. Zhu, ``I-SCRAM: A framework for IoT supply chain risk analysis and mitigation decisions", in \textit{IEEE Access}, vol. 9, pp. 29827-29840, 2021.
+        \item[\rm{[J8]}] \underline{M. J. Farooq} and Q. Zhu, ``QoE based revenue maximizing dynamic resource allocation and pricing for fog-enabled mission-critical IoT applications", in \textit{IEEE Transactions on Mobile Computing}, vol. 20, no. 12, pp. 3395-3408, Dec. 2021.
+        \item[\rm{[J7]}] \underline{M. J. Farooq} and Q. Zhu, ``Modeling, analysis, and mitigation of dynamic botnet formation in wireless IoT networks'', in \textit{IEEE Transactions on Information Forensics and Security}, vol. 14, no. 9, pp. 2412-2426, Sept. 2019.
+        \item[\rm{[J6]}] \underline{M. J. Farooq} and Q. Zhu, ``A multi-layer feedback system approach to resilient connectivity of remotely deployed mobile Internet of things,'' in \textit{IEEE Transactions on Cognitive Communications and Networking}, vol. 4, no. 2, pp. 422-432, Jun. 2018.
+        \item[\rm{[J5]}] \underline{M. J. Farooq} and Q. Zhu, ``On the secure and reconfigurable multi-layer network design for critical information dissemination in the Internet of battlefield things (IoBT),'' in \textit{IEEE Transactions on Wireless Communications}, vol. 17, no. 4, pp. 2618-2632, Apr. 2018.
+        \item[\rm{[J4]}] \underline{M. J. Farooq}, H. Ghazzai, E. Yaacoub, A. Kadri and M.-S. Alouini, ``Green virtualization for multiple collaborative cellular operators,'' in \textit{IEEE Transactions on Cognitive Communications and Networking}, vol. 3, no. 3, pp. 420-434, Sept. 2017.
+        \item[\rm{[J3]}] H. Ghazzai, \underline{M. J. Farooq}, A. Alsharoa, E. Yaacoub, A. Kadri and M.-S. Alouini, ``Green networking in cellular HetNets: A unified radio resource management framework with base station ON/OFF switching,'' in \textit{IEEE Transactions on Vehicular Technology}, vol. 66, no. 7, pp. 5879-5893, Jul. 2017.
+        \item[\rm{[J2]}] \underline{M. J.~Farooq}, H. Ghazzai, A. Kadri, H. ElSawy and M.-S. Alouini, ``A Hybrid Energy Sharing Framework for Green Cellular Networks,'' in \textit{IEEE Transactions on Communications}, vol. 65, no. 2, pp. 918-934, Feb. 2017.
+        \item[\rm{[J1]}] \underline{M. J.~Farooq}, H.~ElSawy, and M.S.~Alouini, ``A stochastic geometry model for multi-hop highway vehicular communication,'' in \textit{IEEE Transactions on Wireless Communications}, vol. 15, no. 3, pp. 2276-2291, Mar. 2016.
+      \end{enumerate}
+     \resumeSubItem{Conferences}{}
+      \justifying
+      \begin{enumerate}
+      \item[\rm{[C47]}] F. Martinez, A. Satyam, T. Li, \underline{J. Farooq}, Y. Wang, and J. Chen, ``Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense," in \emph{IEEE Global Communications Conference (GLOBECOM 2026)}, Macau, China, Dec. 2026.
+      \item[\rm{[C46]}] X. Wu*, Y. Wang*, \underline{J. Farooq}, and J. Chen, ``Balancing Security and Performance in Spatial Wireless Networks through Software Diversity for Attack Propagation Control," in \emph{IEEE Global Communications Conference (GLOBECOM 2026)}, Macau, China, Dec. 2026.
+      \item[\rm{[C45]}] X. Wu*, \underline{J. Farooq}, and T. Li, ``Performative Security Games: Strategic Manipulation of Decision-Dependent Distributions in Learning-Based O-RAN Control," in \emph{Conference on Decision and Game Theory for Security (GameSec 2026)}, Sept. 2026.
+       \item[\rm{[C44]}] Y. Wang*, X. Wu*, \underline{J. Farooq}, T. Li, and J. Chen, ``Collaborative Cloud-Edge Computing via LLM-Guided Constrained Reinforcement Learning," in \emph{IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC 2026)}, Singapore, Sept. 2026.
+      \item[\rm{[C43]}] Y. Wang*, X. Wu*, \underline{J. Farooq}, S. Y. Chen, and J. Chen, ``Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems," in \emph{International Conference on Computer Communications and Networks (ICCCN 2026)}, Honolulu, Hawaii, USA, Jul. 2026.
+      \item[\rm{[C42]}] E. Delavari* and \underline{J. Farooq}, ``Jamming-resilient PRB reservation for latency-critical O-RAN network slicing," in \emph{IEEE International Symposium on Dynamic Spectrum Access Networks (DySPAN 2026) Machine Learning for Emerging Spectrum Operations Workshop (ML-Spec)}, Washington D.C., USA, May. 2026.
+      \item[\rm{[C41]}] E. Delavari*, X. Wu*, and \underline{J. Farooq}, ``Temporally encoded double DQN for proactive PRB allocation in O-RAN enabled industrial networks," in \emph{IEEE Network Operations and Management Symposium (NOMS 2026 Wkshps) Workshop on Resilience in Next Generation Networks (NGResNet)}, Rome, Italy, May. 2026.
+      \item[\rm{[C40]}] M. Afane, A. Satyam, K. Chen, T. Li, \underline{J. Farooq}, and J. Chen, ``SCOUT: A defense against data poisoning attacks in fine-tuned language models," in \emph{IEEE International Conference on Big Data (BigData 2025), Workshop on AI in Big Data Analytic for Healthcare}, Macau, China, Dec. 2025.
+      \item[\rm{[C39]}] Y. Gao*, X. Wu*, and \underline{J. Farooq}, ``Resilient PRB allocation for high mobility UEs in 5G O-RAN via LSTM-enhanced MPC," in \emph{IEEE Globecom Workshop on Resilience in Next-Generation Wireless Communication Networks (GC Wkshps 2025)}, Taiwan, Dec. 2025.
+      \item[\rm{[C38]}] X. Wu*, R. Honnalli*, and \underline{J. Farooq}, ``Poster: Triage slicing: Online detection and containment of disruptive UEs in O-RAN slices," in \emph{26th International Symposium on Theory, Algorithmic Foundations, and Protocol Design for Mobile Networks and Mobile Computing (MobiHoc 2025)}, Houson, TX, USA, Oct. 2025.
+      \item[\rm{[C37]}] Y. Wang*, U. Pillai, \underline{J. Farooq}, and J. Chen ``Real-time multiple obstacle avoidance and navigation in unstructured spaces with applications to indoor delivery robots'', in \emph{IEEE International Conference on Omni-Layer Intelligent Systems (COINS 2025)}, Madison WI, USA, Aug. 2025.
+      \item[\rm{[C36]}] R. Honnalli* and \underline{J. Farooq}, ``Multimodal LLM-guided sequential detection of cyber threats in electric vehicle charging systems'', in \emph{IEEE International Conference on Omni-Layer Intelligent Systems (COINS 2025)}, Madison WI, USA, Aug. 2025.
+      \item[\rm{[C35]}] J. Hazime* and \underline{J. Farooq}, ``Evaluation of LLM powered agentic AI for solving multi-arm bandit problems'', in \emph{IEEE International Conference on Omni-Layer Intelligent Systems (COINS 2025)}, Madison WI, USA, Aug. 2025.
+      \item[\rm{[C34]}] E. Besbes*, H. Ghazzai, \underline{J. Farooq}, N. Doggaz, and G. Setti, ``Optimized collaborative perception: sector-based BEV fusion in limited communication conditions'', in \emph{IEEE Vehicular Technology Conference (VTC-Spring 2025)}, Oslo, Norway, Jun. 2025.
+    \item[\rm{[C33]}] R. Honnalli* and \underline{J. Farooq}, ``LLM-powered agentic AI approach to securing EV charging systems against cyber threats", in \textit{3rd International Workshop on Cybersecurity of Critical National Infrastructures (CCNI) co-organized with IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM 2025)}, Dallas, Fort Worth TX, USA, May 2025.
+    \item[\rm{[C32]}] Y. Wang*, X. Wu*, \underline{J. Farooq}, and J. Chen, ``Coordinated UAV deployment and task offloading in UAV-assisted LEO satellite edge computing systems via proximal policy optimization", in \textit{IEEE International Conference on Communications Workshop on Emerging Technologies in Aerial and Space Networks, Montreal (ICC Wkhsps 2025)}, Montreal, Canada, Jun. 2025.
+      \item[\rm{[C31]}] K. Afane*, G. Ebbrecht*, J. Chen, and \underline{J. Farooq}, ``ATP: Adaptive threshold pruning for efficient data encoding in Quantum neural networks", in \textit{IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2025)}, Nashville TN, USA, Jun. 2025.
+      \item[\rm{[C30]}] X. Wu*, Y. Wang*, \underline{J. Farooq}, J. Chen, ``LLM-driven agentic AI approach to enhanced O-RAN resilience in next-generation networks", in \textit{IEEE International Conference on Computer Communications (INFOCOM 2025) Workshop on Resilience in Next-Generation Networks (NGResNet)}, London, UK, May. 2025.
+      \item[\rm{[C29]}] G. Ebbrecht*, J. Hughes*, J. Chen,  and \underline{J. Farooq}, ``Collaborative resilience for multi-layer heterogeneous robotic networks under adversarial environments", in \textit{IEEE International Conference on Computer Communications (INFOCOM 2025) Workshop on Resilience in Next-Generation Networks (NGResNet)}, London, UK, May. 2025.
+      \item[\rm{[C28]}] X. Wu*, \underline{J. Farooq}, Y. Wang*, and J. Chen, ``LLM-xApp: A large language model empowered radio resource management xApp for 5G O-RAN", in Proc. \textit{Network and Distributed Systems Symposium (NDSS 2025) Workshop on Security and Privacy of Next-Generation Networks (FutureG)}, San Diego CA, Feb. 2025.
+      \item[\rm{[C27]}] X. Wu*, \underline{J. Farooq}, and J. Chen, ``Joint admission control and resource provisioning for URLLC traffic in O-RAN: A constrained multi-agent reinforcement learning approach", in \textit{IEEE International Conference on Communications (ICC 2025)}, Montreal, Canada, Jun. 2025.
+      \item[\rm{[C26]}] Y. Wang*, \underline{J. Farooq}, H. Ghazzai, and G. Setti, ``Multi-UAV placement for integrated access and backhauling using LLM-based optimizers", in \textit{IEEE Wireless Communications and Networking Conference (WCNC 2025)}, Milan, Italy, Mar. 2025.
+      \item[\rm{[C25]}] Y. Wang*, \underline{J. Farooq}, H. Ghazzai, and G. Setti, ``Joint optimization of positioning and computation offloading in multi-UAV MEC networks for low latency applications", in \textit{IEEE Wireless Communications and Networking Conference (WCNC 2025)}, Milan, Italy, Mar. 2025.
+      \item[\rm{[C24]}] K. Afane*, W. Wei, Y. Mao, \underline{J. Farooq}, and J. Chen, ``Next-generation phishing: How LLM agents empower cyber attackers," submitted to \textit{7th Annual Workshop on Cyber Threat Intelligence and Hunting (CyberHunt), IEEE International Conference on Big Data ( BigData 2024)}, Washington D.C., Dec. 2024.
+      \item[\rm{[C23]}] X. Wu*, \underline{J. Farooq}, and J. Chen, ``Multi-agent distributed decentralized dynamic resource orchestration in 5G edge-cloud networks," in \textit{IEEE International Conference on Cloud Networking (CloudNet 2024)}, Rio de Janerio, Brazil, Nov. 2024.
+      \item[\rm{[C22]}] R. Kumar, G. Ebbrecht, \underline{J. Farooq}, W. Wei, Y. Mao, and J. Chen, ``SecFedDrive: Securing federated learning for autonomous driving against backdoor attacks," in \textit{IEEE Conference on Communications and Network Security (CNS 2024), Cyber Resilience Workshop}, Taipei, Taiwan, Oct. 2024.
+      \item[\rm{[C21]}] D. Neifar*, \underline{J. Farooq}, H. Ghazzai, and M. Hadded, ``Collaborative CNN-based federated learning for steering control in diverse driving conditions", in \textit{IEEE Vehicular Technology Conference (VTC-Fall 2024)}, Washington D.C., Oct. 2024.
+      \item[\rm{[C20]}] M. Lyu* and \underline{J. Farooq}, ``Zero trust in 5G networks: Principles, challenges, and opportunities", in \textit{Resilience Week (RW 2024)}, Austin TX, Dec. 2024.
+      \item[\rm{[C19]}] X. Wu*, \underline{J. Farooq}, and J. Chen, ``Adaptive risk-aware resource orchestration for 5G microservices over multi-tier edge-cloud systems", in \textit{IEEE International Conference on Communications, Workshop on Intelligent Cloud Continuum for B5G services (ICC Wkshps 2024)}, Denver CO, Jun 2024.
+       \item[\rm{[C18]}] X. Wu* and \underline{J.~Farooq}, ``Attack resilient wireless backhaul connectivity with optimized fronthaul coverage in UAV networks", in \textit{IEEE Conference on Communications and Network Security (CNS 2023), Cyber Resilience Workshop}, Orlando, FL, Oct. 2023.
+      \item[\rm{[C17]}] Y. Wang* and \underline{J.~Farooq}, ``Optimal 3D placement for integrated access backhauling in UAV-assisted wireless networks using reinforcement learning", in \textit{IEEE International Conference on Mobile, Ad-hoc, and Smart Systems (MASS 2023), UAV-IoT Workshop, Toronto, ON, Sept. 2023}.
+      \item[\rm{[C16]}] Y. Wang* and \underline{J.~Farooq}, ``Zero touch coordinated UAV network formation for 360$^{\circ}$ views of a moving ground target in remote VR applications", in \textit{IEEE Military Communications Conference (MILCOM 2022)}, Washington D.C., USA, Nov. 2022.
+      \item[\rm{[C15]}] Y. Wang* and \underline{J.~Farooq}, ``Proactive and resilient UAV orchestration for QoS driven connectivity and coverage of ground users", in \textit{IEEE Conference on Communications and Security (CNS 2022), Cyber Resilience Workshop}, Austin, TX USA, Oct. 2022.
+      \item[\rm{[C14]}] Y. Wang* and \underline{J.~Farooq}, ``Resilient UAV formation for coverage and connectivity of spatially dispersed users", in \textit{IEEE International Conference on Communications (ICC 2022)}, Seoul, South Korea, May 2022.
+      \item[\rm{[C13]}] T. Kieras*, \underline{M.~J.~Farooq}, and Q.~Zhu, ``Modeling and assessment of IoT supply chain security risks: The role of structural and parametric uncertainties", in \textit{IEEE Symposium on Security and Privacy (S\&P 2020), Workshop on Cyber Resilient Supply Chain Technologies}, San Francisco, CA, May 2020.
+      \item[\rm{[C12]}] \underline{M.~J.~Farooq} and Q.~Zhu, ``PhD forum: Enabling autonomic IoT for smart urban services,'' in \textit{ IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, USA, Apr. 2020}.
+      \item[\rm{[C11]}] T. Kieras*, \underline{M.~J.~Farooq} and Q.~Zhu, ``RIoTS: Risk analysis of IoT supply chain threats,'' in \textit{ IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, USA, Apr. 2020}.
+      \item[\rm{}{[C10]}] \underline{M.~J.~Farooq} and Q.~Zhu, ``Optimal dynamic contract for spectrum reservation in mission-critical UNB-IoT systems,'' in \textit{ 16th International Symposium on Modeling and Optimization in Mobile, Ad Hoc and Wireless Networks (WiOpt 2018), Shanghai, China, May 2018}.
+      \item[\rm{[C9]}] \underline{M.~J.~Farooq} and Q.~Zhu, ``Adaptive and resilient revenue maximizing dynamic resource allocation and pricing for cloud-enabled IoT systems,'' in \textit{American Control Conference (ACC 2018)}, Milwaukee, WI, USA, Jun. 2018.
+      \item[\rm{[C8]}] \underline{M.~J.~Farooq} and Q.~Zhu, ``Cognitive connectivity resilience in multi-layer remotely deployed mobile Internet of things,'' in \textit{Proc. IEEE Global Communications Conference (Gobecom 2017)}, Singapore, Dec. 2017.
+      \item[\rm{[C7]}] \underline{M.~J.~Farooq}, H. ElSawy, Q.~Zhu, and M.-S. Alouini, ``Optimizing mission critical data dissemination in massive IoT networks,'' in \textit{Proc. 15th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks  (WiOpt 2017)}, \textit{Workshop on Spatial Stochastic Models for Wireless Networks}, Paris, France, May 2017.
+      \item[\rm{[C6]}] \underline{M.~J.~Farooq} and Q.~Zhu, ``Secure and reconfigurable network design for critical information dissemination in the Internet of battlefield things (IoBT),'' in \textit{Proc. 15th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks  (WiOpt 2017)}, Paris, France, May 2017.
+      \item[\rm{[C5]}] \underline{M.~J.~Farooq}, H. Ghazzai, and A.~Kadri, ``Energy sharing framework for microgrid-powered cellular base stations,'' in \textit{Proc. IEEE Global Communications Conference (Globecom 2016),}  Washington, D.C., USA, Dec. 2016.
+      \item[\rm{[C4]}] \underline{M.~J.~Farooq},~H.~Ghazzai, and A.~Kadri, ``A stochastic geometry-based demand response management framework for cellular networks powered by smart grid,'' in \textit{Proc. IEEE Wireless Communications and Networking Conference (WCNC 2016)}, Doha, Qatar, Apr. 2016.
+      \item[\rm{[C3]}] \underline{M.~J.~Farooq}, H.~Ghazzai, and A.~Kadri, ``Optimized energy procurement for cellular networks powered by smart grid based on stochastic geometry,'' in \textit{Proc. IEEE Globecom Workshops (GC Wkshps 2015)}, San Diego, USA, Dec. 2015.
+      \item[\rm{[C2]}] \underline{M.~J.~Farooq}, H.~ElSawy, and M.S.~Alouini, ``Modeling inter-vehicle communication in multi-lane highways: A stochastic geometry approach,'' in \textit{Proc. IEEE Vehicular Technology Conference, (VTC-Fall 2015)}, Boston, USA, Sept. 2015
+      \item[\rm{[C1]}] \underline{M.~J.~Farooq}, M.~Hussain, J.~Qadir and A.~Baig, ``A game-theoretic spectrum allocation framework for mixed unicast and broadcast traffic profile in cognitive radio networks,'' in \textit{Proc. IEEE Conference on Local Computer Networks (LCN 2013)}, Sydney, Australia, Sept. 2013.
+      \end{enumerate}
+\resumeSubHeadingListEnd
+%%%%%%%%%%%%% Research Grants %%%%%%%%%%%%%%%%%%%
+\section{\href{https://experts.umich.edu/7139-junaid-farooq/grants}{Research Grants} (\$2.31M: \$1.37M as PI, \$0.94M as Co-PI)}
+\resumeSubHeadingListStart
+\resumeSubItem{Federal \& State [\$2.27M]}{}
+ \justifying
+  \begin{enumerate}
+      \item[\text{[G16]}]{``Robotic wireless signal strength mapping of industrial facilities (Supplement)}", \textit{U.S. Department of Defense (Prime)} through \textit{M\rm{x}D USA (Direct)}, Amount: \textbf{\$40,000}, Role: \textbf{Co-PI}, May. 2025.
+      \item[\text{[G15]}]{``CMMC Focus Study of Various Manufacturing Industries}", \textit{U.S. Department of Defense (Prime)} through \textit{M\rm{x}D USA (Direct)}, Amount: \textbf{\$49,995}, Role: \textbf{PI}, Jan. 2025.
+      \item[\text{[G14]}]{``5G Hardware Encryption Cybersecurity Integration Evaluation}", \textit{U.S. Department of Defense (Prime)} through \textit{M\rm{x}D USA} via \textit{OPEX Systems LLC (Direct)}, Amount: \textbf{\$45,000}, Role: \textbf{PI}, Sept. 2024.
+      \item[\text{[G13]}]{``Systemic Cyber Risk Management for Complex Automotive Supply Chains" MTRAC Innovation Hub for Advanced Computing, \textit{Michigan Economic Development Corporation (MEDC)}, Amount: \textbf{\$99,960}, Role: \textbf{PI}, Jan. 2024.}
+      \item[\text{[G12]}]{``Robotic wireless signal strength mapping of industrial facilities}", \textit{U.S. Department of Defense (Prime)} through \textit{M\rm{x}D USA (Direct)}, Amount: \textbf{\$899,999}, Role: \textbf{Co-PI}, Nov. 2023.
+      \item[\text{[G11]}]{``5G Cybersecurity Reference Architecture"}, \textit{U.S. Department of Defense (Prime)} through \textit{M\rm{x}D USA} via \textit{OPEX Systems LLC (Direct)}, Amount: \textbf{\$50,000}, Role: \textbf{PI}, Apr. 2022.
+      \item[\text{[G10]}] ``\href{https://nsf.gov/awardsearch/showAward?AWD_ID=2226232&HistoricalAwards=false}{NSF Convergence Accelerator Track G: Proactive End-to-End Zero Trust-Based Security Intelligence for Resilient Non-cooperative 5G Networks}", \textit{National Science Foundation}, Amount: \textbf{\$749,866}, Award number: 2226232, Role: \textbf{PI}, Aug. 2022.
+      \item[\text{[G9]}] ``\hyperlink{}{Cyber Supply Chain Risk Assessment and Mitigation for Automotive IoT}", \textit{Michigan Economic Development Corporation (MEDC)} through the \textit{MTRAC Advanced for Transportation at the University of Michigan}, Amount: \textbf{\$34,500}, Role: \textbf{PI}, Jun. 2022.
+      \item[\text{[G8]}] ``\hyperlink{}{Multi-layer cyber-physical supply chain risk analysis for improving the resilience of IoT enabled critical infrastructures}", \textit{Department of Homeland Security S\&T} (Prime) through the \textit{Critical Infrastructure Resilience Institute (CIRI) at the University of Illinois Urbana-Champaign} (Direct), Amount: \textbf{\$299,747}, Award number: 2015-ST-061-CIRC01, Role: \textbf{PI}, Jul. 2021.
+  \end{enumerate}
+    \resumeSubItem{Internal [\$37,600]}{}
+    \begin{enumerate}
+    \item[\text{[G7]}] ``Securing Digital Supply Chains through Cyber Risk Intelligence," \textit{UM OVPR's Bold Challenges Pollination Awards (Supply Chain)}, Total: \textbf{\$10,000}, Role: \textbf{PI}, Apr. 2026.
+    \item[\text{[G6]}] ``AI Driven NextG Networks to Support High Fidelity and Responsive Manufacturing," \textit{Bold Challenges and AIIM (UM OVPR's Seed-Networking Awards - Manufacturing)}, Total: \textbf{\$5,000}, Role: \textbf{PI}, Jan 2026.
+    \item[\text{[G5]}] ``Comprehensive Wireless Signal Measurement and Analysis: From WiFi to 5G Cellular Spectra," \textit{UM-Dearborn SURE 2024}, Total: \textbf{\$3,200}, Role: \textbf{PI}, May 2024.
+    \item[\text{[G4]}] ``Experimentation on Drone Testbed for 5G and Beyond Wireless," \textit{UM-Dearborn SURE 2022}, Amount: \textbf{\$3,200}, Role: \textbf{PI}, May 2022.
+    \item[\text{[G3]}] ``OVPR Pandemic Relief Funding," \textit{University of Michigan -- Office of the Vice President for Research (OVPR)}, Amount: \textbf{\$3,000}, Role: \textbf{PI}, Apr. 2022.
+    \item[\text{[G2]}] ``Cost Effective Charging/Refueling Strategies for Autonomous Vehicles," \textit{UM-Dearborn SURE 2021}, Amount: \textbf{\$3,200}, Role: \textbf{PI}, May 2021. \item[\text{[G1]}] ``\href{https://umdearborn.edu/node/295926/previously-funded-projects}{Multi-tier Aerial Network Formation and Control for Emergency Communications}", \textit{UM-Dearborn Research Initiation and Development Grant}, Amount: \textbf{\$10,000}, Role: \textbf{PI}, Jul. 2021.
+    \end{enumerate}
+\resumeSubHeadingListEnd
+%%%%%%%%%%%%% Enterpreneurship %%%%%%%%%%%%%%%%%%%
+\section{Entrepreneurship and Technology Transfer}
+    \resumeItem{Patents}{}
+    \justifying
+    \begin{itemize}
+        \item X. Wu and \underline{J. Farooq}, ``Online detection and containment of disruptive user equipment (UE) in radio access networks," \emph{U.S. Provisional Patent Application 7935-3341-US1}, Mar. 2026.
+    \end{itemize}
+
+    \resumeItem{Invention Disclosures Submitted}{}
+    \justifying
+    \begin{itemize}
+        \item \emph{``Triage Slicing for Online Detection and Containment of Disruptive User Equipments in O-RAN Network Slices",} Junaid Farooq and Xingqi Wu, Jan. 2026. [UM File \#2026-331]
+        \item \emph{``Agentic Large Language Model Framework for Real-Time Resource Management and Resilience in O-RAN Systems",} Junaid Farooq, Xingqi Wu, Yuhui Wang, Juntao Chen, Nov. 2025. [UM File \#2026-238]
+        \item \emph{``Zero Trust Network Integrity Control for 5G Networks''}, Junaid Farooq, Quanyan Zhu, Indrajit Ray, Oct. 27, 2022. [UM File \#2023-166]
+        \item \emph{``I-SCRAM: A Software Tool for IoT Supply Chain Risk Analysis and Mitigation''}, Junaid Farooq, Timothy Kieras, Quanyan Zhu, Jun. 28, 2021. [UM File \#2021-497]
+    \end{itemize}
+    \resumeItem{Licensing and Technology Transfer}{}
+    \justifying
+    \begin{itemize}
+        \item \emph{I-SCRAM} technology was licensed by the University of Michigan to SC2 Technologies Inc. The IP was developed through research funded by the U.S. Department of Homeland Security and supported by two follow-on MTRAC grants from the Michigan Economic Development Corporation.
+    \end{itemize}
+    \resumeItem{Startups and Entrepreneurial Activities}{}
+    \justifying
+    \begin{itemize}
+        \item Founded \emph{SC2 Technologies Inc.}, a cybersecurity startup based in Ann Arbor, MI. Currently serving as Co-founder and Chief Scientist. The company commercializes research originating from federally funded academic projects in cyber risk and supply chain resilience.
+    \end{itemize}
+%%%%%%%%%%%%% Tutorials %%%%%%%%%%%%%%%%%%%
+\section{Tutorials}
+ \resumeSubHeadingListStart
+ \justifying
+      \item[\text{[T1]}] ``\href{https://milcom2022.milcom.org/program/tutorials#tut-04}{IoT Supply Chain Security Risk Assessment and Mitigation: Methodologies and Computational Tools}", at \textit{IEEE Military Communications Conference (MILCOM 2022)}, Nov. 2022.
+      \item[\text{[T2]}] ``\href{https://wfiot2020.iot.ieee.org/program/technical-program/tutorials/}{Understanding IoT Security Risks and Resilience: From Networks to Supply Chain}", at \textit{IEEE 6th World Forum on Internet of Things (WF-IoT 2020)}, Apr. 2020.
+      \item[\text{[T3]}] ``\href{https://dyspan2019.ieee-dyspan.org/tutorial-resource-management-demand-mission-critical-internet-things-applications}{Resource management for on-demand mission-critical Internet of things applications}", at \textit{IEEE International Symposium on Dynamic Spectrum Access Networks (DySpan 2019)}, Nov. 2019.
+  \resumeSubHeadingListEnd
+%%%%%%%%%%%%% Invited Talks %%%%%%%%%%%%%%%%%%%
+\section{Invited Talks}
+ \resumeSubHeadingListStart
+ \justifying
+    \item[\rm{[I1]}] ``\href{https://events.umflint.edu/cit/events/12408}{AI-Driven Management and Orchestration of Next-Generation Networks: From Optimization to Autonomous Intelligence}", at \textit{University of Michigan-Flint}, Feb. 28. 2025.
+    \item[\rm{[I2]}] ``\href{https://www.abstractsonline.com/pp8/?__hstc=194041586.c3af5c60819858119a41e169420e9f8e.1662438615560.1662438615560.1662438615560.1&__hssc=194041586.1.1662438615561&__hsfp=1882162258&hsCtaTracking=1cebb1f1-3fc0-42be-8193-e37096e6ac21\%7C2f9d5283-f646-4aa3-9105-fd9475a64f90#!/10655/presentation/105}{Supply Chain Cybersecurity and Resilience for Internet of Things}", \textit{INFORMS Conference on Security}, Aug. 2022.
+     \item[\rm{[I3]}] ``\href{https://vimeo.com/showcase/9133413/video/654698125}{Supply Chain Security of Industrial Control Systems}", \textit{Panel discussion at Resilience Week}, Oct. 2021.
+      \item[\rm{[I4]}] ``\href{https://emails.illinois.edu/newsletter/703144246.html}{Protecting Connected Cities Present and Future}", \textit{Panel discussion organized by Critical Infrastructure Resilience Institute (CIRI)}, Jan. 2021.
+      \item[\rm{[I5]}] ``\href{https://cusp.nyu.edu/past-events/junaid-farooq/}{IoT and the Curse of Massive Wireless Connectivity: A Systems Outlook}", \textit{Webinar delivered at the Center for Urban Science and Progress (CUSP)}, Sept. 2020.
+      \item[\rm{[I6]}] ``\href{https://gwu.webex.com/recordingservice/sites/gwu/recording/c3e2f1b146bf44379cdcea0f3a4654a6}{Supply Chain Risk and Mitigation for IoT-Enabled Infrastructure Systems}", \textit{Webinar delivered at the Institute for Information Infrastructure (I3P)}, Apr. 2020.
+      \item[\rm{[I7]}] ``\href{https://www.stonybrook.edu/commcms/electrical/events/seminars/2019_09_12_farooq.php}{Cyber-Physical Supply Chain Risk Analysis and Mitigation for Internet of Things Networks}", \textit{Webinar delivered at the Monthly Community Call of the Automotive Information Sharing and Analysis Center (Auto-ISAC)}, Feb. 2020.
+      \item[\rm{[I8]}] ``\href{https://www.stonybrook.edu/commcms/electrical/events/seminars/2019_09_12_farooq.php}{Securing Wireless IoT Networks from Coordinated Stealthy Attacks}", \textit{ECE Departmental Seminar at Stony Brook University}, Sept. 2019.
+      \item[\rm{[I9]}] ``Securing Wireless IoT Networks from Backdoor Stealthy Attacks" at \textit{5th International Conference on Artificial Intelligence and Security (ICAIS 2019)}, Brooklyn, NY, USA, Jul. 2019.
+      \item[\rm{[I10]}] ``Adaptive and Resilient Revenue Maximizing Dynamic Resource Allocation and Pricing for Cloud-Enabled IoT Systems", at \textit{AMS Sectional Meeting on Optimization under Uncertainty}, Boston, MA, USA. Apr. 2018.
+      \item[\rm{[I11]}] ``Optimal Dynamic Contract for Spectrum Reservation in Mission-Critical UNB-IoT Systems", at \textit{International Conference on NETwork Games, COntrol and OPtimisation (NETGCOOP 2018)}, Brooklyn, NY, USA, Nov. 2018.
+  \resumeSubHeadingListEnd
+%%%%%%%%%%%%% Awards \& Scholarships %%%%%%%%%%%%%%%%%%%
+\section{Awards}
+ \resumeSubHeadingListStart
+ \justifying
+    \resumeSubItem{Outstanding Dissertation Award}{Awarded by New York University in the Technology and Applied Sciences category. The award is in recognition of the dissertations' scholarly rigor, writing quality, and potential for academic and social impact. \hfill{Apr. 2021}}
+    \resumeSubItem{Dante Youla Award}{Awarded by Dept. of Electrical \& Computer Engineering, NYU Tandon School of Engineering for graduate research excellence. \hfill{May. 2020}}
+    \resumeSubItem{NSF Travel Award}{To attend Networking Technology and Systems Early-Career Investigators (NeTS-ECI) Workshop, Alexandria, VA. \hfill{Jul. 2019}}
+    \resumeSubItem{ICERM Travel Award}{To attend Workshop on Scientific Machine Learning organized by ICERM at Brown University, Providence, RI USA. \hfill{Jan. 2019}}
+    \resumeSubItem{Athanasios Papoulis Award}{Awarded by Dept. of Electrical \& Computer Engineering, NYU Tandon (in memory of late Prof. Athanasios Papoulis) for excellence in undergraduate teaching. \hfill{Jun. 2018}}
+    \resumeSubItem{Outstanding Reviewer}{Awarded by Elsevier Computer Communications in recognition of the contributions made to the quality of the journal. \hfill{Mar. 2018}}
+    \resumeSubItem{Ernst Weber Fellowship}{Awarded by Dept. of Electrical \& Computer Engineering, NYU Tandon School of Engineering to support PhD studies and research. \hfill{Sept. 2016 - May. 2018}}
+    \resumeSubItem{President's Gold Medal}{Awarded by National University of Sciences \& Technology (NUST) for best academic performance. \hfill{Jan. 2014}}
+    \resumeSubItem{Presidential Award}{Awarded by Ministry of Education, Govt. of Pakistan for achieving world distinction in Cambridge International Examinations (CIE) in O Level Mathematics. \hfill{May 2009}}
+ \resumeSubHeadingListEnd
+
+%%%%%%%%%%%%% Mentorship
+
+\section{Mentoring}
+    \resumeSubHeadingListStart
+    \resumeSubItem{PostDoctoral}{}
+    \justifying
+    \begin{itemize}
+        \item Ahmed Al Amin - Zero Trst Cybersecurity for 5G networks \hfill{Sept. 2022 - Aug. 2023}
+    \end{itemize}
+\resumeSubItem{Graduate}{}
+\justifying
+    \begin{itemize}
+        \item Elahe Delavari (UMD) - RL Driven O-RAN Control \hfill{Sept. 2025 - present}
+        \item Ritesh Honnalli (UMD) - AI Driven Cybersecurity Attack Detection and Mitigation in EV Charging Systems \hfill{Sept. 2024 - Jun. 2025}
+        \item Dhia Neifar (UMD) - Federated learning assisted decision-making for vehicular networks \hfill{Sept. 2023 - Aug. 2024}
+        \item Xingqi Wu (UMD) - Resource Orchestration and Management for 5G networks \hfill{Jul. 2023 - present}
+        \item Moyan Lyu (UMD) - Zero Trust cybersecurity of 5G networks \hfill{Jul. 2023 - Jun. 2024}
+        \item Yuhui Wang (UMD) - UAV formation for coverage and connectivity of ground users \hfill{Sept. 2021 - Dec. 2021}
+        \item Zhaoguo Wang (UMD) - Improving profitability of ride sharing by efficient resource matching \hfill{May. 2021 - Aug. 2022}
+        \item Yunfan Xu (NYU) -  Development of iSCRAM software tool \hfill{May 2021 - May 2022}
+        \item Timothy Kieras (NYU) - Supply chain risk analysis and mitigation in IoT networks \hfill{Jun. 2019 - May 2020}
+    \end{itemize}
+    \resumeSubItem{Undergraduate}{}
+    \justifying
+    \begin{itemize}
+        \item Jawad Hazime (UMD) - Agentic AI Approach to Solving Bandit Problems \hfill{Jan. 2025 - Apr. 2025}
+        \item Meher Jabbar (UMD) - Experimentation on NSF AERPAW Testbed for Aerial Networks \hfill{Jun. 2022 - Aug. 2022}
+        \item Shouryan Nikam (UMD) - Intelligent refueling strategies for smart and autonomous vehicles \hfill{Jun. 2021 - Aug. 2021}
+        \item Teddy Zheng (NYU) - Load balancing in Citibikes \hfill{Jun. 2017 - Aug. 2017}
+        \item Jin Shang (NYU) - Power saving mode design for realtime IoT sensors\hfill{Jun. 2018 - Aug. 2018}
+        \item Rundong Chen (NYU) - Autonomous pickup decisions in autonomous taxis \hfill{Jun. 2018 - Aug. 2018}
+    \end{itemize}
+    \resumeSubItem{Dissertation Committee Member}{}
+    \justifying
+    \begin{itemize}
+    \item Zhengquan Li (UMD PhD CIS) - ``Private Edge as a Supplement to Public Edge: Enabling Ultra-Low Latency and Privacy Preservation for Modern Applications" \hfill{May. 2026 (expected)}
+    \item Fazal Rahaman Pasha Mohammed (UMD MSEE) - ``Intrusion Detection for Cyber-Physical Attacks on ROS Based Collaborative Robots" \hfill{Apr. 2025}
+    \item Jason Carlton (UMD DEng Dissertation) - ``Data Privacy in Connected Vehicle Infotainment Systems: A Comprehensive Framework for Rental Vehicles" \hfill{Nov. 2024}
+    \item Abdul Rahman Abu Elkhail (UMD PhD Dissertation) - ``Towards Defending Against Malware Attacks" \hfill{Jun. 2023}
+
+    \end{itemize}
+ \resumeSubHeadingListEnd
+
+%%%%%%%%%%%%% Services %%%%%%%%%%%%%%%%%%%%%%
+\section{Service}
+ \resumeSubHeadingListStart
+    \resumeSubItem{Editorial Services}{}
+    \justifying
+    \begin{itemize}
+        \item Associate Editor, \textsc{IEEE Transactions on Communications} (TCOM), 2025 - 2030.
+    \end{itemize}
+     \resumeSubHeadingListEnd
+ \resumeSubHeadingListStart
+    \resumeSubItem{ECE Department Service}{}
+    \justifying
+    \begin{itemize}
+        \item Chair, Faculty Search Committee 2022.
+        \item Member, Faculty Search Committee, 2024.
+    \end{itemize}
+     \resumeSubHeadingListEnd
+    \resumeSubHeadingListStart
+    \resumeSubItem{Conference Organization}{}
+    \justifying
+    \begin{itemize}
+        \item General co-chair for \emph{IEEE Conference on Communications and Network Security (CNS 2026) Cyber Resilience Workshop}, Delaware, USA, Sept. 2026.
+        \item General Chair for \emph{Dearborn Automation and Intelligent SYstems (DAISY) Symposium}, Dearborn MI, Mar. 2026.
+        \item General co-chair for \emph{IEEE Conference on Communications and Network Security (CNS 2025) Cyber Resilience Workshop}, Avignon, France, Sept. 2025.
+        \item General co-chair for \emph{Workshop on Resilience in Next Generation Networks (NGResNet)} at \emph{IEEE International Conference on Computer Communications (INFOCOM 2025)}, London, United Kingdom, May 2025.
+        \item General co-chair for \emph{IEEE Conference on Communications and Network Security (CNS 2024) Cyber Resilience Workshop}, Taipei, Taiwan, Oct. 2024.
+        \item General co-chair for \emph{IEEE Conference on Communications and Network Security (CNS 2023) Cyber Resilience Workshop}, Orlando FL, Oct. 2023.
+        \item Session Chair for \emph{IEEE International Conference on Mobile Ad-Hoc and Smart Systems (MASS 2023)}, Toronto ON, Sept. 2023.
+        \item Session Chair for \emph{IEEE Conference on Communications and Network Security (CNS 2022) Cyber Resilience Workshop}, Austin TX, Oct. 2022.
+        \item Regional Co-Chair (USA/Canada) for \emph{Cyber Security Awareness Week (CSAW 2019)}, Nov. 2019, Brooklyn, NY
+        \item Session Chair for `Wireless Networks' session at \emph{International Conference on Networks, Games, Control, and Optimization (NETGCOOP 2018)}, Nov. 2018, Brooklyn, NY
+    \end{itemize}
+     \resumeSubHeadingListEnd
+    \resumeSubHeadingListStart
+    \resumeSubItem{Service to Government}{}
+    \justifying
+    \begin{itemize}
+    \item Panelist for NSF proposal review May. 2025.
+    \item Facilitator, NSF Workshop on Large Language Models for Network Security, Oct. 2024.
+    \item Panelist for NSF proposal review Jun. 2024.
+    \item Panelist for NSF proposal review Jul. 2024.
+    \item Facilitator for ARO workshop on Cyber Deception, Brooklyn NY, Aug. 2023.
+    \item Invited attendee for ARO workshop on AI for Security at Virgina Tech., Arlington VA, Jan. 2022.
+    \item Panelist for NSF proposal review Nov. 2022.
+    \end{itemize}
+     \resumeSubHeadingListEnd
+     \resumeSubHeadingListStart
+    \resumeSubItem{Technical Reviews}{}
+    \justifying
+    \begin{itemize}
+        \item IEEE Transactions on Wireless Communications
+        \item IEEE Transactions on  Communications
+        \item IEEE Transactions on Vehicular Technology
+        \item IEEE Transactions on Mobile Computing
+        \item IEEE Communications Letters
+        \item IEEE Transactions on Green Communications \& Networking
+        \item IEEE Transactions on Information Forensics \& Security
+        \item IEEE Conference on Communications and Network Security
+        \item IEEE Vehicular Technology Conference
+        \item IEEE Transactions on Big Data
+        \item IEEE Conference on Communications and Network Security
+        \item Elsevier Computer Communications
+        \item IEEE Vehicular Technology Magazine
+    \end{itemize}
+ \resumeSubHeadingListEnd
+\section{Professional Affiliations}
+\resumeSubHeadingListStart
+\resumeSubheading
+      {Institute of Electrical and Electronic Engineers (IEEE)}{}
+      {Senior Member}{\textnormal{Jan. 2025}}
+ \resumeSubHeadingListEnd
+
+\begin{center}
+Last Updated on \small\today
+\end{center}
+\end{document}

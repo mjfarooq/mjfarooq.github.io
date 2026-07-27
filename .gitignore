@@ -11,3 +11,12 @@ npm-debug.log*
 .DS_Store
 # astro
 .astro/
+# LaTeX CV build artifacts (source is tracked, PDF lives in public/)
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.toc
+cv/*.fdb_latexmk
+cv/*.fls
+cv/*.synctex.gz
+cv/cv.pdf
