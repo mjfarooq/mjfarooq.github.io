@@ -1,5 +1,45 @@
 [
   {
+    "title": "Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense",
+    "authors": [
+      "F. Martinez",
+      "A. Satyam",
+      "T. Li",
+      "J. Farooq",
+      "Y. Wang",
+      "J. Chen"
+    ],
+    "authors_str": "F. Martinez, A. Satyam, T. Li, J. Farooq, Y. Wang, and J. Chen",
+    "year": 2026,
+    "type": "Conference",
+    "venue": "in IEEE Global Communications Conference (GLOBECOM 2026), Macau, China",
+    "url": "",
+    "tags": [
+      "AI / Learning",
+      "Cyber Resilience"
+    ],
+    "links": []
+  },
+  {
+    "title": "Balancing Security and Performance in Spatial Wireless Networks through Software Diversity for Attack Propagation Control",
+    "authors": [
+      "X. Wu",
+      "Y. Wang",
+      "J. Farooq",
+      "J. Chen"
+    ],
+    "authors_str": "X. Wu*, Y. Wang*, J. Farooq, and J. Chen",
+    "year": 2026,
+    "type": "Conference",
+    "venue": "in IEEE Global Communications Conference (GLOBECOM 2026), Macau, China",
+    "url": "",
+    "tags": [
+      "Cyber Resilience",
+      "Networks"
+    ],
+    "links": []
+  },
+  {
     "title": "Performative Security Games: Strategic Manipulation of Decision-Dependent Distributions in Learning-Based O-RAN Control",
     "authors": [
       "X. Wu",

@@ -1,5 +1,23 @@
 [
   {
+    "date": "Dec 2026",
+    "message": "Our paper \"Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense\" was accepted in the IEEE Global Communications Conference (GLOBECOM 2026), Macau, China. Joint work with Fernando Martinez, Abhishek Satyam, Tao Li, Ying Wang, and Juntao Chen.",
+    "images": [
+      "/images/updates/ask_the_expert.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
+    "date": "Dec 2026",
+    "message": "Our paper \"Balancing Security and Performance in Spatial Wireless Networks through Software Diversity for Attack Propagation Control\" was accepted in the IEEE Global Communications Conference (GLOBECOM 2026), Macau, China. Congratulations Xingqi and Yuhui!",
+    "images": [
+      "/images/updates/software_diversity_attack_propagation.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
     "date": "Sep 2026",
     "message": "Our paper \"Performative Security Games: Strategic Manipulation of Decision-Dependent Distributions in Learning-Based O-RAN Control\" was accepted in the Conference on Decision and Game Theory for Security (GameSec 2026). Congratulations Xingqi!",
     "images": [
