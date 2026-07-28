@@ -149,6 +149,23 @@ const linkify = (t) => {
   .uc-modal-msg :global(.uc-namelink) { color: var(--blue-link); font-weight: 600; }
   .uc-modal-link { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); }
   .uc-link { font-family: var(--ff-mono); font-size: 12px; margin-top: auto; }
+
+  /* Mobile: widen carousel cards, let photos scale by aspect ratio (no crop). */
+  @media (max-width: 640px) {
+    .uc-card { flex: 0 0 82vw; height: auto; min-height: 320px; }
+    .uc-photos { height: auto; flex: 0 0 auto; aspect-ratio: 4 / 3; }
+    /* Full frame, no cropping on mobile - the image is the point of the post. */
+    .uc-photos .uc-photo { background: var(--surface-soft); }
+    .uc-photos .uc-photo img { object-fit: contain; }
+    /* Multi-image cards: show only the first on mobile to avoid tiny stamps. */
+    .uc-photos.n2, .uc-photos.n3 { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+    .uc-photos.n2 .uc-photo:nth-child(n+2),
+    .uc-photos.n3 .uc-photo:nth-child(n+2) { display: none; }
+    .uc-msg { -webkit-line-clamp: unset; line-clamp: unset; }
+    .uc-modal-panel { padding: 1.2rem; max-height: 92vh; }
+    .uc-modal-close { top: 8px; right: 8px; width: 32px; height: 32px; font-size: 20px; }
+    .uc-nav { display: none; }
+  }
 </style>
 
 <script is:inline>

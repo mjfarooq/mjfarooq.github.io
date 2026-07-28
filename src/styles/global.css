@@ -50,7 +50,9 @@ body {
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+h1, h2, h3, h4, p, li, .lead, .h-page, .h-sec { overflow-wrap: break-word; word-wrap: break-word; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 h1, h2, h3, h4 { font-family: var(--ff-serif); font-weight: 600; line-height: 1.18; color: var(--blue); margin: 0; letter-spacing: -0.01em; }
