@@ -13,12 +13,17 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE Global Communications Conference (Globecom 2026), Macau, China",
-    "url": "",
+    "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1",
     "tags": [
       "AI / Learning",
       "Cyber Resilience"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1"
+      }
+    ]
   },
   {
     "title": "Balancing Security and Performance in Spatial Wireless Networks through Software Diversity for Attack Propagation Control",
@@ -140,12 +145,17 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC 2026), Singapore",
-    "url": "",
+    "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1",
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1"
+      }
+    ]
   },
   {
     "title": "Differentiable architecture search for adversarially robust quantum computer vision",
@@ -171,6 +181,10 @@
       {
         "label": "Springer",
         "url": "https://link.springer.com/article/10.1007/s42484-026-00353-0"
+      },
+      {
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/2601.18058"
       }
     ]
   },
@@ -288,6 +302,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11494807"
+      },
+      {
+        "label": "PDF",
+        "url": "https://repository.kaust.edu.sa/server/api/core/bitstreams/28961fd3-b3b6-4589-bc0f-2009a737d071/content"
       }
     ]
   },
@@ -349,6 +367,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11142613"
+      },
+      {
+        "label": "PDF",
+        "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11142613"
       }
     ]
   },
@@ -424,6 +446,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11206314"
+      },
+      {
+        "label": "PDF",
+        "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11206314"
       }
     ],
     "peopleExclude": [
