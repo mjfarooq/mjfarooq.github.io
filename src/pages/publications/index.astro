@@ -146,6 +146,9 @@ const topTags = _topTags.map(([t, n]) => ({
   .net-cta svg { color: var(--blue); }
   :root[data-theme="dark"] .net-cta { background: rgba(255,203,5,.18); color: var(--maize); border-color: var(--maize); }
   :root[data-theme="dark"] .net-cta svg { color: var(--maize); }
+  /* Dark hover: solid maize field needs dark ink, not the maize text set above. */
+  :root[data-theme="dark"] .net-cta:hover { background: var(--maize); color: #00274c; border-color: var(--maize); }
+  :root[data-theme="dark"] .net-cta:hover svg { color: #00274c; }
 
   /* Publication visualizations */
   .pubviz { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; margin: 1.8rem 0 1.2rem; }
