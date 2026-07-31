@@ -79,7 +79,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2512.22721"
       }
     ]
@@ -183,7 +183,7 @@
         "url": "https://link.springer.com/article/10.1007/s42484-026-00353-0"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2601.18058"
       }
     ]
@@ -227,7 +227,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2605.30622"
       }
     ]
@@ -344,7 +344,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2605.30630"
       }
     ]
@@ -367,10 +367,6 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11142613"
-      },
-      {
-        "label": "PDF",
-        "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11142613"
       }
     ]
   },
@@ -392,7 +388,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2503.21815"
       }
     ]
@@ -442,10 +438,6 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11206314"
-      },
-      {
-        "label": "PDF",
-        "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11206314"
       }
     ],
     "peopleExclude": [
@@ -865,7 +857,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2512.10998"
       }
     ]
@@ -891,7 +883,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2506.24081"
       }
     ],
@@ -991,7 +983,7 @@
         "url": "https://ieeexplore.ieee.org/document/10365695"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2312.14247"
       }
     ]
@@ -1038,7 +1030,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2411.13874"
       }
     ]
@@ -1203,7 +1195,7 @@
         "url": "https://ieeexplore.ieee.org/document/9947272"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2209.04496"
       }
     ]
@@ -1229,7 +1221,7 @@
         "url": "https://ieeexplore.ieee.org/document/9838960"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2203.06287"
       }
     ]
@@ -1250,7 +1242,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2211.02833"
       }
     ]
@@ -1298,7 +1290,7 @@
         "url": "https://ieeexplore.ieee.org/document/9108583"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2006.16894"
       }
     ]
@@ -1342,7 +1334,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2003.12363"
       }
     ]
@@ -1384,7 +1376,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/2001.01561"
       }
     ]
@@ -1407,7 +1399,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1911.12862"
       }
     ]
@@ -1428,7 +1420,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1901.08331"
       }
     ]
@@ -1450,7 +1442,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1908.07828"
       }
     ]
@@ -1472,7 +1464,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1901.00741"
       }
     ]
@@ -1519,7 +1511,7 @@
         "url": "https://ieeexplore.ieee.org/document/8360491/"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1805.05824"
       }
     ]
@@ -1541,7 +1533,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1707.08691"
       }
     ]
@@ -1566,7 +1558,7 @@
         "url": "http://ieeexplore.ieee.org/document/8279518/"
       },
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1801.09986"
       }
     ]
@@ -1611,7 +1603,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1701.01322"
       }
     ]
@@ -1633,7 +1625,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1709.00621"
       }
     ]
@@ -1659,7 +1651,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1612.01416"
       }
     ]
@@ -1683,7 +1675,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1706.00107"
       }
     ]
@@ -1706,7 +1698,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1704.05954"
       }
     ]
@@ -1727,7 +1719,7 @@
     ],
     "links": [
       {
-        "label": "arXiv",
+        "label": "PDF",
         "url": "https://arxiv.org/abs/1703.01224"
       }
     ]
