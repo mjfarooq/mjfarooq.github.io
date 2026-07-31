@@ -392,7 +392,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/2503.21815"
       }
     ]
@@ -409,15 +409,11 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE INFOCOM 2025 Workshop on Resilience in Next-Generation Networks (NGResNet), London, UK",
-    "url": "https://www.techrxiv.org/users/793184/articles/1277867",
+    "url": "https://www.techrxiv.org/users/793184/articles/1277867-collaborative-resilience-for-multi-layer-heterogeneous-robotic-networks-under-adversarial-environments",
     "tags": [
       "Cyber Resilience"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1277867"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1277867-collaborative-resilience-for-multi-layer-heterogeneous-robotic-networks-under-adversarial-environments"
@@ -468,15 +464,11 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE ICC 2025 Workshop on Emerging Technologies in Aerial and Space Networks, Montreal, Canada",
-    "url": "https://www.techrxiv.org/users/793184/articles/1277869",
+    "url": "https://www.techrxiv.org/users/793184/articles/1277869-coordinated-uav-deployment-and-task-offloading-in-uav-assisted-leo-satellite-edge-computing-systems-via-proximal-policy-optimization",
     "tags": [
       "UAV & Aerial"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1277869"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1277869-coordinated-uav-deployment-and-task-offloading-in-uav-assisted-leo-satellite-edge-computing-systems-via-proximal-policy-optimization"
@@ -493,15 +485,11 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
-    "url": "https://www.techrxiv.org/users/793184/articles/1315647",
+    "url": "https://www.techrxiv.org/users/793184/articles/1315647-evaluation-of-llm-powered-agentic-ai-for-solving-multi-arm-bandit-problems",
     "tags": [
       "AI / Learning"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1315647"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1315647-evaluation-of-llm-powered-agentic-ai-for-solving-multi-arm-bandit-problems"
@@ -543,15 +531,11 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE WCNC 2025, Milan, Italy",
-    "url": "https://www.techrxiv.org/users/793184/articles/1234294",
+    "url": "https://www.techrxiv.org/users/793184/articles/1234294-joint-optimization-of-positioning-and-computation-offloading-in-multi-uav-mec-networks-for-low-latency-applications",
     "tags": [
       "UAV & Aerial"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1234294"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1234294-joint-optimization-of-positioning-and-computation-offloading-in-multi-uav-mec-networks-for-low-latency-applications"
@@ -593,17 +577,13 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE INFOCOM 2025 Workshop on Resilience in Next-Generation Networks (NGResNet), London, UK",
-    "url": "https://www.techrxiv.org/users/793184/articles/1277868",
+    "url": "https://www.techrxiv.org/users/793184/articles/1277868-llm-driven-agentic-ai-approach-to-enhanced-o-ran-resilience-in-next-generation-networks",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1277868"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1277868-llm-driven-agentic-ai-approach-to-enhanced-o-ran-resilience-in-next-generation-networks"
@@ -692,16 +672,12 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE WCNC 2025, Milan, Italy",
-    "url": "https://www.techrxiv.org/users/793184/articles/1229164",
+    "url": "https://www.techrxiv.org/users/793184/articles/1229164-multi-uav-placement-for-integrated-access-and-backhauling-using-llm-driven-optimization",
     "tags": [
       "UAV & Aerial",
       "AI / Learning"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1229164"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1229164-multi-uav-placement-for-integrated-access-and-backhauling-using-llm-driven-optimization"
@@ -718,16 +694,12 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
-    "url": "https://www.techrxiv.org/users/793184/articles/1315646",
+    "url": "https://www.techrxiv.org/users/793184/articles/1315646-multimodal-llm-guided-sequential-detection-of-cyber-threats-in-electric-vehicle-charging-systems",
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1315646"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1315646-multimodal-llm-guided-sequential-detection-of-cyber-threats-in-electric-vehicle-charging-systems"
@@ -816,15 +788,11 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
-    "url": "https://www.techrxiv.org/users/793184/articles/1315645",
+    "url": "https://www.techrxiv.org/users/793184/articles/1315645-real-time-multiple-obstacle-avoidance-and-navigation-in-unstructured-spaces-with-applications-to-indoor-delivery-robots",
     "tags": [
       "Networks"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1315645"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1315645-real-time-multiple-obstacle-avoidance-and-navigation-in-unstructured-spaces-with-applications-to-indoor-delivery-robots"
@@ -865,16 +833,12 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE Globecom Workshop on Resilience in Next-Generation Wireless Communication Networks (GC Wkshps 2025), Taiwan",
-    "url": "https://www.techrxiv.org/users/793184/articles/1341419",
+    "url": "https://www.techrxiv.org/users/793184/articles/1341419-resilient-prb-allocation-for-high-mobility-ues-in-5g-o-ran-via-lstm-enhanced-mpc",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1341419"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1341419-resilient-prb-allocation-for-high-mobility-ues-in-5g-o-ran-via-lstm-enhanced-mpc"
@@ -895,15 +859,11 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE BigData 2025 Workshop on AI in Big Data Analytic for Healthcare, Macau, China",
-    "url": "https://arxiv.org/pdf/2512.10998",
+    "url": "https://arxiv.org/abs/2512.10998",
     "tags": [
       "Cyber Resilience"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/2512.10998"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/2512.10998"
@@ -924,16 +884,12 @@
     "year": 2025,
     "type": "Preprint",
     "venue": "submitted to Quantum Machine Intelligence",
-    "url": "https://arxiv.org/pdf/2506.24081",
+    "url": "https://arxiv.org/abs/2506.24081",
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/2506.24081"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/2506.24081"
@@ -978,15 +934,11 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE ICC 2024 Workshop on Intelligent Cloud Continuum for B5G Services, Denver, CO",
-    "url": "https://www.techrxiv.org/users/793184/articles/1091386",
+    "url": "https://www.techrxiv.org/users/793184/articles/1091386-adaptive-risk-aware-resource-orchestration-for-5g-microservices-over-multi-tier-edge-cloud-systems",
     "tags": [
       "NextG / O-RAN"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1091386"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1091386-adaptive-risk-aware-resource-orchestration-for-5g-microservices-over-multi-tier-edge-cloud-systems"
@@ -1055,15 +1007,11 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE CloudNet 2024, Rio De Janeiro, Brazil",
-    "url": "https://www.techrxiv.org/users/793184/articles/1235407",
+    "url": "https://www.techrxiv.org/users/793184/articles/1235407-multi-agent-distributed-decentralized-dynamic-resource-orchestration-in-5g-edge-cloud-networks",
     "tags": [
       "NextG / O-RAN"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1235407"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1235407-multi-agent-distributed-decentralized-dynamic-resource-orchestration-in-5g-edge-cloud-networks"
@@ -1083,16 +1031,12 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE BigData CyberHunt 2024 Workshop, Washington D.C.",
-    "url": "https://arxiv.org/html/2411.13874v1",
+    "url": "https://arxiv.org/abs/2411.13874",
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/html/2411.13874v1"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/2411.13874"
@@ -1136,16 +1080,12 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in Resilience Week (RW) 2024, Austin TX, USA",
-    "url": "https://www.techrxiv.org/users/793184/articles/1229171",
+    "url": "https://www.techrxiv.org/users/793184/articles/1229171-zero-trust-in-5g-networks-principles-challenges-and-opportunities",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/users/793184/articles/1229171"
-      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1229171-zero-trust-in-5g-networks-principles-challenges-and-opportunities"
@@ -1310,7 +1250,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/2211.02833"
       }
     ]
@@ -1395,16 +1335,12 @@
     "year": 2020,
     "type": "Conference",
     "venue": "in 2020 IEEE Security and Privacy Workshops (SPW), San Francisco, CA, USA",
-    "url": "https://arxiv.org/pdf/2003.12363.pdf",
+    "url": "https://arxiv.org/abs/2003.12363",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/2003.12363.pdf"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/2003.12363"
@@ -1442,15 +1378,11 @@
     "year": 2020,
     "type": "Conference",
     "venue": "in Proc. IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, LA, USA",
-    "url": "https://arxiv.org/pdf/2001.01561.pdf",
+    "url": "https://arxiv.org/abs/2001.01561",
     "tags": [
       "IoT"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/2001.01561.pdf"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/2001.01561"
@@ -1468,16 +1400,12 @@
     "year": 2020,
     "type": "Conference",
     "venue": "in Proc. IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, LA, USA",
-    "url": "https://arxiv.org/pdf/1911.12862.pdf",
+    "url": "https://arxiv.org/abs/1911.12862",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/1911.12862.pdf"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/1911.12862"
@@ -1494,14 +1422,14 @@
     "year": 2019,
     "type": "Preprint",
     "venue": "arXiv preprint",
-    "url": "https://arxiv.org/pdf/1901.08331.pdf",
+    "url": "https://arxiv.org/abs/1901.08331",
     "tags": [
       "Networks"
     ],
     "links": [
       {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/1901.08331.pdf"
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/1901.08331"
       }
     ]
   },
@@ -1515,15 +1443,15 @@
     "year": 2019,
     "type": "Preprint",
     "venue": "arXiv preprint",
-    "url": "https://arxiv.org/pdf/1908.07828.pdf",
+    "url": "https://arxiv.org/abs/1908.07828",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
       {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/1908.07828.pdf"
+        "label": "arXiv",
+        "url": "https://arxiv.org/abs/1908.07828"
       }
     ]
   },
@@ -1537,16 +1465,12 @@
     "year": 2019,
     "type": "Journal",
     "venue": "in IEEE Transactions on Information Forensics and Security, vol. 14, no. 9, pp. 2412-2426",
-    "url": "https://arxiv.org/pdf/1901.00741.pdf",
+    "url": "https://arxiv.org/abs/1901.00741",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/1901.00741.pdf"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/1901.00741"
@@ -1610,16 +1534,12 @@
     "year": 2018,
     "type": "Conference",
     "venue": "in Proc. American Control Conference (ACC 2018), Milwaukee, WI, USA",
-    "url": "https://arxiv.org/pdf/1707.08691.pdf",
+    "url": "https://arxiv.org/abs/1707.08691",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
-      {
-        "label": "PDF",
-        "url": "https://arxiv.org/pdf/1707.08691.pdf"
-      },
       {
         "label": "arXiv",
         "url": "https://arxiv.org/abs/1707.08691"
@@ -1691,7 +1611,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/1701.01322"
       }
     ]
@@ -1713,7 +1633,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/1709.00621"
       }
     ]
@@ -1739,7 +1659,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/1612.01416"
       }
     ]
@@ -1763,7 +1683,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/1706.00107"
       }
     ]
@@ -1786,7 +1706,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/1704.05954"
       }
     ]
@@ -1807,7 +1727,7 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "arXiv",
         "url": "https://arxiv.org/abs/1703.01224"
       }
     ]
