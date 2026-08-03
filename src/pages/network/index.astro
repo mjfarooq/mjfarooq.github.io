@@ -109,7 +109,7 @@ const topCollabs = nodes
         <div>
           <span class="eyebrow">Explore</span>
           <h1 class="h-page">Collaboration network</h1>
-          <p class="lead">Every node is a co-author. Edges connect researchers who appear together on a paper, with thicker lines for stronger collaborations. Drag any node to reshape the graph. Click a node to see that author's papers. Click an edge to see the papers two authors share.</p>
+          <p class="lead">Every node is a co-author. Edges connect researchers who appear together on a paper, with thicker lines for stronger collaborations. Drag a node to pin it in place; double-click to release it. Click a node to see that author's papers, or an edge to see the papers two authors share.</p>
         </div>
         <div class="net-stats">
           <div><b>{totalCoauthors}</b><span>Co-authors</span></div>
@@ -128,6 +128,8 @@ const topCollabs = nodes
           <input type="range" id="net-min" min="1" max="6" value="1" />
           <span class="net-min-val" id="net-min-val">1</span>
         </label>
+        <button type="button" class="net-btn" id="net-freeze" title="Stop the layout from moving">Freeze</button>
+        <button type="button" class="net-btn" id="net-unpin" disabled title="Release all pinned nodes">Unpin all</button>
         <button type="button" class="net-reset" id="net-reset">Reset view</button>
         <a class="btn back-btn" href="/publications">← Back to publications</a>
       </div>
@@ -140,7 +142,7 @@ const topCollabs = nodes
             <span><i class="lg-member"></i>CyReN Lab member</span>
             <span><i class="lg-other"></i>External co-author</span>
           </div>
-          <div class="net-hint" id="net-hint">drag · scroll to zoom · click a node or edge for details</div>
+          <div class="net-hint" id="net-hint">drag to pin · double-click to unpin · scroll to zoom · click a node or edge for details</div>
         </div>
         <aside class="net-panel" id="net-panel">
           <div class="np-empty" id="np-empty">
@@ -177,6 +179,8 @@ const topCollabs = nodes
     var minEl = document.getElementById("net-min");
     var minValEl = document.getElementById("net-min-val");
     var resetBtn = document.getElementById("net-reset");
+    var unpinBtn = document.getElementById("net-unpin");
+    var freezeBtn = document.getElementById("net-freeze");
     var hint = document.getElementById("net-hint");
     if (!svgEl) return;
 
@@ -364,6 +368,7 @@ const topCollabs = nodes
         .attr("stroke-width", 2.2)
         .attr("stroke-opacity", 0.95);
       nodeG.append("circle")
+        .attr("class", "node-core")
         .attr("r", function(d){ return rScale(d.count); })
         .attr("fill", function(d){ return d.isMe ? "#ffcb05" : "#1f5394"; })
         .attr("stroke", function(d){ return d.isMe ? "#00274c" : "#fff"; })
@@ -400,13 +405,39 @@ const topCollabs = nodes
         nodeG.attr("transform", function(d){ return "translate(" + d.x + "," + d.y + ")"; });
       });
 
+      // Dragging PINS a node where you drop it. Previously fx/fy were cleared on
+      // release, so the simulation immediately pulled the node back and the layout
+      // appeared to "reset". Pinned nodes stay put so the graph can be arranged
+      // and inspected. Double-click a node to unpin it; "Reset view" unpins all.
       function dragstart(event, d){ if (!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
       function dragmove(event, d){ d.fx = event.x; d.fy = event.y; }
-      function dragend(event, d){ if (!event.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }
+      function dragend(event, d){
+        if (!event.active) sim.alphaTarget(0);
+        d.fx = event.x; d.fy = event.y;   // keep it pinned
+        d.pinned = true;
+        markPinned();
+      }
       nodeG.call(d3.drag().on("start", dragstart).on("drag", dragmove).on("end", dragend));
+
+      function markPinned(){
+        nodeG.classed("pinned", function(n){ return !!n.pinned; });
+        var n = nodes.filter(function(x){ return x.pinned; }).length;
+        if (unpinBtn) {
+          unpinBtn.disabled = n === 0;
+          unpinBtn.textContent = n ? ("Unpin " + n) : "Unpin all";
+        }
+      }
+      // Double-click releases a single node back to the simulation.
+      nodeG.on("dblclick", function(event, d){
+        event.stopPropagation();
+        d.fx = null; d.fy = null; d.pinned = false;
+        markPinned();
+        sim.alpha(0.3).restart();
+      });
 
       zoomBehavior = d3.zoom().scaleExtent([0.4, 4]).on("zoom", function(e){ g.attr("transform", e.transform); });
       s.call(zoomBehavior);
+      s.on("dblclick.zoom", null); // dblclick is reserved for unpinning a node
       origTransform = d3.zoomIdentity;
 
       // Click handlers
@@ -462,16 +493,45 @@ const topCollabs = nodes
         sim.alpha(0.3).restart();
       });
 
+      // Release every pinned node without disturbing zoom or filters.
+      if (unpinBtn) unpinBtn.addEventListener("click", function(){
+        nodes.forEach(function(n){ n.fx = null; n.fy = null; n.pinned = false; });
+        markPinned();
+        frozen = false; syncFreeze();
+        sim.alpha(0.6).restart();
+      });
+
+      // Freeze halts the force simulation entirely so nothing drifts while you
+      // pan and zoom. Zoom, drag, and selection all still work when frozen.
+      var frozen = false;
+      function syncFreeze(){
+        if (!freezeBtn) return;
+        freezeBtn.textContent = frozen ? "Resume" : "Freeze";
+        freezeBtn.classList.toggle("on", frozen);
+        if (hint) hint.textContent = frozen
+          ? "layout frozen · drag to arrange · double-click a node to unpin"
+          : "drag to pin · double-click to unpin · scroll to zoom · click a node or edge for details";
+      }
+      if (freezeBtn) freezeBtn.addEventListener("click", function(){
+        frozen = !frozen;
+        if (frozen) sim.stop(); else sim.alpha(0.3).restart();
+        syncFreeze();
+      });
+      syncFreeze();
+
       resetBtn.addEventListener("click", function(){
         searchEl.value = "";
         minEl.value = "1";
         minValEl.textContent = "1";
         linkSel.style("display", "");
         nodeG.style("display", "");
+        nodes.forEach(function(n){ n.fx = null; n.fy = null; n.pinned = false; });
+        markPinned();
+        frozen = false; syncFreeze();
         selectNone();
         clearDetail();
         s.transition().duration(reduced?0:450).call(zoomBehavior.transform, d3.zoomIdentity);
-        sim.alpha(0.5).restart();
+        sim.alpha(0.9).restart();
       });
 
       // Allow Enter in search to focus first match
@@ -503,8 +563,12 @@ const topCollabs = nodes
   .net-slider { display: flex; align-items: center; gap: .55rem; font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); }
   .net-slider input[type=range] { accent-color: var(--blue); width: 110px; }
   .net-min-val { font-weight: 600; color: var(--blue-link); min-width: 12px; text-align: right; }
-  .net-reset { font-family: var(--ff-mono); font-size: 12px; padding: .4rem .8rem; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-soft); border-radius: 6px; cursor: pointer; }
-  .net-reset:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .net-reset, .net-btn { font-family: var(--ff-mono); font-size: 12px; padding: .4rem .8rem; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-soft); border-radius: 6px; cursor: pointer; }
+  .net-reset:hover, .net-btn:hover:not(:disabled) { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .net-btn:disabled { opacity: .45; cursor: default; }
+  .net-btn.on { background: var(--maize); color: #00274c; border-color: var(--maize); }
+  /* Pinned nodes carry a dashed maize ring so it is obvious what you placed. */
+  .net-node.pinned .node-core { stroke: var(--maize); stroke-width: 2.6; stroke-dasharray: 3 2; }
   .back-btn { font-family: var(--ff-mono); font-size: 12px; margin-left: auto; }
 
   .net-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1.2rem; align-items: stretch; }
