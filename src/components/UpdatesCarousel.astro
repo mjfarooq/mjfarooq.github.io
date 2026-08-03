@@ -118,21 +118,19 @@ const linkify = (t) => {
 ---
 <div class="uc-wrap" id="updates">
   <div class="uc-top">
-    <span class="eyebrow">Recent updates</span>
-    <h2 class="h-sec">News from the lab</h2>
+    <div>
+      <span class="eyebrow">Recent updates</span>
+      <h2 class="h-sec">News from the lab</h2>
+    </div>
+    <div class="uc-stage-meta">
+      <button class="uc-pp" id="uc-pp" type="button" aria-label="Pause">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      </button>
+      <span class="uc-count" id="uc-count"></span>
+    </div>
   </div>
   {activities.length > 0 && (
     <section class="uc-stage-wrap" aria-roledescription="carousel" aria-label="Recent activities">
-      <div class="uc-head">
-        <h2 class="uc-title">Activities</h2>
-        <div class="uc-stage-meta">
-          <button class="uc-pp" id="uc-pp" type="button" aria-label="Pause">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-          </button>
-          <span class="uc-count" id="uc-count"></span>
-        </div>
-      </div>
-
       <div class="uc-stage" id="uc-stage">
         <div class="uc-progress"><div class="uc-progress-bar" id="uc-bar"></div></div>
         {activities.map((u, i) => {
@@ -221,7 +219,8 @@ const linkify = (t) => {
 </div>
 
 <style>
-  .uc-wrap { display: flex; flex-direction: column; gap: 1.4rem; }
+  .uc-wrap { display: flex; flex-direction: column; gap: 1rem; }
+  .uc-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .uc-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .7rem; }
   .uc-title { font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 600; color: var(--blue); margin: 0; }
   :root[data-theme="dark"] .uc-title { color: var(--text); }
@@ -275,7 +274,7 @@ const linkify = (t) => {
   .uc-pp:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
   .uc-count { font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); min-width: 34px; text-align: right; }
 
-  .uc-stage { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
+  .uc-stage { position: relative; width: min(100%, calc(58vh * 2)); margin-inline: auto; aspect-ratio: 2 / 1; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
   .uc-progress { position: absolute; inset: 0 0 auto 0; height: 2px; background: rgba(255,255,255,.16); z-index: 4; }
   .uc-progress-bar { height: 100%; width: 0; background: var(--maize); }
 
@@ -308,7 +307,7 @@ const linkify = (t) => {
   .uc-dot[aria-selected="true"] { background: var(--blue-link); }
 
   @media (max-width: 640px) {
-    .uc-stage { aspect-ratio: 4 / 3; }
+    .uc-stage { aspect-ratio: 3 / 2; }
     .uc-cap { max-width: 100%; }
     .uc-arrow { opacity: 1; width: 32px; height: 32px; }
   }
