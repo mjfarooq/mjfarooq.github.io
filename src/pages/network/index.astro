@@ -251,8 +251,8 @@ const topCollabs = nodes
       '<h2 class="np-name-big">' + esc(fullOf(name)) + '</h2>' +
       (fullOf(name) !== name ? '<div class="np-abbr">' + esc(name) + '</div>' : '') +
       '<div class="np-summary">' + idxs.length + ' paper' + (idxs.length===1?'':'s') + ' with ' + esc(ME) + '</div>' +
-      (topCo.length ? '<div class="np-also"><span>Also published with</span> ' + topCo.map(function(c){ return '<button type="button" class="np-coa" data-author="' + esc(c[0]) + '">' + esc(c[0]) + ' <em>'+c[1]+'</em></button>'; }).join(' ') + '</div>' : '') +
-      '<a class="np-link-pubs" href="/publications?q=' + encodeURIComponent(name) + '">Filter publications page by ' + esc(name) + ' →</a>' +
+      (topCo.length ? '<div class="np-also"><span>Also published with</span> ' + topCo.map(function(c){ return '<button type="button" class="np-coa" data-author="' + esc(c[0]) + '" title="' + esc(c[0]) + '">' + esc(fullOf(c[0])) + ' <em>'+c[1]+'</em></button>'; }).join(' ') + '</div>' : '') +
+      '<a class="np-link-pubs" href="/publications?q=' + encodeURIComponent(name) + '">Filter publications by ' + esc(fullOf(name)) + ' →</a>' +
       '<ol class="np-pubs">' + idxs.map(pubItem).join("") + '</ol>';
       panelDetail.innerHTML = html;
       panelEmpty.hidden = true;
@@ -266,7 +266,7 @@ const topCollabs = nodes
         '<span class="np-eyebrow">Collaboration</span>' +
         '<button type="button" class="np-close" aria-label="Back to list">×</button>' +
       '</div>' +
-      '<h2 class="np-name-big">' + esc(a) + ' <span class="np-amp">+</span> ' + esc(b) + '</h2>' +
+      '<h2 class="np-name-big">' + esc(fullOf(a)) + ' <span class="np-amp">+</span> ' + esc(fullOf(b)) + '</h2>' +
       '<div class="np-summary">' + idxs.length + ' shared paper' + (idxs.length===1?'':'s') + '</div>' +
       '<ol class="np-pubs">' + idxs.map(pubItem).join("") + '</ol>';
       panelDetail.innerHTML = html;
@@ -624,8 +624,8 @@ const topCollabs = nodes
   .net-node.pinned .node-core { stroke: var(--maize); stroke-width: 2.6; stroke-dasharray: 3 2; }
   .back-btn { font-family: var(--ff-mono); font-size: 12px; margin-left: auto; }
 
-  .net-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1.2rem; align-items: stretch; }
-  .net-canvas { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .6rem; aspect-ratio: 3 / 2.1; }
+  .net-grid { display: grid; grid-template-columns: minmax(0, 1fr) clamp(340px, 34%, 480px); gap: 1.2rem; align-items: stretch; }
+  .net-canvas { min-width: 0; position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .6rem; aspect-ratio: 3 / 2.1; }
   #net-svg { width: 100%; height: 100%; display: block; }
   .net-legend { position: absolute; top: 12px; left: 14px; display: flex; gap: 1rem; font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-soft); pointer-events: none; background: var(--surface); padding: .35rem .7rem; border: 1px solid var(--border); border-radius: 6px; }
   .net-legend span { display: inline-flex; align-items: center; gap: .4rem; }
@@ -636,7 +636,7 @@ const topCollabs = nodes
   .net-hint { position: absolute; bottom: 10px; left: 12px; right: 12px; text-align: center; font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-mute); pointer-events: none; }
   .net-node.selected circle { stroke: var(--maize) !important; stroke-width: 3.5 !important; }
 
-  .net-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; overflow-y: auto; max-height: 78vh; }
+  .net-panel { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; overflow-y: auto; max-height: 78vh; overflow-wrap: break-word; }
   .np-eyebrow { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-link); margin-bottom: .8rem; display: block; }
   .np-list { list-style: none; padding: 0; margin: 0; }
   .np-list li { margin: 0; padding: 0; }
@@ -651,7 +651,7 @@ const topCollabs = nodes
   .np-detail-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .8rem; }
   .np-close { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-soft); font-size: 18px; line-height: 1; cursor: pointer; padding: 0; }
   .np-close:hover { background: var(--bg-soft); color: var(--blue); }
-  .np-name-big { font-family: var(--ff-serif); font-weight: 600; font-size: 1.4rem; color: var(--blue); margin: 0 0 .3rem; line-height: 1.18; }
+  .np-name-big { font-family: var(--ff-serif); font-weight: 600; font-size: 1.32rem; text-wrap: balance; color: var(--blue); margin: 0 0 .3rem; line-height: 1.18; }
   :root[data-theme="dark"] .np-name-big { color: var(--maize); }
   .np-amp { color: var(--maize); font-weight: 400; padding: 0 .15rem; }
   .np-abbr { font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); margin: -.15rem 0 .5rem; }
@@ -662,11 +662,11 @@ const topCollabs = nodes
   .np-coa em { font-style: normal; color: var(--blue-link); margin-left: .25rem; }
   .np-coa:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
   .np-coa:hover em { color: var(--maize); }
-  .np-link-pubs { display: inline-block; font-family: var(--ff-mono); font-size: 11.5px; color: var(--blue-link); margin-bottom: 1rem; }
+  .np-link-pubs { display: inline-block; font-family: var(--ff-mono); font-size: 11.5px; line-height: 1.45; color: var(--blue-link); margin-bottom: 1rem; }
   .np-pubs { list-style: none; padding: 0; margin: 0; }
-  .np-pub { display: grid; grid-template-columns: 42px 1fr; gap: .8rem; padding: .9rem 0; border-top: 1px solid var(--border); }
+  .np-pub { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: .6rem; padding: .9rem 0; border-top: 1px solid var(--border); }
   .np-pub-year { font-family: var(--ff-mono); font-size: 11.5px; color: var(--blue-link); padding-top: .15rem; }
-  .np-pub-title { font-size: .94rem; font-weight: 500; color: var(--text); line-height: 1.32; }
+  .np-pub-title { font-size: .93rem; font-weight: 500; color: var(--text); line-height: 1.34; text-wrap: pretty; overflow-wrap: break-word; }
   .np-pub-auth { font-size: .82rem; color: var(--text-soft); margin-top: .2rem; }
   .np-pub-auth strong { color: var(--blue); }
   :root[data-theme="dark"] .np-pub-auth strong { color: var(--maize); }
