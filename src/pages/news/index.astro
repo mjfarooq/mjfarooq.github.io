@@ -16,6 +16,9 @@ function hasImage(u) {
   });
 }
 const visibleUpdates = updates.filter(hasImage);
+// Anchor id per update. Must match the slug used by the command palette.
+const slug = (s) =>
+  (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
 const linkMembers = (site.group.members || []).filter((m) => m.profile);
 const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const linkify = (t) => {
@@ -49,13 +52,14 @@ const linkify = (t) => {
 
       <div class="news-feed">
         {visibleUpdates.map((u) => (
-          <article class="news-item">
+          <article class="news-item" id={slug((u.message || "").slice(0, 60))}>
             <div class="ni-meta">
               <span class="ni-date">{u.date}</span>
             </div>
             <div class="ni-body">
               <p class="ni-text" set:html={linkify(u.message)}></p>
               {u.link && <a class="ni-link" href={u.link} target="_blank" rel="noopener">View details →</a>}
+              <button class="ni-permalink" type="button" title="Copy link to this update" aria-label="Copy link to this update">Link</button>
               {u.images && u.images.length > 0 && (
                 <div class="ni-photos">
                   {u.images.map((img, i) => (
@@ -81,6 +85,52 @@ const linkify = (t) => {
   .ni-photos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
   .ni-photo { width: 240px; height: 168px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid var(--border); cursor: zoom-in; transition: transform .2s; }
   .ni-photo:hover { transform: translateY(-2px); }
+  .ni-permalink { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .03em; padding: .25rem .6rem; margin-left: .5rem;
+    border: 1px solid var(--border-strong); border-radius: 5px; color: var(--blue-link); background: var(--surface); cursor: pointer; }
+  .ni-permalink:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .ni-permalink.ok { background: var(--maize); color: var(--blue); border-color: var(--maize); }
+  .news-item { scroll-margin-top: 90px; }
+  .ni-flash { animation: ni-flash 2.2s ease-out; border-radius: 8px; }
+  @keyframes ni-flash {
+    0%, 40% { background: var(--maize-soft); box-shadow: inset 3px 0 0 var(--maize); }
+    100% { background: transparent; box-shadow: inset 3px 0 0 transparent; }
+  }
+  :root[data-theme="dark"] .ni-flash { animation-name: ni-flash-dark; }
+  @keyframes ni-flash-dark {
+    0%, 40% { background: rgba(255,203,5,.14); box-shadow: inset 3px 0 0 var(--maize); }
+    100% { background: transparent; box-shadow: inset 3px 0 0 transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ni-flash { animation: none; box-shadow: inset 3px 0 0 var(--maize); } }
+</style>
+
+<script is:inline>
+  (function(){
+    document.addEventListener("click", function(e){
+      var b = e.target.closest(".ni-permalink");
+      if(!b) return;
+      var art = b.closest(".news-item");
+      var url = location.origin + location.pathname + "#" + (art ? art.id : "");
+      var restore = b.textContent;
+      (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
+        .then(function(){ b.textContent = "Copied"; b.classList.add("ok"); })
+        .catch(function(){ history.replaceState(null,"","#"+(art?art.id:"")); b.textContent = "In URL"; })
+        .then(function(){ setTimeout(function(){ b.textContent = restore; b.classList.remove("ok"); }, 1400); });
+    });
+    function focusHash(){
+      var id = (location.hash || "").slice(1);
+      if(!id) return;
+      var el = document.getElementById(id);
+      if(!el || !el.classList.contains("news-item")) return;
+      try { el.scrollIntoView({ behavior: "smooth", block: "center" }); } catch(e){}
+      el.classList.add("ni-flash");
+      setTimeout(function(){ el.classList.remove("ni-flash"); }, 2200);
+    }
+    focusHash();
+    window.addEventListener("hashchange", focusHash);
+  })();
+</script>
+
+<style>
   @media (max-width: 700px) {
     .news-item { grid-template-columns: 1fr; gap: .5rem; }
     .ni-photo { width: calc(50% - 5px); height: auto; aspect-ratio: 4/3; object-fit: contain; background: var(--surface-soft); }

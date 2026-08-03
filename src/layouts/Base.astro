@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Sidebar from "../components/Sidebar.astro";
+import CommandPalette from "../components/CommandPalette.astro";
 import site from "../data/site.json";
 import updates from "../data/updates.json";
 import fs from "node:fs";
@@ -125,6 +126,7 @@ const personLd = {
       <span class="ask-fab-label">Ask AI</span>
     </a>
   )}
+  <CommandPalette />
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button class="lb-close" aria-label="Close">&times;</button>
     <button class="lb-prev" aria-label="Previous photo">&#8249;</button>

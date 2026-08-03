@@ -1,0 +1,281 @@
+---
+import pubs from "../data/publications.json";
+import updates from "../data/updates.json";
+import site from "../data/site.json";
+import fs from "node:fs";
+import path from "node:path";
+
+// Slugify must match the ids rendered on the publications / news pages.
+const slug = (s) =>
+  (s || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+
+// News items are hidden site-wide unless their image exists, so mirror that here.
+const publicDir = path.resolve("./public");
+function hasImage(u) {
+  const imgs = u.images || [];
+  if (!imgs.length) return false;
+  return imgs.some((p) => {
+    if (!p) return false;
+    if (/^https?:\/\//i.test(p)) return true;
+    return fs.existsSync(path.join(publicDir, p.replace(/^\//, "")));
+  });
+}
+
+const pages = [
+  { t: "Home", s: "Overview and recent updates", u: "/" },
+  { t: "News", s: "Recent news and activities", u: "/news" },
+  { t: "Research", s: "Themes, projects, and talks", u: "/research" },
+  { t: "Publications", s: "Books, journals, and conference papers", u: "/publications" },
+  { t: "Teaching", s: "Courses", u: "/teaching" },
+  { t: "Group", s: "Students and collaborators", u: "/group" },
+  { t: "About", s: "Biography, awards, grants, service", u: "/about" },
+  { t: "Collaboration network", s: "Interactive co-authorship graph", u: "/network" },
+  { t: "Ask AI", s: "Ask about the research", u: "/ask" },
+  { t: "Curriculum Vitae", s: "Download the full CV (PDF)", u: "/cv.pdf" },
+];
+
+const idx = [
+  ...pages.map((p) => ({ k: "Pages", t: p.t, s: p.s, u: p.u })),
+  ...pubs.map((p) => ({
+    k: "Publications",
+    t: p.title,
+    s: `${p.year} · ${p.authors_str}`,
+    u: `/publications#${slug(p.title)}`,
+    x: `${p.venue} ${(p.tags || []).join(" ")}`,
+  })),
+  ...updates.filter(hasImage).map((n) => ({
+    k: "News",
+    t: (n.message || "").replace(/<[^>]*>/g, "").slice(0, 110),
+    s: n.date,
+    u: `/news#${slug((n.message || "").slice(0, 60))}`,
+  })),
+  ...((site.group?.members) || []).map((m) => ({
+    k: "People",
+    t: m.name,
+    s: [m.role, m.focus].filter(Boolean).join(" · "),
+    u: m.profile || "/group",
+  })),
+];
+---
+<div class="cmdk" id="cmdk" aria-hidden="true">
+  <div class="cmdk-overlay" data-cmdk-close></div>
+  <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Search the site">
+    <div class="cmdk-inputrow">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+      <input id="cmdk-input" type="text" autocomplete="off" spellcheck="false"
+             placeholder="Search publications, news, people, pages…" aria-label="Search" />
+      <kbd class="cmdk-esc">esc</kbd>
+    </div>
+    <div class="cmdk-results" id="cmdk-results" role="listbox"></div>
+    <div class="cmdk-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span class="cmdk-count" id="cmdk-count"></span>
+    </div>
+  </div>
+</div>
+
+<button class="cmdk-trigger" id="cmdk-trigger" type="button" aria-label="Search the site">
+  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+  <span class="cmdk-trigger-label">Search</span>
+  <kbd class="cmdk-trigger-kbd"><span class="cmdk-mod">⌘</span>K</kbd>
+</button>
+
+<style>
+  .cmdk-trigger { position: fixed; top: 18px; right: 148px; z-index: 79; display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem .7rem .5rem .75rem; background: var(--surface); color: var(--text-soft); border: 1px solid var(--border-strong);
+    border-radius: 999px; box-shadow: 0 4px 14px rgba(0,39,76,.10); font-family: var(--ff-sans); font-size: 12.5px; cursor: pointer;
+    transition: border-color .18s, color .18s, transform .18s; }
+  .cmdk-trigger:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+  :root[data-theme="dark"] .cmdk-trigger:hover { color: var(--text); }
+  .cmdk-trigger-kbd { font-family: var(--ff-mono); font-size: 10.5px; padding: .12rem .34rem; border: 1px solid var(--border-strong);
+    border-radius: 4px; color: var(--text-mute); background: var(--bg-soft); line-height: 1.5; }
+  .cmdk-mod { font-size: 11.5px; }
+
+  .cmdk { display: none; position: fixed; inset: 0; z-index: 1200; align-items: flex-start; justify-content: center; padding: 12vh 20px 20px; }
+  .cmdk.open { display: flex; }
+  .cmdk-overlay { position: absolute; inset: 0; background: rgba(8,18,34,.55); backdrop-filter: blur(2px); }
+  .cmdk-panel { position: relative; width: 100%; max-width: 620px; background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.35); overflow: hidden; display: flex; flex-direction: column; max-height: 70vh; }
+  .cmdk-inputrow { display: flex; align-items: center; gap: .6rem; padding: .9rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-mute); }
+  #cmdk-input { flex: 1; border: 0; outline: 0; background: none; font-family: var(--ff-sans); font-size: 15px; color: var(--text); }
+  .cmdk-esc { font-family: var(--ff-mono); font-size: 10px; padding: .12rem .34rem; border: 1px solid var(--border); border-radius: 4px; color: var(--text-mute); }
+
+  .cmdk-results { overflow-y: auto; padding: .35rem; }
+  .cmdk-group { font-family: var(--ff-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-link);
+    padding: .7rem .75rem .3rem; }
+  .cmdk-item { display: block; width: 100%; text-align: left; padding: .5rem .75rem; border: 0; background: none; border-radius: 8px;
+    cursor: pointer; font-family: var(--ff-sans); color: var(--text); }
+  .cmdk-item:hover, .cmdk-item.sel { background: var(--bg-soft); }
+  .cmdk-item.sel { box-shadow: inset 2px 0 0 var(--maize); }
+  .cmdk-t { font-size: 13.5px; line-height: 1.35; display: block; }
+  .cmdk-s { font-size: 11.5px; color: var(--text-mute); display: block; margin-top: .1rem; }
+  .cmdk-item mark { background: var(--maize-soft); color: inherit; border-radius: 2px; padding: 0 1px; }
+  :root[data-theme="dark"] .cmdk-item mark { background: rgba(255,203,5,.28); }
+  .cmdk-empty { padding: 1.6rem .9rem; color: var(--text-mute); font-size: 13px; }
+
+  .cmdk-foot { display: flex; gap: 1rem; align-items: center; padding: .55rem .9rem; border-top: 1px solid var(--border);
+    font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-mute); }
+  .cmdk-foot kbd { border: 1px solid var(--border); border-radius: 3px; padding: 0 .25rem; margin-right: .15rem; }
+  .cmdk-count { margin-left: auto; }
+
+  @media (max-width: 880px) { .cmdk-trigger { right: 118px; } .cmdk-trigger-label { display: none; } }
+  @media (max-width: 560px) {
+    .cmdk-trigger { right: 62px; top: 14px; padding: .45rem; }
+    .cmdk-trigger-kbd { display: none; }
+    .cmdk { padding: 6vh 12px 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cmdk-trigger { transition: none; } }
+</style>
+
+<script is:inline define:vars={{ IDX: idx }}>
+  (function () {
+    var root = document.getElementById("cmdk");
+    var input = document.getElementById("cmdk-input");
+    var list = document.getElementById("cmdk-results");
+    var countEl = document.getElementById("cmdk-count");
+    var trigger = document.getElementById("cmdk-trigger");
+    if (!root || !input || !list) return;
+
+    var ORDER = ["Pages", "Publications", "News", "People"];
+    var sel = 0, rows = [];
+
+    var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || "");
+    if (!isMac) {
+      var mod = document.querySelector(".cmdk-mod");
+      if (mod) mod.textContent = "Ctrl ";
+    }
+
+    function esc(s) {
+      return (s || "").replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function hl(text, q) {
+      var t = esc(text);
+      if (!q) return t;
+      var i = t.toLowerCase().indexOf(q.toLowerCase());
+      if (i === -1) return t;
+      return t.slice(0, i) + "<mark>" + t.slice(i, i + q.length) + "</mark>" + t.slice(i + q.length);
+    }
+
+    function score(item, q) {
+      var t = (item.t || "").toLowerCase();
+      var s = (item.s || "").toLowerCase();
+      var x = (item.x || "").toLowerCase();
+      if (t.startsWith(q)) return 100;
+      if (t.indexOf(q) !== -1) return 70;
+      if (s.indexOf(q) !== -1) return 40;
+      if (x.indexOf(q) !== -1) return 20;
+      return 0;
+    }
+
+    function render(q) {
+      var items;
+      // Index fields are lowercased, so the query must be too or uppercase
+      // input (e.g. "O-RAN") never matches. Keep `q` intact for highlighting.
+      var ql = (q || "").toLowerCase();
+      if (!ql) {
+        // default view: the pages, so the palette is useful before typing
+        items = IDX.filter(function (i) { return i.k === "Pages"; });
+      } else {
+        items = IDX.map(function (i) { return { i: i, sc: score(i, ql) }; })
+          .filter(function (r) { return r.sc > 0; })
+          .sort(function (a, b) { return b.sc - a.sc; })
+          .slice(0, 40)
+          .map(function (r) { return r.i; });
+      }
+      rows = items;
+      sel = 0;
+      if (!items.length && ql) {
+        list.innerHTML = '<div class="cmdk-empty">No matches for “' + esc(q) + '”.</div>';
+        countEl.textContent = "";
+        return;
+      }
+      var html = "", lastGroup = null, n = 0;
+      ORDER.forEach(function (g) {
+        items.forEach(function (it) {
+          if (it.k !== g) return;
+          if (lastGroup !== g) { html += '<div class="cmdk-group">' + g + "</div>"; lastGroup = g; }
+          html += '<button class="cmdk-item" role="option" data-url="' + esc(it.u) + '" data-i="' + n + '">' +
+            '<span class="cmdk-t">' + hl(it.t, q) + "</span>" +
+            (it.s ? '<span class="cmdk-s">' + hl(it.s, q) + "</span>" : "") +
+            "</button>";
+          n++;
+        });
+      });
+      list.innerHTML = html;
+      // reorder rows to match the grouped DOM order
+      var ordered = [];
+      ORDER.forEach(function (g) { items.forEach(function (it) { if (it.k === g) ordered.push(it); }); });
+      rows = ordered;
+      countEl.textContent = rows.length + (rows.length === 1 ? " result" : " results");
+      mark();
+    }
+
+    function mark() {
+      var els = list.querySelectorAll(".cmdk-item");
+      els.forEach(function (el, i) { el.classList.toggle("sel", i === sel); });
+      var cur = els[sel];
+      if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: "nearest" });
+    }
+
+    function open() {
+      root.classList.add("open");
+      root.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      input.value = "";
+      render("");
+      setTimeout(function () { input.focus(); }, 0);
+    }
+    function close() {
+      root.classList.remove("open");
+      root.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function go(i) {
+      var it = rows[i];
+      if (it) window.location.href = it.u;
+    }
+
+    input.addEventListener("input", function () { render(input.value.trim()); });
+
+    document.addEventListener("keydown", function (e) {
+      var k = (e.key || "").toLowerCase();
+      if ((e.metaKey || e.ctrlKey) && k === "k") {
+        e.preventDefault();
+        root.classList.contains("open") ? close() : open();
+        return;
+      }
+      // "/" opens too, unless the user is typing in a field
+      if (k === "/" && !root.classList.contains("open")) {
+        var tag = (document.activeElement && document.activeElement.tagName) || "";
+        if (tag !== "INPUT" && tag !== "TEXTAREA" && !document.activeElement.isContentEditable) {
+          e.preventDefault(); open(); return;
+        }
+      }
+      if (!root.classList.contains("open")) return;
+      if (e.key === "Escape") { e.preventDefault(); close(); }
+      else if (e.key === "ArrowDown") { e.preventDefault(); if (rows.length) { sel = (sel + 1) % rows.length; mark(); } }
+      else if (e.key === "ArrowUp") { e.preventDefault(); if (rows.length) { sel = (sel - 1 + rows.length) % rows.length; mark(); } }
+      else if (e.key === "Enter") { e.preventDefault(); go(sel); }
+    });
+
+    if (trigger) trigger.addEventListener("click", open);
+    root.addEventListener("click", function (e) {
+      if (e.target.closest("[data-cmdk-close]")) { close(); return; }
+      var item = e.target.closest(".cmdk-item");
+      if (item) { go(parseInt(item.getAttribute("data-i"), 10)); }
+    });
+    list.addEventListener("mousemove", function (e) {
+      var item = e.target.closest(".cmdk-item");
+      if (!item) return;
+      var i = parseInt(item.getAttribute("data-i"), 10);
+      if (i !== sel) { sel = i; mark(); }
+    });
+  })();
+</script>

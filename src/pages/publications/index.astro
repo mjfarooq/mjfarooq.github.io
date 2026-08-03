@@ -8,6 +8,10 @@ import tagAliases from "../../data/tagAliases.json";
 // display labels like "NextG Networks" on the home page match papers whose
 // real tags read "O-RAN" or "5G". For each synonym group: if ANY term in the
 // group appears in the paper's content, ALL terms in the group are appended.
+// Stable per-paper anchor id. Must match the slug used by the command palette.
+const slug = (s) =>
+  (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+
 const aliasGroups = (tagAliases.synonyms || []).map((g) => g.map((t) => t.toLowerCase()));
 function searchHaystack(p) {
   const base = (p.title + " " + p.authors_str + " " + p.venue + " " + (p.tags || []).join(" ")).toLowerCase();
@@ -105,13 +109,21 @@ const topTags = _topTags.map(([t, n]) => ({
         <label class="fl"><span>Author</span>
           <select id="author"><option value="All">All authors</option>{authorList.map((a) => <option value={a}>{a}</option>)}</select>
         </label>
+        <label class="fl"><span>Sort</span>
+          <select id="sort">
+            <option value="year-desc">Newest first</option>
+            <option value="year-asc">Oldest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </label>
+        <label class="fl fl-check"><input type="checkbox" id="pdfonly" /> <span>Free PDF only</span></label>
       </div>
       <div class="count mono" id="count" style="display:none"></div>
 
       <div id="plist-top"></div>
       <ol class="plist" id="plist">
         {pubs.map((p) => (
-          <li class="pitem" data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={searchHaystack(p)}>
+          <li class="pitem" id={slug(p.title)} data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={searchHaystack(p)} data-haspdf={(p.links || []).some((l) => l.label === "PDF") ? "1" : "0"} data-title={p.title}>
             <div class="pi-year">{p.year}</div>
             <div class="pi-body">
               <div class="pi-top">
@@ -124,6 +136,7 @@ const topTags = _topTags.map(([t, n]) => ({
               <div class="pi-links">
                 {p.links && p.links.map((l) => <a class="pi-link" href={l.url} target="_blank" rel="noopener">{l.label}</a>)}
                 <button class="pi-link pi-cite-toggle" type="button">BibTeX</button>
+                <button class="pi-link pi-permalink" type="button" title="Copy link to this paper" aria-label="Copy link to this paper">Link</button>
               </div>
               <div class="pi-cite-box" hidden>
                 <button type="button" class="pi-copy" aria-label="Copy BibTeX">Copy</button>
@@ -216,6 +229,22 @@ const topTags = _topTags.map(([t, n]) => ({
   .b-preprint { background: var(--surface-soft); color: var(--blue-link); border: 1px solid var(--border-strong); }
   :root[data-theme="dark"] .b-journal { background: #2b6cb0; color: #fff; }
   :root[data-theme="dark"] .b-conference { background: #ffcb05; color: #00274c; }
+  .fl-check { cursor: pointer; user-select: none; }
+  .fl-check input { accent-color: var(--blue); margin-right: .1rem; }
+  .pi-permalink { font-family: var(--ff-mono); cursor: pointer; }
+  .pi-permalink.ok { background: var(--maize); color: var(--blue); border-color: var(--maize); }
+  .pitem { scroll-margin-top: 90px; }
+  .pi-flash { animation: pi-flash 2.2s ease-out; border-radius: 8px; }
+  @keyframes pi-flash {
+    0%, 40% { background: var(--maize-soft); box-shadow: inset 3px 0 0 var(--maize); }
+    100% { background: transparent; box-shadow: inset 3px 0 0 transparent; }
+  }
+  :root[data-theme="dark"] .pi-flash { animation-name: pi-flash-dark; }
+  @keyframes pi-flash-dark {
+    0%, 40% { background: rgba(255,203,5,.14); box-shadow: inset 3px 0 0 var(--maize); }
+    100% { background: transparent; box-shadow: inset 3px 0 0 transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pi-flash { animation: none; box-shadow: inset 3px 0 0 var(--maize); } }
   .nores { padding: 2.5rem 0; color: var(--text-mute); }
   @media (max-width: 560px) { .pitem { grid-template-columns: 1fr; gap: .3rem; } }
 </style>
@@ -226,22 +255,42 @@ const topTags = _topTags.map(([t, n]) => ({
     var items = [].slice.call(list.querySelectorAll(".pitem"));
     var count = document.getElementById("count"), nores = document.getElementById("nores");
     var yearSel = document.getElementById("year"), authorSel = document.getElementById("author");
+    var sortSel = document.getElementById("sort"), pdfOnly = document.getElementById("pdfonly");
     var active = "All";
+    var originalOrder = items.slice();
+
+    function resort(){
+      if(!sortSel) return;
+      var mode = sortSel.value, arr = originalOrder.slice();
+      if(mode === "year-asc"){
+        arr.sort(function(a,b){ return (+a.getAttribute("data-year")) - (+b.getAttribute("data-year")); });
+      } else if(mode === "title"){
+        arr.sort(function(a,b){
+          return (a.getAttribute("data-title")||"").localeCompare(b.getAttribute("data-title")||"");
+        });
+      }
+      arr.forEach(function(el){ list.appendChild(el); });
+    }
+
     function apply(){
       var s = (q.value||"").trim().toLowerCase(), n = 0;
       var yr = yearSel.value, au = authorSel.value;
+      var wantPdf = pdfOnly && pdfOnly.checked;
       items.forEach(function(el){
         var okT = active==="All" || el.getAttribute("data-type")===active;
         var okS = !s || el.getAttribute("data-s").indexOf(s) !== -1;
         var okY = yr==="All" || el.getAttribute("data-year")===yr;
         var okA = au==="All" || ("|"+el.getAttribute("data-authors")+"|").indexOf("|"+au+"|") !== -1;
-        var show = okT && okS && okY && okA; el.style.display = show?"":"none"; if(show) n++;
+        var okP = !wantPdf || el.getAttribute("data-haspdf")==="1";
+        var show = okT && okS && okY && okA && okP; el.style.display = show?"":"none"; if(show) n++;
       });
-      var filtering = (s !== "" || active !== "All" || yr !== "All" || au !== "All");
+      var filtering = (s !== "" || active !== "All" || yr !== "All" || au !== "All" || wantPdf);
       count.style.display = filtering ? "" : "none";
       if (filtering) count.textContent = n + (n===1?" result":" results");
       nores.hidden = n!==0;
     }
+    if(sortSel) sortSel.addEventListener("change", function(){ resort(); apply(); });
+    if(pdfOnly) pdfOnly.addEventListener("change", apply);
     q.addEventListener("input", apply);
     yearSel.addEventListener("change", apply);
     authorSel.addEventListener("change", apply);
@@ -260,6 +309,27 @@ const topTags = _topTags.map(([t, n]) => ({
     var pyear = params.get("year"); if(pyear){ var yo = yearSel.querySelector('option[value="'+pyear.replace(/"/g,"")+'"]'); if(yo) yearSel.value = yo.value; }
     var pq = params.get("q"); if(pq){ q.value = pq; }
     apply();
+
+    // Deep link: if the URL carries a #paper-slug, clear filters that would hide
+    // it, then scroll to it and flash a highlight so the target is obvious.
+    function focusHash(){
+      var id = (location.hash || "").slice(1);
+      if(!id) return;
+      var el = document.getElementById(id);
+      if(!el || !el.classList.contains("pitem")) return;
+      if(el.style.display === "none"){
+        q.value = ""; yearSel.value = "All"; authorSel.value = "All";
+        if(pdfOnly) pdfOnly.checked = false;
+        active = "All";
+        document.querySelectorAll("#chips .chip").forEach(function(c){ c.classList.toggle("on", c.getAttribute("data-t")==="All"); });
+        apply();
+      }
+      try { el.scrollIntoView({ behavior: "smooth", block: "center" }); } catch(e){}
+      el.classList.add("pi-flash");
+      setTimeout(function(){ el.classList.remove("pi-flash"); }, 2200);
+    }
+    focusHash();
+    window.addEventListener("hashchange", focusHash);
 
     function safeScroll(){
       try { var t = document.getElementById("plist-top"); if(t && t.scrollIntoView) t.scrollIntoView({ behavior: "smooth", block: "start" }); } catch(e){}
@@ -305,6 +375,17 @@ const topTags = _topTags.map(([t, n]) => ({
           box.hidden = nowHidden;
           tog.classList.toggle("on", !nowHidden);
         }
+        return;
+      }
+      var pl = e.target.closest(".pi-permalink");
+      if(pl){
+        var li = pl.closest(".pitem");
+        var url = location.origin + location.pathname + "#" + (li ? li.id : "");
+        var restore = pl.textContent;
+        (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
+          .then(function(){ pl.textContent = "Copied"; pl.classList.add("ok"); })
+          .catch(function(){ history.replaceState(null,"","#"+(li?li.id:"")); pl.textContent = "In URL"; })
+          .then(function(){ setTimeout(function(){ pl.textContent = restore; pl.classList.remove("ok"); }, 1400); });
         return;
       }
       var b = e.target.closest(".pi-copy"); if(!b) return;
