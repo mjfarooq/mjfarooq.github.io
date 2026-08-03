@@ -146,6 +146,7 @@ const linkify = (t) => {
                 <div class="uc-slide-fill" style={`background-image:url('${firstImg(u)}')`}></div>
               )}
               <img class={"uc-slide-img fit-" + fitMode(firstImg(u))} src={firstImg(u)} alt=""
+                   style={`object-position:${(u.imgPos && u.imgPos[0]) || "center 38%"}`}
                    loading={i === 0 ? "eager" : "lazy"} onerror="this.style.visibility='hidden'" />
               <div class="uc-scrim"></div>
               <div class="uc-cap">
@@ -274,13 +275,13 @@ const linkify = (t) => {
   .uc-pp:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
   .uc-count { font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); min-width: 34px; text-align: right; }
 
-  .uc-stage { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 520px; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
+  .uc-stage { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
   .uc-progress { position: absolute; inset: 0 0 auto 0; height: 2px; background: rgba(255,255,255,.16); z-index: 4; }
   .uc-progress-bar { height: 100%; width: 0; background: var(--maize); }
 
   .uc-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, visibility .9s; }
   .uc-slide.on { opacity: 1; visibility: visible; }
-  .uc-slide-img { position: absolute; inset: 0; width: 100%; height: 100%; object-position: center; transform: scale(1); }
+  .uc-slide-img { position: absolute; inset: 0; width: 100%; height: 100%; transform: scale(1); }
   .uc-slide-img.fit-cover { object-fit: cover; }
   /* Portrait posters and tall group shots are shown whole, over a blurred
      enlargement of themselves, rather than being cropped to a 16:9 letterbox. */
