@@ -174,7 +174,7 @@ const topCollabs = nodes
               {topCollabs.map((c) => (
                 <li>
                   <button type="button" class="np-item" data-author={c.id}>
-                    <span class="np-name">{c.full || c.id}</span>
+                    <span class="np-name">{c.id}</span>
                     <span class="np-bar"><span class="np-bar-fill" style={`width:${Math.round((c.count / topCollabs[0].count) * 100)}%`}></span></span>
                     <span class="np-num">{c.count}</span>
                   </button>
@@ -186,8 +186,6 @@ const topCollabs = nodes
           <div class="np-detail" id="np-detail" hidden></div>
         </aside>
       </div>
-
-      <p class="net-footnote">Drawn from {totalPapers} publications spanning {Math.min(...list.map(p=>p.year))}–{Math.max(...list.map(p=>p.year))}. Author abbreviations match how names appear in the venues.</p>
     </section>
   </div>
 </Base>
@@ -248,11 +246,10 @@ const topCollabs = nodes
         '<span class="np-eyebrow">Author</span>' +
         '<button type="button" class="np-close" aria-label="Back to list">×</button>' +
       '</div>' +
-      '<h2 class="np-name-big">' + esc(fullOf(name)) + '</h2>' +
-      (fullOf(name) !== name ? '<div class="np-abbr">' + esc(name) + '</div>' : '') +
+      '<h2 class="np-name-big">' + esc(name) + '</h2>' +
       '<div class="np-summary">' + idxs.length + ' paper' + (idxs.length===1?'':'s') + ' with ' + esc(ME) + '</div>' +
-      (topCo.length ? '<div class="np-also"><span>Also published with</span> ' + topCo.map(function(c){ return '<button type="button" class="np-coa" data-author="' + esc(c[0]) + '" title="' + esc(c[0]) + '">' + esc(fullOf(c[0])) + ' <em>'+c[1]+'</em></button>'; }).join(' ') + '</div>' : '') +
-      '<a class="np-link-pubs" href="/publications?q=' + encodeURIComponent(name) + '">Filter publications by ' + esc(fullOf(name)) + ' →</a>' +
+      (topCo.length ? '<div class="np-also"><span>Also published with</span> ' + topCo.map(function(c){ return '<button type="button" class="np-coa" data-author="' + esc(c[0]) + '" title="' + esc(c[0]) + '">' + esc(c[0]) + ' <em>'+c[1]+'</em></button>'; }).join(' ') + '</div>' : '') +
+      '<a class="np-link-pubs" href="/publications?q=' + encodeURIComponent(name) + '">Filter publications by ' + esc(name) + ' →</a>' +
       '<ol class="np-pubs">' + idxs.map(pubItem).join("") + '</ol>';
       panelDetail.innerHTML = html;
       panelEmpty.hidden = true;
@@ -266,7 +263,7 @@ const topCollabs = nodes
         '<span class="np-eyebrow">Collaboration</span>' +
         '<button type="button" class="np-close" aria-label="Back to list">×</button>' +
       '</div>' +
-      '<h2 class="np-name-big">' + esc(fullOf(a)) + ' <span class="np-amp">+</span> ' + esc(fullOf(b)) + '</h2>' +
+      '<h2 class="np-name-big">' + esc(a) + ' <span class="np-amp">+</span> ' + esc(b) + '</h2>' +
       '<div class="np-summary">' + idxs.length + ' shared paper' + (idxs.length===1?'':'s') + '</div>' +
       '<ol class="np-pubs">' + idxs.map(pubItem).join("") + '</ol>';
       panelDetail.innerHTML = html;
@@ -403,7 +400,7 @@ const topCollabs = nodes
         .attr("stroke", function(d){ return d.isMe ? "#00274c" : "#fff"; })
         .attr("stroke-width", function(d){ return d.isMe ? 2.5 : 1.4; });
       nodeG.append("title").text(function(d){
-        var nm = (d.full && d.full !== d.id) ? (d.full + " (" + d.id + ")") : d.id;
+        var nm = (d.full && d.full !== d.id) ? (d.id + " — " + d.full) : d.id;
         return nm + " — " + d.count + " paper" + (d.count===1?"":"s");
       });
       nodeG.filter(function(d){ return d.isMe || rScale(d.count) >= 10; })
@@ -654,7 +651,6 @@ const topCollabs = nodes
   .np-name-big { font-family: var(--ff-serif); font-weight: 600; font-size: 1.32rem; text-wrap: balance; color: var(--blue); margin: 0 0 .3rem; line-height: 1.18; }
   :root[data-theme="dark"] .np-name-big { color: var(--maize); }
   .np-amp { color: var(--maize); font-weight: 400; padding: 0 .15rem; }
-  .np-abbr { font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); margin: -.15rem 0 .5rem; }
   .np-summary { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); margin-bottom: 1rem; }
   .np-also { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); margin-bottom: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); }
   .np-also > span { display: block; margin-bottom: .5rem; }
@@ -671,8 +667,6 @@ const topCollabs = nodes
   .np-pub-auth strong { color: var(--blue); }
   :root[data-theme="dark"] .np-pub-auth strong { color: var(--maize); }
   .np-pub-venue { font-size: .78rem; color: var(--text-mute); font-style: italic; margin-top: .1rem; }
-
-  .net-footnote { margin-top: 1.4rem; font-size: .88rem; color: var(--text-mute); font-family: var(--ff-mono); }
 
   @media (max-width: 980px) {
     .net-grid { grid-template-columns: 1fr; }
