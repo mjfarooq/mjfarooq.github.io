@@ -6,6 +6,7 @@
   "institutionUrl": "https://www.umdearborn.edu/",
   "email": "mjfarooq@umich.edu",
   "cvUrl": "/cv.pdf",
+  "analyticsToken": "e2c93b0841e647c89db176d09c04a817",
   "lab": {
     "name": "CyReN",
     "fullName": "Cyber Resilient Networks Lab",

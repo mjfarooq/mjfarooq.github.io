@@ -6,6 +6,10 @@ import site from "../data/site.json";
 import updates from "../data/updates.json";
 import fs from "node:fs";
 import path from "node:path";
+// Cloudflare Web Analytics: cookieless, no personal data collected.
+// Paste your site token into site.json as "analyticsToken" to switch it on;
+// while the field is empty no beacon is emitted at all.
+const analyticsToken = site.analyticsToken || "";
 // News items sometimes carry a future venue date (e.g. a paper accepted in July
 // but scheduled at PIMRC in Sep). Cap the "Last update" at the current month
 // so we never claim an update from the future. Also skip items whose images
@@ -83,6 +87,11 @@ const personLd = {
   <meta name="twitter:image" content={ogImage} />
   {twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
   <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+  {/* Cloudflare Web Analytics — cookieless, no personal data, no cookie banner needed. */}
+  {analyticsToken && (
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${analyticsToken}"}`}></script>
+  )}
   <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
   <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
