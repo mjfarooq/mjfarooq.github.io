@@ -2,10 +2,23 @@
 import pubs from "../data/publications.json";
 import updates from "../data/updates.json";
 import site from "../data/site.json";
+import authorNames from "../data/authorNames.json";
 import fs from "node:fs";
 import path from "node:path";
 
 // Slugify must match the ids rendered on the publications / news pages.
+// Expand abbreviated author strings to full names so a query like "Ritesh"
+// matches papers whose author list only says "R. Honnalli".
+function expandAuthors(authors) {
+  const out = [];
+  for (const a of authors || []) {
+    out.push(a);
+    const d = authorNames[a];
+    if (d) Array.isArray(d) ? out.push(...d) : out.push(d);
+  }
+  return Array.from(new Set(out)).join(" ");
+}
+
 const slug = (s) =>
   (s || "")
     .toLowerCase()
@@ -45,7 +58,7 @@ const idx = [
     t: p.title,
     s: `${p.year} · ${p.authors_str}`,
     u: `/publications#${slug(p.title)}`,
-    x: `${p.venue} ${(p.tags || []).join(" ")}`,
+    x: `${p.venue} ${(p.tags || []).join(" ")} ${expandAuthors(p.authors)}`,
   })),
   ...updates.filter(hasImage).map((n) => ({
     k: "News",

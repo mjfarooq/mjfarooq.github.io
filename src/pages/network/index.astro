@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import pubs from "../../data/publications.json";
 import aliases from "../../data/authorAliases.json";
+import authorNames from "../../data/authorNames.json";
 
 // Build co-authorship network from publications
 const list = pubs.filter((p) => p.type !== "Thesis");
@@ -52,10 +53,31 @@ for (const key of Object.keys(papersByEdge)) {
   if (a === ME || b === ME) include.add(a === ME ? b : a);
 }
 
+// Full names / extra aliases so search matches "Ritesh" as well as "R. Honnalli".
+function namesFor(id) {
+  const out = [id];
+  const direct = authorNames[id];
+  if (direct) Array.isArray(direct) ? out.push(...direct) : out.push(direct);
+  // Node ids are already alias-resolved (e.g. "Yuhui Wang"), so also look for
+  // any abbreviation whose full name equals this id.
+  for (const [abbr, full] of Object.entries(authorNames)) {
+    if (abbr.startsWith("_")) continue;
+    const vals = Array.isArray(full) ? full : [full];
+    if (vals.includes(id) && !out.includes(abbr)) out.push(abbr);
+  }
+  return Array.from(new Set(out.filter(Boolean)));
+}
+
 const nodes = Array.from(include).map((a) => ({
   id: a,
   count: (papersByAuthor[a] || []).length,
   isMe: a === ME,
+  alias: namesFor(a),
+  full: (() => {
+    const d = authorNames[a];
+    if (!d) return a;
+    return Array.isArray(d) ? d[0] : d;
+  })(),
 }));
 
 const links = [];
@@ -122,6 +144,7 @@ const topCollabs = nodes
         <div class="search">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
           <input type="search" id="net-search" placeholder="Find a co-author…" autocomplete="off" />
+          <span class="net-search-count" id="net-search-count"></span>
         </div>
         <label class="net-slider">
           <span>Min collaborations</span>
@@ -151,7 +174,7 @@ const topCollabs = nodes
               {topCollabs.map((c) => (
                 <li>
                   <button type="button" class="np-item" data-author={c.id}>
-                    <span class="np-name">{c.id}</span>
+                    <span class="np-name">{c.full || c.id}</span>
                     <span class="np-bar"><span class="np-bar-fill" style={`width:${Math.round((c.count / topCollabs[0].count) * 100)}%`}></span></span>
                     <span class="np-num">{c.count}</span>
                   </button>
@@ -176,6 +199,7 @@ const topCollabs = nodes
     var panelEmpty = document.getElementById("np-empty");
     var panelDetail = document.getElementById("np-detail");
     var searchEl = document.getElementById("net-search");
+    var searchCount = document.getElementById("net-search-count");
     var minEl = document.getElementById("net-min");
     var minValEl = document.getElementById("net-min-val");
     var resetBtn = document.getElementById("net-reset");
@@ -224,7 +248,8 @@ const topCollabs = nodes
         '<span class="np-eyebrow">Author</span>' +
         '<button type="button" class="np-close" aria-label="Back to list">×</button>' +
       '</div>' +
-      '<h2 class="np-name-big">' + esc(name) + '</h2>' +
+      '<h2 class="np-name-big">' + esc(fullOf(name)) + '</h2>' +
+      (fullOf(name) !== name ? '<div class="np-abbr">' + esc(name) + '</div>' : '') +
       '<div class="np-summary">' + idxs.length + ' paper' + (idxs.length===1?'':'s') + ' with ' + esc(ME) + '</div>' +
       (topCo.length ? '<div class="np-also"><span>Also published with</span> ' + topCo.map(function(c){ return '<button type="button" class="np-coa" data-author="' + esc(c[0]) + '">' + esc(c[0]) + ' <em>'+c[1]+'</em></button>'; }).join(' ') + '</div>' : '') +
       '<a class="np-link-pubs" href="/publications?q=' + encodeURIComponent(name) + '">Filter publications page by ' + esc(name) + ' →</a>' +
@@ -266,6 +291,10 @@ const topCollabs = nodes
       if (b){ focusOn(b.getAttribute("data-author")); }
     });
 
+    function fullOf(id){
+      var n = NODES.find(function(x){ return x.id === id; });
+      return (n && n.full) ? n.full : id;
+    }
     var selectedNode = null;
     var selectedEdge = null;
     var hoveredNode = null;
@@ -373,7 +402,10 @@ const topCollabs = nodes
         .attr("fill", function(d){ return d.isMe ? "#ffcb05" : "#1f5394"; })
         .attr("stroke", function(d){ return d.isMe ? "#00274c" : "#fff"; })
         .attr("stroke-width", function(d){ return d.isMe ? 2.5 : 1.4; });
-      nodeG.append("title").text(function(d){ return d.id + " — " + d.count + " paper" + (d.count===1?"":"s"); });
+      nodeG.append("title").text(function(d){
+        var nm = (d.full && d.full !== d.id) ? (d.full + " (" + d.id + ")") : d.id;
+        return nm + " — " + d.count + " paper" + (d.count===1?"":"s");
+      });
       nodeG.filter(function(d){ return d.isMe || rScale(d.count) >= 10; })
         .append("text")
         .text(function(d){ return d.id; })
@@ -468,15 +500,34 @@ const topCollabs = nodes
       s.on("click", function(){ selectNone(); clearDetail(); });
 
       // Search
-      searchEl.addEventListener("input", function(){
-        var s = (searchEl.value || "").toLowerCase().trim();
-        if (!s){ nodeG.style("opacity", 1); linkSel.style("opacity", 0.55); return; }
+      // Match on every alias for a node (full name, abbreviation, extra forms) and
+      // require all whitespace-separated tokens to hit, so "ritesh honn" works.
+      function nodeMatches(n, tokens){
+        var hay = (n.alias || [n.id]).join(" ").toLowerCase();
+        for (var i = 0; i < tokens.length; i++) if (hay.indexOf(tokens[i]) === -1) return false;
+        return true;
+      }
+      function runSearch(){
+        var raw = (searchEl.value || "").trim();
+        var tokens = raw.toLowerCase().split(/\s+/).filter(Boolean);
+        if (!tokens.length){
+          nodeG.style("opacity", 1); linkSel.style("opacity", 0.55);
+          if (searchCount) searchCount.textContent = "";
+          return [];
+        }
         var match = new Set();
-        nodes.forEach(function(n){ if (n.id.toLowerCase().indexOf(s) !== -1) match.add(n.id); });
-        nodeG.style("opacity", function(n){ return match.has(n.id) ? 1 : 0.15; });
-        linkSel.style("opacity", function(l){ return (match.has(l.source.id) || match.has(l.target.id)) ? 0.5 : 0.05; });
-        // If exactly one match, focus it
-        if (match.size === 1){ focusOn(Array.from(match)[0]); }
+        nodes.forEach(function(n){ if (nodeMatches(n, tokens)) match.add(n.id); });
+        nodeG.style("opacity", function(n){ return match.has(n.id) ? 1 : 0.12; });
+        linkSel.style("opacity", function(l){
+          return (match.has(l.source.id) && match.has(l.target.id)) ? 0.75
+               : (match.has(l.source.id) || match.has(l.target.id)) ? 0.35 : 0.04;
+        });
+        if (searchCount) searchCount.textContent = match.size ? (match.size + " found") : "no match";
+        return Array.from(match);
+      }
+      searchEl.addEventListener("input", function(){
+        var found = runSearch();
+        if (found.length === 1) focusOn(found[0]);
       });
 
       // Min collaborations filter (hides edges with weight below threshold, and isolated nodes)
@@ -521,6 +572,7 @@ const topCollabs = nodes
 
       resetBtn.addEventListener("click", function(){
         searchEl.value = "";
+        if (searchCount) searchCount.textContent = "";
         minEl.value = "1";
         minValEl.textContent = "1";
         linkSel.style("display", "");
@@ -538,9 +590,9 @@ const topCollabs = nodes
       searchEl.addEventListener("keydown", function(e){
         if (e.key === "Enter"){
           e.preventDefault();
-          var s = (searchEl.value || "").toLowerCase().trim();
-          if (!s) return;
-          var first = nodes.find(function(n){ return n.id.toLowerCase().indexOf(s) !== -1; });
+          var tokens = (searchEl.value || "").toLowerCase().trim().split(/\s+/).filter(Boolean);
+          if (!tokens.length) return;
+          var first = nodes.find(function(n){ return nodeMatches(n, tokens); });
           if (first) focusOn(first.id);
         }
       });
@@ -560,6 +612,7 @@ const topCollabs = nodes
   .net-toolbar { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 0 0 1rem; padding: .7rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
   .net-toolbar .search { display: flex; align-items: center; gap: .5rem; flex: 1 1 220px; min-width: 200px; background: var(--bg); border: 1px solid var(--border-strong); border-radius: 7px; padding: .1rem .7rem; color: var(--text-mute); }
   .net-toolbar .search input { flex: 1; border: 0; outline: 0; background: none; font-family: var(--ff-sans); font-size: 13px; color: var(--text); padding: .5rem 0; }
+  .net-search-count { font-family: var(--ff-mono); font-size: 10.5px; color: var(--text-mute); white-space: nowrap; padding-right: .2rem; }
   .net-slider { display: flex; align-items: center; gap: .55rem; font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); }
   .net-slider input[type=range] { accent-color: var(--blue); width: 110px; }
   .net-min-val { font-weight: 600; color: var(--blue-link); min-width: 12px; text-align: right; }
@@ -601,6 +654,7 @@ const topCollabs = nodes
   .np-name-big { font-family: var(--ff-serif); font-weight: 600; font-size: 1.4rem; color: var(--blue); margin: 0 0 .3rem; line-height: 1.18; }
   :root[data-theme="dark"] .np-name-big { color: var(--maize); }
   .np-amp { color: var(--maize); font-weight: 400; padding: 0 .15rem; }
+  .np-abbr { font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); margin: -.15rem 0 .5rem; }
   .np-summary { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); margin-bottom: 1rem; }
   .np-also { font-family: var(--ff-mono); font-size: 11.5px; color: var(--text-mute); margin-bottom: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); }
   .np-also > span { display: block; margin-bottom: .5rem; }
