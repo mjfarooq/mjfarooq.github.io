@@ -36,12 +36,6 @@ const recent = featuredTitles
   .map((t) => byTitle.get(t))
   .filter(Boolean)
   .map((p) => ({ ...p, link: p.url || (p.links && p.links[0] && p.links[0].url) || "" }));
-const counts = {
-  total: pubs.filter(p=>p.type!=="Thesis").length,
-  journals: pubs.filter(p=>p.type==="Journal").length,
-  conferences: pubs.filter(p=>p.type==="Conference").length,
-  books: pubs.filter(p=>p.type==="Book"||p.type==="Book Chapter").length,
-};
 ---
 <Base>
   <div class="container">
@@ -57,12 +51,6 @@ const counts = {
         <a class="btn btn-primary" href="/publications">Publications</a>
         <a class="btn" href="/research">Research</a>
         <a class="btn" href={"mailto:" + site.email}>Get in touch</a>
-      </div>
-      <div class="stats">
-        <a class="stat" href="/publications"><b>{counts.total}+</b><span>Publications</span></a>
-        <a class="stat" href="/publications?type=Journal"><b>{counts.journals}</b><span>Journal articles</span></a>
-        <a class="stat" href="/publications?type=Conference"><b>{counts.conferences}</b><span>Conference papers</span></a>
-        <a class="stat" href="/publications?type=Book"><b>{counts.books}</b><span>Books & chapters</span></a>
       </div>
     </section>
 
@@ -127,13 +115,6 @@ const counts = {
   .intro { max-width: 64ch; }
   .interests { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.3rem 0; }
   .cta { display: flex; flex-wrap: wrap; gap: .6rem; }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
-  .stat { display: block; padding: .4rem .2rem; border-radius: 8px; transition: background .15s; }
-  a.stat:hover { text-decoration: none; background: var(--bg-soft); }
-  a.stat:hover b { color: var(--blue-link); }
-  .stat b { font-family: var(--ff-serif); font-size: 1.7rem; color: var(--blue); display: block; line-height: 1; }
-  :root[data-theme="dark"] .stat b { color: var(--maize); }
-  .stat span { font-size: .8rem; color: var(--text-mute); }
   .areas { margin-top: 1.4rem; }
   .area-icon { width: 48px; height: 48px; border-radius: 11px; background: var(--bg-soft); border: 1px solid var(--border); color: var(--blue); display: grid; place-items: center; margin-bottom: .9rem; }
   .area-icon :global(svg) { width: 26px; height: 26px; }
@@ -155,5 +136,4 @@ const counts = {
   .contact-band { border-top: 3px solid var(--maize); margin-top: 2.5rem; padding-top: 1.8rem; }
   .contact-details { margin-top: 1.4rem; display: flex; flex-direction: column; gap: .4rem; font-size: .92rem; color: var(--text-soft); }
   .cd-label { font-family: var(--ff-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mute); margin-right: .7rem; }
-  @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 </style>
