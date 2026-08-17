@@ -64,6 +64,26 @@
     "links": []
   },
   {
+    "title": "Adaptive Zero-Trust Microsegmentation via Graph-Aware Learning for Wireless Networks",
+    "authors": [
+      "Y. Wang",
+      "X. Wu",
+      "J. Farooq",
+      "J. Chen"
+    ],
+    "authors_str": "Y. Wang*, X. Wu*, J. Farooq, and J. Chen",
+    "year": 2026,
+    "type": "Conference",
+    "venue": "in IEEE CNS Cyber Resilience Workshop (CNS-CRW 2026), Newark, DE",
+    "url": "",
+    "tags": [
+      "Cyber Resilience",
+      "AI / Learning",
+      "Networks"
+    ],
+    "links": []
+  },
+  {
     "title": "Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms",
     "authors": [
       "J. Farooq",

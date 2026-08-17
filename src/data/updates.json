@@ -1,5 +1,14 @@
 [
   {
+    "date": "Sep 2026",
+    "message": "Our paper \"Adaptive Zero-Trust Microsegmentation via Graph-Aware Learning for Wireless Networks\" was accepted in the IEEE CNS Cyber Resilience Workshop (CRW 2026), Newark, Delaware. Congratulations Yuhui and Xingqi!",
+    "images": [
+      "/images/updates/zero_trust_microsegmentation.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
     "date": "Dec 2026",
     "message": "Our paper \"Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense\" was accepted in the IEEE Global Communications Conference (GLOBECOM 2026), Macau, China. Joint work with Fernando Martinez, Abhishek Satyam, Tao Li, Ying Wang, and Juntao Chen.",
     "images": [
