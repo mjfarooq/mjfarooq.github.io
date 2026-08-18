@@ -209,6 +209,25 @@
     ]
   },
   {
+    "title": "Ensembling Personalized Quantum Models with Local Differential Privacy via Meta-Learning",
+    "authors": [
+      "F. Xhelollari",
+      "S. Y. Chen",
+      "J. Farooq",
+      "J. Chen"
+    ],
+    "authors_str": "F. Xhelollari, S. Y. Chen, J. Farooq, and J. Chen",
+    "year": 2026,
+    "type": "Journal",
+    "venue": "in Quantum Machine Intelligence",
+    "url": "",
+    "tags": [
+      "Cyber Resilience",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "Dynamic Multi-Modal UAV Control for Optimized Coverage and Backhaul Connectivity in Spatially Unstructured and Dispersed User Environments",
     "authors": [
       "Y. Wang",

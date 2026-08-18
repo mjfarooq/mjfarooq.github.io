@@ -45,6 +45,15 @@
     "category": "publication"
   },
   {
+    "date": "Aug 2026",
+    "message": "Our paper \"Ensembling Personalized Quantum Models with Local Differential Privacy via Meta-Learning\" was accepted in Quantum Machine Intelligence. Joint work with Flavjo Xhelollari, Samuel Yen-Chi Chen, and Juntao Chen.",
+    "images": [
+      "/images/updates/ensembling_quantum_ldp.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
     "date": "Jul 2026",
     "message": "Featured in UM-Dearborn News: WiseBot, an autonomous Wi-Fi and 5G scanning robot for smart-manufacturing environments. Prof. Farooq and team contributed the wireless scanning subsystem (the antennas mounted on the robot) and the on-board software that lets WiseBot sniff Wi-Fi, LTE, and 5G signals and generate facility-wide coverage heat maps. Developed with Samir Rawashdeh, Jaerock Kwon, Alireza Mohammadi, and a team of students including CyReN intern Sourabh Harapanahalli, under a $900,000 MxD grant.",
     "images": [

@@ -1,18 +1,24 @@
 {
   "_doc": "Maps the abbreviated author strings used in publications.json to full names, so search can match either form. Add entries freely: the key is exactly how the name appears in a paper's authors array, the value is the full name. Optional array form ['Full Name','other alias'] adds extra searchable aliases.",
-
-  "J. Farooq": ["Junaid Farooq", "Muhammad Junaid Farooq"],
-  "M. J. Farooq": ["Junaid Farooq", "Muhammad Junaid Farooq"],
-
+  "J. Farooq": [
+    "Junaid Farooq",
+    "Muhammad Junaid Farooq"
+  ],
+  "M. J. Farooq": [
+    "Junaid Farooq",
+    "Muhammad Junaid Farooq"
+  ],
   "X. Wu": "Xingqi Wu",
   "E. Delavari": "Elahe Delavari",
   "R. Honnalli": "Ritesh Honnalli",
   "D. Neifar": "Dhia Neifar",
   "M. Lyu": "Moyan Lyu",
-  "T. Kieras": ["Tim Kieras", "Timothy Kieras"],
+  "T. Kieras": [
+    "Tim Kieras",
+    "Timothy Kieras"
+  ],
   "Y. Gao": "Yuxuan Gao",
   "J. Hazime": "Jawad Hazime",
-
   "Q. Zhu": "Quanyan Zhu",
   "J. Chen": "Juntao Chen",
   "T. Li": "Tao Li",
@@ -22,8 +28,16 @@
   "A. Kadri": "Abdullah Kadri",
   "E. Yaacoub": "Elias Yaacoub",
   "J. Qadir": "Junaid Qadir",
-  "U. Pillai": ["Unnikrishna Pillai", "S. Unnikrishna Pillai"],
-  "M. M. Butt": ["Majid Butt", "M. Majid Butt"],
+  "U. Pillai": [
+    "Unnikrishna Pillai",
+    "S. Unnikrishna Pillai"
+  ],
+  "M. M. Butt": [
+    "Majid Butt",
+    "M. Majid Butt"
+  ],
   "F. Martinez": "Fernando Martinez",
-  "A. Satyam": "Abhishek Satyam"
+  "A. Satyam": "Abhishek Satyam",
+  "F. Xhelollari": "Flavjo Xhelollari",
+  "S. Y. Chen": "Samuel Yen-Chi Chen"
 }
