@@ -133,7 +133,7 @@
     ]
   },
   {
-    "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
+    "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-Based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -178,7 +178,7 @@
     ]
   },
   {
-    "title": "Differentiable architecture search for adversarially robust quantum computer vision",
+    "title": "Differentiable Architecture Search for Adversarially Robust Quantum Computer Vision",
     "authors": [
       "M. Afane",
       "Q. Long",
@@ -272,7 +272,7 @@
     ]
   },
   {
-    "title": "Multi-agent Resource Orchestration Based on D3QN for Network Slicing in 5G Edge-Cloud Networks",
+    "title": "Multi-Agent Resource Orchestration Based on D3QN for Network Slicing in 5G Edge-Cloud Networks",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -507,7 +507,7 @@
     ]
   },
   {
-    "title": "Evaluation of LLM powered agentic AI for solving multi-arm bandit problems",
+    "title": "Evaluation of LLM Powered Agentic AI for Solving Multi-Arm Bandit Problems",
     "authors": [
       "J. Hazime",
       "J. Farooq"
@@ -716,7 +716,7 @@
     ]
   },
   {
-    "title": "Multimodal LLM-guided sequential detection of cyber threats in electric vehicle charging systems",
+    "title": "Multimodal LLM-Guided Sequential Detection of Cyber Threats in Electric Vehicle Charging Systems",
     "authors": [
       "R. Honnalli",
       "J. Farooq"
@@ -738,7 +738,31 @@
     ]
   },
   {
-    "title": "ORCA: Offloading and Resource Coordination via Multi-agent Learning in Dynamic Cloud-Edge Systems",
+    "title": "Process-Aware Cross-Layer Adaptation for O-RAN-Enabled Industrial Systems",
+    "authors": [
+      "E. Delavari",
+      "J. Farooq",
+      "M. M. Butt",
+      "Q. Zhu"
+    ],
+    "authors_str": "E. Delavari*, J. Farooq, M. M. Butt, and Q. Zhu",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "submitted to IEEE Network",
+    "url": "https://arxiv.org/abs/2608.13372",
+    "tags": [
+      "NextG / O-RAN",
+      "Cyber Resilience"
+    ],
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2608.13372"
+      }
+    ]
+  },
+  {
+    "title": "ORCA: Offloading and Resource Coordination via Multi-Agent Learning in Dynamic Cloud-Edge Systems",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -762,7 +786,7 @@
     ]
   },
   {
-    "title": "Optimized Collaborative Perception: Sector-based BEV Fusion in Limited Communication Conditions",
+    "title": "Optimized Collaborative Perception: Sector-Based BEV Fusion in Limited Communication Conditions",
     "authors": [
       "E. Besbes",
       "H. Ghazzai",
@@ -808,7 +832,7 @@
     ]
   },
   {
-    "title": "Real-time multiple obstacle avoidance and navigation in unstructured spaces with applications to indoor delivery robots",
+    "title": "Real-Time Multiple Obstacle Avoidance and Navigation in Unstructured Spaces with Applications to Indoor Delivery Robots",
     "authors": [
       "Y. Wang",
       "U. Pillai",
@@ -1028,7 +1052,7 @@
     ]
   },
   {
-    "title": "Multi-agent Distributed Decentralized Dynamic Resource Orchestration in 5G Edge-Cloud Networks",
+    "title": "Multi-Agent Distributed Decentralized Dynamic Resource Orchestration in 5G Edge-Cloud Networks",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -1830,7 +1854,7 @@
     ]
   },
   {
-    "title": "M.S. Thesis: Modeling and Analysis of Inter-vehicle Communication: A Stochastic Geometry Approach",
+    "title": "M.S. Thesis: Modeling and Analysis of Inter-Vehicle Communication: A Stochastic Geometry Approach",
     "authors": [
       "M. J. Farooq"
     ],
@@ -1850,7 +1874,7 @@
     ]
   },
   {
-    "title": "Modeling Inter-Vehicle Communication in Multi-lane Highways: A Stochastic Geometry Approach",
+    "title": "Modeling Inter-Vehicle Communication in Multi-Lane Highways: A Stochastic Geometry Approach",
     "authors": [
       "M. J. Farooq",
       "H. ElSawy",
