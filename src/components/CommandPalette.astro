@@ -99,6 +99,8 @@ const idx = [
 </button>
 
 <style>
+  /* Sits immediately left of .ask-fab (Base.astro). Keep the `right` offsets below in sync
+     with the .ask-fab widths at each breakpoint or the two buttons will overlap. */
   .cmdk-trigger { position: fixed; top: 18px; right: 148px; z-index: 79; display: inline-flex; align-items: center; gap: .5rem;
     padding: .5rem .7rem .5rem .75rem; background: var(--surface); color: var(--text-soft); border: 1px solid var(--border-strong);
     border-radius: 999px; box-shadow: 0 4px 14px rgba(0,39,76,.10); font-family: var(--ff-sans); font-size: 12.5px; cursor: pointer;
@@ -136,9 +138,9 @@ const idx = [
   .cmdk-foot kbd { border: 1px solid var(--border); border-radius: 3px; padding: 0 .25rem; margin-right: .15rem; }
   .cmdk-count { margin-left: auto; }
 
-  @media (max-width: 880px) { .cmdk-trigger { right: 118px; } .cmdk-trigger-label { display: none; } }
+  @media (max-width: 880px) { .cmdk-trigger { top: 14px; right: 130px; } .cmdk-trigger-label { display: none; } }
   @media (max-width: 560px) {
-    .cmdk-trigger { right: 62px; top: 14px; padding: .45rem; }
+    .cmdk-trigger { right: 66px; top: 14px; padding: .45rem; }
     .cmdk-trigger-kbd { display: none; }
     .cmdk { padding: 6vh 12px 12px; }
   }

@@ -145,13 +145,18 @@ const personLd = {
   </div>
   <style>
     .site-foot { border-top: 1px solid var(--border); margin-top: 2.5rem; }
+    /* Top-right button rail. .ask-fab is the rightmost item; .cmdk-trigger (CommandPalette.astro)
+       sits to its left. Their `right` offsets at each breakpoint must stay in sync — see the
+       matching media queries there. */
     .ask-fab { position: fixed; top: 18px; right: 22px; z-index: 80; display: inline-flex; align-items: center; gap: .55rem; padding: .55rem 1rem .55rem .8rem; background: linear-gradient(135deg, var(--blue) 0%, #1e4a82 100%); color: #fff; border-radius: 999px; box-shadow: 0 6px 22px rgba(0,39,76,.35), 0 2px 6px rgba(0,0,0,.18); border: 2px solid var(--maize); font-family: var(--ff-sans); font-size: 13px; font-weight: 600; letter-spacing: .01em; transition: transform .18s, box-shadow .18s, background .18s; text-decoration: none; }
     .ask-fab:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(0,39,76,.45), 0 3px 8px rgba(0,0,0,.22); color: #fff; text-decoration: none; }
     .ask-fab svg { color: var(--maize); flex: 0 0 auto; }
     .ask-fab-label { white-space: nowrap; }
+    /* <=880: ~97px wide with the label, so .cmdk-trigger sits at right: 130px. */
     @media (max-width: 880px) {
-      .ask-fab { top: 14px; right: 64px; padding: .5rem .85rem .5rem .65rem; font-size: 12px; }
+      .ask-fab { top: 14px; right: 14px; padding: .5rem .85rem .5rem .65rem; font-size: 12px; }
     }
+    /* <=560: icon only, ~40px wide, so .cmdk-trigger sits at right: 62px. */
     @media (max-width: 560px) {
       .ask-fab { padding: .45rem; }
       .ask-fab-label { display: none; }

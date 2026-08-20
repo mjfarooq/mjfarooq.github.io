@@ -136,7 +136,6 @@ const topTags = _topTags.map(([t, n]) => ({
               <div class="pi-links">
                 {p.links && p.links.map((l) => <a class="pi-link" href={l.url} target="_blank" rel="noopener">{l.label}</a>)}
                 <button class="pi-link pi-cite-toggle" type="button">BibTeX</button>
-                <button class="pi-link pi-permalink" type="button" title="Copy link to this paper" aria-label="Copy link to this paper">Link</button>
               </div>
               <div class="pi-cite-box" hidden>
                 <button type="button" class="pi-copy" aria-label="Copy BibTeX">Copy</button>
@@ -230,8 +229,6 @@ const topTags = _topTags.map(([t, n]) => ({
   :root[data-theme="dark"] .b-conference { background: #ffcb05; color: #00274c; }
   .fl-check { cursor: pointer; user-select: none; }
   .fl-check input { accent-color: var(--blue); margin-right: .1rem; }
-  .pi-permalink { font-family: var(--ff-mono); cursor: pointer; }
-  .pi-permalink.ok { background: var(--maize); color: var(--blue); border-color: var(--maize); }
   .pitem { scroll-margin-top: 90px; }
   .pi-flash { animation: pi-flash 2.2s ease-out; border-radius: 8px; }
   @keyframes pi-flash {
@@ -374,17 +371,6 @@ const topTags = _topTags.map(([t, n]) => ({
           box.hidden = nowHidden;
           tog.classList.toggle("on", !nowHidden);
         }
-        return;
-      }
-      var pl = e.target.closest(".pi-permalink");
-      if(pl){
-        var li = pl.closest(".pitem");
-        var url = location.origin + location.pathname + "#" + (li ? li.id : "");
-        var restore = pl.textContent;
-        (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
-          .then(function(){ pl.textContent = "Copied"; pl.classList.add("ok"); })
-          .catch(function(){ history.replaceState(null,"","#"+(li?li.id:"")); pl.textContent = "In URL"; })
-          .then(function(){ setTimeout(function(){ pl.textContent = restore; pl.classList.remove("ok"); }, 1400); });
         return;
       }
       var b = e.target.closest(".pi-copy"); if(!b) return;
