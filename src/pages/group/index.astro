@@ -36,7 +36,7 @@ const initials = (n) => n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCas
 
     {site.group.alumni && site.group.alumni.length > 0 && (
       <section class="section reveal">
-        <h2 class="h-sec">Alumni</h2>
+        <h2 class="h-sec">Graduate alumni</h2>
         <div class="grid-2 alumni-grid">
           {site.group.alumni.map((a) => (
             <div class="alum">
@@ -59,7 +59,7 @@ const initials = (n) => n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCas
 
     {site.group.undergrads && site.group.undergrads.length > 0 && (
       <section class="section reveal">
-        <h2 class="h-sec">Undergraduate researchers</h2>
+        <h2 class="h-sec">Undergraduate alumni</h2>
         <div class="grid-2 alumni-grid">
           {site.group.undergrads.map((a) => (
             <div class="alum">
