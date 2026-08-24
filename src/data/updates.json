@@ -54,6 +54,15 @@
     "category": "publication"
   },
   {
+    "date": "Aug 2026",
+    "message": "Our book \"Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms\" is now published in Foundations and Trends in Networking (vol. 17, no. 1-2) by Emerald Publishing. Joint work with Quanyan Zhu.",
+    "images": [
+      "/images/updates/FnT_Book.jpg"
+    ],
+    "link": "https://www.emerald.com/ftnet/article-abstract/17/1-2/1/1393487/Cyber-resilience-in-next-generation-networks",
+    "category": "publication"
+  },
+  {
     "date": "Jul 2026",
     "message": "Featured in UM-Dearborn News: WiseBot, an autonomous Wi-Fi and 5G scanning robot for smart-manufacturing environments. Prof. Farooq and team contributed the wireless scanning subsystem (the antennas mounted on the robot) and the on-board software that lets WiseBot sniff Wi-Fi, LTE, and 5G signals and generate facility-wide coverage heat maps. Developed with Samir Rawashdeh, Jaerock Kwon, Alireza Mohammadi, and a team of students including CyReN intern Sourabh Harapanahalli, under a $900,000 MxD grant.",
     "images": [
@@ -259,15 +268,6 @@
       "/images/updates/dynamic_multimodal_uav.jpg"
     ],
     "link": "https://www.computer.org/csdl/journal/tm/5555/01/11152341/29LAw5X8z2E",
-    "category": "publication"
-  },
-  {
-    "date": "Jan 2026",
-    "message": "New book published: Cyber Resilience in Next-Generation Networks (Foundations and Trends in Networking).",
-    "images": [
-      "/images/updates/FnT_Book.jpg"
-    ],
-    "link": "",
     "category": "publication"
   },
   {

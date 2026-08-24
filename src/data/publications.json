@@ -92,12 +92,16 @@
     "authors_str": "J. Farooq and Q. Zhu",
     "year": 2026,
     "type": "Book",
-    "venue": "Foundations and Trends in Networking (FnT), Emerald Publishers",
-    "url": "https://arxiv.org/abs/2512.22721",
+    "venue": "Foundations and Trends in Networking (FnT), vol. 17, no. 1-2, Emerald Publishing",
+    "url": "https://www.emerald.com/ftnet/article-abstract/17/1-2/1/1393487/Cyber-resilience-in-next-generation-networks",
     "tags": [
       "Cyber Resilience"
     ],
     "links": [
+      {
+        "label": "Emerald",
+        "url": "https://www.emerald.com/ftnet/article-abstract/17/1-2/1/1393487/Cyber-resilience-in-next-generation-networks"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2512.22721"
