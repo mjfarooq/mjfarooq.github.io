@@ -92,11 +92,19 @@ import site from "../../data/site.json";
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ messages: history.slice(-10) })
         });
+        // The worker returns a friendly `reply` even on failure. Prefer it over the raw
+        // status/body so visitors never see a JSON error blob.
+        var data = null;
+        try { data = await res.clone().json(); } catch (e) {}
         if (!res.ok) {
-          var errText = await res.text();
-          throw new Error("Service returned " + res.status + (errText ? ": " + errText : ""));
+          if (data && data.reply) {
+            botEl.querySelector(".ask-text").innerHTML = renderText(data.reply);
+            if (data.error) { try { console.warn("ask backend:", data.error); } catch (e) {} }
+            status.textContent = "";
+            return;
+          }
+          throw new Error("The service is temporarily unavailable (" + res.status + ").");
         }
-        var data = await res.json();
         var reply = (data && (data.reply || data.text)) || "(no response)";
         history.push({ role: "assistant", content: reply });
         botEl.querySelector(".ask-text").innerHTML = renderText(reply);

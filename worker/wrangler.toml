@@ -6,7 +6,11 @@ compatibility_date = "2026-06-01"
 # Run `wrangler secret put ALLOWED_ORIGIN` and set to https://mjfarooq.github.io
 # Or set inline as a [vars] entry below.
 [vars]
-HF_MODEL = "Qwen/Qwen2.5-7B-Instruct"
+# HF_MODEL is optional. Leave it unset and the worker walks its built-in candidate list
+# (see MODEL_CANDIDATES in src/index.ts) until one of your enabled inference providers
+# answers. Set it only to force a specific model; it is tried first, and the worker still
+# falls back if that model is not served to your account.
+# HF_MODEL = "meta-llama/Llama-3.1-8B-Instruct"
 ALLOWED_ORIGIN = "https://mjfarooq.github.io"
 
 # KV namespace for per-IP rate limiting (optional but recommended).

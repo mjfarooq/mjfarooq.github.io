@@ -115,7 +115,28 @@ function buildKnowledge(): string {
 
 const SITE_KNOWLEDGE = buildKnowledge();
 
-const DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.3";
+// Models are tried in order until one answers. The Hugging Face router only serves a model if
+// one of the inference providers enabled on the account carries it, and that set changes over
+// time, so pinning a single model makes the assistant fail hard the day it is dropped.
+// HF_MODEL (if set) is tried first; these are the fallbacks.
+const MODEL_CANDIDATES = [
+  "meta-llama/Llama-3.1-8B-Instruct",
+  "mistralai/Mistral-7B-Instruct-v0.3",
+  "Qwen/Qwen2.5-7B-Instruct",
+  "google/gemma-2-9b-it",
+  "microsoft/Phi-3.5-mini-instruct",
+  "HuggingFaceH4/zephyr-7b-beta",
+];
+
+// Remembers the model that last worked, so the fallback scan runs once per isolate, not per request.
+let cachedModel: string | null = null;
+
+/** True when the failure is "this model is not available to you", i.e. worth trying the next one. */
+function isModelUnavailable(status: number, body: string): boolean {
+  if (status === 404) return true;
+  if (status !== 400 && status !== 403) return false;
+  return /model_not_supported|not supported by any provider|does not exist|not found|no provider/i.test(body);
+}
 
 const SYSTEM_PROMPT = `You are an assistant for the academic website of Junaid Farooq, Associate Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn, who leads the Cyber Resilient Networks (CyReN) Lab.
 
@@ -192,8 +213,6 @@ export default {
     const messages = (body && Array.isArray(body.messages)) ? body.messages : [];
     if (!messages.length) return new Response(JSON.stringify({ reply: "Empty request." }), { status: 400, headers: { ...cors, "Content-Type": "application/json" } });
 
-    const model = env.HF_MODEL || DEFAULT_MODEL;
-
     // Use the Hugging Face Inference Providers router (OpenAI-compatible chat
     // completions endpoint). This is the supported API going forward and works
     // with Mistral, Llama, Qwen, Gemma, and many other open-source models.
@@ -202,22 +221,50 @@ export default {
       ...messages.map((m: any) => ({ role: m.role === "assistant" ? "assistant" : "user", content: String(m.content || "") })),
     ];
 
-    const hfRes = await fetch("https://router.huggingface.co/v1/chat/completions", {
-      method: "POST",
-      headers: { "Authorization": `Bearer ${env.HF_TOKEN}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model,
-        messages: chatMessages,
-        max_tokens: 512,
-        temperature: 0.4,
-        top_p: 0.95,
-        stream: false,
-      })
-    });
+    // Try the remembered model first, then the preference list. Skip to the next candidate only
+    // when the model itself is unavailable; a genuine outage or bad token should surface at once.
+    const tried: string[] = [];
+    const candidates = [cachedModel, env.HF_MODEL, ...MODEL_CANDIDATES]
+      .filter((m): m is string => !!m)
+      .filter((m, i, arr) => arr.indexOf(m) === i);
 
-    if (!hfRes.ok) {
-      const text = await hfRes.text();
-      return new Response(JSON.stringify({ reply: `Model service error (${hfRes.status}). ${text.slice(0, 300)}` }), { status: 502, headers: { ...cors, "Content-Type": "application/json" } });
+    let hfRes: Response | null = null;
+    let lastStatus = 0;
+    let lastBody = "";
+
+    for (const candidate of candidates) {
+      tried.push(candidate);
+      const res = await fetch("https://router.huggingface.co/v1/chat/completions", {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${env.HF_TOKEN}`, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: candidate,
+          messages: chatMessages,
+          max_tokens: 512,
+          temperature: 0.4,
+          top_p: 0.95,
+          stream: false,
+        })
+      });
+
+      if (res.ok) { cachedModel = candidate; hfRes = res; break; }
+
+      lastStatus = res.status;
+      lastBody = await res.text();
+      if (cachedModel === candidate) cachedModel = null; // stop trusting a model that just failed
+      if (!isModelUnavailable(res.status, lastBody)) break;
+    }
+
+    if (!hfRes) {
+      // Visitor-facing copy stays generic; the diagnostic detail rides along for the site owner.
+      const unavailable = isModelUnavailable(lastStatus, lastBody);
+      const reply = unavailable
+        ? "The assistant is temporarily offline while its language model is being switched over. Please try again later, or browse the Publications and News pages in the meantime."
+        : "The assistant is temporarily unavailable. Please try again in a few minutes.";
+      return new Response(JSON.stringify({
+        reply,
+        error: { status: lastStatus, tried, detail: lastBody.slice(0, 300) }
+      }), { status: 502, headers: { ...cors, "Content-Type": "application/json" } });
     }
 
     const data = await hfRes.json() as any;
