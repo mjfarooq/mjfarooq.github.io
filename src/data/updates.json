@@ -46,6 +46,15 @@
   },
   {
     "date": "Aug 2026",
+    "message": "Our paper \"Rao-Blackwellized Coverage Estimation in Poisson Networks: A High-Fidelity Hybrid Framework\" was accepted in IEEE Communications Letters. Joint work with Sunder Ram Krishnan, Kumar Vijay Mishra, Xingchen Liu, Unnikrishna Pillai, and Theodore S. Rappaport.",
+    "images": [
+      "/images/updates/rao_blackwellized_coverage.jpg"
+    ],
+    "link": "",
+    "category": "publication"
+  },
+  {
+    "date": "Aug 2026",
     "message": "Our paper \"Ensembling Personalized Quantum Models with Local Differential Privacy via Meta-Learning\" was accepted in Quantum Machine Intelligence. Joint work with Flavjo Xhelollari, Samuel Yen-Chi Chen, and Juntao Chen.",
     "images": [
       "/images/updates/ensembling_quantum_ldp.jpg"

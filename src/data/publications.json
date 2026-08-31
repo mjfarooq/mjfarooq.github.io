@@ -109,6 +109,27 @@
     ]
   },
   {
+    "title": "Rao-Blackwellized Coverage Estimation in Poisson Networks: A High-Fidelity Hybrid Framework",
+    "authors": [
+      "S. R. Krishnan",
+      "J. Farooq",
+      "K. V. Mishra",
+      "X. Liu",
+      "U. Pillai",
+      "T. S. Rappaport"
+    ],
+    "authors_str": "S. R. Krishnan, J. Farooq, K. V. Mishra, X. Liu, U. Pillai, and T. S. Rappaport",
+    "year": 2026,
+    "type": "Journal",
+    "venue": "in IEEE Communications Letters",
+    "url": "",
+    "tags": [
+      "Networks",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
     "authors": [
       "X. Wu",
