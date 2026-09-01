@@ -13,17 +13,12 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE Global Communications Conference (Globecom 2026), Macau, China",
-    "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1",
+    "url": "",
     "tags": [
       "AI / Learning",
       "Cyber Resilience"
     ],
-    "links": [
-      {
-        "label": "PDF",
-        "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1"
-      }
-    ]
+    "links": []
   },
   {
     "title": "Balancing Security and Performance in Spatial Wireless Networks through Software Diversity for Attack Propagation Control",
