@@ -120,8 +120,10 @@ const SITE_KNOWLEDGE = buildKnowledge();
 // time, so pinning a single model makes the assistant fail hard the day it is dropped.
 // HF_MODEL (if set) is tried first; these are the fallbacks.
 const MODEL_CANDIDATES = [
+  "meta-llama/Llama-3.3-70B-Instruct",
   "meta-llama/Llama-3.1-8B-Instruct",
   "mistralai/Mistral-7B-Instruct-v0.3",
+  "Qwen/Qwen2.5-72B-Instruct",
   "Qwen/Qwen2.5-7B-Instruct",
   "google/gemma-2-9b-it",
   "microsoft/Phi-3.5-mini-instruct",
@@ -131,11 +133,22 @@ const MODEL_CANDIDATES = [
 // Remembers the model that last worked, so the fallback scan runs once per isolate, not per request.
 let cachedModel: string | null = null;
 
-/** True when the failure is "this model is not available to you", i.e. worth trying the next one. */
+/**
+ * True when the failure is "this model is not available to you", i.e. worth trying the next one.
+ *
+ * Each provider words this differently, and the router passes the provider's message through
+ * verbatim, so this has to recognise several phrasings:
+ *   HF router  "not supported by any provider you have enabled" / model_not_supported
+ *   Together   "Unable to access non-serverless model X. Please ... create a dedicated endpoint"
+ *   others     plain 404, "does not exist", quota/permission wording
+ * Anything else (bad token, provider outage, malformed request) must NOT fall through, or one
+ * broken request turns into eight.
+ */
 function isModelUnavailable(status: number, body: string): boolean {
   if (status === 404) return true;
   if (status !== 400 && status !== 403) return false;
-  return /model_not_supported|not supported by any provider|does not exist|not found|no provider/i.test(body);
+  return /model_not_supported|not supported by any provider|does not exist|not ?found|no provider|non-serverless|dedicated endpoint|unable to access|not available|no longer available|unsupported model|invalid model/i
+    .test(body);
 }
 
 const SYSTEM_PROMPT = `You are an assistant for the academic website of Junaid Farooq, Associate Professor of Electrical and Computer Engineering at the University of Michigan-Dearborn, who leads the Cyber Resilient Networks (CyReN) Lab.
