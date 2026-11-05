@@ -123,12 +123,17 @@
     "year": 2026,
     "type": "Journal",
     "venue": "in IEEE Communications Letters",
-    "url": "",
+    "url": "https://arxiv.org/abs/2511.19568",
     "tags": [
       "Networks",
       "AI / Learning"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2511.19568"
+      }
+    ]
   },
   {
     "title": "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
