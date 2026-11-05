@@ -166,7 +166,10 @@ const venueCols = [
       <ol class="plist" id="plist">
         {pubs.map((p) => (
           <li class="pitem" id={slug(p.title)} data-type={p.type} data-year={p.year} data-authors={(p.authors || []).join("|")} data-s={searchHaystack(p)} data-haspdf={(p.links || []).some((l) => l.label === "PDF") ? "1" : "0"} data-title={p.title} data-venue={venueSlug(venueFamily(p.venue))}>
-            <div class="pi-year">{p.year}</div>
+            <div class="pi-year">
+              {p.ref && <span class="pi-ref">{p.ref}</span>}
+              <span class="pi-yr">{p.year}</span>
+            </div>
             <div class="pi-body">
               <div class="pi-top">
                 <span class={"badge b-" + p.type.toLowerCase().replace(" ","")}>{p.type}</span>
@@ -272,8 +275,14 @@ const venueCols = [
   .fl select:focus { outline: 0; border-color: var(--blue); }
 
   .plist { list-style: none; padding: 0; margin: 0; }
-  .pitem { display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid var(--border); }
-  .pi-year { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); padding-top: .15rem; }
+  .pitem { display: grid; grid-template-columns: 62px 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid var(--border); }
+  /* Reference label (J12, C34 …) above the year. These are the same numbers used
+     in the CV, stored per entry as `ref` in publications.json, so they stay fixed
+     no matter how the list is sorted or filtered. */
+  .pi-year { font-family: var(--ff-mono); padding-top: .15rem; display: flex; flex-direction: column; gap: .15rem; }
+  .pi-ref { font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: .02em; }
+  :root[data-theme="dark"] .pi-ref { color: var(--maize); }
+  .pi-yr { font-size: 13px; color: var(--blue-link); }
   .pi-top { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; margin-bottom: .45rem; }
   .pi-title { font-weight: 500; font-size: 1.05rem; color: var(--text); line-height: 1.34; }
   .pi-auth { font-size: .9rem; color: var(--text-soft); margin-top: .3rem; }

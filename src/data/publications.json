@@ -1,6 +1,7 @@
 [
   {
     "title": "Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense",
+    "ref": "C49",
     "authors": [
       "F. Martinez",
       "A. Satyam",
@@ -22,6 +23,7 @@
   },
   {
     "title": "Balancing Security and Performance in Spatial Wireless Networks through Software Diversity for Attack Propagation Control",
+    "ref": "C48",
     "authors": [
       "X. Wu",
       "Y. Wang",
@@ -41,6 +43,7 @@
   },
   {
     "title": "Performative Security Games: Strategic Manipulation of Decision-Dependent Distributions in Learning-Based O-RAN Control",
+    "ref": "C47",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -60,6 +63,7 @@
   },
   {
     "title": "Adaptive Zero-Trust Microsegmentation via Graph-Aware Learning for Wireless Networks",
+    "ref": "C46",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -80,6 +84,7 @@
   },
   {
     "title": "Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms",
+    "ref": "B4",
     "authors": [
       "J. Farooq",
       "Q. Zhu"
@@ -105,6 +110,7 @@
   },
   {
     "title": "Rao-Blackwellized Coverage Estimation in Poisson Networks: A High-Fidelity Hybrid Framework",
+    "ref": "J23",
     "authors": [
       "S. R. Krishnan",
       "J. Farooq",
@@ -126,6 +132,7 @@
   },
   {
     "title": "Delay-Aware Reinforcement Learning for O-RAN Control under Stochastic Reward Feedback",
+    "ref": "J24",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -154,6 +161,7 @@
   },
   {
     "title": "Dependency-Aware Task Offloading via Quantum Graph Attention Network-Based Deep Reinforcement Learning in Collaborative Edge-Cloud Systems",
+    "ref": "C44",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -174,6 +182,7 @@
   },
   {
     "title": "Collaborative Cloud-Edge Computing via LLM-Guided Constrained Reinforcement Learning",
+    "ref": "C45",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -199,6 +208,7 @@
   },
   {
     "title": "Differentiable Architecture Search for Adversarially Robust Quantum Computer Vision",
+    "ref": "J20",
     "authors": [
       "M. Afane",
       "Q. Long",
@@ -230,6 +240,7 @@
   },
   {
     "title": "Ensembling Personalized Quantum Models with Local Differential Privacy via Meta-Learning",
+    "ref": "J22",
     "authors": [
       "F. Xhelollari",
       "S. Y. Chen",
@@ -249,6 +260,7 @@
   },
   {
     "title": "Dynamic Multi-Modal UAV Control for Optimized Coverage and Backhaul Connectivity in Spatially Unstructured and Dispersed User Environments",
+    "ref": "J16",
     "authors": [
       "Y. Wang",
       "J. Farooq",
@@ -271,6 +283,7 @@
   },
   {
     "title": "Jamming-Resilient PRB Reservation for Latency-Critical O-RAN Network Slicing",
+    "ref": "C43",
     "authors": [
       "E. Delavari",
       "J. Farooq"
@@ -293,6 +306,7 @@
   },
   {
     "title": "Multi-Agent Resource Orchestration Based on D3QN for Network Slicing in 5G Edge-Cloud Networks",
+    "ref": "J19",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -315,6 +329,7 @@
   },
   {
     "title": "PROMPTGUARD: Zero Trust Prompting for Securing LLM-Driven O-RAN Control",
+    "ref": "C41",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -340,6 +355,7 @@
   },
   {
     "title": "Process-Informed Multi-Agent Reinforcement Learning for Joint Radio-Compute Orchestration in Industrial O-RAN",
+    "ref": "J21",
     "authors": [
       "X. Wu",
       "Y. Wang",
@@ -370,6 +386,7 @@
   },
   {
     "title": "Risk-Aware Resource Orchestration in Multi-Tier 5G Edge-Cloud Networks",
+    "ref": "BC1",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -387,6 +404,7 @@
   },
   {
     "title": "Temporally Encoded Double DQN for Proactive PRB Allocation in O-RAN Enabled Industrial Networks",
+    "ref": "C42",
     "authors": [
       "E. Delavari",
       "X. Wu",
@@ -410,6 +428,7 @@
   },
   {
     "title": "A Probabilistic Alternative to Coverage Analysis in Uniform Random Wireless Networks",
+    "ref": "J14",
     "authors": [
       "J. Farooq",
       "U. Pillai"
@@ -431,6 +450,7 @@
   },
   {
     "title": "ATP: Adaptive Threshold Pruning for Efficient Data Encoding in Quantum Neural Networks",
+    "ref": "C31",
     "authors": [
       "M. Afane",
       "G. Ebbrecht",
@@ -454,6 +474,7 @@
   },
   {
     "title": "Collaborative Resilience for Multi-Layer Heterogeneous Robotic Networks under Adversarial Environments",
+    "ref": "C29",
     "authors": [
       "G. Ebbrecht",
       "J. Hughes",
@@ -477,6 +498,7 @@
   },
   {
     "title": "Communication Systems for Autonomous eVTOL: Regulatory Challenges, Emerging Technologies, and Future Directions",
+    "ref": "J17",
     "authors": [
       "I. Aryendu",
       "B. Mak",
@@ -505,6 +527,7 @@
   },
   {
     "title": "Coordinated UAV Deployment and Task Offloading in UAV-Assisted LEO Satellite Edge Computing Systems via Proximal Policy Optimization",
+    "ref": "C32",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -528,6 +551,7 @@
   },
   {
     "title": "Evaluation of LLM Powered Agentic AI for Solving Multi-Arm Bandit Problems",
+    "ref": "C35",
     "authors": [
       "J. Hazime",
       "J. Farooq"
@@ -549,6 +573,7 @@
   },
   {
     "title": "Joint Admission Control and Resource Provisioning for URLLC Traffic in O-RAN: A Constrained Multi-Agent Reinforcement Learning Approach",
+    "ref": "C27",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -572,6 +597,7 @@
   },
   {
     "title": "Joint Optimization of Positioning and Computation Offloading in Multi-UAV MEC Networks for Low Latency Applications",
+    "ref": "C25",
     "authors": [
       "Y. Wang",
       "J. Farooq",
@@ -595,6 +621,7 @@
   },
   {
     "title": "Joint Positioning and Computation Offloading in Multi-UAV MEC for Low Latency Applications: A Proximal Policy Optimization Approach",
+    "ref": "J13",
     "authors": [
       "Y. Wang",
       "J. Farooq",
@@ -618,6 +645,7 @@
   },
   {
     "title": "LLM-Driven Agentic AI Approach to Enhanced O-RAN Resilience in Next-Generation Networks",
+    "ref": "C30",
     "authors": [
       "X. Wu",
       "Y. Wang",
@@ -643,6 +671,7 @@
   },
   {
     "title": "LLM-Powered Agentic AI Approach to Securing EV Charging Systems Against Cyber Threats",
+    "ref": "C33",
     "authors": [
       "R. Honnalli",
       "J. Farooq"
@@ -665,6 +694,7 @@
   },
   {
     "title": "LLM-xApp: A Large Language Model Empowered Radio Resource Management xApp for 5G O-RAN",
+    "ref": "C28",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -690,6 +720,7 @@
   },
   {
     "title": "Mapping Cyber Threats in the 5G Supply Chain: Landscape, Vulnerabilities, and Risk Management",
+    "ref": "J12",
     "authors": [
       "M. Lyu",
       "J. Farooq",
@@ -713,6 +744,7 @@
   },
   {
     "title": "Multi-UAV Placement for Integrated Access and Backhauling Using LLM-Based Optimizers",
+    "ref": "C26",
     "authors": [
       "Y. Wang",
       "J. Farooq",
@@ -737,6 +769,7 @@
   },
   {
     "title": "Multimodal LLM-Guided Sequential Detection of Cyber Threats in Electric Vehicle Charging Systems",
+    "ref": "C36",
     "authors": [
       "R. Honnalli",
       "J. Farooq"
@@ -759,6 +792,7 @@
   },
   {
     "title": "Process-Aware Cross-Layer Adaptation for O-RAN-Enabled Industrial Systems",
+    "ref": "U6",
     "authors": [
       "E. Delavari",
       "J. Farooq",
@@ -782,7 +816,30 @@
     ]
   },
   {
+    "title": "Optimized BEV Sharing for Enhanced LiDAR-based Collaborative Perception in CAVs",
+    "ref": "U5",
+    "authors": [
+      "E. Besbes",
+      "H. Ghazzai",
+      "M. E. Haddad",
+      "J. Farooq",
+      "A. Eltawil",
+      "G. Setti"
+    ],
+    "authors_str": "E. Besbes, H. Ghazzai, M. E. Haddad, J. Farooq, A. Eltawil, and G. Setti",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "submitted to IEEE Open Journal of the Communications Society",
+    "url": "",
+    "tags": [
+      "Vehicular",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "ORCA: Offloading and Resource Coordination via Multi-Agent Learning in Dynamic Cloud-Edge Systems",
+    "ref": "U4",
     "authors": [
       "Y. Wang",
       "X. Wu",
@@ -807,6 +864,7 @@
   },
   {
     "title": "Optimized Collaborative Perception: Sector-Based BEV Fusion in Limited Communication Conditions",
+    "ref": "C34",
     "authors": [
       "E. Besbes",
       "H. Ghazzai",
@@ -831,6 +889,7 @@
   },
   {
     "title": "Poster: Triage Slicing: Online Detection and Containment of Disruptive UEs in O-RAN Slices",
+    "ref": "C38",
     "authors": [
       "X. Wu",
       "R. Honnalli",
@@ -853,6 +912,7 @@
   },
   {
     "title": "Real-Time Multiple Obstacle Avoidance and Navigation in Unstructured Spaces with Applications to Indoor Delivery Robots",
+    "ref": "C37",
     "authors": [
       "Y. Wang",
       "U. Pillai",
@@ -876,6 +936,7 @@
   },
   {
     "title": "Reliable and Resilient Connectivity and Coverage under Localized Backhauling in UAV-IoT Networks",
+    "ref": "J15",
     "authors": [
       "X. Wu",
       "J. Farooq"
@@ -899,6 +960,7 @@
   },
   {
     "title": "Resilient PRB Allocation for High Mobility UEs in 5G O-RAN via LSTM-Enhanced MPC",
+    "ref": "C39",
     "authors": [
       "Y. Gao",
       "X. Wu",
@@ -922,6 +984,7 @@
   },
   {
     "title": "SCOUT: A Defense Against Data Poisoning Attacks in Fine-Tuned Language Models",
+    "ref": "C40",
     "authors": [
       "M. Afane",
       "A. Satyam",
@@ -947,6 +1010,7 @@
   },
   {
     "title": "SQUASH: A SWAP-Based Quantum Attack to Sabotage Hybrid Quantum Neural Networks",
+    "ref": "U3",
     "authors": [
       "R. Kumar",
       "W. Wei",
@@ -976,6 +1040,7 @@
   },
   {
     "title": "SliceWise: Traffic-Aware Multi-Agent RL with Temporal Encoding for Joint Slice Admission and Resource Orchestration in O-RAN",
+    "ref": "J18",
     "authors": [
       "X. Wu",
       "Y. Wang",
@@ -1000,6 +1065,7 @@
   },
   {
     "title": "Adaptive Risk-Aware Resource Orchestration for 5G Microservices over Multi-Tier Edge-Cloud Systems",
+    "ref": "C19",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -1022,6 +1088,7 @@
   },
   {
     "title": "Collaborative CNN-Based Federated Learning for Steering Control in Diverse Driving Conditions",
+    "ref": "C21",
     "authors": [
       "D. Neifar",
       "J. Farooq",
@@ -1046,6 +1113,7 @@
   },
   {
     "title": "Deep Reinforcement Learning Based Placement for Integrated Access Backhauling in UAV-Assisted Wireless Networks",
+    "ref": "J11",
     "authors": [
       "Y. Wang",
       "J. Farooq"
@@ -1073,6 +1141,7 @@
   },
   {
     "title": "Multi-Agent Distributed Decentralized Dynamic Resource Orchestration in 5G Edge-Cloud Networks",
+    "ref": "C23",
     "authors": [
       "X. Wu",
       "J. Farooq",
@@ -1095,6 +1164,7 @@
   },
   {
     "title": "Next-Generation Phishing: How LLM Agents Empower Cyber Attackers",
+    "ref": "C24",
     "authors": [
       "M. Afane",
       "W. Wei",
@@ -1120,6 +1190,7 @@
   },
   {
     "title": "SecFedDrive: Securing Federated Learning for Autonomous Driving Against Backdoor Attacks",
+    "ref": "C22",
     "authors": [
       "R. Kumar",
       "G. Ebbrecht",
@@ -1147,6 +1218,7 @@
   },
   {
     "title": "Zero Trust in 5G Networks: Principles, Challenges, and Opportunities",
+    "ref": "C20",
     "authors": [
       "M. Lyu",
       "J. Farooq"
@@ -1169,6 +1241,7 @@
   },
   {
     "title": "Attack Resilient Wireless Backhaul Connectivity With Optimized Fronthaul Coverage in UAV Networks",
+    "ref": "C18",
     "authors": [
       "X. Wu",
       "J. Farooq"
@@ -1191,6 +1264,7 @@
   },
   {
     "title": "Optimal 3D Placement for Integrated Access Backhauling in UAV-Assisted Wireless Networks Using Reinforcement Learning",
+    "ref": "C17",
     "authors": [
       "Y. Wang",
       "J. Farooq"
@@ -1213,7 +1287,8 @@
     ]
   },
   {
-    "title": "QoS Based Contract Design for Profit Maximization in IoT-Enabled Data Markets",
+    "title": "QoS-Based Contract Design for Profit Maximization in IoT-Enabled Data Markets",
+    "ref": "J10",
     "authors": [
       "J. Chen",
       "J. Farooq",
@@ -1236,6 +1311,7 @@
   },
   {
     "title": "IoT Supply Chain Security Risk Analysis and Mitigation: Modeling, Computation, and Software Tools",
+    "ref": "B3",
     "authors": [
       "T. Kieras",
       "J. Farooq",
@@ -1259,6 +1335,7 @@
   },
   {
     "title": "Proactive and Resilient UAV Orchestration for QoS Driven Connectivity and Coverage of Ground Users",
+    "ref": "C15",
     "authors": [
       "Y. Wang",
       "J. Farooq"
@@ -1285,6 +1362,7 @@
   },
   {
     "title": "Resilient UAV Formation for Coverage and Connectivity of Spatially Dispersed Users",
+    "ref": "C14",
     "authors": [
       "Y. Wang",
       "J. Farooq"
@@ -1311,6 +1389,7 @@
   },
   {
     "title": "Zero Touch Coordinated UAV Network Formation for 360 Degree Views of a Moving Ground Target in Remote VR Applications",
+    "ref": "C16",
     "authors": [
       "Y. Wang",
       "J. Farooq"
@@ -1332,6 +1411,7 @@
   },
   {
     "title": "I-SCRAM: A Framework for IoT Supply Chain Risk Analysis and Mitigation Decisions",
+    "ref": "J9",
     "authors": [
       "T. Kieras",
       "J. Farooq",
@@ -1355,6 +1435,7 @@
   },
   {
     "title": "QoE Based Revenue Maximizing Dynamic Resource Allocation and Pricing for Fog-Enabled Mission-Critical IoT Applications",
+    "ref": "J8",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1380,6 +1461,7 @@
   },
   {
     "title": "Resource Management for On-Demand Mission-Critical Internet of Things Applications",
+    "ref": "B2",
     "authors": [
       "J. Farooq",
       "Q. Zhu"
@@ -1401,6 +1483,7 @@
   },
   {
     "title": "Modeling and Assessment of IoT Supply Chain Security Risks: The Role of Structural and Parametric Uncertainties",
+    "ref": "C13",
     "authors": [
       "T. Kieras",
       "M. J. Farooq",
@@ -1445,6 +1528,7 @@
   },
   {
     "title": "PhD Forum: Enabling Autonomic IoT for Smart Urban Services",
+    "ref": "C12",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1466,6 +1550,7 @@
   },
   {
     "title": "RIoTS: Risk Analysis of IoT Supply Chain Threats",
+    "ref": "C11",
     "authors": [
       "T. Kieras",
       "M. J. Farooq",
@@ -1489,6 +1574,7 @@
   },
   {
     "title": "Dynamic Spatio-Temporal Resource Provisioning for On-Demand Urban Services in Smart Cities",
+    "ref": "U2",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1510,6 +1596,7 @@
   },
   {
     "title": "IoT Supply Chain Security: Overview, Challenges, and the Road Ahead",
+    "ref": "U1",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1532,6 +1619,7 @@
   },
   {
     "title": "Modeling, Analysis, and Mitigation of Dynamic Botnet Formation in Wireless IoT Networks",
+    "ref": "J7",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1554,6 +1642,7 @@
   },
   {
     "title": "Problems and Solutions in Undergraduate Probability",
+    "ref": "B1",
     "authors": [
       "M. J. Farooq",
       "U. Pillai"
@@ -1575,6 +1664,7 @@
   },
   {
     "title": "A Multi-Layer Feedback System Approach to Resilient Connectivity of Remotely Deployed Mobile Internet of Things",
+    "ref": "J6",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1601,6 +1691,7 @@
   },
   {
     "title": "Adaptive and Resilient Revenue Maximizing Dynamic Resource Allocation and Pricing for Cloud-Enabled IoT Systems",
+    "ref": "C9",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1623,6 +1714,7 @@
   },
   {
     "title": "On the Secure and Reconfigurable Multi-Layer Network Design for Critical Information Dissemination in the Internet of Battlefield Things (IoBT)",
+    "ref": "J5",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1648,6 +1740,7 @@
   },
   {
     "title": "Optimal Dynamic Contract for Spectrum Reservation in Mission-Critical UNB-IoT Systems",
+    "ref": "C10",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1669,6 +1762,7 @@
   },
   {
     "title": "A Hybrid Energy Sharing Framework for Green Cellular Networks",
+    "ref": "J2",
     "authors": [
       "M. J. Farooq",
       "H. Ghazzai",
@@ -1693,6 +1787,7 @@
   },
   {
     "title": "Cognitive Connectivity Resilience in Multi-Layer Remotely Deployed Mobile Internet of Things",
+    "ref": "C8",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1715,6 +1810,7 @@
   },
   {
     "title": "Green Networking in Cellular HetNets: A Unified Radio Resource Management Framework with Base Station ON/OFF Switching",
+    "ref": "J3",
     "authors": [
       "H. Ghazzai",
       "M. J. Farooq",
@@ -1741,6 +1837,7 @@
   },
   {
     "title": "Green Virtualization for Multiple Collaborative Cellular Operators",
+    "ref": "J4",
     "authors": [
       "M. J. Farooq",
       "H. Ghazzai",
@@ -1765,6 +1862,7 @@
   },
   {
     "title": "Optimizing Mission Critical Data Dissemination in Massive IoT Networks",
+    "ref": "C7",
     "authors": [
       "M. J. Farooq",
       "H. ElSawy",
@@ -1788,6 +1886,7 @@
   },
   {
     "title": "Secure and Reconfigurable Network Design for Critical Information Dissemination in the Internet of Battlefield Things (IoBT)",
+    "ref": "C6",
     "authors": [
       "M. J. Farooq",
       "Q. Zhu"
@@ -1809,6 +1908,7 @@
   },
   {
     "title": "A Stochastic Geometry Model for Multi-Hop Highway Vehicular Communication",
+    "ref": "J1",
     "authors": [
       "M. J. Farooq",
       "H. ElSawy",
@@ -1831,6 +1931,7 @@
   },
   {
     "title": "A Stochastic Geometry-Based Demand Response Management Framework for Cellular Networks Powered by Smart Grid",
+    "ref": "C4",
     "authors": [
       "M. J. Farooq",
       "H. Ghazzai",
@@ -1853,6 +1954,7 @@
   },
   {
     "title": "Energy Sharing Framework for Microgrid-Powered Cellular Base Stations",
+    "ref": "C5",
     "authors": [
       "M. J. Farooq",
       "H. Ghazzai",
@@ -1895,6 +1997,7 @@
   },
   {
     "title": "Modeling Inter-Vehicle Communication in Multi-Lane Highways: A Stochastic Geometry Approach",
+    "ref": "C2",
     "authors": [
       "M. J. Farooq",
       "H. ElSawy",
@@ -1917,6 +2020,7 @@
   },
   {
     "title": "Optimized Energy Procurement for Cellular Networks Powered by Smart Grid Based on Stochastic Geometry",
+    "ref": "C3",
     "authors": [
       "M. J. Farooq",
       "H. Ghazzai",
@@ -1939,6 +2043,7 @@
   },
   {
     "title": "A Game-Theoretic Spectrum Allocation Framework for Mixed Unicast and Broadcast Traffic Profile in Cognitive Radio Networks",
+    "ref": "C1",
     "authors": [
       "M. J. Farooq",
       "M. Hussain",
