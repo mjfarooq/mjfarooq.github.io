@@ -16,6 +16,16 @@ function hasImage(u) {
   });
 }
 const visibleUpdates = updates.filter(hasImage);
+// Only images that really exist. The tiles are background divs (so a blurred copy
+// can sit behind the contained image) and a div has no onerror to fall back on,
+// so missing files have to be filtered out here at build time.
+function imagesOf(u) {
+  return (u.images || []).filter((p) => {
+    if (!p) return false;
+    if (/^https?:\/\//i.test(p)) return true;
+    return fs.existsSync(path.join(publicDir, p.replace(/^\//, "")));
+  });
+}
 // Anchor id per update. Must match the slug used by the command palette.
 const slug = (s) =>
   (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
@@ -51,24 +61,30 @@ const linkify = (t) => {
       <p class="lead">Recent activities, talks, awards, and updates from the lab.</p>
 
       <div class="news-feed">
-        {visibleUpdates.map((u) => (
-          <article class="news-item" id={slug((u.message || "").slice(0, 60))}>
+        {visibleUpdates.map((u) => {
+          const imgs = imagesOf(u);
+          const gallery = JSON.stringify(imgs);
+          return (
+          <article class={"news-item" + (imgs.length ? "" : " ni-nomedia")} id={slug((u.message || "").slice(0, 60))}>
             <div class="ni-meta">
               <span class="ni-date">{u.date}</span>
             </div>
+            {imgs.length > 0 && (
+              <div class={"ni-media" + (imgs.length > 1 ? " ni-media-multi" : "")}>
+                {imgs.map((img, i) => (
+                  <div class="ni-tile" data-gallery={gallery} data-index={i} role="button" tabindex="0" aria-label="Open image">
+                    <div class="ni-tile-fill" style={`background-image:url('${img}')`}></div>
+                    <div class="ni-tile-img" style={`background-image:url('${img}')`}></div>
+                  </div>
+                ))}
+              </div>
+            )}
             <div class="ni-body">
               <p class="ni-text" set:html={linkify(u.message)}></p>
               {u.link && <a class="ni-link" href={u.link} target="_blank" rel="noopener">View details →</a>}
-              {u.images && u.images.length > 0 && (
-                <div class="ni-photos">
-                  {u.images.map((img, i) => (
-                    <img class="ni-photo" src={img} data-gallery={JSON.stringify(u.images)} data-index={i} alt="" loading="lazy" onerror="this.style.display='none'" />
-                  ))}
-                </div>
-              )}
             </div>
           </article>
-        ))}
+        );})}
       </div>
     </section>
   </div>
@@ -76,14 +92,37 @@ const linkify = (t) => {
 
 <style>
   .news-feed { margin-top: 1.8rem; }
-  .news-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.4rem; padding: 1.8rem 0; border-top: 1px solid var(--border); }
+  /* date | image | text. The feed width varies with the sidebar, so the
+     side-by-side layout is gated on a container query rather than the viewport. */
+  .news-feed { container-type: inline-size; }
+  .news-item { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: .7rem 1.4rem; padding: 1.8rem 0; border-top: 1px solid var(--border); align-items: start; }
+  .news-item .ni-media, .news-item .ni-body { grid-column: 2; }
+  .news-item .ni-media { max-width: 460px; }
+  @container (min-width: 660px) {
+    .news-item { grid-template-columns: 110px 240px minmax(0, 1fr); }
+    .news-item .ni-media { grid-column: 2; max-width: none; }
+    .news-item .ni-body { grid-column: 3; }
+  }
+  @container (min-width: 820px) {
+    .news-item { grid-template-columns: 110px 290px minmax(0, 1fr); }
+  }
+  .news-item.ni-nomedia { grid-template-columns: 110px minmax(0, 1fr); }
+  /* Figures run 1.5:1 to 2:1 and photos down to 0.75:1, so each image is shown
+     whole over a blurred copy of itself instead of being cropped to fill. */
+  .ni-media { display: grid; gap: 8px; }
+  .ni-media-multi { grid-template-columns: 1fr 1fr; }
+  .ni-media-multi .ni-tile:first-child { grid-column: 1 / -1; }
+  .ni-tile { position: relative; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-soft); cursor: zoom-in; transition: transform .2s; }
+  .ni-media-multi .ni-tile:not(:first-child) { aspect-ratio: 4 / 3; }
+  .ni-tile:hover { transform: translateY(-2px); }
+  .ni-tile:focus-visible { outline: 2px solid var(--maize); outline-offset: 2px; }
+  .ni-tile-fill { position: absolute; inset: -8%; background-size: cover; background-position: center; filter: blur(20px) saturate(.7) brightness(.95); transform: scale(1.05); }
+  .ni-tile-img { position: absolute; inset: 0; background-size: contain; background-repeat: no-repeat; background-position: center; }
+  @media (prefers-reduced-motion: reduce) { .ni-tile { transition: none; } .ni-tile:hover { transform: none; } }
   .ni-date { font-family: var(--ff-mono); font-size: 13px; color: var(--blue-link); padding-top: .2rem; display: inline-block; }
   .ni-text { font-size: 1.05rem; color: var(--text); margin: 0 0 .6rem; }
   .ni-text :global(.ni-namelink) { color: var(--blue-link); font-weight: 600; }
   .ni-link { font-family: var(--ff-mono); font-size: 13px; }
-  .ni-photos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
-  .ni-photo { width: 240px; height: 168px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid var(--border); cursor: zoom-in; transition: transform .2s; }
-  .ni-photo:hover { transform: translateY(-2px); }
   .news-item { scroll-margin-top: 90px; }
   .ni-flash { animation: ni-flash 2.2s ease-out; border-radius: 8px; }
   @keyframes ni-flash {
@@ -115,13 +154,9 @@ const linkify = (t) => {
 </script>
 
 <style>
-  @media (max-width: 700px) {
+  @media (max-width: 560px) {
     .news-item { grid-template-columns: 1fr; gap: .5rem; }
-    .ni-photo { width: calc(50% - 5px); height: auto; aspect-ratio: 4/3; object-fit: contain; background: var(--surface-soft); }
-  }
-  @media (max-width: 480px) {
-    /* First photo full-width and uncropped; extras fit two per row */
-    .ni-photo { width: 100%; height: auto; aspect-ratio: 4/3; max-height: 320px; object-fit: contain; background: var(--surface-soft); }
-    .ni-photos .ni-photo ~ .ni-photo { width: calc(50% - 5px); aspect-ratio: 1/1; max-height: 180px; }
+    .news-item .ni-media, .news-item .ni-body { grid-column: 1; max-width: none; }
+    .ni-date { padding-top: 0; }
   }
 </style>
