@@ -140,10 +140,8 @@ const linkify = (t) => {
                      data-date={u.date} data-message={linkify(u.message)}
                      data-images={JSON.stringify(u.images || [])} data-link={u.link || ""}
                      aria-hidden={i === 0 ? "false" : "true"}>
-              {fitMode(firstImg(u)) === "contain" && (
-                <div class="uc-slide-fill" style={`background-image:url('${firstImg(u)}')`}></div>
-              )}
-              <img class={"uc-slide-img fit-" + fitMode(firstImg(u))} src={firstImg(u)} alt=""
+              <div class="uc-slide-fill" style={`background-image:url('${firstImg(u)}')`}></div>
+              <img class="uc-slide-img" src={firstImg(u)} alt=""
                    style={`object-position:${(u.imgPos && u.imgPos[0]) || "center 38%"}`}
                    loading={i === 0 ? "eager" : "lazy"} onerror="this.style.visibility='hidden'" />
               <div class="uc-scrim"></div>
@@ -280,14 +278,18 @@ const linkify = (t) => {
 
   .uc-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, visibility .9s; }
   .uc-slide.on { opacity: 1; visibility: visible; }
-  .uc-slide-img { position: absolute; inset: 0; width: 100%; height: 100%; transform: scale(1); }
-  .uc-slide-img.fit-cover { object-fit: cover; }
+  /* Every slide is contained, never cropped: figures and flyers carry text to the
+     very edge, and the stage is 2:1 while the images run 0.77:1 to 1.91:1. */
+  .uc-slide-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
   /* Portrait posters and tall group shots are shown whole, over a blurred
      enlargement of themselves, rather than being cropped to a 16:9 letterbox. */
-  .uc-slide-img.fit-contain { object-fit: contain; }
   .uc-slide-fill { position: absolute; inset: -6%; background-size: cover; background-position: center; filter: blur(26px) saturate(.75) brightness(.55); transform: scale(1.08); }
-  .uc-slide.on .uc-slide-img.fit-cover { animation: uc-drift 8s linear forwards; }
-  @keyframes uc-drift { from { transform: scale(1); } to { transform: scale(1.07); } }
+  /* The slow zoom runs on the blurred backdrop only. Animating the photo itself
+     would scale it past the frame and clip the very edges we are preserving. */
+  .uc-slide.on .uc-slide-fill { animation: uc-drift 8s linear forwards; }
+  /* Stays above the 1.08 base scale throughout, so the blurred layer always
+     overfills the frame and its own edges never slide into view. */
+  @keyframes uc-drift { from { transform: scale(1.08); } to { transform: scale(1.16); } }
   .uc-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,18,38,.94) 0%, rgba(0,18,38,.72) 26%, rgba(0,18,38,.28) 52%, rgba(0,18,38,.04) 78%); }
 
   .uc-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(1rem,2.4vw,1.7rem) clamp(1.1rem,2.6vw,1.9rem); max-width: 72%; z-index: 2; }
@@ -313,7 +315,7 @@ const linkify = (t) => {
   }
   @media (prefers-reduced-motion: reduce) {
     .uc-slide { transition: none; }
-    .uc-slide.on .uc-slide-img { animation: none; }
+    .uc-slide.on .uc-slide-fill { animation: none; }
   }
 
 
