@@ -54,7 +54,7 @@ const recent = featuredTitles
       </div>
     </section>
 
-    <section class="section reveal">
+    <section class="section reveal sec-news">
       <UpdatesCarousel />
       <div class="news-cta-row">
         <a class="btn link-more" href="/news">All news →</a>
@@ -123,6 +123,9 @@ const recent = featuredTitles
   .area-blurb { font-size: .92rem; margin-bottom: .8rem; }
   .area-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
   .link-more { margin-top: 1.4rem; }
+  /* The carousel sizes itself to the space left below the hero, so every pixel
+     reclaimed above it becomes stage height. */
+  .sec-news { padding-top: clamp(20px, 2.4vw, 32px); }
   .news-cta-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; }
   .news-cta-row .link-more { margin-top: 0; }
   .latest-mark { font-family: var(--ff-mono); font-size: 11.5px; letter-spacing: .04em; color: var(--text-mute); }

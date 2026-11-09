@@ -272,7 +272,12 @@ const linkify = (t) => {
   .uc-pp:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
   .uc-count { font-family: var(--ff-mono); font-size: 11px; color: var(--text-mute); min-width: 34px; text-align: right; }
 
-  .uc-stage { position: relative; width: min(100%, calc(58vh * 2)); margin-inline: auto; aspect-ratio: 2 / 1; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
+  /* Width is driven by the target height (ratio 2:1), so --uc-h controls how tall the
+     stage is. A plain vh cap cannot work here: the hero above wraps to a different
+     number of lines at different widths, so the space left on screen is not a fixed
+     fraction of the viewport. The inline script below measures it and sets --uc-h;
+     the 40vh fallback applies before the script runs and if it never does. */
+  .uc-stage { position: relative; width: min(100%, calc(var(--uc-h, 40vh) * 2)); margin-inline: auto; aspect-ratio: 2 / 1; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
   .uc-progress { position: absolute; inset: 0 0 auto 0; height: 2px; background: rgba(255,255,255,.16); z-index: 4; }
   .uc-progress-bar { height: 100%; width: 0; background: var(--maize); }
 
@@ -338,6 +343,28 @@ const linkify = (t) => {
 </style>
 
 <script is:inline>
+
+    // Size the stage to the space actually left below the hero, so it is never cut off
+    // by the fold. The hero's height varies with viewport width (the lead paragraph
+    // rewraps), which is why this is measured rather than expressed in vh.
+    (function(){
+      var stage = document.getElementById("uc-stage");
+      if(!stage) return;
+      var MIN_H = 260, MAX_H = 560, GAP = 20; // GAP leaves the dots visible under the stage
+      function fitStage(){
+        // Below 720px the stage switches to 3:2 and stacks; leave that layout alone.
+        if (window.innerWidth <= 720) { stage.style.removeProperty("--uc-h"); return; }
+        stage.style.removeProperty("--uc-h");               // measure against the fallback
+        var top = stage.getBoundingClientRect().top + window.scrollY;
+        var avail = window.innerHeight - top - GAP;
+        stage.style.setProperty("--uc-h", Math.max(MIN_H, Math.min(avail, MAX_H)) + "px");
+      }
+      fitStage();
+      var t = null;
+      window.addEventListener("resize", function(){ clearTimeout(t); t = setTimeout(fitStage, 120); });
+      // Web fonts change the hero's height when they swap in.
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitStage).catch(function(){});
+    })();
 
     (function(){
       var stage = document.getElementById("uc-stage");
