@@ -250,6 +250,11 @@ export default {
       .filter((m): m is string => !!m)
       .filter((m, i, arr) => arr.indexOf(m) === i);
 
+    // Streaming is opt-in from the client. A full answer takes ~15s to generate; streaming
+    // puts the first words on screen in about a second, which is the difference between
+    // "slow" and "fine" for the reader even though total time is unchanged.
+    const wantStream = body?.stream === true;
+
     let data: any = null;
     let lastStatus = 0;
     let lastBody = "";
@@ -259,11 +264,43 @@ export default {
       try {
         // Workers AI runs in-datacenter via the binding, so there is no token to manage
         // and no cross-network hop. Errors arrive as thrown exceptions, not HTTP statuses.
+        // An unavailable model throws before any bytes are produced, so the fallback loop
+        // works the same whether or not we are streaming.
         const out = await env.AI.run(candidate, {
           messages: chatMessages,
           max_tokens: 512,
           temperature: 0.4,
+          ...(wantStream ? { stream: true } : {}),
         });
+
+        if (wantStream && out instanceof ReadableStream) {
+          cachedModel = candidate;
+          // Workers AI emits SSE ("data: {\"response\":\"…\"}"). Unwrap it to plain text so
+          // the page can append chunks directly instead of reimplementing an SSE parser.
+          const dec = new TextDecoder(), enc = new TextEncoder();
+          let buf = "";
+          const plain = new TransformStream<Uint8Array, Uint8Array>({
+            transform(chunk, controller) {
+              buf += dec.decode(chunk, { stream: true });
+              const lines = buf.split("\n");
+              buf = lines.pop() || "";
+              for (const line of lines) {
+                const s = line.trim();
+                if (!s.startsWith("data:")) continue;
+                const payload = s.slice(5).trim();
+                if (!payload || payload === "[DONE]") continue;
+                try {
+                  const piece = JSON.parse(payload)?.response;
+                  if (piece) controller.enqueue(enc.encode(piece));
+                } catch { /* partial JSON across chunks: ignore, next pass picks it up */ }
+              }
+            },
+          });
+          return new Response(out.pipeThrough(plain), {
+            headers: { ...cors, "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
+          });
+        }
+
         if (out) { cachedModel = candidate; data = out; break; }
         lastStatus = 502; lastBody = "empty response from " + candidate;
       } catch (err: any) {

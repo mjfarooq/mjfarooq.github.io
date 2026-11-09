@@ -33,13 +33,19 @@ import site from "../../data/site.json";
 <style>
   .ask-wrap { margin-top: 1.4rem; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); padding: 1.2rem; }
   .ask-msgs { display: flex; flex-direction: column; gap: 1rem; min-height: 240px; max-height: 56vh; overflow-y: auto; padding-right: .4rem; margin-bottom: 1rem; }
-  .ask-msg { display: flex; flex-direction: column; gap: .3rem; }
-  .ask-msg.ask-user { align-items: flex-end; }
-  .ask-role { font-family: var(--ff-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-mute); }
-  .ask-text { font-size: .98rem; line-height: 1.55; max-width: 78ch; padding: .85rem 1.1rem; border-radius: 12px; background: var(--surface-soft); border: 1px solid var(--border); white-space: pre-wrap; color: var(--text); }
-  .ask-msg.ask-user .ask-text { background: var(--blue); color: #fff; border-color: var(--blue); }
-  .ask-text :global(a) { color: var(--blue-link); }
-  .ask-msg.ask-user .ask-text :global(a) { color: #fff; text-decoration: underline; }
+  /* Messages are created at runtime by the script below, so they never receive Astro's
+     scoped data-astro-cid attribute. These rules must be :global() or they match only the
+     one greeting that ships in the template and every later bubble renders as bare text.
+     They stay nested under .ask-msgs so nothing leaks to the rest of the site. */
+  .ask-msgs :global(.ask-msg) { display: flex; flex-direction: column; gap: .3rem; max-width: 100%; }
+  .ask-msgs :global(.ask-msg.ask-user) { align-items: flex-end; }
+  .ask-msgs :global(.ask-role) { font-family: var(--ff-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-mute); }
+  .ask-msgs :global(.ask-text) { font-size: .98rem; line-height: 1.55; max-width: 78ch; padding: .85rem 1.1rem; border-radius: 12px; background: var(--bg-soft); border: 1px solid var(--border); white-space: pre-wrap; color: var(--text); overflow-wrap: break-word; }
+  .ask-msgs :global(.ask-msg.ask-user .ask-text) { background: var(--blue); color: #fff; border-color: var(--blue); border-bottom-right-radius: 4px; }
+  .ask-msgs :global(.ask-msg.ask-bot .ask-text) { border-bottom-left-radius: 4px; }
+  .ask-msgs :global(.ask-msg.ask-user .ask-role) { color: var(--blue-link); }
+  .ask-msgs :global(.ask-text a) { color: var(--blue-link); }
+  .ask-msgs :global(.ask-msg.ask-user .ask-text a) { color: #fff; text-decoration: underline; }
   .ask-form { display: flex; gap: .6rem; align-items: stretch; }
   #ask-input { flex: 1; min-width: 0; padding: .8rem 1rem; border: 1px solid var(--border-strong); border-radius: 10px; font-family: var(--ff-sans); font-size: 14px; color: var(--text); background: var(--surface); resize: vertical; }
   #ask-input:focus { outline: 0; border-color: var(--blue); }
@@ -51,7 +57,7 @@ import site from "../../data/site.json";
   .ask-about { margin-top: 1.4rem; }
   .ask-about summary { cursor: pointer; font-family: var(--ff-mono); font-size: 12px; color: var(--blue-link); }
   .ask-about p { margin-top: .6rem; font-size: .92rem; color: var(--text-soft); }
-  .ask-bot.ask-typing .ask-text::after { content: "▍"; animation: ask-blink 1s steps(2) infinite; margin-left: 2px; }
+  .ask-msgs :global(.ask-bot.ask-typing .ask-text::after) { content: "▍"; animation: ask-blink 1s steps(2) infinite; margin-left: 2px; }
   @keyframes ask-blink { 50% { opacity: 0; } }
 </style>
 
@@ -79,6 +85,31 @@ import site from "../../data/site.json";
       return wrap;
     }
 
+    // The answer used to land above the fold: addMsg scrolled while the bubble was still
+    // empty, and nothing scrolled again once the text arrived, leaving the reader staring
+    // at the input box with the reply off-screen above it.
+    function revealAnswer(el){
+      // Bring the whole chat panel into the window first...
+      try {
+        var box = msgsEl.getBoundingClientRect();
+        if (box.bottom > window.innerHeight || box.top < 0) {
+          msgsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      } catch (e) {}
+      // ...then put the top of this answer at the top of the scroll area, so long
+      // replies are read from the beginning rather than the end.
+      try { msgsEl.scrollTop = el.offsetTop - msgsEl.offsetTop; } catch (e) {
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+      }
+    }
+
+    // While streaming, keep up with the text only if the reader is still near the bottom;
+    // if they have scrolled back to re-read something, leave them where they are.
+    function followIfPinned(){
+      var slack = msgsEl.scrollHeight - msgsEl.scrollTop - msgsEl.clientHeight;
+      if (slack < 90) msgsEl.scrollTop = msgsEl.scrollHeight;
+    }
+
     async function ask(question){
       history.push({ role: "user", content: question });
       addMsg("user", question);
@@ -90,25 +121,49 @@ import site from "../../data/site.json";
         var res = await fetch(WORKER_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: history.slice(-10) })
+          body: JSON.stringify({ messages: history.slice(-10), stream: true })
         });
+        var textEl = botEl.querySelector(".ask-text");
+        var ctype = res.headers.get("content-type") || "";
+
+        // Streaming path: plain-text chunks from the worker, appended as they arrive.
+        if (res.ok && ctype.indexOf("text/plain") !== -1 && res.body && res.body.getReader) {
+          var reader = res.body.getReader();
+          var dec = new TextDecoder();
+          var acc = "";
+          revealAnswer(botEl);           // put the answer in view before text starts landing
+          status.textContent = "";
+          while (true) {
+            var step = await reader.read();
+            if (step.done) break;
+            acc += dec.decode(step.value, { stream: true });
+            textEl.innerHTML = renderText(acc);
+            followIfPinned();            // stay with the text only if the reader hasn't scrolled away
+          }
+          if (!acc) acc = "(no response)";
+          history.push({ role: "assistant", content: acc });
+          return;
+        }
+
         // The worker returns a friendly `reply` even on failure. Prefer it over the raw
         // status/body so visitors never see a JSON error blob.
         var data = null;
         try { data = await res.clone().json(); } catch (e) {}
         if (!res.ok) {
           if (data && data.reply) {
-            botEl.querySelector(".ask-text").innerHTML = renderText(data.reply);
+            textEl.innerHTML = renderText(data.reply);
             if (data.error) { try { console.warn("ask backend:", data.error); } catch (e) {} }
             status.textContent = "";
+            revealAnswer(botEl);
             return;
           }
           throw new Error("The service is temporarily unavailable (" + res.status + ").");
         }
         var reply = (data && (data.reply || data.text)) || "(no response)";
         history.push({ role: "assistant", content: reply });
-        botEl.querySelector(".ask-text").innerHTML = renderText(reply);
+        textEl.innerHTML = renderText(reply);
         status.textContent = "";
+        revealAnswer(botEl);
       } catch (err) {
         botEl.querySelector(".ask-text").textContent = "Sorry, the assistant is unavailable right now. " + (err.message || "");
         status.textContent = "Error";
