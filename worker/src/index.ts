@@ -123,33 +123,40 @@ const SITE_KNOWLEDGE = buildKnowledge();
 //
 // The whole site record (~5.8k tokens) is sent with every question, so the model needs a
 // comfortable context window — all of these handle it.
+// Verified against the Workers AI catalog. Cloudflare retires model ids without
+// warning (the plain "@cf/meta/llama-3.1-8b-instruct" alias is already gone), which
+// is exactly why this is a list and not a constant.
 const MODEL_CANDIDATES = [
-  "@cf/meta/llama-3.1-8b-instruct",
-  "@cf/meta/llama-3.1-8b-instruct-fast",
-  "@cf/meta/llama-3-8b-instruct",
-  "@cf/mistral/mistral-7b-instruct-v0.2",
-  "@cf/qwen/qwen1.5-14b-chat-awq",
-  "@cf/google/gemma-7b-it",
+  "@cf/meta/llama-3.1-8b-instruct-fp8",
+  "@cf/meta/llama-3.2-3b-instruct",
+  "@cf/mistralai/mistral-small-3.1-24b-instruct",
+  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "@cf/openai/gpt-oss-20b",
+  "@cf/meta/llama-3.2-1b-instruct",
 ];
 
 // Remembers the model that last worked, so the fallback scan runs once per isolate, not per request.
 let cachedModel: string | null = null;
 
 /**
- * True when the failure is "this model is not available to you", i.e. worth trying the next one.
+ * True when the failure is "this model is not available", i.e. worth trying the next one.
  *
- * Each provider words this differently, and the router passes the provider's message through
- * verbatim, so this has to recognise several phrasings:
- *   HF router  "not supported by any provider you have enabled" / model_not_supported
- *   Together   "Unable to access non-serverless model X. Please ... create a dedicated endpoint"
- *   others     plain 404, "does not exist", quota/permission wording
- * Anything else (bad token, provider outage, malformed request) must NOT fall through, or one
- * broken request turns into eight.
+ * The wording is the reliable signal, not the status code. Workers AI raises model problems
+ * as thrown errors carrying its own numeric codes (e.g. 5028 "was deprecated on …"), which
+ * are not HTTP statuses at all — gating on 400/403/404 silently skipped those and stopped the
+ * fallback dead on the first candidate.
+ *
+ * Phrasings seen in the wild:
+ *   Workers AI  "5028: @cf/… was deprecated on 2026-05-30. See the model catalog…"
+ *   HF router   "not supported by any provider you have enabled" / model_not_supported
+ *   Together    "Unable to access non-serverless model X … create a dedicated endpoint"
+ *
+ * Everything else — bad credentials, 402 out-of-credit, rate limits, provider outages — must
+ * NOT match, or one broken request turns into six.
  */
 function isModelUnavailable(status: number, body: string): boolean {
   if (status === 404) return true;
-  if (status !== 400 && status !== 403) return false;
-  return /model_not_supported|not supported by any provider|does not exist|not ?found|no provider|non-serverless|dedicated endpoint|unable to access|not available|no longer available|unsupported model|invalid model/i
+  return /model_not_supported|not supported by any provider|does not exist|not ?found|no provider|non-serverless|dedicated endpoint|unable to access|not available|no longer available|unsupported model|invalid model|deprecat|retired|model catalog|\b5028\b/i
     .test(body);
 }
 
