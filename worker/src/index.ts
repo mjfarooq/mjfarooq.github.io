@@ -270,8 +270,13 @@ export default {
 
     if (!hfRes) {
       // Visitor-facing copy stays generic; the diagnostic detail rides along for the site owner.
+      // 402 (and "credits"/"quota" wording) means the inference account is out of funds, which
+      // will not clear on its own — saying "try again in a few minutes" would be a lie.
+      const outOfCredit = lastStatus === 402 || /credit|quota|billing|payment required/i.test(lastBody);
       const unavailable = isModelUnavailable(lastStatus, lastBody);
-      const reply = unavailable
+      const reply = outOfCredit
+        ? "The assistant is paused right now. In the meantime you can browse the Publications, Research and News pages, or email Prof. Farooq directly."
+        : unavailable
         ? "The assistant is temporarily offline while its language model is being switched over. Please try again later, or browse the Publications and News pages in the meantime."
         : "The assistant is temporarily unavailable. Please try again in a few minutes.";
       return new Response(JSON.stringify({
