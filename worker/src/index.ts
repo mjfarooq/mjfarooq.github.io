@@ -1,13 +1,15 @@
 /**
  * Cloudflare Worker proxy for the site Ask AI page.
  *
- * Calls Hugging Face's free Inference API with an open-source instruct model
- * (default: mistralai/Mistral-7B-Instruct-v0.3). Injects a system prompt with
- * site context so answers are grounded in Junaid Farooq's research while still
- * helpful for general questions.
+ * Runs inference on Cloudflare Workers AI via the `AI` binding, so there is no API
+ * token to store or rotate and no third-party account to keep funded. Injects a
+ * system prompt carrying the full site record, so answers are grounded in Junaid
+ * Farooq's research, publications, students and news.
  *
- * Deploy with Wrangler (see worker/README.md). Secrets to set:
- *   wrangler secret put HF_TOKEN
+ * Models are tried in order (MODEL_CANDIDATES) until one answers, so a retired or
+ * renamed model degrades to the next instead of taking the assistant down.
+ *
+ * Deploy with Wrangler (see worker/README.md). No secrets required.
  */
 
 import site from "../../src/data/site.json";
@@ -17,8 +19,8 @@ import lab from "../../../mjfarooq.github.io-cyren/src/data/lab.json";
 import news from "../../../mjfarooq.github.io-cyren/src/data/news.json";
 
 interface Env {
-  HF_TOKEN: string;
-  HF_MODEL?: string;   // optional override, e.g. "HuggingFaceH4/zephyr-7b-beta"
+  AI: { run: (model: string, input: unknown) => Promise<any> }; // Workers AI binding
+  AI_MODEL?: string;       // optional override, tried before the candidate list
   ALLOWED_ORIGIN?: string; // e.g. "https://mjfarooq.github.io"
   ASK_RATE: KVNamespace;   // KV namespace for per-IP rate limiting (optional)
 }
@@ -115,19 +117,19 @@ function buildKnowledge(): string {
 
 const SITE_KNOWLEDGE = buildKnowledge();
 
-// Models are tried in order until one answers. The Hugging Face router only serves a model if
-// one of the inference providers enabled on the account carries it, and that set changes over
-// time, so pinning a single model makes the assistant fail hard the day it is dropped.
-// HF_MODEL (if set) is tried first; these are the fallbacks.
+// Cloudflare Workers AI models, tried in order until one answers. Models get retired and
+// renamed over time, so pinning a single one makes the assistant fail hard the day it goes
+// away. AI_MODEL (if set) is tried first; these are the fallbacks.
+//
+// The whole site record (~5.8k tokens) is sent with every question, so the model needs a
+// comfortable context window — all of these handle it.
 const MODEL_CANDIDATES = [
-  "meta-llama/Llama-3.3-70B-Instruct",
-  "meta-llama/Llama-3.1-8B-Instruct",
-  "mistralai/Mistral-7B-Instruct-v0.3",
-  "Qwen/Qwen2.5-72B-Instruct",
-  "Qwen/Qwen2.5-7B-Instruct",
-  "google/gemma-2-9b-it",
-  "microsoft/Phi-3.5-mini-instruct",
-  "HuggingFaceH4/zephyr-7b-beta",
+  "@cf/meta/llama-3.1-8b-instruct",
+  "@cf/meta/llama-3.1-8b-instruct-fast",
+  "@cf/meta/llama-3-8b-instruct",
+  "@cf/mistral/mistral-7b-instruct-v0.2",
+  "@cf/qwen/qwen1.5-14b-chat-awq",
+  "@cf/google/gemma-7b-it",
 ];
 
 // Remembers the model that last worked, so the fallback scan runs once per isolate, not per request.
@@ -235,40 +237,38 @@ export default {
     ];
 
     // Try the remembered model first, then the preference list. Skip to the next candidate only
-    // when the model itself is unavailable; a genuine outage or bad token should surface at once.
+    // when the model itself is unavailable; a real outage or quota problem should surface at once.
     const tried: string[] = [];
-    const candidates = [cachedModel, env.HF_MODEL, ...MODEL_CANDIDATES]
+    const candidates = [cachedModel, env.AI_MODEL, ...MODEL_CANDIDATES]
       .filter((m): m is string => !!m)
       .filter((m, i, arr) => arr.indexOf(m) === i);
 
-    let hfRes: Response | null = null;
+    let data: any = null;
     let lastStatus = 0;
     let lastBody = "";
 
     for (const candidate of candidates) {
       tried.push(candidate);
-      const res = await fetch("https://router.huggingface.co/v1/chat/completions", {
-        method: "POST",
-        headers: { "Authorization": `Bearer ${env.HF_TOKEN}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: candidate,
+      try {
+        // Workers AI runs in-datacenter via the binding, so there is no token to manage
+        // and no cross-network hop. Errors arrive as thrown exceptions, not HTTP statuses.
+        const out = await env.AI.run(candidate, {
           messages: chatMessages,
           max_tokens: 512,
           temperature: 0.4,
-          top_p: 0.95,
-          stream: false,
-        })
-      });
-
-      if (res.ok) { cachedModel = candidate; hfRes = res; break; }
-
-      lastStatus = res.status;
-      lastBody = await res.text();
-      if (cachedModel === candidate) cachedModel = null; // stop trusting a model that just failed
-      if (!isModelUnavailable(res.status, lastBody)) break;
+        });
+        if (out) { cachedModel = candidate; data = out; break; }
+        lastStatus = 502; lastBody = "empty response from " + candidate;
+      } catch (err: any) {
+        lastBody = String(err?.message || err);
+        // The binding surfaces an HTTP-ish code on some failures; default to 500 otherwise.
+        lastStatus = Number(err?.status) || Number(err?.code) || 500;
+        if (cachedModel === candidate) cachedModel = null; // stop trusting a model that just failed
+        if (!isModelUnavailable(lastStatus, lastBody)) break;
+      }
     }
 
-    if (!hfRes) {
+    if (!data) {
       // Visitor-facing copy stays generic; the diagnostic detail rides along for the site owner.
       // 402 (and "credits"/"quota" wording) means the inference account is out of funds, which
       // will not clear on its own — saying "try again in a few minutes" would be a lie.
@@ -285,9 +285,10 @@ export default {
       }), { status: 502, headers: { ...cors, "Content-Type": "application/json" } });
     }
 
-    const data = await hfRes.json() as any;
+    // Workers AI returns { response: "..." }; keep the OpenAI-ish shapes as fallbacks.
     let reply: string = "";
-    if (data?.choices && data.choices[0]?.message?.content) reply = data.choices[0].message.content;
+    if (typeof data?.response === "string") reply = data.response;
+    else if (data?.choices && data.choices[0]?.message?.content) reply = data.choices[0].message.content;
     else if (Array.isArray(data) && data[0]?.generated_text) reply = data[0].generated_text;
     else if (data?.generated_text) reply = data.generated_text;
     else reply = JSON.stringify(data).slice(0, 500);
