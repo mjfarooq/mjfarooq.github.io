@@ -770,6 +770,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/10634234"
+      },
+      {
+        "label": "PDF",
+        "url": "https://par.nsf.gov/servlets/purl/10628442"
       }
     ]
   },
@@ -1337,6 +1341,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/10016667"
+      },
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2301.04691"
       }
     ]
   },
@@ -1661,12 +1669,16 @@
     "year": 2019,
     "type": "Journal",
     "venue": "in IEEE Transactions on Information Forensics and Security, vol. 14, no. 9, pp. 2412-2426",
-    "url": "https://arxiv.org/abs/1901.00741",
+    "url": "https://ieeexplore.ieee.org/document/8638982",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/8638982"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1901.00741"
@@ -1757,14 +1769,14 @@
     "year": 2018,
     "type": "Journal",
     "venue": "in IEEE Transactions on Wireless Communications, vol. 17, no. 4, pp. 2618-2632",
-    "url": "http://ieeexplore.ieee.org/document/8279518/",
+    "url": "https://ieeexplore.ieee.org/document/8279518/",
     "tags": [
       "IoT"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/8279518/"
+        "url": "https://ieeexplore.ieee.org/document/8279518/"
       },
       {
         "label": "PDF",
@@ -1808,11 +1820,15 @@
     "year": 2017,
     "type": "Journal",
     "venue": "in IEEE Transactions on Communications, vol. 65, no. 2, pp. 918-934",
-    "url": "https://arxiv.org/abs/1701.01322",
+    "url": "https://ieeexplore.ieee.org/document/7779131",
     "tags": [
       "Green Networks"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/7779131"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1701.01322"
@@ -1857,12 +1873,16 @@
     "year": 2017,
     "type": "Journal",
     "venue": "in IEEE Transactions on Vehicular Technology, vol. 66, no. 7, pp. 5879-5893",
-    "url": "https://arxiv.org/abs/1612.01416",
+    "url": "https://ieeexplore.ieee.org/document/7776901",
     "tags": [
       "Green Networks",
       "Vehicular"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/7776901"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1612.01416"
@@ -1883,11 +1903,15 @@
     "year": 2017,
     "type": "Journal",
     "venue": "in IEEE Transactions on Cognitive Communications and Networking, vol. 3, no. 3, pp. 420-434",
-    "url": "https://arxiv.org/abs/1706.00107",
+    "url": "https://ieeexplore.ieee.org/document/7938749",
     "tags": [
       "Green Networks"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/7938749"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1706.00107"
@@ -1952,14 +1976,14 @@
     "year": 2016,
     "type": "Journal",
     "venue": "in IEEE Transactions on Wireless Communications, vol. 15, no. 3, pp. 2276-2291",
-    "url": "http://ieeexplore.ieee.org/document/7331645/",
+    "url": "https://ieeexplore.ieee.org/document/7331645/",
     "tags": [
       "Vehicular"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/7331645/"
+        "url": "https://ieeexplore.ieee.org/document/7331645/"
       }
     ]
   },
@@ -1975,14 +1999,14 @@
     "year": 2016,
     "type": "Conference",
     "venue": "in Proc. IEEE WCNC 2016, Doha, Qatar",
-    "url": "http://ieeexplore.ieee.org/document/7564929/",
+    "url": "https://ieeexplore.ieee.org/document/7564929/",
     "tags": [
       "Green Networks"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/7564929/"
+        "url": "https://ieeexplore.ieee.org/document/7564929/"
       }
     ]
   },
@@ -1998,14 +2022,14 @@
     "year": 2016,
     "type": "Conference",
     "venue": "in Proc. IEEE Globecom 2016, Washington, D.C., USA",
-    "url": "http://ieeexplore.ieee.org/document/7841800/",
+    "url": "https://ieeexplore.ieee.org/document/7841800/",
     "tags": [
       "Green Networks"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/7841800/"
+        "url": "https://ieeexplore.ieee.org/document/7841800/"
       }
     ]
   },
@@ -2041,14 +2065,14 @@
     "year": 2015,
     "type": "Conference",
     "venue": "in Proc. IEEE 82nd VTC-Fall 2015, Boston, MA",
-    "url": "http://ieeexplore.ieee.org/document/7391025/",
+    "url": "https://ieeexplore.ieee.org/document/7391025/",
     "tags": [
       "Vehicular"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/7391025/"
+        "url": "https://ieeexplore.ieee.org/document/7391025/"
       }
     ]
   },
@@ -2064,14 +2088,14 @@
     "year": 2015,
     "type": "Conference",
     "venue": "in Proc. IEEE Globecom Workshops (GC Wkshps 2015), San Diego, CA, USA",
-    "url": "http://ieeexplore.ieee.org/document/7414135/",
+    "url": "https://ieeexplore.ieee.org/document/7414135/",
     "tags": [
       "Green Networks"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/7414135/"
+        "url": "https://ieeexplore.ieee.org/document/7414135/"
       }
     ]
   },
@@ -2088,14 +2112,14 @@
     "year": 2013,
     "type": "Conference",
     "venue": "in Proc. 38th IEEE Conference on Local Computer Networks (LCN 2013), Sydney, Australia",
-    "url": "http://ieeexplore.ieee.org/document/6761275/",
+    "url": "https://ieeexplore.ieee.org/document/6761275/",
     "tags": [
       "Networks"
     ],
     "links": [
       {
         "label": "IEEE",
-        "url": "http://ieeexplore.ieee.org/document/6761275/"
+        "url": "https://ieeexplore.ieee.org/document/6761275/"
       }
     ]
   },
