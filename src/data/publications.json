@@ -21,7 +21,8 @@
         "label": "Book site",
         "url": "https://quanyan8.github.io/game-theory-for-security/"
       }
-    ]
+    ],
+    "cover": "/images/books/gt_security_book.jpg"
   },
   {
     "title": "Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense",
@@ -130,7 +131,8 @@
         "label": "PDF",
         "url": "https://arxiv.org/abs/2512.22721"
       }
-    ]
+    ],
+    "cover": "/images/books/fnt_book_cover.jpg"
   },
   {
     "title": "Rao-Blackwellized Coverage Estimation in Poisson Networks: A High-Fidelity Hybrid Framework",
@@ -1360,7 +1362,8 @@
         "label": "Springer",
         "url": "https://link.springer.com/book/9783031084799"
       }
-    ]
+    ],
+    "cover": "/images/books/springer_book_cover.jpg"
   },
   {
     "title": "Proactive and Resilient UAV Orchestration for QoS Driven Connectivity and Coverage of Ground Users",
@@ -1508,7 +1511,8 @@
         "label": "Book",
         "url": "https://www.wiley.com/en-us/Resource+Management+for+On+Demand+Mission+Critical+Internet+of+Things+Applications-p-9781119716099"
       }
-    ]
+    ],
+    "cover": "/images/books/wiley_book_cover.jpg"
   },
   {
     "title": "Modeling and Assessment of IoT Supply Chain Security Risks: The Role of Structural and Parametric Uncertainties",
@@ -1689,7 +1693,8 @@
         "label": "Book",
         "url": "https://www.amazon.com/Problems-Solutions-Undergraduate-Probability-Muhammad-ebook/dp/B07MH8K9J6"
       }
-    ]
+    ],
+    "cover": "/images/books/probability_book_cover.jpg"
   },
   {
     "title": "A Multi-Layer Feedback System Approach to Resilient Connectivity of Remotely Deployed Mobile Internet of Things",
