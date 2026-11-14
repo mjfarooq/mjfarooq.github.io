@@ -1,5 +1,29 @@
 [
   {
+    "title": "Game Theory for Security: With Applications to Cyber-Physical Systems",
+    "ref": "B5",
+    "authors": [
+      "Q. Zhu",
+      "J. Chen",
+      "J. Farooq"
+    ],
+    "authors_str": "Q. Zhu, J. Chen, and J. Farooq",
+    "year": 2027,
+    "type": "Book",
+    "venue": "Cambridge University Press (to appear)",
+    "url": "https://quanyan8.github.io/game-theory-for-security/",
+    "tags": [
+      "Cyber Resilience",
+      "Networks"
+    ],
+    "links": [
+      {
+        "label": "Book site",
+        "url": "https://quanyan8.github.io/game-theory-for-security/"
+      }
+    ]
+  },
+  {
     "title": "Ask the Expert: LLM-Guided Reinforcement Learning for Autonomous Cyber Defense",
     "ref": "C49",
     "authors": [
