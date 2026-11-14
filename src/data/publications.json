@@ -148,13 +148,17 @@
     "authors_str": "S. R. Krishnan, J. Farooq, K. V. Mishra, X. Liu, U. Pillai, and T. S. Rappaport",
     "year": 2026,
     "type": "Journal",
-    "venue": "in IEEE Communications Letters",
-    "url": "https://arxiv.org/abs/2511.19568",
+    "venue": "in IEEE Communications Letters, vol. 30, pp. 3134-3138",
+    "url": "https://ieeexplore.ieee.org/document/11677140",
     "tags": [
       "Networks",
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11677140"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2511.19568"
