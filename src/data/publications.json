@@ -341,12 +341,16 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE DySPAN 2026 ML-Spec Workshop, Washington D.C., USA",
-    "url": "https://arxiv.org/abs/2605.30622",
+    "url": "https://ieeexplore.ieee.org/document/11571157",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11571157"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2605.30622"
