@@ -1538,11 +1538,15 @@
     "year": 2022,
     "type": "Conference",
     "venue": "in IEEE MILCOM 2022, Rockville MD",
-    "url": "https://arxiv.org/abs/2211.02833",
+    "url": "https://ieeexplore.ieee.org/document/10017956",
     "tags": [
       "UAV & Aerial"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10017956"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2211.02833"
