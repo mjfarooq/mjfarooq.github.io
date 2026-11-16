@@ -2120,6 +2120,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/7331645/"
+      },
+      {
+        "label": "PDF",
+        "url": "https://repository.kaust.edu.sa/server/api/core/bitstreams/a5ece528-b0e9-456d-aba1-07414edc5506/content"
       }
     ]
   },
@@ -2143,6 +2147,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/7564929/"
+      },
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1612.01636"
       }
     ]
   },
