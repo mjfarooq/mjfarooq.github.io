@@ -905,6 +905,26 @@
     ]
   },
   {
+    "title": "Deep Reinforcement Learning for Jamming-Resilient PRB Orchestration in O-RAN Networks",
+    "ref": "U11",
+    "authors": [
+      "E. Delavari",
+      "A. Alghadhban",
+      "J. Farooq"
+    ],
+    "authors_str": "E. Delavari*, A. Alghadhban, and J. Farooq",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "submitted to Elsevier Computer Communications",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "Cyber Resilience",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "Inter-Slice Radio Resource Allocation With Elastic Traffic and Load-Coupled Interference",
     "ref": "U10",
     "authors": [
