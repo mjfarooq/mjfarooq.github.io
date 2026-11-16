@@ -123,16 +123,18 @@ const SITE_KNOWLEDGE = buildKnowledge();
 //
 // The whole site record (~5.8k tokens) is sent with every question, so the model needs a
 // comfortable context window — all of these handle it.
-// Verified against the Workers AI catalog. Cloudflare retires model ids without
-// warning (the plain "@cf/meta/llama-3.1-8b-instruct" alias is already gone), which
-// is exactly why this is a list and not a constant.
+// Verified against the Workers AI catalog and the 20 Nov 2026 deprecation notice.
+// Cloudflare retires model ids on a schedule (the whole llama-3.1/3.2 line went that way),
+// which is exactly why this is an ordered list and not a constant.
+// Cheapest adequate model first: the request carries ~5.8k tokens of site context and the
+// task is answering from that context, so a small model is the right default.
 const MODEL_CANDIDATES = [
-  "@cf/meta/llama-3.1-8b-instruct-fp8",
-  "@cf/meta/llama-3.2-3b-instruct",
+  "@cf/google/gemma-4-26b-a4b-it",                 // CF-recommended small/cost-efficient
+  "@cf/qwen/qwen3.8-27b",                          // CF-recommended small/cost-efficient
   "@cf/mistralai/mistral-small-3.1-24b-instruct",
-  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
   "@cf/openai/gpt-oss-20b",
-  "@cf/meta/llama-3.2-1b-instruct",
+  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "@cf/deepseek-ai/deepseek-v4.1-flash-1017",      // CF-recommended frontier-class
 ];
 
 // Remembers the model that last worked, so the fallback scan runs once per isolate, not per request.
