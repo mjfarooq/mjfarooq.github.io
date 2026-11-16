@@ -1303,12 +1303,16 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE BigData CyberHunt 2024 Workshop, Washington D.C.",
-    "url": "https://arxiv.org/abs/2411.13874",
+    "url": "https://www.computer.org/csdl/proceedings-article/bigdata/2024/10825018/23ykTxr7lYc",
     "tags": [
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://www.computer.org/csdl/proceedings-article/bigdata/2024/10825018/23ykTxr7lYc"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2411.13874"
@@ -1354,12 +1358,16 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in Resilience Week (RW) 2024, Austin TX, USA",
-    "url": "https://www.techrxiv.org/users/793184/articles/1229171-zero-trust-in-5g-networks-principles-challenges-and-opportunities",
+    "url": "https://ieeexplore.ieee.org/document/10799354",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10799354"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1229171-zero-trust-in-5g-networks-principles-challenges-and-opportunities"
