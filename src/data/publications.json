@@ -1862,12 +1862,16 @@
     "year": 2018,
     "type": "Conference",
     "venue": "in Proc. American Control Conference (ACC 2018), Milwaukee, WI, USA",
-    "url": "https://arxiv.org/abs/1707.08691",
+    "url": "https://ieeexplore.ieee.org/document/8430776",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/8430776"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1707.08691"
@@ -1919,6 +1923,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/8362861/"
+      },
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/1803.07842"
       }
     ]
   },
@@ -1962,12 +1970,16 @@
     "year": 2017,
     "type": "Conference",
     "venue": "in Proc. IEEE Global Communications Conference (Globecom 2017), Singapore",
-    "url": "https://arxiv.org/abs/1709.00621",
+    "url": "https://ieeexplore.ieee.org/document/8254106",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/8254106"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1709.00621"
