@@ -662,12 +662,16 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE ICC 2025, Montreal, Canada",
-    "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.174284729.99809422/v1",
+    "url": "https://ieeexplore.ieee.org/document/11160834",
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11160834"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.174284729.99809422/v1"
