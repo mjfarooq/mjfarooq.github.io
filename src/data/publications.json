@@ -1713,12 +1713,16 @@
     "year": 2020,
     "type": "Conference",
     "venue": "in Proc. IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, LA, USA",
-    "url": "https://arxiv.org/abs/1911.12862",
+    "url": "https://ieeexplore.ieee.org/document/9221323",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9221323"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1911.12862"
