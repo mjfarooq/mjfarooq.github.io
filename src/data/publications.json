@@ -104,13 +104,18 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE CNS Cyber Resilience Workshop (CNS-CRW 2026), Newark, DE",
-    "url": "",
+    "url": "https://ieeexplore.ieee.org/document/11720878",
     "tags": [
       "Cyber Resilience",
       "AI / Learning",
       "Networks"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11720878"
+      }
+    ]
   },
   {
     "title": "Cyber Resilience in Next-Generation Networks: Theoretical Foundations, Threat Landscape, and Design Paradigms",
