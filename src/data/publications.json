@@ -1136,11 +1136,15 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE ICC 2024 Workshop on Intelligent Cloud Continuum for B5G Services, Denver, CO",
-    "url": "https://www.techrxiv.org/users/793184/articles/1091386-adaptive-risk-aware-resource-orchestration-for-5g-microservices-over-multi-tier-edge-cloud-systems",
+    "url": "https://ieeexplore.ieee.org/document/10615649",
     "tags": [
       "NextG / O-RAN"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10615649"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1091386-adaptive-risk-aware-resource-orchestration-for-5g-microservices-over-multi-tier-edge-cloud-systems"
@@ -1212,11 +1216,15 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE CloudNet 2024, Rio De Janeiro, Brazil",
-    "url": "https://www.techrxiv.org/users/793184/articles/1235407-multi-agent-distributed-decentralized-dynamic-resource-orchestration-in-5g-edge-cloud-networks",
+    "url": "https://ieeexplore.ieee.org/document/10815780",
     "tags": [
       "NextG / O-RAN"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10815780"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1235407-multi-agent-distributed-decentralized-dynamic-resource-orchestration-in-5g-edge-cloud-networks"
