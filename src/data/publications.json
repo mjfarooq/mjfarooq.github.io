@@ -49,6 +49,9 @@
         "label": "PDF",
         "url": "https://arxiv.org/abs/2610.09337"
       }
+    ],
+    "peopleExclude": [
+      "yuhui-wang"
     ]
   },
   {
@@ -981,7 +984,10 @@
       "NextG / O-RAN",
       "AI / Learning"
     ],
-    "links": []
+    "links": [],
+    "peopleExclude": [
+      "yuhui-wang"
+    ]
   },
   {
     "title": "Process-Aware Cross-Layer Adaptation for O-RAN-Enabled Industrial Systems",
