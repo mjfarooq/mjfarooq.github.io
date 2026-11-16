@@ -1638,12 +1638,16 @@
     "year": 2020,
     "type": "Conference",
     "venue": "in 2020 IEEE Security and Privacy Workshops (SPW), San Francisco, CA, USA",
-    "url": "https://arxiv.org/abs/2003.12363",
+    "url": "https://ieeexplore.ieee.org/document/9283832",
     "tags": [
       "Cyber Resilience",
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9283832"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2003.12363"
