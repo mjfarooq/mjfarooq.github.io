@@ -158,7 +158,7 @@ let cachedModel: string | null = null;
  */
 function isModelUnavailable(status: number, body: string): boolean {
   if (status === 404) return true;
-  return /model_not_supported|not supported by any provider|does not exist|not ?found|no provider|non-serverless|dedicated endpoint|unable to access|not available|no longer available|unsupported model|invalid model|deprecat|retired|model catalog|\b5028\b/i
+  return /model_not_supported|not supported by any provider|does not exist|not ?found|no provider|non-serverless|dedicated endpoint|unable to access|not available|no longer available|unsupported model|invalid model|deprecat|decommission|sunset|retired|model catalog|\b5028\b/i
     .test(body);
 }
 
