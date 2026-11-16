@@ -661,11 +661,15 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE WCNC 2025, Milan, Italy",
-    "url": "https://www.techrxiv.org/users/793184/articles/1234294-joint-optimization-of-positioning-and-computation-offloading-in-multi-uav-mec-networks-for-low-latency-applications",
+    "url": "https://ieeexplore.ieee.org/document/10978406",
     "tags": [
       "UAV & Aerial"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10978406"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1234294-joint-optimization-of-positioning-and-computation-offloading-in-multi-uav-mec-networks-for-low-latency-applications"
