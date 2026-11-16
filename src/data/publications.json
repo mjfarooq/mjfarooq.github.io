@@ -902,6 +902,88 @@
     ]
   },
   {
+    "title": "Inter-Slice Radio Resource Allocation With Elastic Traffic and Load-Coupled Interference",
+    "ref": "U10",
+    "authors": [
+      "X. Wu",
+      "J. Farooq",
+      "T. Li"
+    ],
+    "authors_str": "X. Wu*, J. Farooq, and T. Li",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "submitted to IEEE Wireless Communications Letters",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "Networks"
+    ],
+    "links": []
+  },
+  {
+    "title": "Intent-Aware Task Placement and Multi-Agent Radio Resource Orchestration for Industrial O-RAN",
+    "ref": "U9",
+    "authors": [
+      "X. Wu",
+      "E. Delavari",
+      "J. Farooq",
+      "H. Ghazzai",
+      "A. Eltawil"
+    ],
+    "authors_str": "X. Wu*, E. Delavari*, J. Farooq, H. Ghazzai, and A. Eltawil",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "submitted to IEEE Journal on Selected Areas in Communications",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
+    "title": "Decentralized Multi-Agent Soft Actor-Critic for Energy-Efficient Power and Resource Allocation in O-RAN under Spatio-Temporal Traffic Dynamics",
+    "ref": "U8",
+    "authors": [
+      "X. Wu",
+      "J. Farooq",
+      "H. Ghazzai",
+      "A. Eltawil"
+    ],
+    "authors_str": "X. Wu*, J. Farooq, H. Ghazzai, and A. Eltawil",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "under revision in IEEE Transactions on Communications",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "AI / Learning",
+      "Green Networks"
+    ],
+    "links": []
+  },
+  {
+    "title": "Federated Multi-Agent Resource Orchestration in O-RAN with Distribution-Aware Critic Distillation",
+    "ref": "U7",
+    "authors": [
+      "X. Wu",
+      "J. Farooq",
+      "S. Xu",
+      "J. Chen",
+      "Y. Wang"
+    ],
+    "authors_str": "X. Wu*, J. Farooq, S. Xu, J. Chen, and Y. Wang",
+    "year": 2026,
+    "type": "Preprint",
+    "venue": "under revision in IEEE Transactions on Mobile Computing",
+    "url": "",
+    "tags": [
+      "NextG / O-RAN",
+      "AI / Learning"
+    ],
+    "links": []
+  },
+  {
     "title": "Process-Aware Cross-Layer Adaptation for O-RAN-Enabled Industrial Systems",
     "ref": "U6",
     "authors": [
