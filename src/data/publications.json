@@ -463,12 +463,16 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE/IFIP NOMS 2026 Workshop on Resilience in Next Generation Network Management (NGResNet), Rome, Italy",
-    "url": "https://arxiv.org/abs/2605.30630",
+    "url": "https://ieeexplore.ieee.org/document/11668317",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11668317"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2605.30630"
