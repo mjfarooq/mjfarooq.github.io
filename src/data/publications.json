@@ -635,11 +635,15 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE COINS 2025, Madison WI, USA",
-    "url": "https://www.techrxiv.org/users/793184/articles/1315647-evaluation-of-llm-powered-agentic-ai-for-solving-multi-arm-bandit-problems",
+    "url": "https://ieeexplore.ieee.org/document/11125743",
     "tags": [
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11125743"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1315647-evaluation-of-llm-powered-agentic-ai-for-solving-multi-arm-bandit-problems"
