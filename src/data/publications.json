@@ -389,13 +389,17 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in Proc. NDSS 2026 Workshop on Security and Privacy of Next-Generation Networks (FutureG), San Diego CA",
-    "url": "https://www.ndss-symposium.org/wp-content/uploads/futureg26-22.pdf",
+    "url": "https://www.ndss-symposium.org/ndss-paper/auto-draft-700/",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "NDSS",
+        "url": "https://www.ndss-symposium.org/ndss-paper/auto-draft-700/"
+      },
       {
         "label": "PDF",
         "url": "https://www.ndss-symposium.org/wp-content/uploads/futureg26-22.pdf"
@@ -774,8 +778,12 @@
     ],
     "links": [
       {
-        "label": "PDF",
+        "label": "NDSS",
         "url": "https://www.ndss-symposium.org/ndss-paper/auto-draft-567/"
+      },
+      {
+        "label": "PDF",
+        "url": "https://www.ndss-symposium.org/wp-content/uploads/futureg25-57.pdf"
       }
     ]
   },
