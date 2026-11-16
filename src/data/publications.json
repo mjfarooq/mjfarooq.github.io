@@ -1686,11 +1686,15 @@
     "year": 2020,
     "type": "Conference",
     "venue": "in Proc. IEEE 6th World Forum on Internet of Things (WF-IoT 2020), New Orleans, LA, USA",
-    "url": "https://arxiv.org/abs/2001.01561",
+    "url": "https://ieeexplore.ieee.org/document/9221230",
     "tags": [
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/9221230"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/2001.01561"
