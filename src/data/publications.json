@@ -2059,11 +2059,15 @@
     "year": 2017,
     "type": "Conference",
     "venue": "in 2017 15th International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks (WiOpt), Paris, France",
-    "url": "https://arxiv.org/abs/1704.05954",
+    "url": "https://ieeexplore.ieee.org/document/7959930",
     "tags": [
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/7959930"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1704.05954"
@@ -2081,11 +2085,15 @@
     "year": 2017,
     "type": "Conference",
     "venue": "in 15th WiOpt 2017, Paris, France",
-    "url": "https://arxiv.org/abs/1703.01224",
+    "url": "https://ieeexplore.ieee.org/document/7959892",
     "tags": [
       "IoT"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/7959892"
+      },
       {
         "label": "PDF",
         "url": "https://arxiv.org/abs/1703.01224"
