@@ -735,13 +735,17 @@
     "year": 2025,
     "type": "Conference",
     "venue": "in IEEE INFOCOM 2025 Workshop on Resilience in Next-Generation Networks (NGResNet), London, UK",
-    "url": "https://www.techrxiv.org/users/793184/articles/1277868-llm-driven-agentic-ai-approach-to-enhanced-o-ran-resilience-in-next-generation-networks",
+    "url": "https://ieeexplore.ieee.org/document/11152722",
     "tags": [
       "NextG / O-RAN",
       "Cyber Resilience",
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11152722"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/users/793184/articles/1277868-llm-driven-agentic-ai-approach-to-enhanced-o-ran-resilience-in-next-generation-networks"
