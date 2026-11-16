@@ -212,13 +212,18 @@
     "authors_str": "Y. Wang*, X. Wu*, J. Farooq, S. Y. Chen, and J. Chen",
     "year": 2026,
     "type": "Conference",
-    "venue": "in International Conference on Computer Communications and Networks (ICCCN 2026)",
-    "url": "",
+    "venue": "in International Conference on Computer Communications and Networks (ICCCN 2026), Honolulu, HI, USA",
+    "url": "https://ieeexplore.ieee.org/document/11662811",
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11662811"
+      }
+    ]
   },
   {
     "title": "Collaborative Cloud-Edge Computing via LLM-Guided Constrained Reinforcement Learning",
@@ -234,12 +239,16 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC 2026), Singapore",
-    "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1",
+    "url": "https://ieeexplore.ieee.org/document/11711607",
     "tags": [
       "NextG / O-RAN",
       "AI / Learning"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/11711607"
+      },
       {
         "label": "PDF",
         "url": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.177155994.44918685/v1"
