@@ -1218,12 +1218,16 @@
     "year": 2024,
     "type": "Conference",
     "venue": "in IEEE VTC-Fall 2024, Washington D.C.",
-    "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/217473/preprint_pdf/a8c76d89a117990c12a996e6ad807747.pdf",
+    "url": "https://ieeexplore.ieee.org/document/10757701",
     "tags": [
       "AI / Learning",
       "Vehicular"
     ],
     "links": [
+      {
+        "label": "IEEE",
+        "url": "https://ieeexplore.ieee.org/document/10757701"
+      },
       {
         "label": "PDF",
         "url": "https://d197for5662m48.cloudfront.net/documents/publicationstatus/217473/preprint_pdf/a8c76d89a117990c12a996e6ad807747.pdf"
