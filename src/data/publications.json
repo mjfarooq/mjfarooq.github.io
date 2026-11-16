@@ -83,13 +83,18 @@
     "year": 2026,
     "type": "Conference",
     "venue": "in Conference on Decision and Game Theory for Security (GameSec 2026)",
-    "url": "",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-032-40367-4_27",
     "tags": [
       "NextG / O-RAN",
       "AI / Learning",
       "Cyber Resilience"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "Springer",
+        "url": "https://link.springer.com/chapter/10.1007/978-3-032-40367-4_27"
+      }
+    ]
   },
   {
     "title": "Adaptive Zero-Trust Microsegmentation via Graph-Aware Learning for Wireless Networks",
