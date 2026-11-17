@@ -206,6 +206,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11547201"
+      },
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2611.19344"
       }
     ],
     "peopleExclude": [
@@ -1283,6 +1287,10 @@
       {
         "label": "IEEE",
         "url": "https://ieeexplore.ieee.org/document/11251017"
+      },
+      {
+        "label": "PDF",
+        "url": "https://arxiv.org/abs/2611.19357"
       }
     ]
   },
